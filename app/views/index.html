@@ -41,36 +41,65 @@
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
 
-      <h1 class="nhsuk-heading-xl">
-        {{ serviceName }}
-      </h1>
-
-      <p>Set the service name for your prototype by editing <strong>/app/config.js</strong>.</p>
-
-      <p>
-        This is the index page for your prototype. You can find it at <strong>/app/views/index.html</strong>.
-      </p>
-
-      <hr>
-
-      <h2 class="nhsuk-heading-l">
-        Get started
-      </h2>
-
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>
-          <a href="https://prototype-kit.service-manual.nhs.uk/how-tos">NHS prototype kit guides</a> – including a tutorial
-        </li>
-        <li>
-          <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a> – for code snippets and guidance on using NHS styles, components and patterns
-        </li>
-      </ul>
-
-      <p>
-        There is a selection of <a href="/example-templates">example page templates</a> in <strong>/lib/example-templates/</strong>. To use these, copy and paste them into <strong>/app/views/</strong>.
-      </p>
-      <!-- End of content -->
-
-    </div>
-  </div>
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full-width">
+    
+          <span class="nhsuk-caption-xl">Pensions</span>
+          <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-3">Contact the Scheme</h1>
+          <p>A service to allow users to contact NHS Pensions.</p>
+    
+          <!-- ======================================= -->
+          <!-- ITERATIONS -->
+          <!-- ======================================= -->
+    
+    <h2 class="nhsuk-heading-l">Prototype Iterations</h2>
+    
+    <table role="table" class="nhsuk-table-responsive">
+      <caption class="nhsuk-table__caption">10th August 2025</caption>
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              Version
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Status
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Notes
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Version </span>v1
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
+              <span class="nhsuk-tag nhsuk-tag--red">In Progress</span>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Notes </span>
+              <ul>
+                <li><a href="https://miro.com/app/board/uXjVLkCESpc=/?share_link_id=465019728040" target="_blank">Miro board (password: pensions)</a></li>
+                <li><a href="v1/experimental/nav-form-select-radios" target="_blank">Form page - Radios</a></li>
+                <li><a href="v1/experimental/nav-form-select-radios-text" target="_blank">Form page - Radios (hint text)</a></li>
+                <li><a href="v1/nav-form-select" target="_blank">Form page - Select</a></li>
+              </ul>
+            </td>
+             <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Action </span>
+                <p><a href="v1/start-page">Start</a></p>
+            </td>
+          </tr>
+          </tr>
+        </tbody>
+       
+      </table>
+    
+        </div>
+      </div>
 {% endblock %}
