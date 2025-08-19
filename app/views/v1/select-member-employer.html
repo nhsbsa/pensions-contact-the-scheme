@@ -38,7 +38,7 @@ Contact the scheme
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="#" method="post">
+      <form action="select-member-employer" method="post">
 
       <!-- Change the page heading -->
 
@@ -58,8 +58,8 @@ Contact the scheme
               </legend>
               <div class="nhsuk-radios">
                 <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="member-yes" name="member" type="radio" value="yes">
-                  <label class="nhsuk-label nhsuk-radios__label" for="member-yes">
+                  <input class="nhsuk-radios__input" id="member" name="type" type="radio" value="member-yes">
+                  <label class="nhsuk-label nhsuk-radios__label" for="member-code">
                     I am a member of the NHS Pension scheme
                   </label>
                   <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
@@ -67,8 +67,8 @@ Contact the scheme
                   </div>
                 </div>
                 <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="member-no" name="member" type="radio" value="no">
-                  <label class="nhsuk-label nhsuk-radios__label" for="member-no">
+                  <input class="nhsuk-radios__input" id="employer" name="type" type="radio" value="employer-yes">
+                  <label class="nhsuk-label nhsuk-radios__label" for="employer-code">
                     I am an employer
                   </label>
                   <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
@@ -98,10 +98,11 @@ Contact the scheme
       
         </div>
       </details>
-      {{ button({
-        "href": "previous-contracts",
-        "text": "Continue"
-        }) }}
+     
+      <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+        Continue
+      </button>
+
 
       <!-- End of content -->
     </form>

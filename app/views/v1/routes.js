@@ -7,16 +7,21 @@ const router = express.Router();
 
 module.exports = router;
 
+// Start page
+router.post( /start-page/, (req, res) => {
+    res.redirect('select-member-employer')
+});
 
-// re you a member or employer?
-router.post(/select-member-employer/, (req, res) => {
 
-    const contract = req.session.data['member']
+// Are you a member or employer?
+router.post('/select-member-employer/', (req, res) => {
 
-    if (contract == 'yes') {
+    const payment = req.session.data['type']
+
+    if (member == 'member-yes') {
         res.redirect('membership-number')
     } else {
-        res.redirect(employing-code')
+        res.redirect('employing-code')
 
     }
 });
