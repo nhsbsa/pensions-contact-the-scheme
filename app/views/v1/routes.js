@@ -8,7 +8,7 @@ const router = express.Router();
 module.exports = router;
 
 // Start page
-router.post( /start-page/, (req, res) => {
+router.post( '/start-page/', (req, res) => {
     res.redirect('select-member-employer')
 });
 
@@ -16,7 +16,7 @@ router.post( /start-page/, (req, res) => {
 // Are you a member or employer?
 router.post('/select-member-employer/', (req, res) => {
 
-    const payment = req.session.data['type']
+    const member = req.session.data['type']
 
     if (member == 'member-yes') {
         res.redirect('membership-number')
@@ -25,3 +25,32 @@ router.post('/select-member-employer/', (req, res) => {
 
     }
 });
+
+// Do you know your membership number?
+router.post('/membership-number/', (req, res) => {
+
+    const number = req.session.data['member-number']
+
+    if (number == 'input') {
+        res.redirect('member-name')
+    } else {
+        res.redirect('ni-number')
+
+    }
+});
+
+// We cannot find the address for the postcode ABC 123
+router.post('/member-postcode-no-result/', (req, res) => {
+
+    const number = req.session.data['noAddress']
+
+    if (number == 'change') {
+        res.redirect('member-postcode-lookup')
+    } else {
+        res.redirect('member-manual-address')
+
+    }
+});
+
+
+
