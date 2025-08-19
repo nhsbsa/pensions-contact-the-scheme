@@ -16,7 +16,7 @@ router.post(/previous-contract/, (req, res) => {
     if (contract == 'yes') {
         res.redirect('membership-number')
     } else {
-        res.redirect(employer-code')
+        res.redirect(employing-code')
 
     }
 });
