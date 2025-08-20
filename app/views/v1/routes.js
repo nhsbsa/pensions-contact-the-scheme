@@ -21,7 +21,7 @@ router.post('/select-member-employer/', (req, res) => {
     if (member == 'member-yes') {
         res.redirect('membership-number')
     } else {
-        res.redirect('employing-code')
+        res.redirect('employer-code')
 
     }
 });
