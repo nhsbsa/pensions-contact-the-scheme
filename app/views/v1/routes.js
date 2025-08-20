@@ -70,6 +70,11 @@ router.post( '/employer-code/', (req, res) => {
     res.redirect('employer-name')
 });
 
+// Employer-name
+router.post( '/employer-name/', (req, res) => {
+    res.redirect('employer-email')
+});
+
 // Employer-email
 router.post( '/employer-email/', (req, res) => {
     res.redirect('emp-select-member-employer')
