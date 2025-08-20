@@ -24,56 +24,46 @@ Contact the scheme
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
- 
+
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back"
+}) }}
 
  
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
 
+        <div class="nhsuk-panel">
+          <h1 class="nhsuk-panel__title">
+            Your query has been received
+          </h1>
+        </div>
+        <p>
+          We have sent you a confirmation email
+        </p>
+        <h2 class="nhsuk-heading-m">What happens next</h2>
 
-
-        <form method=“post”>
-
-          <div class="nhsuk-panel nhsuk-panel--confirmation" style="background-color:#005eb8; color:white; text-align:center; padding: 40px; margin-bottom:40px">
-            <h1 class="nhsuk-panel__title nhsuk-u-margin-bottom-4">
-              Notification of death has been sent
-            </h1>
-            <p class="nhsuk-body-l nhsuk-u-margin-bottom-0">Your reference number<br><strong>HDJ2123F</strong></p>
-          </div>
-
-          <p>You've successfully submitted a notification that a pension member has died.</p>
-
-          <p>We've sent you an email to confirm this.</p>
-
-          <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-              <h1 class="nhsuk-fieldset__heading">
-                What happens next
-              </h1>
-            </legend>
-            
-             <p>We'll review your notification within the next 4 weeks and respond to you.</p>
-
-          </fieldset>
+      
           
-          <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-              <h1 class="nhsuk-fieldset__heading">
-                Get help with your notification
-              </h1>
-            </legend>
+              <p class= "nhsuk-body">You will get a response to your query within 2 working days.</p>         
+          
+              <h2 class="nhsuk-heading-m">Give us your feedback</h2>
 
-            <p>If you have any more questions before we respond, you can <a class="nhsuk-link" href="https://www.nhsbsa.nhs.uk/pensioner-hub/contact-nhs-pensions-pensioners">contact us</a>.</p>
 
-            <p><a class="nhsuk-link" href="#">What did you think of this service?</a> (Survey will take 30 seconds)</p>
+        <p><a href="#" class="nhsuk-link">Tell us about your experience using this service (opens in a new tab)</a></p>
 
-          </fieldset>
-
+      </div>
     </div>
-   
-
-    </form>
-  </div>
+  </main>
 </div>
+ 
 
+
+
+     
 <script>
   function setLocation(element) {
     document.forms[0].action = element.value

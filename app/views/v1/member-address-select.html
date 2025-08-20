@@ -8,9 +8,21 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  Form ordering
+Contact the scheme
 {% endblock %}
 
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
 {{ backLink({
@@ -81,7 +93,7 @@
           
         </fieldset>
 
-        <p class="nhsuk-body"><a href="contact-full-address">
+        <p class="nhsuk-body"><a href="member-manual-address">
           Address is not in the list, enter it manually
         </a></p>
 

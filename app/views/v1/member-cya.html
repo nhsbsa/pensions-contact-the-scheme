@@ -1,0 +1,186 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Contact the scheme
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+ 
+{{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back"
+  }) }}
+
+<div class="nhsuk-grid-row">
+
+
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="confirmation" method="post">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Deceased pension member details</span>
+        <h1 class="nhsuk-heading-l">Review deceased pension member details</h1>
+
+<p>Check your answers and make sure they are correct before you continue. If you need to, you can change your answers.</p>
+
+<h3>Previous answers</h3>
+
+        <dl class="nhsuk-summary-list">
+
+<div class="nhsuk-summary-list__row">
+  <dt class="nhsuk-summary-list__key">
+    SD Number
+  </dt>
+  <dd class="nhsuk-summary-list__value">
+    SD12345678
+  </dd>
+
+  <dd class="nhsuk-summary-list__actions">
+
+    <a href="membership-number">
+      Change<span class="nhsuk-u-visually-hidden">&nbsp; membership-number. </span>
+    </a>
+
+  </dd>
+
+</div>
+
+<div class="nhsuk-summary-list__row">
+  <dt class="nhsuk-summary-list__key">
+    Name 
+  </dt>
+  <dd class="nhsuk-summary-list__value">
+    Mrs Charlotte Bloggs
+  </dd>
+
+  <dd class="nhsuk-summary-list__actions">
+
+    <a href="member-name">
+      Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
+    </a>
+
+  </dd>
+
+</div>
+
+<div class="nhsuk-summary-list__row">
+  <dt class="nhsuk-summary-list__key">
+  Date of birth
+  </dt>
+  <dd class="nhsuk-summary-list__value">
+    31 March 1980
+  </dd>
+
+  <dd class="nhsuk-summary-list__actions">
+
+    <a href="member-dob">
+      Change<span class="nhsuk-u-visually-hidden">&nbsp; date of birth.</span>
+    </a>
+
+  </dd>
+
+</div>
+
+<div class="nhsuk-summary-list__row">
+  <dt class="nhsuk-summary-list__key">
+    Address
+  </dt>
+  <dd class="nhsuk-summary-list__value">
+    <p>10 Downing Street</p>
+    <p>London</p>
+    <p>SW1A 2AA</p>
+  </dd>
+
+  <dd class="nhsuk-summary-list__actions">
+
+    <a href="deceased-postcode-lookup">
+      Change<span class="nhsuk-u-visually-hidden">&nbsp; Address.</span>
+    </a>
+
+  </dd>
+
+</div>
+
+<div class="nhsuk-summary-list__row">
+  <dt class="nhsuk-summary-list__key">
+    Email
+  </dt>
+  <dd class="nhsuk-summary-list__value">
+    char.bloggs1980@gmail.com
+  </dd>
+
+  <dd class="nhsuk-summary-list__actions">
+
+    <a href="member-email">
+      Change<span class="nhsuk-u-visually-hidden">&nbsp; password.</span>
+    </a>
+
+  </dd>
+
+</div>
+
+<div class="nhsuk-summary-list__row">
+  <dt class="nhsuk-summary-list__key">
+    Phone number
+  </dt>
+  <dd class="nhsuk-summary-list__value">
+    +44789456321
+  </dd>
+
+  <dd class="nhsuk-summary-list__actions">
+
+    <a href="deceased-uk-main-residence">
+      Change<span class="nhsuk-u-visually-hidden">&nbsp; phone number.</span>
+    </a>
+
+  </dd>
+
+</div>
+
+<div class="nhsuk-summary-list__row">
+  <dt class="nhsuk-summary-list__key">
+    Reason for contact
+  </dt>
+  <dd class="nhsuk-summary-list__value">
+    Process of receiving my pension. Will I get my pension? I have no other income.
+  </dd>
+
+  <dd class="nhsuk-summary-list__actions">
+
+    <a href="reason">
+      Change<span class="nhsuk-u-visually-hidden">&nbsp; password.</span>
+    </a>
+
+  </dd>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+  Continue
+</button>
+<script src="/public/javascripts/navigation.js"></script>
+</form>
+{% endblock %}
