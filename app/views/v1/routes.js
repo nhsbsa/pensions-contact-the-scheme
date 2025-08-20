@@ -60,7 +60,17 @@ router.post('/emp-select-member-employer/', (req, res) => {
     if (member == 'member-yes') {
         res.redirect('emp-membership-number')
     } else {
-        res.redirect('employer-name')
+        res.redirect('employer-reason')
 
     }
+});
+
+// Employer-code
+router.post( '/employer-code/', (req, res) => {
+    res.redirect('employer-name')
+});
+
+// Employer-email
+router.post( '/employer-email/', (req, res) => {
+    res.redirect('emp-select-member-employer')
 });
