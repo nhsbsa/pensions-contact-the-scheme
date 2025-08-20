@@ -38,7 +38,7 @@ Contact the scheme
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="emp-select-member-employer" method="post">
+      <form action="emp-member-name" method="post">
 
       <!-- Change the page heading -->
 
@@ -50,27 +50,41 @@ Contact the scheme
 
         <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-            <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+            <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
             <h1 class="nhsuk-fieldset__heading">
-              Do you know your employing authority (EA) code?
+              Do you know the member's SD number?
             </h1>
-            <div class="nhsuk-hint" id="contact-hint">
-              An EA code is a 4-digit reference number unique to each employer who offers it's employee's access to the NHS Pension Scheme.
-            </div>  
           </legend>
-        
+          <p>
+            Sometimes known as the Superannuation Division (SD) number. 
+            This will help us find your record and support you quicker.
+            This number is 8 digits, for example 12345678.
+          </p>
+          <p>Find this on:</p>
+          <ul>
+            <li>member payslips</li>
+            <li>an online Total Reward Statement or Annual Benefits Statement</li>
+            <li>some communications we have sent to the member</li>
+          </ul>
           <div class="nhsuk-form-group">
-            <label class="nhsuk-label" for="input-width-4">
-             EA code
-            </label> <input class="nhsuk-input nhsuk-input--width-4" id="input-width-4" name="test-width-4" type="text">
-          </div>
+            <div class="nhsuk-radios">
+  
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="two-thirds">
+                  SD number
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-two-thirds" id="two-thirds" name="fullName" type="text">
+              </div>
           
-        </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
      
-          <button class="nhsuk-button" type="submit" href="emp-select-member-employer">
-            Continue
-          </button>
-     
+      {{ button({
+        "text": "Continue"
+        }) }}
+   
       <!-- End of content -->
     </form>
     </div>  

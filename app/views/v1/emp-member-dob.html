@@ -1,0 +1,116 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Contact the scheme
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+ 
+{{ backLink({
+  "href": "emp-member-name",
+  "text": "Go back"
+}) }}
+
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="emp-member-postcode-lookup" method="post">
+
+      <!-- Change the page heading -->
+
+
+      <!-- Add content here -->
+      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+     
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
+          <legend class="nhsuk-fieldset__legend nhsuk-label--l">
+            <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
+            <h1 class="nhsuk-fieldset__heading">
+              What is member's date of birth?
+            </h1>
+          </legend>
+          <div class="nhsuk-hint" id="example-hint">
+            For example, 15 3 1984
+          </div>
+          
+          <div class="nhsuk-date-input" id="dob">
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dob-day">
+                  Day
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dob-day" name="dob-day" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dob-month">
+                  Month
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dob-month" name="dob-month" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dob-year">
+                  Year
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dob-year" name="dob-year" type="text" pattern="[0-9]*" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      
+      </div>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Why do we need your date of birth?
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+      
+          <p>When you buy additional pension, you must complete all payments before your State Pension age. 
+            This is the same as your normal pension age or 65, if that is later.</p>
+          <p>We need your date of birth to:</p>
+          <ul>
+            <li>make sure you are under the State Pension age and able to buy additional pension</li>
+            <li>calculate how many years until you reach the State Pension age</li>
+          </ul>
+          <p>If your birthday is in the next 6 weeks, you should wait until after your birthday. Then you can do the calculation and send it to your employer. </p>
+      
+        </div>
+      </details>
+      {{ button({
+        "text": "Continue"
+        }) }}
+
+      <!-- End of content -->
+    </form>
+    </div>  
+
+  </div>
+{% endblock %}

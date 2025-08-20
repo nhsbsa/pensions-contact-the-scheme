@@ -52,5 +52,15 @@ router.post('/member-postcode-no-result/', (req, res) => {
     }
 });
 
+// Do you have a member or employer query?
+router.post('/emp-select-member-employer/', (req, res) => {
 
+    const member = req.session.data['type']
 
+    if (member == 'member-yes') {
+        res.redirect('emp-membership-number')
+    } else {
+        res.redirect('employer-name')
+
+    }
+});

@@ -1,0 +1,76 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Contact the scheme
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+ 
+{{ backLink({
+    "href": "emp-member-dob",
+    "text": "Go back"
+  }) }}
+
+
+      
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
+                What is the member's postcode?
+              </h1>
+              
+        
+      <span class="nhsuk-hint"> <p>For example, AB1 2CD</p></span>
+
+        <form action="emp-member-address-select" method="post">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="input-width-10">
+              Postcode 
+            </label>
+            <input class="nhsuk-input nhsuk-input--width-10" id="input-width-10" name="enter" type="text">
+          </div>
+          
+          <p class="nhsuk-body"><a href="emp-member-manual-address">
+            Enter address manually</a></p>
+         
+
+
+          
+            <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+              Find address
+            </button>
+
+            </div>
+
+          </div>
+
+      </form>
+      
+    </div>
+
+  </div>
+
+
+ 
+{% endblock %}
