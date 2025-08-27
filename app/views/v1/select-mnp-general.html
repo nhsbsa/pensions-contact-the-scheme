@@ -1,0 +1,94 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Contact the scheme
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+
+
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+{% from 'back-link/macro.njk' import backLink %}
+
+{{ backLink({
+  href: "select-member-employer",
+  text: "Back"
+}) }}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="select-mnp-general" method="post">
+
+      <!-- Change the page heading -->
+
+
+      <!-- Add content here -->
+      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+     
+
+          <div class="nhsuk-form-group">
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+                <h1 class="nhsuk-fieldset__heading">
+                  Select the type of query?</h1> 
+              </legend>
+
+              <p class="nhsuk-u-font-weight-normal">
+                Choose the relevant.
+              </p>
+              
+              <div class="nhsuk-radios">
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="mnp" name="type" type="radio" value="mnp-yes">
+                  <label class="nhsuk-label nhsuk-radios__label" for="select-mnp">
+                    My NHS Pension Portal
+                  </label>
+                  
+                </div>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="general" name="type" type="radio" value="general-yes">
+                  <label class="nhsuk-label nhsuk-radios__label" for="select-general">
+                    General enquiry
+                  </label>
+                 
+                </div>
+              </div>
+           
+          
+        </div>
+      
+     
+      <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+        Continue
+      </button>
+
+
+      <!-- End of content -->
+    </form>
+    </div>  
+
+  </div>
+{% endblock %}

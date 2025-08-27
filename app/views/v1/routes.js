@@ -20,7 +20,7 @@ router.post('/select-member-employer/', (req, res) => {
     const employer = req.session.data['type']
 
     if (member == 'member-yes') {
-        res.redirect('membership-number')
+        res.redirect('select-mnp-general')
 
     } else if (employer == 'employer-yes') {
         res.redirect('employer-code')
@@ -29,6 +29,25 @@ router.post('/select-member-employer/', (req, res) => {
         res.redirect('third-party-name')
     }
 });
+
+//mnp-options
+router.post( '/mnp-options/', (req, res) => {
+    res.redirect('membership-number')
+});
+
+// select-mnp or general query
+router.post('/select-mnp-general/', (req, res) => {
+
+    const query = req.session.data['type']
+
+    if (query == 'mnp-yes') {
+        res.redirect('mnp-options')
+    } else {
+        res.redirect('general-enquiry-options')
+
+    }
+});
+
 
 // Do you know your membership number?
 router.post('/membership-number/', (req, res) => {
