@@ -17,12 +17,16 @@ router.post( '/start-page/', (req, res) => {
 router.post('/select-member-employer/', (req, res) => {
 
     const member = req.session.data['type']
+    const employer = req.session.data['type']
 
     if (member == 'member-yes') {
         res.redirect('membership-number')
-    } else {
+
+    } else if (employer == 'employer-yes') {
         res.redirect('employer-code')
 
+    } else {
+        res.redirect('third-party-name')
     }
 });
 

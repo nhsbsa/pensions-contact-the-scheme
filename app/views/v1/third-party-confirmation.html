@@ -1,0 +1,73 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Contact the scheme
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+{{ backLink({
+  "href": "third-party-cya",
+  "text": "Go back"
+}) }}
+
+ 
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <div class="nhsuk-panel">
+          <h1 class="nhsuk-panel__title">
+            Your query has been received
+          </h1>
+        </div>
+        <p>
+          We have sent you a confirmation email
+        </p>
+        <h2 class="nhsuk-heading-m">What happens next</h2>
+
+      
+          
+              <p class= "nhsuk-body">You will get a response to your query within 2 working days.</p>         
+          
+              <h2 class="nhsuk-heading-m">Give us your feedback</h2>
+
+
+        <p><a href="#" class="nhsuk-link">Tell us about your experience using this service (opens in a new tab)</a></p>
+
+      </div>
+    </div>
+  </main>
+</div>
+ 
+
+
+
+     
+<script>
+  function setLocation(element) {
+    document.forms[0].action = element.value
+  }
+</script>
+{% endblock %}
+
