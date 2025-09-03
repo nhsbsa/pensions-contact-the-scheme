@@ -10,19 +10,20 @@
 {% block head %}
   <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   <link href="/css/main.css" rel="stylesheet">
-  <script src="/nhsuk-frontend/nhsuk.min.js" defer></script>
 {% endblock %}
 
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
   {{ header({
-    service: {
-      name: serviceName,
-      href: "/"
+    logo: {
+      href: "/",
+      ariaLabel: serviceName
     },
-    showNav: "false",
-    showSearch: "false"
+    service: {
+      text: serviceName,
+      href: "/"
+    }
   }) }}
 
   <div class="beta-banner">
@@ -32,35 +33,64 @@
                 Beta
             </strong>
             <span class="nhsuk-phase-banner__text">
-                This is a new service – your <a class="nhsuk-link" href="#">feedback</a> will help us to improve it.
-</span>
+                This is a new service - your <a class="nhsuk-link" href="#">feedback</a> will help us to improve it.
+            </span>
         </p>
     </div>
-</div>
+  </div>
+
+  {% from 'back-link/macro.njk' import backLink %}
+  {% if not hideBack %}
+    <div class="nhsuk-width-container">
+      {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Back"
+      }) }}
+    </div>
+  {% endif %}
+  
 {% endblock %}
 
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
   {{ footer({
-    links: [
-      {
-        URL: "/",
-        label: "Home"
-      },
-      {
-        URL: "/example-templates",
-        label: "Page templates"
-      },
-      {
-        URL: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
-        label: "Reset data"
-      }
-    ]
+    meta: {
+      items: [
+        {
+          href: "/",
+          text: "Home"
+        },
+        {
+          href: "#",
+          text: "Accessibility statement"
+        },
+        {
+          href: "#",
+          text: "Cookies"
+        },
+        {
+          href: "#",
+          text: "Privacy policy"
+        },
+        {
+          href: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+          text: "Reset data"
+        }
+      ]
+    },
+    copyright:{
+      html: "&copy; Crown copyright"
+    }
   }) }}
 {% endblock %}
 
 {% block bodyEnd %}
+  <script src="/nhsuk-frontend/nhsuk-frontend.min.js" type="module"></script>
+  <script type="module">
+    import { initAll } from '/nhsuk-frontend/nhsuk-frontend.min.js'
+    initAll()
+  </script>
   {% block scripts %}
     <!-- Custom JavaScript files can be added to this file -->
     {% include "includes/scripts.html" %}

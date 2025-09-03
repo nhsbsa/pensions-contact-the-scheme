@@ -28,12 +28,6 @@ Contact the scheme
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
-{% from 'back-link/macro.njk' import backLink %}
-
-{{ backLink({
-  href: "select-member-employer",
-  text: "Back"
-}) }}
   <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-two-thirds">
@@ -48,57 +42,70 @@ Contact the scheme
      
       <div class="nhsuk-form-group">
 
-        <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-            <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
-            <h1 class="nhsuk-fieldset__heading">
-              Do you know your membership number?
-            </h1>
-          </legend>
-          <p class="nhsuk-u-font-weight-normal">
-            Sometimes known as the Superannuation Division (SD) number. 
-            This will help us find your record and support you quicker.
-            
-          </p>
-          <p class="nhsuk-u-font-weight-normal">This number is 'SD' followed by 8 digits.</p>
-          <p class="nhsuk-u-font-weight-normal">Find this on:</p>
-          <ul>
-            <li>some payslips</li>
-            <li>an online Total Reward Statement or Annual Benefits Statement</li>
-            <li>some communications we have sent</li>
-          </ul>
-          <div class="nhsuk-radios nhsuk-radios--conditional">
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="SDnumber" name="member-number" type="radio" value="input" aria-controls="conditional-contact-1" aria-expanded="false">
-              <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
-                Yes, I know my membership number
-              </label>
-            </div>
-            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
-              <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="email">
-                 Membership number
-                </label> <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="number" type="text">
-              </div>
-      
-            </div>
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="contact-2" name="member-number" type="radio" value="ni-number" aria-controls="conditional-contact-2" aria-expanded="false">
-              <label class="nhsuk-label nhsuk-radios__label" for="contact-2">
-                No, I do not know my membership number
-              </label>
-            </div>
-   
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="contact-3" name="member-number" type="radio" value="ni-number" aria-controls="conditional-contact-3" aria-expanded="false">
-              <label class="nhsuk-label nhsuk-radios__label" for="contact-3">
-                I'm not sure
-              </label>
-            </div>
+          {% set sdNumberHtml %}
+            {{ input({
+              id: "sdNumber",
+              name: "sdNumber",
+              classes: "nhsuk-u-width-two-thirds",
+              label: {
+                text: "Membership number"
+              }
+            }) }}
+          {% endset -%}
+  
+
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+          {{ radios({
+            idPrefix: "membership-number",
+            name: "membership-number",
+            classes: "nhsuk-radios--inline",
+            fieldset: {
+              legend: {
+                text: "Do you know your membership number?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: "For example, SD12340000"
+            },
+            items: [ 
+              {
+                value: "Yes, I know my membership number",
+                text: "Yes, I know my membership number",
+                conditional: {
+                  html: sdNumberHtml
+                }
+              },
+              {
+                value: "No, I do not know my membership number",
+                text: "No, I do not know my membership number"
+              },
+              {
+                value: "I'm not sure",
+                text: "I'm not sure"
+              }
+            ]
+          }) }}
           
-            </div>
+          {% call details({
+            summaryText: "How to find your membership number",
+            classes: "nhsuk-u-padding-top-5"
+          }) %}
+            <p>
+              Sometimes known as the Superannuation Division (SD) number. 
+              This will help us find your record and support you quicker. 
+            </p>
+            <p>This number is 'SD' followed by 8 digits.</p>
+            <p>Find this on:</p>
+            <ul>
+              <li>some payslips</li>
+              <li>an online Total Reward Statement or Annual Benefits Statement</li>
+              <li>some communications we have sent</li>
+            </ul>
+          {% endcall %}
+
           </div>
-        </fieldset>
      
      
       {{ button({

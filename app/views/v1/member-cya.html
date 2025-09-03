@@ -1,5 +1,6 @@
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
+{% set hideBack ="true" %}
 <!-- 
   In /views/layout.html you can:
     - edit the header and footer 
@@ -25,10 +26,7 @@ Contact the scheme
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
  
-{{ backLink({
-    "href": "javascript:history.go(-1)",
-    "text": "Go back"
-  }) }}
+
 
 <div class="nhsuk-grid-row">
 

@@ -24,11 +24,7 @@ Contact the scheme
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
- 
-{{ backLink({
-    "href": "member-email",
-    "text": "Go back"
-  }) }}
+
   <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-two-thirds">
@@ -37,49 +33,47 @@ Contact the scheme
           
 
             <div class="nhsuk-form-group">
-              <fieldset class="nhsuk-fieldset">
-                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"> 
-                  <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
-                  <h1 class="nhsuk-fieldset__heading">
-                    Are you able to provide your telephone number?</h1>
-                </legend>         
 
-                <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
-                  
-              
-                  <div class="nhsuk-hint" id="contact-hint">
-                    For international numbers include the country code, for example +34 for Spain.
-                  </div>
-              
-                  <div class="nhsuk-radios nhsuk-radios--conditional">
-              
-                    <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="contact-1" name="contact" type="radio" value="email" aria-controls="conditional-contact-1" aria-expanded="false">
-                      <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
-                        Yes
-                      </label>
-                    </div>
-              
-                    <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
-              
-                      <div class="nhsuk-form-group">
-                        <label class="nhsuk-label" for="email">
-                          Telephone number
-                        </label>
-                        <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
-                      </div>
-              
-                    </div>
-              
-                    <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" aria-controls="conditional-contact-2" aria-expanded="false">
-                      <label class="nhsuk-label nhsuk-radios__label" for="contact-2">
-                        No
-                      </label>
-                    </div>
+              {% set phoneNumberHtml %}
+                {{ input({
+                  id: "phoneNumber",
+                  name: "phoneNumber",
+                  classes: "nhsuk-u-width-two-thirds",
+                  label: {
+                    text: "Telephone number"
+                  }
+                }) }}
+              {% endset -%}
 
-                  </div>
-                </fieldset>
+              <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+              {{ radios({
+                idPrefix: "phone-number",
+                name: "phone-number",
+                classes: "nhsuk-radios--inline",
+                fieldset: {
+                  legend: {
+                    text: "Are you able to provide your telephone number?",
+                    classes: "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                },
+                hint: {
+                  text: "For international numbers include the country code, for example +34 for Spain."
+                },
+                items: [ 
+                  {
+                    value: "Yes",
+                    text: "Yes",
+                    conditional: {
+                      html: phoneNumberHtml
+                    }
+                  },
+                  {
+                    value: "No",
+                    text: "No"
+                  }
+                ]
+              }) }}
               
               </div>
 
