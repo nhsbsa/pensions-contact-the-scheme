@@ -1,28 +1,17 @@
-<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
-<!-- 
-  In /views/layout.html you can:
-    - edit the header and footer 
-    - add custom CSS and JavaScript
--->
+{% set pageTitle = "Contact NHS Pensions"%}
+{% set hideBack ="true" %}
 
-<!-- Set the page title -->
 {% block pageTitle %}
-  Contact the scheme
+  {{serviceName}}
 {% endblock %}
 
-<!-- For adding a breadcrumb -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
 {% endblock %}
 
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block outerContent %}
 {% endblock %}
 
-<!-- For adding page content -->
-<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
  
 
@@ -31,7 +20,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-        <h1 class="nhsuk-heading-xl">Contact NHS Pensions</h1> 
+        <h1 class="nhsuk-heading-xl">{{ pageTitle }}</h1> 
 
         <p>Use this service if you need to contact NHS Pensions for any pensions queries.</p>
         <p>You can use service if you are a member, employer or a third party authority and need help with:</p>
@@ -58,17 +47,18 @@
           <li>employing authority code</li>
         </ul>
 
-        <p>If you are an employer contacting on behalf of a member, 
-          we'll ask for the member's details, including their membership number.</p>
+        <p>If you are an employer contacting on behalf of a member, we'll ask for the member's details, including their membership number.</p>
     
+        <form action="/{{folder}}/start-page" method="post" novalidate>
           {{ button({
             "href": "select-member-employer",
             "text": "Start now"
-            }) }}
+          }) }}
+        </form>
     
-          <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-7 nhsuk-u-margin-bottom-0">
-            Page last reviewed: 20 August 2025<br>
-          </p>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-7 nhsuk-u-margin-bottom-0">
+          Page last reviewed: 20 August 2025<br>
+        </p>
     </div>
   </fieldset>
   </div>

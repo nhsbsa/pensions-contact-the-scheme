@@ -1,0 +1,178 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Check your answers"%}
+{% set hideBack ="true" %}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+ 
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+      <h1 class="nhsuk-heading-l">{{pageTitle}}</h1>
+      <p>Check your answers and make sure they are correct before you continue. If you need to, you can change your answers.</p>
+      <h2 class="nhsuk-heading-m">Previous answers</h2>
+
+      <dl class="nhsuk-summary-list">
+
+        {% if (data['membership-number'] == "Yes, I know my membership number") %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Membership number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data ['sdNumber']}}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="membership-number">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; membership-number. </span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if (data['nationalInsuranceNumber']) %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            National Insurance Number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data ['nationalInsuranceNumber']}}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="enter-your-national-insurance-number">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; national insurance number. </span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name 
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['firstName']) and (data['lastName']) %}
+              {{ data['firstName']}} {{ data['lastName'] }}
+            {% else %}
+              Joe Bloggs
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="enter-your-name">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+          Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['date-of-birth']) %}
+              {{ data['date-of-birth'] }}
+            {% else %}
+              15 March 1984
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="enter-date-of-birth">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; date of birth.</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['address']) and not (data['address-line-1']) %}
+              {{ data['address'] }}
+            {% elif (data['address-line-1']) and not (data['address']) %}
+              {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-postcode']}}
+            {% elif (data['address-line-1']) and (data['address']) %}
+              {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-postcode']}}
+            {% else %}
+              NHS BSA, Stella House, Goldcrest Way, Newcastle Upon Tyne, NE15 8NY
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="find-your-address">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; Address.</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Email
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['emailAddress']) %}
+              {{ data['emailAddress']}} 
+            {% else %}
+              joe.bloggs@nhsbsa.nhs.uk
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="enter-your-email">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['phoneNumber']) %}
+              {{ data['phoneNumber']}}
+            {% else %}
+              Not entered
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="phone-number">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; phone number.</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Reason for contact
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['additionalInfo'] %}
+              {{ data['additionalInfo'] | truncate(175, false)}}
+            {% else %}
+              No additional information added
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="reason-for-contact">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; reason for contact.</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <form action="/{{folder}}/{{subfolder}}/check-your-answers" method="post">
+        {{ button({
+            text: "Continue"
+        }) }}   
+      </form>
+  </div>
+</div>
+{% endblock %}

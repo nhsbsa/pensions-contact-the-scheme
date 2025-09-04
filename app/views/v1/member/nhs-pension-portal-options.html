@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What can we help you with?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+      <form action="/{{folder}}/{{subfolder}}/nhs-pension-portal-options" method="post">
+
+        {{ radios({
+          idPrefix: "mnpEnquiry",
+          name: "mnpEnquiry",
+          fieldset: {
+            legend: {
+              text: pageTitle,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "Choose the relevant query type."
+          },
+          items: [
+            {
+              value: "I have not received my invite to My NHS Pension Portal",
+              text: "I have not received my invite to My NHS Pension Portal",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "I have been invited to My NHS Pension Portal but cannot login",
+              text: "I have been invited to My NHS Pension Portal but cannot login",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "I have been locked out of My NHS Pension Portal",
+              text: "I have been locked out of My NHS Pension Portal",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "I cannot access My NHS Pension Portal",
+              text: "I cannot access My NHS Pension Portal",
+              hint: {
+                text: ""
+              }
+            }
+          ]
+        }) }}
+
+        {{ button({
+          text: "Continue",
+          classes: "nhsuk-u-margin-top-4"
+        }) }}
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}

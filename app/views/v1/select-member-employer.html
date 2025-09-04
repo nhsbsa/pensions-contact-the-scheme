@@ -1,103 +1,69 @@
-<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
-<!-- 
-  In /views/layout.html you can:
-    - edit the header and footer 
-    - add custom CSS and JavaScript
--->
+{% set pageTitle = "Are you a member, employer or a third party authority?"%}
 
-<!-- Set the page title -->
 {% block pageTitle %}
-Contact the scheme
+{{pageTitle}} - {{serviceName}}
 {% endblock %}
 
-<!-- For adding a breadcrumb -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
 {% endblock %}
 
-
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block outerContent %}
-
-
 {% endblock %}
 
-<!-- For adding page content -->
-<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
 
   <div class="nhsuk-grid-row">
-
     <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
 
-      <form action="select-member-employer" method="post">
+        <form action="/{{folder}}/select-member-employer" method="post">
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+          {{ radios({
+            idPrefix: "member-employer",
+            name: "member-employer",
+            fieldset: {
+              legend: {
+                text: pageTitle,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: "If we know that you are a member or an employer, we can give you the best support with your query."
+            },
+            items: [
+              {
+                value: "member-yes",
+                text: "I am a member of the NHS Pension scheme",
+                hint: {
+                  text: "Choose this if you are part of the 1995/2008 or 2015 schemes or contacting on behalf of the member"
+                }
+              },
+              {
+                value: "employer-yes",
+                text: "I am an employer",
+                hint: {
+                  text: "Choose this if you are an employer"
+                }
+              },
+              {
+                value: "third-party-yes",
+                text: "I am a third party authority",
+                hint: {
+                  text: "Choose this is if you are a third party, like an independent financial advisor"
+                }
+              }
+            ]
+          }) }}
 
-      <!-- Change the page heading -->
+          {{ button({
+            text: "Continue",
+            classes: "nhsuk-u-margin-top-4"
+          }) }}
 
-
-      <!-- Add content here -->
-      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
-     
-
-          <div class="nhsuk-form-group">
-
-            <fieldset class="nhsuk-fieldset">
-              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
-                <h1 class="nhsuk-fieldset__heading">
-                  Are you a member, employer or a third party authority?</h1> 
-              </legend>
-
-              <p class="nhsuk-u-font-weight-normal">
-                If we know that you are a member or an employer, we can give you the best support with your query.
-              </p>
-              
-              <div class="nhsuk-radios">
-                <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="member" name="type" type="radio" value="member-yes">
-                  <label class="nhsuk-label nhsuk-radios__label" for="member-code">
-                    I am a member of the NHS Pension scheme
-                  </label>
-                  <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
-                    Choose this if you are part of the 1995/2008 or 2015 schemes or contacting on behalf of the member
-                  </div>
-                </div>
-                <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="employer" name="type" type="radio" value="employer-yes">
-                  <label class="nhsuk-label nhsuk-radios__label" for="employer-code">
-                    I am an employer
-                  </label>
-                  <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
-                    Choose this if you are an employer
-                  </div>
-                </div>
-              </div>
-           
-          <div class="nhsuk-radios__item">
-            <input class="nhsuk-radios__input" id="third" name="type" type="radio" value="third-yes">
-            <label class="nhsuk-label nhsuk-radios__label" for="third-party-name">
-              I am a third party authority
-            </label>
-            <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
-              Choose this is if you are a third party, like an independent financial advisor
-            </div>
-          </div>
-        </div>
-      </fieldset>
+        </form>
+      </div>
     </div>  
-        </div>
-      
-     
-      <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
-        Continue
-      </button>
-
-
-      <!-- End of content -->
-    </form>
-    </div>  
-
   </div>
 {% endblock %}

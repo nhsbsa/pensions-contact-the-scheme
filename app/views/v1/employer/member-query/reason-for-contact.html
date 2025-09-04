@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What is your reason for contacting us?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+     
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+      <form action="/{{folder}}/{{subfolder}}/member-query/reason-for-contact" method="post">
+
+        {{ characterCount({
+          name: "additionalInfo",
+          id: "additionalInfo",
+          maxlength: 200,
+          label: {
+            text: "What is your reason for contacting us?",
+            classes: "nhsuk-label--l",
+            isPageHeading: "true"
+          },
+          hint: {
+            text: "Do not include personal or financial information, for example, your National Insurance number or credit card details"
+          }
+        }) }}
+
+        {{ button({
+          text: "Continue"
+        }) }} 
+
+      </form>
+    </div>
+  </div>
+
+ 
+  <script>
+    function setLocation(element) {
+            document.forms[0].action = element.value
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Select the type of query?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+      <form action="/{{folder}}/{{subfolder}}/select-nhs-pension-portal-general" method="post">
+
+        {{ radios({
+          idPrefix: "mnpGeneral",
+          name: "mnpGeneral",
+          fieldset: {
+            legend: {
+              text: pageTitle,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "Choose the relevant query type."
+          },
+          items: [
+            {
+              value: "mnp-yes",
+              text: "My NHS Pension Portal",
+              hint: {
+                text: "Choose this if your query is related to My NHS Pension Portal"
+              }
+            },
+            {
+              value: "general-yes",
+              text: "General enquiry",
+              hint: {
+                text: "Choose this if your query is about anything else to do with pensions"
+              }
+            }
+          ]
+        }) }}
+
+        {{ button({
+          text: "Continue",
+          classes: "nhsuk-u-margin-top-4"
+        }) }}
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}
