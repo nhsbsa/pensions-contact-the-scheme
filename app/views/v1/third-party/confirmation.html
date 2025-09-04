@@ -24,7 +24,7 @@
             {{pageTitle}}
           </h1>
         </div>
-        <p>We have sent you a confirmation email</p>
+        <p>We have sent you a confirmation email{% if (data['emailAddress']) %} to {{ data['emailAddress']}}{% endif %}.</p>
         <h2 class="nhsuk-heading-m">What happens next</h2>
         <p class= "nhsuk-body">You will get a response to your query within 2 working days.</p>         
         <h2 class="nhsuk-heading-m">Give us your feedback</h2>

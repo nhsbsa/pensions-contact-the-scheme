@@ -23,6 +23,66 @@
 
       <dl class="nhsuk-summary-list">
 
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Query from
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['member-employer']}} 
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="select-nhs-pension-portal-general">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Type of query
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['mnpGeneral']}} 
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="select-nhs-pension-portal-general">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            </a>
+          </dd>
+        </div>
+
+        {% if (data['mnpGeneral'] == "My NHS Pension Portal") %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            My NHS Pension Portal query
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['mnpEnquiry']}} 
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="enter-your-name">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if (data['mnpGeneral'] == "General enquiry") %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            General query type
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['generalEnquiry']}} 
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="enter-your-name">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
         {% if (data['membership-number'] == "Yes, I know my membership number") %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">

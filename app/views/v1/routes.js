@@ -19,10 +19,10 @@ router.post('/select-member-employer/', (req, res) => {
 
     var memberEmployer = req.session.data['member-employer']
 
-    if (memberEmployer == 'member-yes') {
+    if (memberEmployer == 'I am a member of the NHS Pension scheme') {
         res.redirect('member/select-nhs-pension-portal-general')
 
-    } else if (memberEmployer == 'employer-yes') {
+    } else if (memberEmployer == 'I am an employer') {
         res.redirect('employer/enter-employer-code')
 
     } else {
@@ -40,10 +40,10 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
 
     var mnpGeneral = req.session.data['mnpGeneral']
 
-    if (mnpGeneral == 'mnp-yes') {
+    if (mnpGeneral == 'My NHS Pension Portal') {
         res.redirect('nhs-pension-portal-options')
 
-    } else if (mnpGeneral == 'general-yes') {
+    } else if (mnpGeneral == 'General enquiry') {
         res.redirect('general-enquiry-options')
 
     } else {
