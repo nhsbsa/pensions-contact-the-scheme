@@ -553,7 +553,7 @@ router.post('/member-query/enter-members-address', function (req, res) {
 
 // EMPLOYER - MEMBER QUERY - Select members address
 
-router.post('/select-members-address', function (req, res) {
+router.post('/member-query/select-members-address', function (req, res) {
 
     var address = req.session.data['address'];
 
@@ -566,7 +566,7 @@ router.post('/select-members-address', function (req, res) {
 })
 
 // EMPLOYER - MEMBER QUERY - No address found
-router.post('/no-members-address-found', function (req, res) {
+router.post('/member-query/no-members-address-found', function (req, res) {
 
     res.redirect('find-members-address');
 
