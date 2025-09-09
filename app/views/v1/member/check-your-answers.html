@@ -67,21 +67,6 @@
         </div>
         {% endif %}
 
-        {% if (data['mnpGeneral'] == "General enquiry") %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            General query type
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['generalEnquiry']}} 
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="enter-your-name">
-              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
 
         {% if (data['membership-number'] == "Yes, I know my membership number") %}
         <div class="nhsuk-summary-list__row">
@@ -230,7 +215,7 @@
 
       <form action="/{{folder}}/{{subfolder}}/check-your-answers" method="post">
         {{ button({
-            text: "Continue"
+            text: "Confirm and send"
         }) }}   
       </form>
   </div>

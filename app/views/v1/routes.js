@@ -78,17 +78,7 @@ router.post('/nhs-pension-portal-options/', (req, res) => {
     }
 });
 
-// MEMBER - What type of query?
-/*router.post('/general-enquiry-options/', (req, res) => {
 
-    var generalEnquiry = req.session.data['generalEnquiry']
-
-    if (generalEnquiry ) {
-        res.redirect('membership-number')
-    } else {
-        res.redirect('general-enquiry-options')
-    }
-});*/
 
 // MEMBER - Do you know your membership number?
 router.post('/membership-number', (req, res) => {
