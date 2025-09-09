@@ -46,8 +46,20 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
     if (mnpGeneral == 'My NHS Pension Portal') {
         res.redirect('nhs-pension-portal-options')
 
-    } else if (mnpGeneral == 'General enquiry') {
-        res.redirect('general-enquiry-options')
+    } else if (mnpGeneral == 'My Total Reward Statement') {
+        res.redirect('membership-number')
+
+    } else if (mnpGeneral == 'Progress updates and progress chase') {
+        res.redirect('membership-number')
+
+    } else if (mnpGeneral == 'Process of retiring') {
+        res.redirect('membership-number')
+
+    } else if (mnpGeneral == 'Request a form') {
+        res.redirect('membership-number')
+
+    } else if (mnpGeneral == 'General query') {
+        res.redirect('membership-number')
 
     } else {
         res.redirect('select-nhs-pension-portal-general')
@@ -67,7 +79,7 @@ router.post('/nhs-pension-portal-options/', (req, res) => {
 });
 
 // MEMBER - What type of query?
-router.post('/general-enquiry-options/', (req, res) => {
+/*router.post('/general-enquiry-options/', (req, res) => {
 
     var generalEnquiry = req.session.data['generalEnquiry']
 
@@ -76,7 +88,7 @@ router.post('/general-enquiry-options/', (req, res) => {
     } else {
         res.redirect('general-enquiry-options')
     }
-});
+});*/
 
 // MEMBER - Do you know your membership number?
 router.post('/membership-number', (req, res) => {
