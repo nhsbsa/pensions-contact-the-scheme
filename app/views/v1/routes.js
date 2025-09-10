@@ -46,19 +46,22 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
     if (mnpGeneral == 'My NHS Pension Portal') {
         res.redirect('nhs-pension-portal-options')
 
-    } else if (mnpGeneral == 'My Total Reward Statement') {
+    } else if (mnpGeneral == 'My Total Reward Statement (TRS)') {
         res.redirect('membership-number')
 
-    } else if (mnpGeneral == 'Progress updates and progress chase') {
+    } else if (mnpGeneral == 'I am looking for an update') {
         res.redirect('membership-number')
 
-    } else if (mnpGeneral == 'Process of retiring') {
+    } else if (mnpGeneral == 'I am retiring') {
         res.redirect('membership-number')
 
     } else if (mnpGeneral == 'Request a form') {
         res.redirect('membership-number')
 
-    } else if (mnpGeneral == 'General query') {
+    } else if (mnpGeneral == 'Bereavement or ill health') {
+        res.redirect('membership-number')
+
+    } else if (mnpGeneral == 'Something else') {
         res.redirect('membership-number')
 
     } else {

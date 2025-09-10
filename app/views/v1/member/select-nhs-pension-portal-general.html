@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What can we help you with?"%}
+{% set pageTitle = "What do you need help with?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -37,43 +37,53 @@
               value: "My NHS Pension Portal",
               text: "My NHS Pension Portal",
               hint: {
-                text: "Choose this if your query is related to My NHS Pension Portal"
+                text: "Choose this if you need help with My NHS Pension"
               }
             },
             {
-              value: "My Total Reward Statement",
-              text: "My Total Reward Statement",
+              value: "My Total Reward Statement (TRS)",
+              text: "My Total Reward Statement (TRS)",
               hint: {
-                text: ""
+                text: "Choose this if you need help with your total reward statement"
               }
             },
             {
-              value: "Progress updates and progress chase",
-              text: "Progress updates and progress chase",
+              value: "I am looking for an update",
+              text: "I am looking for an update",
               hint: {
-                text: ""
+                text: "Choose this if you need an update, for example an application"
               }
             },
             {
-              value: "Process of retiring",
-              text: "Process of retiring ",
+              value: "I am retiring",
+              text: "I am retiring",
               hint: {
-                text: ""
+                text: "Choose this if you are in the process of retiring"
               }
             },
             {
               value: "Request a form",
               text: "Request a form",
               hint: {
-                text: ""
+                text: "Choose this if you need to request a form"
               }
             },
             {
-              value: "General query",
-              text: "General query",
+              value: "Bereavement or ill health",
+              text: "Bereavement or ill health",
               hint: {
-                text: "Choose this if your query is about anything else to do with pensions"
+                text: "Choose this if you need help with a bereavement or ill health"
               }
+            },
+            {
+              divider: "or"
+            },
+              {
+                value: "Something else",
+                text: "Something else",
+                hint: {
+                  text: "Choose this if you need help with anything else"
+                }
             }
           ]
         }) }}
