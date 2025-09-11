@@ -402,7 +402,7 @@ router.post('/select-member-employer-query', (req, res) => {
     if (memberEmployerQuery == 'member-query') {
         res.redirect('member-query/membership-number')
 
-    } else if (memberEmployerQuery == 'employer-query') {
+    } else if (memberEmployerQuery == 'General-query') {
         res.redirect('employer-query/reason-for-contact')
 
     } else {
