@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What is your National insurance number?"%}
+{% set pageTitle = "What is your National Insurance number?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -37,6 +37,13 @@
           }) }}
         
         {% endcall %}
+
+        {{ details({
+          summaryText: "Why do we ask for your email address",
+          html: "
+          <p>We use this to send confirmation that your query has been received.</p>
+          "
+        }) }}
 
         {{ button({
           "text": "Continue"
