@@ -22,7 +22,7 @@ router.post('/select-member-employer/', (req, res) => {
 
     var memberEmployer = req.session.data['member-employer']
 
-    if (memberEmployer == 'I am a member of the NHS Pension scheme') {
+    if (memberEmployer == 'I am a member of the NHS Pension Scheme') {
         res.redirect('member/select-nhs-pension-portal-general')
 
     } else if (memberEmployer == 'I am an employer') {
@@ -43,7 +43,7 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
 
     var mnpGeneral = req.session.data['mnpGeneral']
 
-    if (mnpGeneral == 'My NHS Pension Portal') {
+    if (mnpGeneral == 'The My NHS Pension portal') {
         res.redirect('nhs-pension-portal-options')
 
     } else if (mnpGeneral == 'My Total Reward Statement (TRS)') {
@@ -55,7 +55,7 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
     } else if (mnpGeneral == 'I am retiring') {
         res.redirect('membership-number')
 
-    } else if (mnpGeneral == 'Request a form') {
+    } else if (mnpGeneral == 'Requesting a form') {
         res.redirect('membership-number')
 
     } else if (mnpGeneral == 'Bereavement or ill health') {
