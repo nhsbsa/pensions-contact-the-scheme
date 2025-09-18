@@ -24,9 +24,16 @@
             "classes": "nhsuk-fieldset__legend--l",
             "isPageHeading": true
           }
-        }) %}
+        }
+      ) %}
         
+        {% from 'input/macro.njk' import input %}
           {{ input({
+            
+           
+            label: {
+              "html": 'National Insurance number'
+            },
             hint: {
               text: "This can be found on your National Insurance card, benefit letter, payslip or P60 (for example, \‘QQ 12 34 56 C’)\."
             },
@@ -34,6 +41,7 @@
             "name": "nationalInsuranceNumber",
             spellcheck: false,
             "classes": "nhsuk-input--width-10"
+            
           }) }}
         
         {% endcall %}
