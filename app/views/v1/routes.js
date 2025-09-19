@@ -69,18 +69,32 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
     }
 });
 
+
+
 // MEMBER - What can we help you with?
 router.post('/nhs-pension-portal-options/', (req, res) => {
 
     var mnpEnquiry = req.session.data['mnpEnquiry']
 
-    if (mnpEnquiry ) {
+    if (mnpEnquiry == 'I did not get an invitation to My NHS Pension') {
         res.redirect('membership-number')
+
+    } else if (mnpEnquiry == 'I cannot log in to My NHS Pension') {
+        res.redirect('membership-number')
+
+    } else if (mnpEnquiry == 'I am locked out of My NHS Pension') {
+        res.redirect('membership-number')
+
+    } else if (mnpEnquiry == 'I cannot access My NHS Pension') {
+        res.redirect('membership-number')
+        
+    } else if (mnpEnquiry == 'Something else') {
+        res.redirect('membership-number')
+
     } else {
         res.redirect('nhs-pension-portal-options')
     }
 });
-
 
 
 // MEMBER - Do you know your membership number?
