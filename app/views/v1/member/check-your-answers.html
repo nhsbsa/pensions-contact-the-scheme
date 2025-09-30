@@ -51,24 +51,12 @@
           </dd>
         </div>
 
+
+
+        {% if (data['mnpGeneral'] == "The My NHS Pension portal") %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Type of request
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data['mnpEnquiry']}} 
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="nhs-pension-portal-options">
-              Change<span class="nhsuk-u-visually-hidden">&nbsp; request type. </span>
-            </a>
-          </dd>
-        </div>
-
-        {% if (data['mnpGeneral'] == "My NHS Pension Portal") %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            My NHS Pension Portal query
           </dt>
           <dd class="nhsuk-summary-list__value">
             {{ data['mnpEnquiry']}} 
