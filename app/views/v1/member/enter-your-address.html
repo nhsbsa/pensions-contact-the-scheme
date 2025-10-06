@@ -59,22 +59,33 @@
         
           {{ input({
             label: {
-              "text": "County (optional)"
+              "text": "County, province or region (optional)"
             },
             "classes": "nhsuk-input--width-20",
             "id": "address-county",
             "name": "address-county"
           }) }}
-        
+          
           {{ input({
             label: {
-              "text": "Postcode"
+              "text": "Country"
+            },
+            "classes": "nhsuk-input--width-20",
+            "id": "address-country",
+            "name": "address-country"
+          }) }}
+
+          {{ input({
+            label: {
+              "text": "Postal or zip code (optional)"
             },
             "classes": "nhsuk-input--width-10",
             "id": "address-postcode",
             "name": "address-postcode",
             "autocomplete": "postal-code"
           }) }}
+
+        
         
         {% endcall %}
 
