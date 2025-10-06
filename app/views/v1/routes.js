@@ -233,7 +233,6 @@ router.post('/enter-your-address', function (req, res) {
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
     var postcodeManual = req.session.data['address-postcode'];
-    var postcodeManual = req.session.data['address-country'];
 
     if (addressLine1 && townOrCity && postcodeManual) {
         res.redirect('enter-your-email');
@@ -560,7 +559,6 @@ router.post('/member-query/enter-members-address', function (req, res) {
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
     var postcodeManual = req.session.data['address-postcode'];
-    var postcodeManual = req.session.data['address-country'];
 
     if (addressLine1 && townOrCity && postcodeManual) {
         res.redirect('enter-members-email');
