@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What is your employing authority (EA) code?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+    
+
+      {% set eaCode %}
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Employer details</span>
+        <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+        </h1>
+        <div class="nhsuk-hint">
+          For example, 'EA1234'
+        </div>
+      {% endset -%}
+
+      {% set findCode %}
+        <p>An EA code is a 4-digit number that identifies each employer in the NHS Pension Scheme.</p>
+        <p>If you need to find your EA code, use the employing authority lookup tool. You will need to enter either your:</p>
+        <ul>
+        <li>organisations name</li>
+        <li>organisations postcode.</li>
+        </ul>
+        {{ actionLink({
+          text: "Go to Employing Authority Look-up (opens in a new tab)",
+          href: "https://www.nhspensions.nhsbsa.nhs.uk/EmployerContactsLookup/EALookup.aspx",
+          openInNewWindow: true
+        }) }}
+
+         {{ actionLink({
+          text: "If you don't have an EA code yet, register for one (opens in a new tab)",
+          href: "https://faq.nhsbsa.nhs.uk/knowledgebase/article/KA-02670/en-us",
+          openInNewWindow: true
+        }) }}
+      {% endset %}
+
+    
+        {{ input({
+          label: {
+            "html": eaCode
+          },
+          "id": "employer-code",
+          "name": "employer-code",
+          "type": "text",
+          "classes": "nhsuk-input--width-10"
+        }) }}
+
+        {{ details({
+          summaryText: "How to find your Employing Authority (EA) code",
+          html: findCode
+        }) }}
+
+        {{ button({
+          "text": "Continue",
+          "href": "enter-your-name"
+        }) }}
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}

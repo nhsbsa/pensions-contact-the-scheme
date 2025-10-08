@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Do you know your membership number?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
+
+        <form action="/{{folder}}/{{subfolder}}/membership-number" method="post">
+
+          {% set sdNumberHtml %}
+            {{ input({
+              id: "sdNumber",
+              name: "sdNumber",
+              classes: "nhsuk-u-width-two-thirds",
+              label: {
+                text: "Membership number"
+              }
+            }) }}
+          {% endset -%} 
+
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+          {{ radios({
+            idPrefix: "membership-number",
+            name: "membership-number",
+            classes: "nhsuk-radios--inline",
+            fieldset: {
+              legend: {
+                text: pageTitle,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: "For example, SD12340000"
+            },
+            items: [ 
+              {
+                value: "Yes, I know my membership number",
+                text: "Yes, I know my membership number",
+                conditional: {
+                  html: sdNumberHtml
+                }
+              },
+              {
+                value: "No, I do not know my membership number",
+                text: "No, I do not know my membership number"
+              },
+              {
+                value: "I'm not sure",
+                text: "I'm not sure"
+              }
+            ]
+          }) }}
+          
+          {% call details({
+            summaryText: "How to find your membership number",
+            classes: "nhsuk-u-padding-top-5"
+          }) %}
+            <p>
+              Sometimes known as the Superannuation Division (SD) number. 
+              This will help us find your record and support you quicker. 
+            </p>
+            <p>This number is 'SD' followed by 8 digits.</p>
+            <p>Find this on:</p>
+            <ul>
+              <li>some payslips</li>
+              <li>an online Total Reward Statement or Annual Benefits Statement</li>
+              <li>some communications we have sent</li>
+            </ul>
+          {% endcall %}
+  
+          {{ button({
+          "text": "Continue"
+          }) }}
+        </form>
+
+      </div>
+    </div>  
+  </div>
+{% endblock %}

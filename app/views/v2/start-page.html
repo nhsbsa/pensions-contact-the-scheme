@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Contact NHS Pensions"%}
+{% set hideBack ="true" %}
+
+{% block pageTitle %}
+  {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+ 
+
+<div class="nhsuk-form-group">
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h1 class="nhsuk-heading-xl">{{ pageTitle }}</h1> 
+
+        <p>Use this service if you need to contact NHS Pensions for any pensions queries.</p>
+        <p>You can use this service if you are a member, employer or a third-party authority and need help with:</p>
+        <ul>
+          <li>the NHS Pension Scheme (1995/2008 or 2015)</li>
+          <li>the My NHS Pension Portal</li> 
+          <li>your Total Reward Statement (TRS)</li> 
+          <li>anything relating to NHS Pensions</li>
+        </ul>
+        
+        <h2>Before you start</h2>
+    
+        <p>If you are a member, we'll ask you for your:</p>
+
+        <ul>
+          <li>membership number (if you know it)</li>
+          <li>date of birth</li>
+          <li>first and last name</li>
+          <li>address</li>
+        </ul>
+    
+        <p>If you are an employer, we'll ask you for your:</p>
+        <ul>
+          <li>employing authority code</li>
+        </ul>
+
+        <p>If you are an employer contacting on behalf of a member, we'll ask for the member's details, including their membership number.</p>
+    
+        <form action="/{{folder}}/start-page" method="post" novalidate>
+          {{ button({
+            "href": "select-member-employer",
+            "text": "Start now"
+          }) }}
+        </form>
+        
+    </div>
+  </fieldset>
+  </div>
+
+
+ 
+{% endblock %}
+

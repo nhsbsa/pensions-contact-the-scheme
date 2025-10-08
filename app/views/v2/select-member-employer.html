@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Are you a member, employer or a third-party authority?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
+
+        <form action="/{{folder}}/select-member-employer" method="post">
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+          {{ radios({
+            idPrefix: "member-employer",
+            name: "member-employer",
+            fieldset: {
+              legend: {
+                text: pageTitle,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: "Let us know if you are a member, employer or third-party authority, so we can best support you with your query."
+            },
+            items: [
+              {
+                value: "I am a member of the NHS Pension Scheme",
+                text: "I am a member of the NHS Pension Scheme",
+                hint: {
+                  text: "Choose this if you are part of the 1995/2008 or 2015 Schemes"
+                }
+              },
+              {
+                value: "I am an employer",
+                text: "I am an employer",
+                hint: {
+                  text: "Choose this if you are an employer"
+                }
+              },
+              {
+                value: "I am a third-party authority",
+                text: "I am a third-party authority",
+                hint: {
+                  text: "Choose this is if you are a third-party, like an independent financial advisor"
+                }
+              }
+            ]
+          }) }}
+
+          {{ button({
+            text: "Continue",
+            classes: "nhsuk-u-margin-top-4"
+          }) }}
+
+        </form>
+      </div>
+    </div>  
+  </div>
+{% endblock %}

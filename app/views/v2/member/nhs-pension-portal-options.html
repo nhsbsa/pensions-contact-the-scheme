@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What can we help you with?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+      <form action="/{{folder}}/{{subfolder}}/nhs-pension-portal-options" method="post">
+
+        {{ radios({
+          idPrefix: "mnpEnquiry",
+          name: "mnpEnquiry",
+          fieldset: {
+            legend: {
+              text: pageTitle,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "Choose one option."
+          },
+          items: [
+            {
+              value: "I did not get an invitation to My NHS Pension",
+              text: "I did not get an invitation to My NHS Pension",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "I cannot log in to My NHS Pension",
+              text: "I cannot log in to My NHS Pension",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "I am locked out of My NHS Pension",
+              text: "I am locked out of My NHS Pension",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "I cannot access My NHS Pension",
+              text: "I cannot access My NHS Pension",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "Something else",
+              text: "Something else",
+              hint: {
+                text: ""
+              }
+            }
+          ]
+        }) }}
+
+        {{ button({
+          text: "Continue",
+          classes: "nhsuk-u-margin-top-4"
+        }) }}
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Your query has been received"%}
+{% set hideBack ="true" %}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+ 
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <div class="nhsuk-panel">
+          <h1 class="nhsuk-panel__title">
+            {{pageTitle}}
+          </h1>
+        </div>
+        <p>
+          We have sent you a confirmation email{% if (data['emailAddress']) %} to {{ data['emailAddress']}}{% endif %}.
+        </p>
+        <h2 class="nhsuk-heading-m">What happens next</h2>
+        <p class= "nhsuk-body">You will get a response to your query within 2 working days.</p>         
+        <h2 class="nhsuk-heading-m">Give us your feedback</h2>
+        <p><a href="#" class="nhsuk-link">Tell us about your experience using this service (opens in a new tab)</a></p>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  function setLocation(element) {
+    document.forms[0].action = element.value
+  }
+</script>
+{% endblock %}
+

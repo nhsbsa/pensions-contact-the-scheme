@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What is the member's membership number?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
+
+        <form action="/{{folder}}/{{subfolder}}/member-query/membership-number" method="post">
+
+          {% set sdNumberHtml %}
+            {{ input({
+              id: "sdNumber",
+              name: "sdNumber",
+              classes: "nhsuk-u-width-two-thirds",
+              label: {
+                text: "Membership number"
+              }
+            }) }}
+          {% endset -%} 
+
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
+          {% call fieldset({
+            legend: {
+              "text": pageTitle,
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          }) %}
+          
+            {{ input({
+              label: {
+                "html": 'Membership number'
+              },
+              "id": "membershipNumber",
+              "name": "membershipNumber",
+              "classes": "nhsuk-input--width-20"
+            }) }}
+          
+          {% endcall %}
+          
+          {% call details({
+            summaryText: "How to find your member's membership number",
+            classes: "nhsuk-u-padding-top-5"
+          }) %}
+            <p>
+              Sometimes known as the Superannuation Division (SD) number. For example, SD12340000. 
+              This will help us find your record and support you quicker. 
+            </p>
+            <p>This number is 'SD' followed by 8 digits.</p>
+            <p>Find this on:</p>
+            <ul>
+              <li>some payslips</li>
+              <li>an online Total Reward Statement or Annual Benefits Statement</li>
+              <li>some communications we have sent</li>
+            </ul>
+          {% endcall %}
+  
+          {{ button({
+          "text": "Continue"
+          }) }}
+        </form>
+
+      </div>
+    </div>  
+  </div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What is your email address?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <span class="nhsuk-caption-l nhsuk-caption--bottom">Third-party details</span>
+    <form action="/{{folder}}/{{subfolder}}/enter-your-email" method="post">
+
+      {% call fieldset({
+        legend: {
+          "text": pageTitle,
+          "classes": "nhsuk-fieldset__legend--l",
+          "isPageHeading": true
+        }
+      }) %}
+      
+        {{ input({
+          label: {
+            "html": 'Email Address'
+          },
+          hint: {
+            text: "You must use an email address that is only used by you."
+          },
+          "id": "emailAddress",
+          "name": "emailAddress",
+          spellcheck: false,
+          "classes": "nhsuk-input--width-20"
+        }) }}
+      
+      {% endcall %}
+
+      {{ details({
+        summaryText: "Why do we ask for your email address",
+        html: "
+        <p>We use this to send confirmation that your query has been received.</p>
+        "
+      }) }}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+  </form>
+  </div>  
+</div>
+
+<script>
+  function setLocation(element) {
+    document.forms[0].action = element.value
+  }
+</script>
+{% endblock %}
