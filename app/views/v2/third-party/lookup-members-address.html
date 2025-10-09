@@ -16,7 +16,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
-      <form action="/{{folder}}/{{subfolder}}/member-query/find-members-address" method="post" novalidate>
+      <form action="/{{folder}}/{{subfolder}}/lookup-members-address" method="post" novalidate>
         
         {% call fieldset({
           legend: {
@@ -42,7 +42,7 @@
         {% endcall %}
 
         <div class="nhsuk-form-group">
-            <p><a href="enter-members-address">Enter the member's address manually</a></p>
+            <p><a href="members-address-manual">Enter the member's address manually</a></p>
         </div>
 
         {{ button({

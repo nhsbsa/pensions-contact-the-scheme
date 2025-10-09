@@ -29,7 +29,7 @@ router.post('/select-member-employer/', (req, res) => {
         res.redirect('employer/enter-employer-code')
 
     } else {
-        res.redirect('third-party/enter-your-name')
+        res.redirect('third-party/third-party-query')
     }
 });
 
@@ -326,11 +326,177 @@ router.post('/third-party/enter-your-email', function (req, res) {
 // ************************************************
 // MEMBERS / THIRD PARTY JOURNEYS
 // ************************************************
+// THIRD PARTY - Third-party-query
+
+router.post('/third-party-query', (req, res) => {
+
+        res.redirect('member-membership-number');
+    
+});
+
+router.post('/enter-your-email', (req, res) => {
+
+    res.redirect('enter-your-name');
+
+});
 
 
-// - Reason for contacting
+// THIRD PARTY- member - What is the member's membership number?
+router.post('/member-membership-number', (req, res) => {
 
-router.post('/reason-for-contact', function (req, res) {
+    var memberNumber = req.session.data['membershipNumber']
+
+    if (memberNumber) {
+        res.redirect('members-name')
+    }else {
+        res.redirect('member-membership-number')
+    }
+});
+
+
+// THIRD PARTY- member -  What is the member's name?
+
+router.post('/members-name', function (req, res) {
+
+    var firstName = req.session.data['memberFirstName'];
+    var lastName = req.session.data['memberLastName'];
+
+    if (firstName && lastName) {
+        res.redirect('members-date-of-birth');
+    } else {
+        res.redirect('members-name');
+    }
+
+});
+
+// THIRD PARTY- member - What is the member's date of birth?
+
+router.post('/members-date-of-birth', function (req, res) {
+
+    var dateOfBirthDay = req.session.data['date-of-birth-member']?.day;
+    var dateOfBirthMonth = req.session.data['date-of-birth-member']?.month;
+    var dateOfBirthYear = req.session.data['date-of-birth-member']?.year;
+
+    try {
+        if (/^\d+$/.test(dateOfBirthDay) && /^\d+$/.test(dateOfBirthMonth) && /^\d+$/.test(dateOfBirthYear)) {
+
+            req.session.data['date-of-birth-member'] = DateTime.fromObject({
+                day: dateOfBirthDay,
+                month: dateOfBirthMonth,
+                year: dateOfBirthYear
+            }).toFormat("d MMMM yyyy");
+
+            res.redirect('lookup-members-address')
+        } else {
+            res.redirect('enter-members-date-of-birth')
+        }
+
+    } catch (err) {
+        res.redirect('members-date-of-birth')
+    }
+})
+
+// THIRD PARTY- member - What is the member's postcode?
+
+router.post('/lookup-members-address', function (req, res) {
+
+    var postcodeLookup = req.session.data['postcode']
+
+    const regex = RegExp('^(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$');
+
+    if (postcodeLookup) {
+
+        if (regex.test(postcodeLookup) === true) {
+
+            axios.get("https://api.os.uk/search/places/v1/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
+                .then(response => {
+                    var addresses = response.data.results.map(result => result.DPA.ADDRESS);
+
+                    const titleCaseAddresses = addresses.map(address => {
+                        const parts = address.split(', ');
+                        const formattedParts = parts.map((part, index) => {
+                            if (index === parts.length - 1) {
+                                // Preserve postcode (DL14 0DX) in uppercase
+                                return part.toUpperCase();
+                            }
+                            return part
+                                .split(' ')
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                                .join(' ');
+                        });
+                        return formattedParts.join(', ');
+                    });
+
+                    req.session.data['addresses'] = titleCaseAddresses;
+
+                    res.redirect('members-address')
+                })
+                .catch(error => {
+                    console.log(error);
+                    res.redirect('no-address-found')
+                });
+
+        }
+
+    } else {
+        res.redirect('lookup-members-address')
+    }
+
+})
+
+// THIRD PARTY- member - Enter members address
+
+router.post('/members-address', function (req, res) {
+
+    var addressLine1 = req.session.data['address-line-1'];
+    var townOrCity = req.session.data['address-town'];
+    var postcodeManual = req.session.data['address-postcode'];
+
+    if (addressLine1 && townOrCity && postcodeManual) {
+        res.redirect('members-email');
+    } else {
+        res.redirect('members-address');
+    }
+
+})
+
+// THIRD PARTY- member - Select the member's address
+
+router.post('members-address', function (req, res) {
+
+    var address = req.session.data['address'];
+
+    if (address) {
+        res.redirect('members-email');
+    } else {
+        res.redirect('members-address');
+    }
+
+})
+
+// EMPLOYER - MEMBER QUERY - No address found
+router.post('/no-address-found', function (req, res) {
+
+    res.redirect('lookup-members-address');
+
+})
+
+// THIRD PARTY- member - What is your email?
+
+router.post('/member-query/enter-members-email', function (req, res) {
+
+    var emailAddress = req.session.data['memberEmail'];
+
+    if (emailAddress) {
+        res.redirect('reason-for-contact');
+    } else {
+        res.redirect('enter-members-email');
+
+    }
+})
+
+// EMPLOYER - MEMBER QUERY - Reason for contact
+router.post('/member-query/reason-for-contact', function (req, res) {
 
     var additionalInfo = req.session.data['additionalInfo'];
 
@@ -348,14 +514,12 @@ router.post('/reason-for-contact', function (req, res) {
 
 })
 
-//  - Check your answers
-router.post('/check-your-answers', (req, res) => {
+// EMPLOYER - MEMBER QUERY - Check your answers
+router.post('/member-query/check-your-answers', (req, res) => {
 
     res.redirect('confirmation');
 
 });
-
-
 
 
 // ****************************************
