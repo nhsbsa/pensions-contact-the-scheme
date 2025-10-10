@@ -61,6 +61,12 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
     } else if (mnpGeneral == 'Bereavement or ill health') {
         res.redirect('membership-number')
 
+    } else if (mnpGeneral == 'Update my details') {
+        res.redirect('membership-number')
+
+    } else if (mnpGeneral == 'McCloud') {
+        res.redirect('membership-number')
+
     } else if (mnpGeneral == 'Something else') {
         res.redirect('membership-number')
 
