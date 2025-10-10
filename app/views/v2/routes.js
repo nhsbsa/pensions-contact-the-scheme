@@ -455,7 +455,7 @@ router.post('/members-address', function (req, res) {
     if (addressLine1 && townOrCity && postcodeManual) {
         res.redirect('members-email');
     } else {
-        res.redirect('members-address');
+        res.redirect('members-email');
     }
 
 })
@@ -474,7 +474,7 @@ router.post('members-address', function (req, res) {
 
 })
 
-// EMPLOYER - MEMBER QUERY - No address found
+// HIRD PARTY- member  - No address found
 router.post('/no-address-found', function (req, res) {
 
     res.redirect('lookup-members-address');
@@ -483,20 +483,20 @@ router.post('/no-address-found', function (req, res) {
 
 // THIRD PARTY- member - What is your email?
 
-router.post('/member-query/enter-members-email', function (req, res) {
+router.post('/enter-members-email', function (req, res) {
 
     var emailAddress = req.session.data['memberEmail'];
 
     if (emailAddress) {
         res.redirect('reason-for-contact');
     } else {
-        res.redirect('enter-members-email');
+        res.redirect('members-email');
 
     }
 })
 
-// EMPLOYER - MEMBER QUERY - Reason for contact
-router.post('/member-query/reason-for-contact', function (req, res) {
+// THIRD PARTY- member  - Reason for contact
+router.post('/reason-for-contact', function (req, res) {
 
     var additionalInfo = req.session.data['additionalInfo'];
 
@@ -514,8 +514,8 @@ router.post('/member-query/reason-for-contact', function (req, res) {
 
 })
 
-// EMPLOYER - MEMBER QUERY - Check your answers
-router.post('/member-query/check-your-answers', (req, res) => {
+// ETHIRD PARTY- member - Check your answers
+router.post('/check-your-answers', (req, res) => {
 
     res.redirect('confirmation');
 
