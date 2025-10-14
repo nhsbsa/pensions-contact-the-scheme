@@ -29,7 +29,7 @@ router.post('/select-member-employer/', (req, res) => {
         res.redirect('employer/enter-employer-code')
 
     } else {
-        res.redirect('third-party/third-party-query')
+        res.redirect('third-party/member-membership-number')
     }
 });
 
@@ -334,11 +334,7 @@ router.post('/third-party/enter-your-email', function (req, res) {
 // ************************************************
 // THIRD PARTY - Third-party-query
 
-router.post('/third-party-query', (req, res) => {
 
-        res.redirect('member-membership-number');
-    
-});
 
 router.post('/enter-your-email', (req, res) => {
 
