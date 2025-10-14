@@ -32,23 +32,36 @@
         </ul>
         
         <h2>Before you start</h2>
-    
-        <p>If you are a member, we'll ask you for your:</p>
-
-        <ul>
+        <h4 class="nhsuk-heading-xs">If you are a member, we'll ask you for your:</h4>
+         <ul>
           <li>membership number (if you know it)</li>
           <li>date of birth</li>
           <li>first and last name</li>
           <li>address</li>
         </ul>
     
-        <p>If you are an employer, we'll ask you for your:</p>
+        <h4 class="nhsuk-heading-xs">If you are an employer, we'll ask you for your:</h4>
         <ul>
           <li>employing authority code</li>
         </ul>
 
         <p>If you are an employer contacting on behalf of a member, we'll ask for the member's details, including their membership number.</p>
     
+        <h4 class="nhsuk-heading-xs">If you are a third-party authority:</h4>
+        <p>We'll ask you for the member's:</p>
+        <ul>
+          <li>membership number</li>
+          <li>date of birth</li>
+          <li>first and last names</li>
+            <li>address</li>
+        </ul>
+
+        <p>We'll also ask you for your:</p>
+        <ul>
+          <li>first and last names</li>
+          <li>contact details</li>
+        </ul>
+
         <form action="/{{folder}}/start-page" method="post" novalidate>
           {{ button({
             "href": "select-member-employer",
