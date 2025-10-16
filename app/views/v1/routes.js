@@ -336,7 +336,7 @@ router.post('/reason-for-contact', function (req, res) {
 
     if (additionalInfo) {
 
-        if (additionalInfo.length > 200) {
+        if (additionalInfo.length > 5000) {
             res.redirect('reason-for-contact');
         } else {
             res.redirect('check-your-answers');
@@ -430,7 +430,7 @@ router.post('/employer-query/reason-for-contact', function (req, res) {
 
     if (additionalInfo) {
 
-        if (additionalInfo.length > 200) {
+        if (additionalInfo.length > 5000) {
             res.redirect('reason-for-contact');
         } else {
             res.redirect('check-your-answers');
@@ -610,7 +610,7 @@ router.post('/member-query/reason-for-contact', function (req, res) {
 
     if (additionalInfo) {
 
-        if (additionalInfo.length > 200) {
+        if (additionalInfo.length > 5000) {
             res.redirect('reason-for-contact');
         } else {
             res.redirect('check-your-answers');
