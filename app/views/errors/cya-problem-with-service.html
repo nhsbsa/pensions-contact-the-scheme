@@ -7,20 +7,22 @@
 {% endblock %}
 
 {% block content %}
-
+<div class="nhsuk-form-group">
 <div class="nhsuk-grid-row">
+
   <div class="nhsuk-grid-column-two-thirds">
-    <div class="nhsuk-u-reading-width">
-      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{pageTitle}}</h1>
+    
+      <h1 class="nhsuk-heading-xl">{{pageTitle}}</h1>
 
-      <p>
-        Try again later.
-      </p>
+      <p> Resubmit your query.</p>
 
-      <p>
-        We may not have saved any information you have recently input. When the service is available, you may have to
-        enter the information again.
-      </p>
+      <p> We have saved the information you have recently put in the contact form.</p>
+
+        <p>you can either:</p>
+        <ul>
+        <li>check your answers and submit your query again</li>
+        <li>start again from the beginning of the contact form</li>
+      </ul>
 
         <p>If you continue to have this problem or have an urgent query, contact the NHS Pensions team:</p> 
     
@@ -29,8 +31,18 @@
           <a class="nhsuk-link" target="_blank" href="https://www.nhsbsa.nhs.uk/pensioner-hub/contact-nhs-pensions-pensioners">Contact NHS Pensions - pensioner members</a><br/>
           <a class="nhsuk-link" target="_blank" href="https://www.nhsbsa.nhs.uk/employer-hub/contact-nhs-pensions-employers">Contact NHS Pensions - employers</a>
         </p>
+      
     </div>
+    
   </div>
+  <div class="nhsuk-button-group">
 
+    <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+      Check your answers
+    </button>
+  
+    <a href="/v1/start-page" class="nhsuk-link">Go to start page</a>
+  </div>
+</div>
 </div>
 {% endblock %}
