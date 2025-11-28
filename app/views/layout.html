@@ -54,31 +54,31 @@
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
-  {{ footer({
-    meta: {
-      items: [
-      {
-        href: "#",
-        text: "Accessibility statement"
-      },
-      {
-        href: "#",
-        text: "Cookies"
-      },
-        {
-          href: "https://www.nhsbsa.nhs.uk/our-policies/privacy",
-          text: "Privacy policy"
-        },
-        {
-          href: "https://www.nhsbsa.nhs.uk/our-policies/terms-and-conditions",
-          text: "Terms and conditions"
-        }
-      ]
-    },
-    copyright:{
-      html: "&copy; Crown copyright"
-    }
-  }) }}
+<footer class="nhsuk-footer" role="contentinfo">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-footer__meta">
+      <h2 class="nhsuk-u-visually-hidden">Support links</h2>
+      <p>The following links open in a new tab, except cookies:</p>
+      <ul class="nhsuk-footer__list">
+        <li class="nhsuk-footer__list-item">
+          <a class="nhsuk-footer__list-item-link" href="#">Accessibility statement</a>
+        </li>
+        <li class="nhsuk-footer__list-item">
+          <a class="nhsuk-footer__list-item-link" href="#">Cookies</a>
+        </li>
+        <li class="nhsuk-footer__list-item">
+          <a class="nhsuk-footer__list-item-link" href="https://www.nhsbsa.nhs.uk/our-policies/privacy">Privacy policy</a>
+        </li>
+        <li class="nhsuk-footer__list-item">
+          <a class="nhsuk-footer__list-item-link" href="https://www.nhsbsa.nhs.uk/our-policies/terms-and-conditions">Terms and conditions</a>
+        </li>
+      </ul>
+
+      <p class="nhsuk-body-s">&copy; Crown copyright</p>
+    </div>
+  </div>
+</footer>
+  
 {% endblock %}
 
 {% block bodyEnd %}
