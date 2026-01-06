@@ -86,30 +86,30 @@
         </div>
 
         {% elseif data['membership-number'] == "No, I do not know my membership number" %}
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Membership number
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      I do not know my membership number
-    </dd>
-    <dd class="nhsuk-summary-list__actions">
-      <a href="membership-number">
-        Change<span class="nhsuk-u-visually-hidden"> membership number</span>
-      </a>
-    </dd>
-  </div>
+           <div class="nhsuk-summary-list__row">
+             <dt class="nhsuk-summary-list__key">
+              Membership number
+             </dt>
+            <dd class="nhsuk-summary-list__value">
+              I do not know my membership number
+            </dd>
+             <dd class="nhsuk-summary-list__actions">
+             <a href="membership-number">
+             Change<span class="nhsuk-u-visually-hidden"> membership number</span>
+           </a>
+         </dd>
+       </div>
 
-  {% elseif data['membership-number'] == "I'm not sure" %}
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Membership number
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      I'm not sure
-    </dd>
-    <dd class="nhsuk-summary-list__actions">
-      <a href="membership-number">
+       {% elseif data['membership-number'] == "I'm not sure" %}
+         <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+             Membership number
+           </dt>
+          <dd class="nhsuk-summary-list__value">
+             I'm not sure
+           </dd>
+           <dd class="nhsuk-summary-list__actions">
+          <a href="membership-number">
         Change<span class="nhsuk-u-visually-hidden"> membership number</span>
       </a>
     </dd>
