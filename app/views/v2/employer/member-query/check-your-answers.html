@@ -109,24 +109,6 @@
               </a>
             </dd>
           </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Reason for contact
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {% if data['additionalInfo'] %}
-                {{ data['additionalInfo'] | truncate(175, false)}}
-              {% else %}
-                No additional information added
-              {% endif %}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="reason-for-contact">
-                Change<span class="nhsuk-u-visually-hidden">&nbsp; reason for contact.</span>
-              </a>
-            </dd>
-          </div>
         </dl>
 
         <h3 class="nhsuk-heading-s">Member details</h3>
@@ -195,7 +177,7 @@
               {% if (data['address']) and not (data['address-line-1']) %}
                 {{ data['address'] }}
               {% elif (data['address-line-1']) and not (data['address']) %}
-                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-postcode']}}
+                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
               {% elif (data['address-line-1']) and (data['address']) %}
                 {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-postcode']}}
               {% else %}
@@ -226,7 +208,24 @@
               </a>
             </dd>
           </div>
-
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Reason for contact
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if data['additionalInfo'] %}
+                {{ data['additionalInfo'] | truncate(175, false)}}
+              {% else %}
+                No additional information added
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="reason-for-contact">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; reason for contact.</span>
+              </a>
+            </dd>
+          </div>
         </dl>
 
       <form action="/{{folder}}/{{subfolder}}/member-query/check-your-answers" method="post">

@@ -31,7 +31,7 @@
             {{ data['member-employer']}} 
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="select-nhs-pension-portal-general">
+            <a href="../select-member-employer">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
             </a>
           </dd>
@@ -177,7 +177,7 @@
             {% if (data['address']) and not (data['address-line-1']) %}
               {{ data['address'] }}
             {% elif (data['address-line-1']) and not (data['address']) %}
-              {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-postcode']}}
+              {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
             {% elif (data['address-line-1']) and (data['address']) %}
               {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-postcode']}}
             {% else %}

@@ -269,6 +269,20 @@ router.post('/no-address-found', function (req, res) {
 
 })
 
+// MEMBER - enter address manually
+
+router.post('/enter-your-address', function (req, res) {
+
+    var address = req.session.data['address'];
+
+    if (address) {
+        res.redirect('enter-your-email');
+    } else {
+        res.redirect('enter-your-address');
+    }
+
+})
+
 // MEMBER - What is your email?
 
 router.post('/enter-your-email', function (req, res) {
@@ -476,12 +490,29 @@ router.post('members-address', function (req, res) {
 
 })
 
-// HIRD PARTY- member  - No address found
+// THIRD PARTY- member  - No address found
 router.post('/no-address-found', function (req, res) {
 
     res.redirect('lookup-members-address');
 
 })
+
+// THIRD PARTY- member - Enter members address manual
+
+router.post('/members-address-manual', function (req, res) {
+
+    var addressLine1 = req.session.data['address-line-1'];
+    var townOrCity = req.session.data['address-town'];
+    var postcodeManual = req.session.data['address-postcode'];
+
+    if (addressLine1 && townOrCity && postcodeManual) {
+        res.redirect('members-email');
+    } else {
+        res.redirect('members-email');
+    }
+
+})
+
 
 // THIRD PARTY- member - What is your email?
 
