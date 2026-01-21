@@ -45,9 +45,20 @@
           <li>employing authority code</li>
         </ul>
 
-        <p>If you are an employer contacting on behalf of a member, we'll ask for the member's details, including their membership number.</p>
+        <p>If you are an employer contacting on behalf of a member, we'll ask for the member's: </p>
+        <ul>
+          <li>membership number</li>
+          <li>date of birth</li>
+          <li>first and last names</li>
+            <li>address</li>
+        </ul>
     
-        <h4 class="nhsuk-heading-xs">If you are a third-party authority:</h4>
+        <h4 class="nhsuk-heading-xs">If you are a third-party authority, we'll ask you for your:</h4>
+        <ul>
+          <li>first and last names</li>
+          <li>contact details</li>
+        </ul>
+
         <p>We'll ask you for the member's:</p>
         <ul>
           <li>membership number</li>
@@ -56,11 +67,8 @@
             <li>address</li>
         </ul>
 
-        <p>We'll also ask you for your:</p>
-        <ul>
-          <li>first and last names</li>
-          <li>contact details</li>
-        </ul>
+        
+       
 
         <form action="/{{folder}}/start-page" method="post" novalidate>
           {{ button({
