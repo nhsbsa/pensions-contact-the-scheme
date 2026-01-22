@@ -19,23 +19,26 @@
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
       <form action="/{{folder}}/{{subfolder}}/reason-for-contact" method="post">
 
-        <div class="nhsuk-form-group">
-          <h1 class="nhsuk-label-wrapper">
-            <label class="nhsuk-label nhsuk-label--l" for="example-with-hint-text">
-              What is your reason for contacting us?
-            </label>
-          </h1>
-          <div id="example-with-hint-text-hint" class="nhsuk-hint">
-            Describe your enquiry in as much detail as possible. 
-            Include any relevant background information and ask specific questions you'd like us to answer.
-            <br><br>
-            Do not include sensitive or financial information (such as passwords or account numbers).
-          </div>
-          <textarea class="nhsuk-textarea" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
-</div>
-{{ button({
-  text: "Continue"
-}) }} 
+        {{ characterCount({
+          name: "additionalInfo",
+          id: "additionalInfo",
+          label: {
+            text: "What is your reason for contacting us?",
+            classes: "nhsuk-label--l",
+            isPageHeading: "true"
+          },
+          hint: {
+            html: "<p>Describe your enquiry in as much detail as possible. 
+              Include any relevant background information and ask specific questions you'd like us to answer.</p> 
+               <p>Do not include sensitive or financial information (such as passwords or account numbers).</p>"
+          }
+        }) }}
+
+        {{ button({
+          text: "Continue"
+        }) }} 
+
+
 
         </div>
        
