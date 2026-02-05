@@ -23,15 +23,19 @@
           {{pageTitle}}
         </h1>
         <div class="nhsuk-hint">
-          Your EA code may look like
-          EA1234, 1234, A123 or EAA123
+          Your EA code should be between 4 and 6 characters long and may look like EA1234, 1234, A123 or EAA123
         </div>
       {% endset -%}
 
       {% set findCode %}
         <p>An EA code identifies each employer in the NHS Pension Scheme.</p>
-          <p>It can be 4 numbers or start with 1, 2 or 3 letters followed by 3 or 4 numbers.
-          It may look like EA1234, 1234, A123 or EAA123.</p>
+          <p>our EA code should be between 4 and 6 characters long and it can be:</p>
+          <ul>
+            <li>4 numbers like 1234</li>
+            <li>1 letter followed by 3 numbers like A123</li>
+            <li>2 letters followed by 4 numbers like EA1234</li>
+            <li>3 letters followed by 3 numbers like EAA123</li>
+          </ul>
         <p>If you need to find your EA code, use the employing authority lookup tool. You will need to enter either your:</p>
         <ul>
         <li>organisations name</li>
