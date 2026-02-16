@@ -11,7 +11,7 @@ const axios = require('axios');
 module.exports = router;
 
 // Start page
-router.post( '/start-page/', (req, res) => {
+router.post( '/start/', (req, res) => {
     req.session.destroy()
     res.redirect('select-member-employer')
 });
