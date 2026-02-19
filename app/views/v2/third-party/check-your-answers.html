@@ -147,7 +147,7 @@
               {% elif (data['address-line-1']) and not (data['address']) %}
                 {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
               {% elif (data['address-line-1']) and (data['address']) %}
-                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-postcode']}}
+                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
               {% else %}
                 NHS BSA, Stella House, Goldcrest Way, Newcastle Upon Tyne, NE15 8NY
               {% endif %}
