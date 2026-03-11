@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Do you have a general or member query?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/{{folder}}/{{subfolder}}/select-member-employer-query" method="post">
+        <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+        {{ radios({
+          idPrefix: "member-employer-query",
+          name: "member-employer-query",
+          fieldset: {
+            legend: {
+              text: pageTitle,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              value: "member-query",
+              text: "Member query",
+              hint: {
+                text: "Choose this if you are contacting on behalf of a member"
+              }
+            },
+            {
+              value: "General-query",
+              text: "General query",
+              hint: {
+                text: "Choose this if you are contacting with any other query"
+              }
+            }
+          ]
+        }) }}
+
+        {{ button({
+          text: "Continue",
+          classes: "nhsuk-u-margin-top-4"
+        }) }}
+    </form>
+    </div>  
+  </div>
+{% endblock %}

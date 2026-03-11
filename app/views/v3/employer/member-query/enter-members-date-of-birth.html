@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What is the member's date of birth?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/{{folder}}/{{subfolder}}/member-query/enter-members-date-of-birth" method="post">
+        
+        <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
+        {{ dateInput({
+          "id": "date-of-birth-member",
+          "namePrefix": "date-of-birth-member",
+          "fieldset": {
+            "legend": {
+              "text": pageTitle,
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+            "text": "For example, 15 3 1984"
+          },
+          "items": [
+            {
+              "name": "day",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "month",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "year",
+              "classes": "nhsuk-input--width-4"
+            }
+          ]
+        }) }}
+
+        {{ button({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>  
+  </div>
+{% endblock %}
