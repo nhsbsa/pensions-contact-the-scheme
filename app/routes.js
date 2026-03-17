@@ -45,18 +45,11 @@ router.use('/v1/member', versionOne);
 router.use('/v1/employer', versionOne);
 router.use('/v1/third-party', versionOne);
 
-const versionTwo =  require('./views/v2/routes')
+const versionThree =  require('./views/v2/routes')
 router.use('/v2', versionTwo);
 router.use('/v2/member', versionTwo);
 router.use('/v2/employer', versionTwo);
 router.use('/v2/third-party', versionTwo);
-
-const versionTwo =  require('./views/v3/routes')
-router.use('/v3', versionThree);
-router.use('/v3/member', versionThree);
-router.use('/v3/employer', versionThree);
-router.use('/v3/third-party', versionThree);
-
 
 module.exports = router;
 
