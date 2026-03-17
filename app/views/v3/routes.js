@@ -47,7 +47,7 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
         res.redirect('nhs-pension-portal-options')
 
     } else if (mnpGeneral == 'My Total Reward Statement (TRS)') {
-        res.redirect('membership-number')
+        res.redirect('trs-view-report')
 
     } else if (mnpGeneral == 'I am looking for an update') {
         res.redirect('membership-number')

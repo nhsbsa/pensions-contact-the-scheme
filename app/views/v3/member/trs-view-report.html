@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What do want to do?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Total Reward Statement</span>
+      <form action="/{{folder}}/{{subfolder}}/select-nhs-pension-portal-general" method="post">
+
+        {{ radios({
+          idPrefix: "trs-view-report",
+          name: "trs-view-report",
+          fieldset: {
+            legend: {
+              text: pageTitle,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "Use this service to learn how to access your Total Reward Statement (TRS) or to report an issue with it.
+            "
+          },
+          items: [
+            {
+              value: "View or access my TRS",
+              text: "View or access my TRS",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "Report an issue with my TRS",
+              text: "Report an issue with my TRS",
+              hint: {
+                text: ""
+              }
+            }
+          ]
+        }) }}
+
+        {{ button({
+          text: "Continue",
+          classes: "nhsuk-u-margin-top-4"
+        }) }}
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}
