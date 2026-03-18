@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What do you want to do?"%}
+{% set pageTitle = "Are you an active member of the NHS Pension Scheme?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -17,11 +17,11 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Total Reward Statement</span>
-      <form action="/{{folder}}/{{subfolder}}/trs-view-issue" method="post">
+      <form action="/{{folder}}/{{subfolder}}/trs-active-member" method="post">
 
         {{ radios({
-          idPrefix: "trsView",
-          name: "trsView",
+          idPrefix: "trsActiveMember",
+          name: "trsActiveMembe",
           fieldset: {
             legend: {
               text: pageTitle,
@@ -30,19 +30,19 @@
             }
           },
           hint: {
-            text: "Use this service to learn how to access your Total Reward Statement (TRS) or to report an issue with it."
+            text: "Your answer determines whether you are eligible for a Total Reward Statement."
           },
           items: [
             {
-              value: "View or access my TRS",
-              text: "View or access my TRS",
+              value: "Yes",
+              text: "Yes",
               hint: {
                 text: ""
               }
             },
               {
-                value: "Report an issue with my TRS",
-                text: "Report an issue with my TRS",
+                value: "No",
+                text: "No",
                 hint: {
                   text: ""
                 }
