@@ -107,6 +107,38 @@ router.post( 'trs-not-current-employee/', (req, res) => {
     res.redirect('membership number')
 });
 
+// MEMBER - Are you an active member of the NHS Pension Scheme?
+router.post('/trs-active-member/', (req, res) => {
+
+    var trsActiveMember = req.session.data['trsActiveMember']
+
+    if (trsActiveMember == 'Yes') {
+        res.redirect('trs-esr-record')
+    } else {
+        res.redirect('trs-not-active-member')
+    }
+    
+});
+
+// trs-not-active-member (You are not eligible for a Total Reward Statement) 
+router.post( 'trs-not-active-member/', (req, res) => {
+    req.session.destroy()
+    res.redirect('membership number')
+});
+
+// MEMBER - Can you access your Electronic Staff Record (ESR)?
+router.post('/trs-esr-record/', (req, res) => {
+
+    var trsEsr = req.session.data['trsEsr']
+
+    if (trsEsr == 'Yes') {
+        res.redirect('get-your-trs')
+    } else {
+        res.redirect('no-esr-record')
+    }
+    
+});
+
 // MEMBER - What can we help you with?
 router.post('/nhs-pension-portal-options/', (req, res) => {
 

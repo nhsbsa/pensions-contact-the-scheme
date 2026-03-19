@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Get your Total Reward Statement"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-form-group">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+    
+      <form action="/{{folder}}/{{subfolder}}/trs-not-active-member" method="post">
+
+        <h1 class="nhsuk-heading-l">{{ pageTitle }}</h1> 
+
+        <p class="nhsuk-body">You can view or access your Total Reward Statement through your Electronic Staff Record (ESR) if you're:</p>       
+        <ul>
+          <li>working for an NHS organisation</li>
+          <li>an active member of the NHS Pension Scheme</li>
+        </ul>
+        
+        <a class="nhsuk-action-link" href="https://www.nhsbsa.nhs.uk/employee-section/what-type-statement-youll-get">
+          <svg class="nhsuk-icon nhsuk-icon--arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-10 9h11.7l-4-4a1 1 0 0 1 1.5-1.4l5.6 5.7a1 1 0 0 1 0 1.4l-5.6 5.7a1 1 0 0 1-1.5 0 1 1 0 0 1 0-1.4l4-4H2A10 10 0 1 0 12 2z" />
+          </svg>
+          <span class="nhsuk-action-link__text">How to access your TRS through ESR (opens in a new tab)</span>
+        </a>
+
+        <p class="nhsuk-body">Total Reward Statements only apply to NHS employees in England and Wales.</p> 
+        {{ button({
+          text: "Contact NHS Pensions",
+          href:"membership-number"
+        }) }}
+
+      </form>
+    </div>
+    </div>  
+  </div>
+{% endblock %}
