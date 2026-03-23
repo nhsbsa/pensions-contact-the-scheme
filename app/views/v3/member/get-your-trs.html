@@ -35,10 +35,16 @@
         </a>
 
         <p class="nhsuk-body">Total Reward Statements only apply to NHS employees in England and Wales.</p> 
-        {{ button({
-          text: "Contact NHS Pensions",
-          href:"membership-number"
-        }) }}
+      
+      
+        <div class="nhsuk-button-group">
+          <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+           Log into ESR
+          </button>
+        
+          <a href="/app/views/v3/member/membership-number" class="nhsuk-link">Contact NHS Pensions</a>
+        </div>
+
 
       </form>
     </div>
