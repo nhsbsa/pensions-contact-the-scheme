@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Learn more about the Electronic Staff Record (ESR)"%}
+{% set pageTitle = "You are eligible for an Annual Benefit Statement"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -21,16 +21,25 @@
 
         <h1 class="nhsuk-heading-l">{{ pageTitle }}</h1> 
 
-        <p class="nhsuk-body">If you work for the NHS in England or Wales you should be registered with the Electronic Staff Record (ESR).</p>
+        <p class="nhsuk-body">If you are working for an NHS organisation which does not use the Electronic Staff Record (ESR), 
+          you will receive an Annual Benefit Statement (ABS). </p>
         
-        <a class="nhsuk-action-link" href="https://www.nhsbsa.nhs.uk/about-esr">
-          <svg class="nhsuk-icon nhsuk-icon--arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
-            <path d="M12 2a10 10 0 0 0-10 9h11.7l-4-4a1 1 0 0 1 1.5-1.4l5.6 5.7a1 1 0 0 1 0 1.4l-5.6 5.7a1 1 0 0 1-1.5 0 1 1 0 0 1 0-1.4l4-4H2A10 10 0 1 0 12 2z" />
-          </svg>
-          <span class="nhsuk-action-link__text">Find out more about ESR and how to access it(opens in a new tab)</span>
-        </a>
+          <div class="nhsuk-inset-text">
+  <span class="nhsuk-u-visually-hidden">Information: </span>
+  <p>You will not get a Total Reward Statement (TRS).<a href="https://www.nhsbsa.nhs.uk/employee-section/what-type-statement-youll-get">See what type of statement you'll get</a>.</p>
+</div>
+    
+    <p class="nhsuk-body">You will also get an ABS only if you are:</p>
+      <ul>
+        <li>no longer working for the NHS</li>
+        <li>not currently contributing to the NHS Pension Scheme</li>
+        <li>working for direction bodies, approved non-NHS organisations, or smaller NHS organisations</li>
+      </ul>
+      
+    <h3>How to access your ABS</h3>
+         <p class="nhsuk-body">You can access your ABS at the My NHS Pension Portal. If you don't have access, Contact NHS Pensions to request a statement.</p>
 
-        <p class="nhsuk-body">Total Reward Statements only apply to NHS employees in England and Wales.</p> 
+       
         {{ button({
           text: "Contact NHS Pensions",
           href:"membership-number"
