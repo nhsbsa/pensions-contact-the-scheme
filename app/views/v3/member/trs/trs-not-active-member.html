@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Get your Total Reward Statement on ESR"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+    
+      <form action="/{{folder}}/{{subfolder}}/trs-not-active-member" method="post">
+
+        <h1 class="nhsuk-heading-l">{{ pageTitle }}</h1> 
+
+        <p class="nhsuk-body">If you are working in the NHS but are not a member of the NHS Pension Scheme you will get a Total Reward Statement (TRS).</p>
+        <p class="nhsuk-body">But it will not include an Annual Benefit Statement (ABS).</p>
+        <p class="nhsuk-body">In this case your TRS will show your:</p>
+<ul>
+  <li>personal information</li>
+  <li>employer benefits, such as Cycle2Work</li>
+</ul>
+
+        <div class="nhsuk-button-group">
+          <button class="nhsuk-button" data-module="nhsuk-button" type="submit" href="https://my.esr.nhs.uk/">
+           Sign in to ESR
+          </button>
+        
+          <a href="../membership-number" class="nhsuk-link">Contact NHS Pensions</a>
+        </div>
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}

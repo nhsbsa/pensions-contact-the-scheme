@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Are you a current NHS employee?"%}
+{% set pageTitle = "Are you currently paying into the NHS Pension Scheme?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -16,12 +16,12 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <span class="nhsuk-caption-l nhsuk-caption--bottom">Total Reward Statement</span>
-      <form action="/{{folder}}/{{subfolder}}/trs-current-employee" method="post">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">NHS pension statement</span>
+      <form action="/{{folder}}/{{subfolder}}/trs/active-member" method="post">
 
         {{ radios({
-          idPrefix: "trsEmployee",
-          name: "trsEmployee",
+          idPrefix: "trsActiveMember",
+          name: "trsActiveMember",
           fieldset: {
             legend: {
               text: pageTitle,
@@ -30,7 +30,7 @@
             }
           },
           hint: {
-            text: "Your answer determines which type of reward statement you'll get."
+            text: "Your answer determines whether you are eligible for a Total Reward Statement."
           },
           items: [
             {

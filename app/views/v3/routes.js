@@ -46,8 +46,8 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
     if (mnpGeneral == 'The My NHS Pension portal') {
         res.redirect('nhs-pension-portal-options')
 
-    } else if (mnpGeneral == 'My Total Reward Statement (TRS)') {
-        res.redirect('trs-view-issue')
+    } else if (mnpGeneral == 'NHS pension statement') {
+        res.redirect('../member/trs/trs-view-issue')
 
     } else if (mnpGeneral == 'I am looking for an update') {
         res.redirect('membership-number')
@@ -75,28 +75,21 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
     }
 });
 
-// MEMBER - What do you want to do?
-router.post('/trs-view-issue/', (req, res) => {
+// ****************************************
+// MEMBER JOURNEY- TRS deflection
+// ****************************************
 
-    var trsView = req.session.data['trsView']
 
-    if (trsView == 'View or access my TRS') {
-        res.redirect('trs-current-employee')
-    } else {
-        res.redirect('membership-number')
-    }
-    
-});
 
 // MEMBER - Are you a current NHS employee?
-router.post('/trs-current-employee/', (req, res) => {
+router.post('/are-you-current-employee/', (req, res) => {
 
     var trsEmployee = req.session.data['trsEmployee']
 
     if (trsEmployee == 'Yes') {
-        res.redirect('trs-active-member')
+        res.redirect('active-member')
     } else {
-        res.redirect('trs-not-current-employee')
+        res.redirect('membership-number')
     }
     
 });
@@ -138,7 +131,7 @@ router.post('/trs-esr-record/', (req, res) => {
     }
     
 });
-
+// --------
 // MEMBER - What can we help you with?
 router.post('/nhs-pension-portal-options/', (req, res) => {
 
