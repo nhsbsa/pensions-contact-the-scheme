@@ -47,7 +47,7 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
         res.redirect('nhs-pension-portal-options')
 
     } else if (mnpGeneral == 'NHS pension statement') {
-        res.redirect('../member/trs/trs-view-issue')
+        res.redirect('../member/trs/trs-start')
 
     } else if (mnpGeneral == 'I am looking for an update') {
         res.redirect('membership-number')
@@ -87,18 +87,13 @@ router.post('/are-you-current-employee/', (req, res) => {
     var trsEmployee = req.session.data['trsEmployee']
 
     if (trsEmployee == 'Yes') {
-        res.redirect('active-member')
+        res.redirect('../trs/trs-active-member')
     } else {
-        res.redirect('membership-number')
+        res.redirect('../membership-number')
     }
     
 });
 
-// trs-not-current-employee (You are not eligible for a Total Reward Statement) 
-router.post( 'trs-not-current-employee/', (req, res) => {
-    req.session.destroy()
-    res.redirect('membership number')
-});
 
 // MEMBER - Are you an active member of the NHS Pension Scheme?
 router.post('/trs-active-member/', (req, res) => {
