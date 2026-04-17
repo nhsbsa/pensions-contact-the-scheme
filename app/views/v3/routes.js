@@ -79,53 +79,46 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
 // MEMBER JOURNEY- TRS deflection
 // ****************************************
 
-
-
 // MEMBER - Are you a current NHS employee?
-router.post('/are-you-current-employee/', (req, res) => {
-
-    var trsEmployee = req.session.data['trsEmployee']
-
-    if (trsEmployee == 'Yes') {
-        res.redirect('../trs/trs-active-member')
-    } else {
-        res.redirect('../membership-number')
-    }
-    
+router.post('/member/trs/are-you-current-employee/', (req, res) => {
+  var trsEmployee = req.session.data['trsEmployee']
+  req.session.data['q1'] = trsEmployee === 'Yes' ? 'yes' : 'no'
+  res.redirect('trs-active-member')
 });
-
 
 // MEMBER - Are you an active member of the NHS Pension Scheme?
-router.post('/trs-active-member/', (req, res) => {
-
-    var trsActiveMember = req.session.data['trsActiveMember']
-
-    if (trsActiveMember == 'Yes') {
-        res.redirect('trs-esr-record')
-    } else {
-        res.redirect('trs-not-active-member')
-    }
-    
-});
-
-// trs-not-active-member (You are not eligible for a Total Reward Statement) 
-router.post( 'trs-not-active-member/', (req, res) => {
-    req.session.destroy()
-    res.redirect('membership number')
+router.post('/member/trs/trs-active-member/', (req, res) => {
+  var trsActiveMember = req.session.data['trsActiveMember']
+  req.session.data['q2'] = trsActiveMember === 'Yes' ? 'yes' : 'no'
+  res.redirect('trs-esr-record')
 });
 
 // MEMBER - Can you access your Electronic Staff Record (ESR)?
-router.post('/trs-esr-record/', (req, res) => {
+router.post('/member/trs/trs-esr-record/', (req, res) => {
+  var trsEsr = req.session.data['trsEsr']
+  req.session.data['q3'] = trsEsr === 'Yes' ? 'yes' : 'no'
 
-    var trsEsr = req.session.data['trsEsr']
+  var q1 = req.session.data['q1']
+  var q2 = req.session.data['q2']
+  var q3 = req.session.data['q3']
 
-    if (trsEsr == 'Yes') {
-        res.redirect('get-your-trs')
-    } else {
-        res.redirect('no-esr-record')
-    }
-    
+  
+
+  const routes = {
+    'yes-yes-yes': '../trs/trs-employee-member-esr',
+    'yes-yes-no':  '../trs/no-esr-record',
+    'yes-no-yes':  '../trs/trs-not-active-member',
+    'yes-no-no':   '../trs/no-esr-record',
+    'no-yes-yes':  '../membership-number',
+    'no-yes-no':   '../membership-number',
+    'no-no-yes':   '../membership-number',
+    'no-no-no':    '../membership-number',
+  }
+
+  var destination = routes[`${q1}-${q2}-${q3}`] ?? '../membership-number'
+  res.redirect(destination)
 });
+
 // --------
 // MEMBER - What can we help you with?
 router.post('/nhs-pension-portal-options/', (req, res) => {
