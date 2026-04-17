@@ -79,7 +79,9 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
 // MEMBER JOURNEY- TRS deflection
 // ****************************************
 
-// MEMBER - Are you a current NHS employee?
+
+
+// TRS - Are you a current NHS employee?
 router.post('/member/trs/are-you-current-employee/', (req, res) => {
   var trsEmployee = req.session.data['trsEmployee']
   req.session.data['q1'] = trsEmployee === 'Yes' ? 'yes' : 'no'
@@ -90,14 +92,14 @@ router.post('/member/trs/are-you-current-employee/', (req, res) => {
   }
 });
 
-// MEMBER - Are you an active member of the NHS Pension Scheme?
+// TRS - Are you an active member of the NHS Pension Scheme?
 router.post('/member/trs/trs-active-member/', (req, res) => {
   var trsActiveMember = req.session.data['trsActiveMember']
   req.session.data['q2'] = trsActiveMember === 'Yes' ? 'yes' : 'no'
   res.redirect('trs-esr-record')
 });
 
-// MEMBER - Can you access your Electronic Staff Record (ESR)?
+// TRS - Can you access your Electronic Staff Record (ESR)?
 router.post('/member/trs/trs-esr-record/', (req, res) => {
   var trsEsr = req.session.data['trsEsr']
   req.session.data['q3'] = trsEsr === 'Yes' ? 'yes' : 'no'
@@ -651,7 +653,7 @@ router.post('/employer/enter-your-email', function (req, res) {
 })
 
 
-// EMPLOYER - I your query about a member or employer?
+// EMPLOYER - Is your query about a member or employer?
 router.post('/select-member-employer-query', (req, res) => {
 
     var memberEmployerQuery = req.session.data['member-employer-query']
