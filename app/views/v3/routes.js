@@ -83,7 +83,11 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
 router.post('/member/trs/are-you-current-employee/', (req, res) => {
   var trsEmployee = req.session.data['trsEmployee']
   req.session.data['q1'] = trsEmployee === 'Yes' ? 'yes' : 'no'
-  res.redirect('trs-active-member')
+  if (trsEmployee === 'Yes') {
+    res.redirect('trs-active-member')
+  } else {
+    res.redirect('../membership-number')
+  }
 });
 
 // MEMBER - Are you an active member of the NHS Pension Scheme?
