@@ -80,6 +80,7 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
 // ****************************************
 
 
+module.exports = router;
 
 // TRS - Are you a current NHS employee?
 router.post('/member/trs/are-you-current-employee/', (req, res) => {
