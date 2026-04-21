@@ -80,7 +80,19 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
 // ****************************************
 
 
-module.exports = router;
+// Are you a member or employer?
+ 
+router.post('/v3/member/trs/trs-start', (req, res) => {
+    var viewStatement = req.session.data['view-statement'];
+
+    if (viewStatement == 'View or access statement') {
+      res.redirect('/v3/member/trs/are-you-current-employee')
+    } else {
+      res.redirect('/v3/member/membership-number')
+    }
+  });
+
+
 
 // TRS - Are you a current NHS employee?
 router.post('/member/trs/are-you-current-employee/', (req, res) => {

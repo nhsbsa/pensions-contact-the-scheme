@@ -15,12 +15,9 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-
-     
-   
-
+      <form action="/v3/member/trs/trs-start" method="post">
         <h1 class="nhsuk-heading-l">{{ pageTitle }}</h1> 
-      <form action="//{{folder}}/{{subfolder}}/trs/trs-start" method="post">
+      
 
         <p>There are 2 types of statement you may receive as a member of the NHS Pension Scheme. </p>
         <p>These are the:</p>
@@ -62,19 +59,34 @@
         <h4 class="nhsuk-heading-xs">
         <a href="https://www.nhsbsa.nhs.uk/employee-section/what-type-statement-youll-get">What type of statement you'll get</a> </h4>
       
-
-          {{ button({
-            "href": "are-you-current-employee",
-            "text": "View or access statement"
+        {{ radios({
+  idPrefix: "view-statement",
+  name: "view-statement",
+  fieldset: {
+    legend: {
+      text: "What do you want to do?",
+       classes: "nhsuk-fieldset__legend--l",
+      size: "l",
+      isPageHeading: true
+    }
+  },
+  items: [
+    {
+      value: "View or access statement",
+      text: "View or access statement"
+    },
+    {
+      value: "Report an issue",
+      text: "Report an issue"
+    }
+  ]
+}) }}
+       
+  {{ button({
+            text: "Continue",
+            classes: "nhsuk-u-margin-top-4"
           }) }}
 
-
-        <form action="/app/views/v3/member" method="post" novalidate>
-          {{ button({
-            "href": "../membership-number",
-            "text": "Report an issue",
-            classes: "nhsuk-button--secondary"
-          }) }}
 
         </form>
         
