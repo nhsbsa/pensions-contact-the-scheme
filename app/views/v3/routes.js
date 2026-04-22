@@ -101,21 +101,21 @@ router.post('/member/trs/are-you-current-employee/', (req, res) => {
   var trsEmployee = req.session.data['trsEmployee']
   req.session.data['q1'] = trsEmployee === 'Yes' ? 'yes' : 'no'
   if (trsEmployee === 'Yes') {
-    res.redirect('trs-active-member')
+    res.redirect('are-you-active-member')
   } else {
     res.redirect('../membership-number')
   }
 });
 
 // TRS - Are you an active member of the NHS Pension Scheme?
-router.post('/member/trs/trs-active-member/', (req, res) => {
+router.post('/member/trs/are-you-active-member/', (req, res) => {
   var trsActiveMember = req.session.data['trsActiveMember']
   req.session.data['q2'] = trsActiveMember === 'Yes' ? 'yes' : 'no'
-  res.redirect('trs-esr-record')
+  res.redirect('access-esr')
 });
 
 // TRS - Can you access your Electronic Staff Record (ESR)?
-router.post('/member/trs/trs-esr-record/', (req, res) => {
+router.post('/member/trs/access-esr/', (req, res) => {
   var trsEsr = req.session.data['trsEsr']
   req.session.data['q3'] = trsEsr === 'Yes' ? 'yes' : 'no'
 

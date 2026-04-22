@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Are you currently paying into the NHS Pension Scheme?"%}
+{% set pageTitle = "Can you access your Electronic Staff Record (ESR)?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -17,11 +17,11 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <span class="nhsuk-caption-l nhsuk-caption--bottom">NHS Pension statement</span>
-     <form action="../trs/trs-active-member" method="post">
+      <form action="../trs/access-esr" method="post">
 
         {{ radios({
-          idPrefix: "trsActiveMember",
-          name: "trsActiveMember",
+          idPrefix: "trsEsr",
+          name: "trsEsr",
           fieldset: {
             legend: {
               text: pageTitle,
@@ -30,7 +30,7 @@
             }
           },
           hint: {
-            text: "Your answer determines whether you are eligible for a Total Reward Statement."
+            text: "Whether your NHS organisation uses the Electronic Staff Record (ESR) determines what type of statement you may get."
           },
           items: [
             {

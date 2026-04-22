@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Can you access your Electronic Staff Record (ESR)?"%}
+{% set pageTitle = "Are you currently paying into the NHS Pension Scheme?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -17,11 +17,11 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <span class="nhsuk-caption-l nhsuk-caption--bottom">NHS Pension statement</span>
-      <form action="../trs/trs-esr-record" method="post">
+     <form action="../trs/are-you-active-member" method="post">
 
         {{ radios({
-          idPrefix: "trsEsr",
-          name: "trsEsr",
+          idPrefix: "trsActiveMember",
+          name: "trsActiveMember",
           fieldset: {
             legend: {
               text: pageTitle,

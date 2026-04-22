@@ -20,38 +20,74 @@
 
         <p>There are 2 types of statement you may receive as a member of the NHS Pension Scheme. </p>
         <p>These are the:</p>
-        <ul>
-          <li>Annual Benefit Statement (ABS)</li>
-          <li>Total Reward Statement (TRS)</li> 
+
+          <details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+     Annual Benefit Statement (ABS)
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+     <p>You will receive an Annual Benefit Statement on its own through My NHS Pension. 
+          Or as part of a Total Reward Statement through the Electronic Staff Record (ESR).</p>
+
+    <p>Your ABS will show:</p>
+   <ul>
+          <li>What your pension is worth (its current value)</li>
+          <li>What you could get (estimated retirement income)</li>
         </ul>
-        <p>Which you receive depends on your circumstances.</p>
-        
+   
+         <p>You will receive only an ABS if you are either:</p>
+         <ul>
+          <li>no longer working for the NHS and not paying in to the NHS Pension Scheme</li>
+          <li>working for direction bodies, approved non-NHS organisations, or smaller NHS organisations</li>
+          <li>working for NHS organisations which do not use ESR</li>
+        </ul>
 
+  </div>
+</details>
 
-        <h4>Annual Benefit Statement (ABS)</h4>
-        <p>You may receive an Annual Benefit Statement on its own through My NHS Pension. 
-          Or as part of a Total Reward Statement through the Electronic Staff Record (ESR). </p>
-          <p>Your ABS will show what your pension is worth (its current value).</p>
-
-  
-
-         <h4>Total Reward Statement (TRS)</h4>
-         <p>If you are currently working in the NHS and can access ESR you may receive a Total Reward Statement. 
+    <details class="nhsuk-details ">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+    Total Reward Statement (TRS)
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <p>If you are currently working in the NHS and can access ESR you will receive a Total Reward Statement. 
           A TRS is an overall rewards package. </p> 
          <p>It includes an Annual Benefit Statement for members of the NHS Pension Scheme as well as information on your employer benefits.</p>
+
+        <p>You will receive a TRS if you are:</p>
+        <ul>
+          <li>currently working for the NHS</li>
+          <li>currently paying in to the NHS Pension Scheme</li>
+          <li>able to access ESR</li>
+        </ul>
+
+  </div>
+</details>
+
+         
+        <p>which you receive depends on your circumstances.</p>
+       
+    
+
+        
+        
 
     
         <h4 class="nhsuk-heading-xs">
         <a href="https://www.nhsbsa.nhs.uk/employee-section/what-type-statement-youll-get">What type of statement you'll get</a> </h4>
       
         <form action="/v3/member/trs/trs-start" method="post" novalidate>
-        {{ radios({
+          {{ radios({
           idPrefix: "view-statement",
           name: "view-statement",
           fieldset: {
             legend: {
               text: "What help do you need with your NHS pension statement?",
-              classes: "nhsuk-fieldset__legend--l",
+              classes: "nhsuk-fieldset__legend--m",
               size: "l",
               isPageHeading: true
             }
@@ -76,6 +112,9 @@
           text: "Continue",
           classes: "nhsuk-u-margin-top-4"
         }) }}
+
+            
+       
 
 
         </form>
