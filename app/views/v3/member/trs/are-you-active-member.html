@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Are you currently paying into the NHS Pension Scheme?"%}
+{% set pageTitle = "Are you paying into the NHS Pension Scheme, or have you paid-in in the past?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -30,7 +30,7 @@
             }
           },
           hint: {
-            text: "Your answer determines whether you are eligible for a Total Reward Statement."
+            text: "Whether you are currently paying in, or paid in for at least 2 years in the past, determines what type of statement you may get."
           },
           items: [
             {
