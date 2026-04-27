@@ -129,7 +129,7 @@ router.post('/member/trs/access-esr/', (req, res) => {
     'yes-yes-yes': '../trs/trs-employee-member-esr',
     'yes-yes-no':  '../trs/no-esr-record',
     'yes-no-yes':  '../trs/trs-not-active-member',
-    'yes-no-no':   '../trs/no-esr-record',
+    'yes-no-no':   '../membership-number',
     'no-yes-yes':  '../membership-number',
     'no-yes-no':   '../membership-number',
     'no-no-yes':   '../membership-number',
