@@ -203,7 +203,7 @@ router.post('/enter-your-name', function (req, res) {
 router.post('/enter-your-national-insurance-number', function (req, res) {
     
     let nino = req.session.data['nationalInsuranceNumber'];
-
+ 
     // Remove all spaces and normalize to uppercase
     nino = (nino || '').replace(/\s+/g, '').toUpperCase();
 
@@ -375,6 +375,22 @@ router.post('/phone-number', (req, res) => {
 // THIRD PARTY JOURNEY
 // ****************************************
 
+// MEMBER - Do you know your membership number?
+router.post('/member-membership-number', (req, res) => {
+
+    var memberNumber = req.session.data['member-membership-number']
+
+    if (memberNumber == 'Yes, I know my membership number') {
+        res.redirect('member-name')
+    } else if (memberNumber == "No, I do not know my membership number") {
+        res.redirect('member-national-insurance-number');
+    } else if (memberNumber == "I'm not sure") {
+        res.redirect('member-national-insurance-number');
+    }else {
+        res.redirect('member-membership-number')
+    }
+});
+
 
 // THIRD PARTY - What is your name?
 
@@ -433,6 +449,28 @@ router.post('/member-membership-number', (req, res) => {
     }
 });
 
+// MEMBER - What is your national insurance number?
+
+router.post('/member-national-insurance-number', function (req, res) {
+    
+    let nino = req.session.data['nationalInsuranceNumber'];
+ 
+    // Remove all spaces and normalize to uppercase
+    nino = (nino || '').replace(/\s+/g, '').toUpperCase();
+
+    const regex = new RegExp('^(?!BG|GB|KN|NK|NT|TN|ZZ)[A-CEGHJ-PR-TW-Z]{2}\\d{6}[A-D]$');
+
+    if (nino) {
+        if (regex.test(nino)|| nino === 'QQ123456C') { 
+            res.redirect('member-name');  // Valid National Insurance Number
+        } else {
+            res.redirect('member-national-insurance-number');  // Invalid format
+        }
+    } else {
+        res.redirect('member-national-insurance-number');  // Field is empty
+    }
+
+});
 
 // THIRD PARTY- member -  What is the member's name?
 

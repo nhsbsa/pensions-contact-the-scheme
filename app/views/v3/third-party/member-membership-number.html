@@ -19,7 +19,7 @@
 
         <form action="/{{folder}}/{{subfolder}}/member-membership-number" method="post">
 
-          {% set sdNumberHtml %}
+            {% set sdNumberHtml %}
             {{ input({
               id: "sdNumber",
               name: "sdNumber",
@@ -30,32 +30,46 @@
             }) }}
           {% endset -%} 
 
-          <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
-          {% call fieldset({
-            legend: {
-              "text": pageTitle,
-              "classes": "nhsuk-fieldset__legend--l",
-              "isPageHeading": true
-            }
-          }) %}
-          
-            {{ input({
-              label: {
-                "html": 'Membership number'
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+          {{ radios({
+            idPrefix: "member-membership-number",
+            name: "member-membership-number",
+            classes: "nhsuk-radios--inline",
+            fieldset: {
+              legend: {
+                text: pageTitle,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: "For example, SD12340000"
+            },
+            items: [ 
+              {
+                value: "Yes, I know my membership number",
+                text: "Yes, I know my membership number",
+                conditional: {
+                  html: sdNumberHtml
+                }
               },
-              "id": "membershipNumber",
-              "name": "membershipNumber",
-              "classes": "nhsuk-input--width-20"
-            }) }}
-          
-          {% endcall %}
+              {
+                value: "No, I do not know my membership number",
+                text: "No, I do not know my membership number"
+              },
+              {
+                value: "I'm not sure",
+                text: "I'm not sure"
+              }
+            ]
+          }) }}
           
           {% call details({
-            summaryText: "How to find the member's membership number",
+            summaryText: "How to find your membership number",
             classes: "nhsuk-u-padding-top-5"
           }) %}
             <p>
-              Sometimes known as the Superannuation Division (SD) number. For example, SD12340000. 
+              Sometimes known as the Superannuation Division (SD) number. 
               This will help us find the member's record and support you quicker. 
             </p>
             <p>This number is 'SD' followed by 8 digits.</p>
@@ -76,3 +90,4 @@
     </div>  
   </div>
 {% endblock %}
+
