@@ -453,7 +453,7 @@ router.post('/member-membership-number', (req, res) => {
 
 router.post('/member-national-insurance-number', function (req, res) {
     
-    let nino = req.session.data['nationalInsuranceNumber'];
+    let nino = req.session.data['nInsuranceNumber'];
  
     // Remove all spaces and normalize to uppercase
     nino = (nino || '').replace(/\s+/g, '').toUpperCase();
@@ -462,7 +462,7 @@ router.post('/member-national-insurance-number', function (req, res) {
 
     if (nino) {
         if (regex.test(nino)|| nino === 'QQ123456C') { 
-            res.redirect('member-name');  // Valid National Insurance Number
+            res.redirect('../third-party/members-name');  // Valid National Insurance Number
         } else {
             res.redirect('member-national-insurance-number');  // Invalid format
         }
