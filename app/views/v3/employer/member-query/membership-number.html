@@ -38,6 +38,10 @@
               "isPageHeading": true
             }
           }) %}
+          {{ hint({
+          html: 'This is an 8 digit number, which may start with 'SD'. 
+          You can find it on payslips, Annual Benefit Statements, Total Reward Statements, or any letters from us'
+          }) }}
           
             {{ input({
               label: {
@@ -50,29 +54,14 @@
           
           {% endcall %}
           
-          {% call details({
-            summaryText: "How to find the member's membership number",
-            classes: "nhsuk-u-padding-top-5"
-          }) %}
-            <p>
-              Sometimes known as the Superannuation Division (SD) number. For example, SD12340000. 
-              This will help us find the member's record and support you quicker. 
-            </p>
-            <p>This number is 'SD' followed by 8 digits.</p>
-            <p>Find this on:</p>
-            <ul>
-              <li>some payslips</li>
-              <li>an online Total Reward Statement or Annual Benefits Statement</li>
-              <li>some communications we have sent</li>
-            </ul>
-          {% endcall %}
-  
+       
+   </div>
           {{ button({
           "text": "Continue"
           }) }}
         </form>
 
-      </div>
+     
     </div>  
   </div>
 {% endblock %}
