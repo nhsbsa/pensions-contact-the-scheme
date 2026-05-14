@@ -175,9 +175,9 @@ router.post('/membership-number', (req, res) => {
 
     var memberNumber = req.session.data['membership-number']
 
-    if (memberNumber == 'Yes, I know my membership number') {
+    if (memberNumber == 'Yes, I know the membership number') {
         res.redirect('enter-your-name')
-    } else if (memberNumber == "No, I do not know my membership number") {
+    } else if (memberNumber == "No, I do not know the membership number") {
         res.redirect('enter-your-national-insurance-number');
     } else if (memberNumber == "I'm not sure") {
         res.redirect('enter-your-national-insurance-number');
@@ -383,9 +383,9 @@ router.post('/member-membership-number', (req, res) => {
 
     var memberNumber = req.session.data['member-membership-number']
 
-    if (memberNumber == 'Yes, I know my membership number') {
+    if (memberNumber == 'Yes, I know the membership number') {
         res.redirect('member-name')
-    } else if (memberNumber == "No, I do not know my membership number") {
+    } else if (memberNumber == "No, I do not know the membership number") {
         res.redirect('member-national-insurance-number');
     } else if (memberNumber == "I'm not sure") {
         res.redirect('member-national-insurance-number');
