@@ -22,53 +22,50 @@
 
         <h1 class="nhsuk-heading-xl">{{ pageTitle }}</h1> 
 
-        <p>Use this service if you need to contact NHS Pensions for any pensions queries.</p>
-        <p>You can use this service if you are a member, employer or a third-party authority and need help with:</p>
+        <p>Use this service to contact NHS Pensions with your pensions queries.</p>
+        <p>You can use it if you are:</p>
+        <ul>
+          <li>a member of the NHS Pension Scheme</li>
+          <li>an employer</li> 
+          <li>acting for a member</li> 
+        </ul>
+
+        <p>We can help you with:</p>
         <ul>
           <li>the NHS Pension Scheme (1995/2008 or 2015)</li>
           <li>the My NHS Pension Portal</li> 
-          <li>your Total Reward Statement (TRS)</li> 
+          <li>a Total Reward Statement (TRS)</li> 
+          <li>an Annual Benefit Statement (ABS)</li> 
           <li>anything relating to NHS Pensions</li>
         </ul>
         
         <h2>Before you start</h2>
-        <h4 class="nhsuk-heading-xs">If you are a member, we'll ask you for your:</h4>
+        <h4 class="nhsuk-heading-xs">Members </h4>
+        <p>We'll ask for your:</p>
          <ul>
-          <li>membership number (if you know it)</li>
-          <li>date of birth</li>
-          <li>first and last name</li>
-          <li>address</li>
+          <li>membership number</li>
+          <li>personal details (name, address, date of birth)</li>
         </ul>
     
-        <h4 class="nhsuk-heading-xs">If you are an employer, we'll ask you for your:</h4>
+        <h4 class="nhsuk-heading-xs">Employers</h4>
+        <p>We'll ask for:</p>
         <ul>
-          <li>employing authority code</li>
+          <li>your name and contact details</li>
+          <li>your employing authority (EA) code</li>
+          <li>the member’s personal details</li>
+          <li>the member’s membership number</li>
         </ul>
 
-        <p>If you are an employer contacting on behalf of a member, we'll ask for the member's: </p>
-        <ul>
-          <li>membership number</li>
-          <li>date of birth</li>
-          <li>first and last names</li>
-            <li>address</li>
-        </ul>
     
-        <h4 class="nhsuk-heading-xs">If you are a third-party authority, we'll ask you for your:</h4>
+        <h4 class="nhsuk-heading-xs">Acting for a member</h4>
+        <p>We'll ask for:</p>
         <ul>
-          <li>first and last names</li>
-          <li>contact details</li>
+          <li>your name and contact details</li>
+          <li>the member’s personal details</li>
+          <li>the member’s membership number</li>
         </ul>
 
-        <p>We'll ask you for the member's:</p>
-        <ul>
-          <li>membership number</li>
-          <li>date of birth</li>
-          <li>first and last names</li>
-            <li>address</li>
-        </ul>
-
-        
-       
+   
 
         <form action="/{{folder}}/start" method="post" novalidate>
           {{ button({
