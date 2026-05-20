@@ -37,30 +37,86 @@
                 value: "I am a member of the NHS Pension Scheme",
                 text: "I am a member of the NHS Pension Scheme",
                 hint: {
-                  text: "Choose this if you are part of the 1995/2008 or 2015 Schemes"
+                  text: "This includes active, deferred or pensioner members of the 1995/2008 and 2015 Schemes"
                 }
               },
               {
                 value: "I am an employer",
                 text: "I am an employer",
                 hint: {
-                  text: "Choose this if you are an employer"
+                  text: "For example, a payroll adviser working for the NHS or another approved organisation"
                 }
               },
               {
-                value: "I am a third-party authority",
-                text: "I am a third-party authority",
+                value: "I am acting for a member",
+                text: "I am acting for a member",
                 hint: {
-                  text: "Choose this is if you are a third-party, like an independent financial advisor"
+                  text: "For example, a family member, someone reporting a death, or an independent financial adviser"
                 }
               }
             ]
           }) }}
 
+        
+
           {{ button({
             text: "Continue",
             classes: "nhsuk-u-margin-top-4"
           }) }}
+
+  <details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      Help with answering this 
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <h4>Member</h4>
+    <p>If you are:</p>
+    <ul>
+      <li>currently paying into the Scheme, you will be an active member</li>
+      <li>already getting your pension payments, you will be a pensioner member</li>
+      <li>no longer paying into the scheme and not getting your pension payments, you will be a deferred member</li>
+    </ul>
+      <p><a href="https://www.nhsbsa.nhs.uk/member-hub/membership-nhs-pension-scheme">About NHS Pension membership types</a></p>
+
+     <h4>Employer</h4>
+    <p>If you select employer, you should be employed by an NHS organisation or a:</p>
+    <ul>
+      <li>direction body</li>
+      <li>approved non-NHS organisation</li>
+      <li>smaller NHS organisation, such as a GP practice</li>
+    </ul>
+
+     <h4>Acting for a member</h4>
+     <p>To speak to us on behalf of a member you must have their permission.</p>
+    <p>They can grant this by nominating you in:</p>
+    <ul>
+      <li>a Letter of Authority to be able to contact us to discuss and receive information about their pension</li>
+      <li>a legal power of attorney to act on their behalf if they can no longer manage their own affairs </li>
+    </ul>
+      <p><a href="https://www.nhsbsa.nhs.uk/pensioner-hub/change-circumstances">About power of attorney and Letter of Authority</a></p>
+
+    <h4>Telling us someone has died</h4>
+    <p>You only need to contact NHS Pensions if the person who has died was not actively employed in the NHS</p>
+    <p>We'll ask you for their:</p>
+    <ul>
+      <li>National Insurance number</li>
+      <li>NHS Pensions membership number</li>
+    </ul>
+
+     <p>You do not need to contact us if:</p>
+    <ul>
+      <li>the person who has died was actively employed in the NHS – contact their employer instead</li>
+      <li>you have already used <a href="https://www.gov.uk/after-a-death/organisations-you-need-to-contact-and-tell-us-once">Tell Us Once</a> to report their death</li>
+      
+    </ul>
+      <p><a href="https://www.nhsbsa.nhs.uk/pensioner-hub/bereavement/letting-us-know-pensioner-member-has-died">Letting us know someone has died</a>.</p>
+
+  </div>
+</details>
+
+
 
         </form>
       </div>
