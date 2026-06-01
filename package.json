@@ -3,19 +3,17 @@
   "version": "8.2.0",
   "description": "Rapidly create HTML prototypes of NHS websites and services.",
   "main": "app.js",
- "scripts": {
-  "start": "node ."
-},
+  "scripts": {
+    "start": "node ."
+  },
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
-"dependencies": {
-  "nhsuk-frontend": "^10.4.2",
-  "nhsuk-prototype-kit": "^8.2.0",
-  "axios": "^1.13.2",
-  "luxon": "^3.7.2"
-},
-"devDependencies": {
-},
+  "dependencies": {
+    "axios": "^1.16.1",
+    "luxon": "^3.7.2",
+    "nhsuk-frontend": "^10.4.2",
+    "nhsuk-prototype-kit": "^8.2.0"
+  },
   "engines": {
     "node": "^20.9.0 || ^22.11.0"
   }

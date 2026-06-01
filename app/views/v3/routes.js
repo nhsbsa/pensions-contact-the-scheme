@@ -49,7 +49,7 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
     } else if (mnpGeneral == 'Total Reward Statement (TRS)') {
         res.redirect('../member/trs/trs-start')
 
-      } else if (mnpGeneral == 'Annual Benefit Statement (ABS)') {
+      } else if (mnpGeneral == 'Annual benefit statement (ABS)') {
         res.redirect('../member/trs/trs-start')
 
     } else if (mnpGeneral == 'I am looking for an update') {
@@ -152,7 +152,7 @@ router.post('/nhs-pension-portal-options/', (req, res) => {
     if (mnpEnquiry == 'I did not get an invitation to My NHS Pension') {
         res.redirect('membership-number')
 
-    } else if (mnpEnquiry == 'I cannot log in to My NHS Pension') {
+    } else if (mnpEnquiry == 'I cannot sign in to My NHS Pension') {
         res.redirect('membership-number')
 
     } else if (mnpEnquiry == 'I am locked out of My NHS Pension') {
