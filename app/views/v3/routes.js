@@ -619,19 +619,14 @@ router.post('/members-address-manual', function (req, res) {
 })
 
 
-// THIRD PARTY- member - What is your email?
+// THIRD PARTY- member -Do you have the member's email address?
 
-router.post('/enter-members-email', function (req, res) {
+router.post('/members-email', (req, res) => {
 
-    var emailAddress = req.session.data['memberEmail'];
+    res.redirect('reason-for-contact');
 
-    if (emailAddress) {
-        res.redirect('reason-for-contact');
-    } else {
-        res.redirect('members-email');
+});
 
-    }
-})
 
 // THIRD PARTY- member  - Reason for contact
 router.post('/reason-for-contact', function (req, res) {

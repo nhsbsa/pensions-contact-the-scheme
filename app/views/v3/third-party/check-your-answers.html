@@ -203,24 +203,29 @@
               </a>
             </dd>
           </div>
-  
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Email
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {% if (data['memberEmail']) %}
-                {{ data['memberEmail']}} 
-              {% else %}
-                john.bloggs@nhsbsa.nhs.uk
-              {% endif %}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/members-email">
-                Change<span class="nhsuk-u-visually-hidden">&nbsp; member's email.</span>
-              </a>
-            </dd>
-          </div>
+
+
+ <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Email
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if (data['memberEmail']) %}
+              {{ data['memberEmail']}}
+            {% else %}
+              No
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="members-email">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; member's email.</span>
+            </a>
+          </dd>
+        </div>
+
+
+
+
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Reason for contact

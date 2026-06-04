@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Do you have the member's email address?"%}
+{% set pageTitle = "Are you able to provide your telephone number?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -17,27 +17,27 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
-      <form action="/{{folder}}/{{subfolder}}/members-email" method="post">
+      <form action="/{{folder}}/{{subfolder}}/phone-number" method="post">
+          
 
-         <div class="nhsuk-form-group">
+            <div class="nhsuk-form-group">
 
               {% set phoneNumberHtml %}
                 {{ input({
-                  id: "memberEmail",
-                  name: "memberEmail",
+                  id: "phoneNumber",
+                  name: "phoneNumber",
                   classes: "nhsuk-u-width-two-thirds",
                   label: {
-                    text: "Email address"
+                    text: "Telephone number"
                   }
                 }) }}
               {% endset -%}
 
-            
+              <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
               {{ radios({
                 idPrefix: "phone-number",
                 name: "phone-number",
-                classes: "nhsuk-radios-conditional",
+                classes: "nhsuk-radios",
                 fieldset: {
                   legend: {
                     text: pageTitle,
@@ -46,7 +46,7 @@
                   }
                 },
                 hint: {
-                  text: ""
+                  text: "For international numbers include the country code, for example +34 for Spain."
                 },
                 items: [ 
                   {
@@ -68,13 +68,9 @@
               {{ button({
                 text: "Continue"
               }) }} 
-    </form>
-    </div>  
-  </div>
 
-  <script>
-    function setLocation(element) {
-      document.forms[0].action = element.value
-    }
-  </script>
+            </form>
+        </div>
+    </div>
+
 {% endblock %}
