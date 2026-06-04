@@ -384,7 +384,7 @@ router.post('/member-membership-number', (req, res) => {
     var memberNumber = req.session.data['member-membership-number']
 
     if (memberNumber == 'Yes, I know the membership number') {
-        res.redirect('member-name')
+        res.redirect('members-name')
     } else if (memberNumber == "No, I do not know the membership number") {
         res.redirect('member-national-insurance-number');
     } else if (memberNumber == "I'm not sure") {
