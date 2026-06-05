@@ -14,19 +14,23 @@
     
       <h1 class="nhsuk-heading-xl">{{pageTitle}}</h1>
 
-      <p> Resubmit your query.</p>
+      <p>The address lookup function is currently not available.</p>
 
-      <p> We have saved the information you have recently put in the contact form.</p>
+      <p>Enter your address manually to continue.</p>
 
-        <p>you can either:</p>
-        <ul>
-        <li>check your answers and submit your query again</li>
-        <li>start again from the beginning of the contact form</li>
-      </ul>
+        <div class="nhsuk-button-group">
 
-        <p>If you continue to have this problem or have an urgent query, contact the NHS Pensions team:</p> 
+    <button class="nhsuk-button" data-module="nhsuk-button" type="submit" href="/v2/member/enter-your-address">
+      Enter address
+    </button>
+  
+    <a href="/v2/start" class="nhsuk-link">Go to start page</a>
+  </div>
+
+        <p>We may not have saved any information you entered on earlier screens. You may have to enter that information again before you submit your query.</p> 
     
         <p>
+          If you have an urgent query, contact the NHS Pensions team:<br/>
           <a class="nhsuk-link" target="_blank" href="https://www.nhsbsa.nhs.uk/member-hub/contact-nhs-pensions-members">NHS Pensions - active and deferred members</a><br/>
           <a class="nhsuk-link" target="_blank" href="https://www.nhsbsa.nhs.uk/pensioner-hub/contact-nhs-pensions-pensioners">Contact NHS Pensions - pensioner members</a><br/>
           <a class="nhsuk-link" target="_blank" href="https://www.nhsbsa.nhs.uk/employer-hub/contact-nhs-pensions-employers">Contact NHS Pensions - employers</a>
@@ -35,14 +39,7 @@
     </div>
     
   </div>
-  <div class="nhsuk-button-group">
-
-    <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
-      Check your answers
-    </button>
-  
-    <a href="/v1/start" class="nhsuk-link">Go to start page</a>
-  </div>
+ 
 </div>
 </div>
 {% endblock %}
