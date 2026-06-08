@@ -456,7 +456,7 @@ router.post('/member-membership-number', (req, res) => {
 
 router.post('/member-national-insurance-number', function (req, res) {
     
-    let nino = req.session.data['nInsuranceNumber'];
+    let nino = req.session.data['natInsNum'];
  
     // Remove all spaces and normalize to uppercase
     nino = (nino || '').replace(/\s+/g, '').toUpperCase();

@@ -83,60 +83,72 @@
 
         <dl class="nhsuk-summary-list">
 
-            {% if (data['member-membership-number'] == "Yes, I know the membership number") %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Membership number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data ['sdNumber']}}
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="member-membership-number">
-              Change<span class="nhsuk-u-visually-hidden">&nbsp; membership-number. </span>
-            </a>
-          </dd>
-        </div>
+        {% if (data['member-membership-number'] == "Yes, I know the membership number") %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Membership number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data ['sdNumber']}}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="member-membership-number">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; membership-number. </span>
+              </a>
+            </dd>
+          </div>
 
         {% elseif data['member-membership-number'] == "No, I do not know the membership number" %}
-           <div class="nhsuk-summary-list__row">
-             <dt class="nhsuk-summary-list__key">
-              Membership number
-             </dt>
-            <dd class="nhsuk-summary-list__value">
-              I do not know my membership number
-            </dd>
-             <dd class="nhsuk-summary-list__actions">
-             <a href="member-membership-number">
-             Change<span class="nhsuk-u-visually-hidden"> membership number</span>
-           </a>
-         </dd>
-       </div>
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Membership number
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                I do not know my membership number
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+              <a href="member-membership-number">
+              Change<span class="nhsuk-u-visually-hidden"> membership number</span>
+            </a>
+          </dd>
+          </div>
 
        {% elseif data['member-membership-number'] == "I'm not sure" %}
          <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-             Membership number
-           </dt>
-          <dd class="nhsuk-summary-list__value">
-             I'm not sure
-           </dd>
-           <dd class="nhsuk-summary-list__actions">
-          <a href="member-membership-number">
-        Change<span class="nhsuk-u-visually-hidden"> membership number</span>
-      </a>
-    </dd>
-  </div>
+            <dt class="nhsuk-summary-list__key">
+              Membership number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              I'm not sure
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="member-membership-number">
+                Change<span class="nhsuk-u-visually-hidden"> membership number</span>
+              </a>
+            </dd>
+          </div>
 
         {% endif %}
-
-        {% if (data['nInsuranceNumber']) %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             National Insurance Number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data ['nInsuranceNumber']}}
+            {{ data ['natInsNum']}}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="member-national-insurance-number">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; national insurance number</span>
+            </a>
+          </dd>
+        </div>
+        {% if (data['natInsNum']) %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            National Insurance Number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data ['natInsNum']}}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="member-national-insurance-number">

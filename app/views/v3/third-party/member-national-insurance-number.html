@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What is your National Insurance number?"%}
+{% set pageTitle = "What is the members National Insurance number?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -16,32 +16,27 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{folder}}/{{subfolder}}/enter-your-national-insurance-number" method="post">
+      <form action="/{{folder}}/{{subfolder}}/member-national-insurance-number" method="post">
         <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
         {% call fieldset({
           legend: {
-            "text": pageTitle,
-            "classes": "nhsuk-fieldset__legend--l",
-            "isPageHeading": true
+            text: pageTitle,
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
           }
-        }
-      ) %}
+        })%}
         
-        {% from 'input/macro.njk' import input %}
           {{ input({
-            
-           
             label: {
-              "html": 'National Insurance number'
+              text: "National Insurance number"
             },
             hint: {
               text: "This can be found on your National Insurance card, benefit letter, payslip or P60 (for example, \‘QQ 12 34 56 C’)\."
             },
-            "id": "nInsuranceNumber",
-            "name": "nInsuranceNumber",
+            id: "natInsNum",
+            name: "natInsNum",
             spellcheck: false,
-            "classes": "nhsuk-input--width-10"
-            
+            classes: "nhsuk-input--width-10"
           }) }}
         
         {% endcall %}
@@ -49,8 +44,7 @@
       
 
         {{ button({
-          "text": "Continue",
-          "href": "members-name"
+          "text": "Continue"
         }) }}
 
       </form>
