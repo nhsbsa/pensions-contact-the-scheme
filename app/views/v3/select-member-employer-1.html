@@ -1,0 +1,129 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Are you a member, an employer, or acting for a member?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
+
+        <form action="/{{folder}}/select-member-employer" method="post">
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+ <div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading">
+       Are you a member, an employer, or acting for a member?
+      </h1>
+    </legend>
+    <div class="nhsuk-hint" id="contact-hint">
+      
+    </div>
+    <div class="nhsuk-radios" data-module="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="member-employer" name="member-employer" type="radio" value="I am a member of the NHS Pension Scheme" data-aria-controls="conditional-contact">
+        <label class="nhsuk-label nhsuk-radios__label" for="member">
+          I am a member of the NHS Pension Scheme
+          <div class="nhsuk-hint" id="contact-hint">
+      This includes active, deferred or pensioner members of the 1995/2008 and 2015 Schemes
+    </div>
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact">
+        <div class="nhsuk-form-group">
+           <div class="nhsuk-body">
+      <p>If you are:</p>
+    <ul>
+      <li>currently paying into the Scheme, you will be an active member</li>
+      <li>already getting your pension payments, you will be a pensioner member</li>
+      <li>no longer paying into the scheme and not getting your pension payments, you will be a deferred member</li>
+    </ul>
+      <p><a href="https://www.nhsbsa.nhs.uk/member-hub/membership-nhs-pension-scheme">About NHS Pension membership types</a></p>
+    </div>
+  </div>
+      </div>
+
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="member-employer" name="member-employer" type="radio" value="I am an employer" data-aria-controls="conditional-contact-2">
+        <label class="nhsuk-label nhsuk-radios__label" for="contact-2">
+          I am an employer
+           <div class="nhsuk-hint" id="contact-hint">
+      For example, a payroll adviser working for the NHS or another approved organisation
+    </div>
+        </label>
+      </div>
+      
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-2">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-body">
+             <p>If you select employer, you should be employed by an NHS organisation or a:</p>
+             <ul>
+                <li>direction body</li>
+                <li>approved non-NHS organisation</li>
+                <li>smaller NHS organisation, such as a GP practice</li>
+             </ul>
+         </label>
+        </div>
+      </div>
+
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="member-employer" name="member-employer" type="radio" value="I am acting for a member" data-aria-controls="conditional-contact-3">
+        <label class="nhsuk-label nhsuk-radios__label" for="contact-3">
+          I am acting for a member
+          <div class="nhsuk-hint" id="contact-hint">
+      For example, a family member, someone reporting a death, or an independent financial adviser
+    </div>
+        </label>
+      </div>
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-3">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-body">
+            <p>To speak to us on behalf of a member you must have their permission.</p>
+    <p>They can grant this by nominating you in:</p>
+    <ul>
+      <li>a Letter of Authority to be able to contact us to discuss and receive information about their pension</li>
+      <li>a legal power of attorney to act on their behalf if they can no longer manage their own affairs </li>
+    </ul>
+      <p><a href="https://www.nhsbsa.nhs.uk/pensioner-hub/change-circumstances">About power of attorney and Letter of Authority</a></p>
+
+    <h4>Telling us someone has died</h4>
+    <p>Contact us to tell us a member of the NHS Pension Scheme has died.</p>
+    <p>You do not need a Letter of Authority or a legal power of attorney to do this.</p>
+    <p>But we will ask you to provide some details about the person who has died.</p>
+    <p><a href="https://www.nhsbsa.nhs.uk/pensioner-hub/bereavement/letting-us-know-pensioner-member-has-died">Letting us know someone has died</a>.</p>
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+
+          {{ button({
+            text: "Continue",
+            classes: "nhsuk-u-margin-top-4"
+          }) }}
+
+  
+
+
+
+        </form>
+      </div>
+    </div>  
+  </div>
+{% endblock %}
