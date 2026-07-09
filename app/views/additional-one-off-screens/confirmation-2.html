@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "We've received your query"%}
+{% set hideBack ="true" %}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+ 
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+
+        <div class="nhsuk-notification-banner" data-module="nhsuk-notification-banner" role="region" aria-labelledby="nhsuk-notification-banner-title">
+  <div class="nhsuk-notification-banner__header">
+    <h2 class="nhsuk-notification-banner__title" id="nhsuk-notification-banner-title">
+      Important
+    </h2>
+  </div>
+  <div class="nhsuk-notification-banner__content">
+    <p class="nhsuk-notification-banner__heading">
+      We may take longer to respond to your query until 3 August.</p>
+
+       <p class= "nhsuk-body">Our systems are currently being upgraded and will be unavailable until 9am on Monday 3 August 2026.</p>
+
+          <p>During this time, support from NHS Pensions will be limited. We will only be able to assist with general queries.</p>
+          <p>It may take us significantly longer than 2 working days to respond to your query.</p>
+          
+      <a class="nhsuk-notification-banner__link" href="#"></a>
+  
+  </div>
+</div>
+
+
+        <div class="nhsuk-panel">
+          <h1 class="nhsuk-panel__title">
+            {{pageTitle}}
+          </h1>
+        </div>
+        <p>We have sent you a confirmation email{% if (data['emailAddress']) %} to {{ data['emailAddress']}}{% endif %}.</p>
+        <h2 class="nhsuk-heading-m">What happens next</h2>
+        <p class= "nhsuk-body">Our current response time for reply is 2 working days.</p>
+
+
+
+  
+       
+        <h2 class="nhsuk-heading-m">Give us your feedback</h2>
+        <p><a href="#" class="nhsuk-link">Tell us about your experience using this service</a> (opens in a new tab)</p>
+
+      </div>
+    </div>
+  </main>
+</div>
+ 
+
+
+
+     
+<script>
+  function setLocation(element) {
+    document.forms[0].action = element.value
+  }
+</script>
+{% endblock %}
+
