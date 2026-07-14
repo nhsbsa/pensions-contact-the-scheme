@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "We've received your query"%}
+{% set pageTitle = "Your query has been received"%}
 {% set hideBack ="true" %}
 
 {% block pageTitle %}
@@ -46,9 +46,9 @@
             {{pageTitle}}
           </h1>
         </div>
-        <p>We have sent you a confirmation email{% if (data['emailAddress']) %} to {{ data['emailAddress']}}{% endif %}.</p>
+        <p>We have sent you a confirmation email to [email address]{% if (data['emailAddress']) %} to {{ data['emailAddress']}}{% endif %}.</p>
         <h2 class="nhsuk-heading-m">What happens next</h2>
-        <p class= "nhsuk-body">Our current response time for reply is 2 working days.</p>
+        <p class= "nhsuk-body">You will get a response to your query within 2 working days.</p>
 
 
 
