@@ -23,7 +23,7 @@
           {{pageTitle}}
         </h1>
         <div class="nhsuk-hint">
-          Your employer code should be 4 characters long and may look like 1234 or, A123
+          Your employer code should be 4 characters long and may look like 1234 or A123
         </div>
       {% endset -%}
 
@@ -53,8 +53,8 @@
         <p>An employer code identifies each employer in the NHS Pension Scheme.</p>
           <p>It can be made up of:</p>
           <ul>
-            <li>4 numbers like 1234</li>
-            <li>1 letter followed by 3 numbers like A123</li>
+            <li>4 numbers, like 1234</li>
+            <li>any combination of 4 letters and numbers, like A123</li>
           </ul>
   </div>
 </details>
@@ -76,17 +76,13 @@
        
         {{ actionLink({
           text: "Find your employer (opens in a new tab)",
-          href: "https://www.nhspensions.nhsbsa.nhs.uk/EmployerContactsLookup/EALookup.aspx",
+          href: "https://find-an-employer.nhsbsa.nhs.uk/",
           openInNewWindow: true
         }) }}
 
-        <p>If your organisation does not have an employer code it will need to register for one.</p>
+        <p>If your organisation does not have an employer code it will need to <a href="https://faq.nhsbsa.nhs.uk/knowledgebase/article/KA-02670/en-us" class="nhsuk-link" target="blank">register for one (opens in a new tab)</a>.</p>
 
-         {{ actionLink({
-          text: "Register for an employer code (opens in a new tab)",
-          href: "https://faq.nhsbsa.nhs.uk/knowledgebase/article/KA-02670/en-us",
-          openInNewWindow: true
-        }) }}
+         
     
   </div>
 </details>
