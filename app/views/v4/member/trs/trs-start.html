@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Types of NHS Pension statement"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %} 
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        <h1 class="nhsuk-heading-l">{{ pageTitle }}</h1> 
+      
+
+        <p>There are 2 types of statement you may receive as a member of the NHS Pension Scheme. </p>
+        <p>These are the:</p>
+        <ul>
+          <li>annual benefit statement (ABS)</li>
+          <li>Total Reward Statement (TRS)</li> 
+        </ul>
+        <p>Which you receive depends on your circumstances.</p>
+        
+
+
+        <h4>Annual benefit statement</h4>
+        <p>You may receive an annual benefit statement (ABS) on its own through My NHS Pension. 
+          Or as part of a Total Reward Statement through the Electronic Staff Record (ESR). </p>
+          <p>Your ABS will show what your pension is worth (its current value).</p>
+
+  
+
+         <h4>Total Reward Statement</h4>
+         <p>If you are currently working in the NHS and can access ESR you may receive a Total Reward Statement (TRS). 
+          A TRS is an overall rewards package. </p> 
+         <p>It includes an annual benefit statement for members of the NHS Pension Scheme as well as information on your employer benefits.</p>
+
+         <a class="nhsuk-action-link" href="https://www.nhsbsa.nhs.uk/employee-section/what-type-statement-youll-get" target="blank">
+  <svg class="nhsuk-icon nhsuk-icon--arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+    <path d="M12 2a10 10 0 0 0-10 9h11.7l-4-4a1 1 0 0 1 1.5-1.4l5.6 5.7a1 1 0 0 1 0 1.4l-5.6 5.7a1 1 0 0 1-1.5 0 1 1 0 0 1 0-1.4l4-4H2A10 10 0 1 0 12 2z" />
+  </svg>
+  <span class="nhsuk-action-link__text">What type of statement you'll get</span>
+</a>
+
+     <a class="nhsuk-action-link" href="https://www.nhsbsa.nhs.uk/employee-section/understanding-your-statement" target="blank">
+  <svg class="nhsuk-icon nhsuk-icon--arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+    <path d="M12 2a10 10 0 0 0-10 9h11.7l-4-4a1 1 0 0 1 1.5-1.4l5.6 5.7a1 1 0 0 1 0 1.4l-5.6 5.7a1 1 0 0 1-1.5 0 1 1 0 0 1 0-1.4l4-4H2A10 10 0 1 0 12 2z" />
+  </svg>
+  <span class="nhsuk-action-link__text">Understanding your statement</span>
+</a>
+    
+        <form action="/v3/member/trs/trs-start" method="post" novalidate>
+        {{ radios({
+          idPrefix: "view-statement",
+          name: "view-statement",
+          fieldset: {
+            legend: {
+              text: "What help do you need with your NHS Pension statement?",
+              classes: "nhsuk-fieldset__legend--l",
+              size: "l",
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              value: "View or access statement",
+              text: "View or access my pension statement"
+            },
+            {
+              value: "Report an issue",
+              text: "Report an issue with my statement"
+            }
+          ]
+        }) }}
+       
+        {{ button({
+          text: "Continue",
+          classes: "nhsuk-u-margin-top-4"
+        }) }}
+
+
+        </form>
+        
+
+
+    </div>  
+  </div>
+{% endblock %}

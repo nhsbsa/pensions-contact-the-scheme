@@ -1,0 +1,75 @@
+t{% extends 'layout.html' %}
+{% set pageTitle = "Get your Total Reward Statement on ESR"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-form-group">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+    
+      <form action="/{{folder}}/{{subfolder}}/trs-not-active-member" method="post">
+
+        <h1 class="nhsuk-heading-l">{{ pageTitle }}</h1> 
+
+        <p class="nhsuk-body">You can view or access your Total Reward Statement (TRS) through your Electronic Staff Record (ESR) if you're:</p>
+        <ul>
+          <li>working for the NHS</li>
+          <li>able to access ESR</li>
+          <li>paying into the NHS Pension Scheme, or paid in for at least 2 years in the past</li>
+        </ul>
+        
+        <p>Your TRS will include an annual benefit statement (ABS) which details your pension benefits.</p>
+      
+         <h4>Find your Total Reward Statement in ESR</h4>
+         <p class="nhsuk-body">To view your Total Reward Statement, sign in to ESR and:</p>
+        <ul>
+          <li>select 'Dashboard'</li>
+          <li>then 'My Pay and Rewards'</li>
+          <li>then 'My Total Reward Statement'</li>
+        </ul>
+
+        <p class="nhsuk-body">Your TRS will display on the screen if one is available.</p>
+
+        <div class="nhsuk-button-group">
+          <a href="https://my.esr.nhs.uk/" button class="nhsuk-button" data-module="nhsuk-button" type="submit" >
+           Sign in to ESR
+          </a>
+          </button>
+
+        
+          <a href="../membership-number" class="nhsuk-link">Contact NHS Pensions</a>
+        </div>
+
+        
+
+        <details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      Cannot produce your statement?
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+   
+    <p>We can create an ABS for you if TRS shows that one cannot be produced when you sign in. 
+      If this happens, contact NHS Pensions to request a manual ABS.</p>
+
+  </div>
+</details>
+
+
+
+      </form>
+    </div>
+    </div>  
+  </div>
+{% endblock %}

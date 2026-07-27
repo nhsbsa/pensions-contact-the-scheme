@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Contact NHS Pensions"%}
+{% set hideBack ="true" %}
+
+{% block pageTitle %}
+  {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+ 
+
+<div class="nhsuk-form-group">
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <h1 class="nhsuk-heading-xl">{{ pageTitle }}</h1> 
+
+        <p>Use this service if you need to contact NHS Pensions for any pensions queries.</p>
+        <p>You can use this service if you are a member, employer or a third-party authority and need help with:</p>
+        <ul>
+          <li>the NHS Pension Scheme (1995/2008 or 2015)</li>
+          <li>the My NHS Pension Portal</li> 
+          <li>your Total Reward Statement (TRS)</li> 
+          <li>anything relating to NHS Pensions</li>
+        </ul>
+        
+        <h2>Before you start</h2>
+        <h4 class="nhsuk-heading-xs">Members </h4>
+        <p>If you’re a member, we'll ask for your:</p>
+         <ul>
+          <li>membership number</li>
+          <li>personal details (name, address, date of birth)</li>
+        </ul>
+    
+        <h4 class="nhsuk-heading-xs">Employers</h4>
+        <p>If you’re an employer, we'll ask for your employing authority (EA) code.</p>
+        <p>We’ll also ask for the member’s:</p>
+        <ul>
+          <li>personal details</li>
+          <li>membership number</li>
+        </ul>
+
+    
+        <h4 class="nhsuk-heading-xs">Acting for a member</h4>
+        <p>If you’re acting for a member, we'll ask for your name and contact details.</p>
+        <p>We’ll also ask for the member’s:</p>
+        <ul>
+          <li>personal details</li>
+          <li>membership number</li>
+        </ul>
+
+        <form action="/{{folder}}/start" method="post" novalidate>
+          {{ button({
+            "href": "select-member-employer",
+            "text": "Start now"
+          }) }}
+        </form>
+        
+    </div>
+  </fieldset>
+  </div>
+
+
+ 
+{% endblock %}
+

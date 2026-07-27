@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Do you know your NHS Pensions membership number?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
+
+        <form action="/{{folder}}/{{subfolder}}/membership-number" method="post">
+
+          {% set sdNumberHtml %}
+            {{ input({
+              id: "sdNumber",
+              name: "sdNumber",
+              classes: "nhsuk-u-width-two-thirds",
+              label: {
+                text: "Membership number"
+              }
+            }) }}
+          {% endset -%} 
+
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+          {{ radios({
+            idPrefix: "membership-number",
+            name: "membership-number",
+            classes: "nhsuk-radios--inline",
+            fieldset: {
+              legend: {
+                text: pageTitle,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: "This is an 8 digit number, which may start with 'SD'. 
+              You can find it on payslips, Annual Benefit Statements, Total Reward Statements, or any letters from us"
+            },
+            items: [ 
+              {
+                value: "Yes, I know the membership number",
+                text: "Yes, I know the membership number",
+                conditional: {
+                  html: sdNumberHtml
+                }
+              },
+              {
+                value: "No, I do not know the membership number",
+                text: "No, I do not know the membership number"
+              },
+              {
+                value: "I'm not sure",
+                text: "I'm not sure"
+              }
+            ]
+          }) }}
+               </div>
+        <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+  Continue
+</button>
+        </form>
+
+ 
+    </div>  
+  </div>
+{% endblock %}

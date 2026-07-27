@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "You are eligible for an annual benefit statement"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+    
+      <form action="/{{folder}}/{{subfolder}}/trs-not-active-member" method="post">
+
+        <h1 class="nhsuk-heading-l">{{ pageTitle }}</h1> 
+
+        <p class="nhsuk-body">If you are working for an NHS organisation which does not use the Electronic Staff Record (ESR), 
+          you may receive an annual benefit statement (ABS).</p>
+
+          <p class="nhsuk-body">You will not get a Total Reward Statement (TRS).</p>
+
+    <p class="nhsuk-body">You may also get an ABS only if you are:</p>
+      <ul>
+        <li>no longer working for the NHS and not paying into the NHS Pension Scheme</li>
+        <li>working for direction bodies, approved non-NHS organisations and smaller NHS organisations, such as GP practices</li>
+      </ul>
+
+  <p> See <a href="https://www.nhsbsa.nhs.uk/employee-section/what-type-statement-youll-get" target="blank">what type of statement you'll get</a>.</p>
+
+
+    <h3>Accessing your annual benefit statement</h3>
+         <p class="nhsuk-body">You can access your ABS at the My NHS Pension portal. Find out <a href="https://www.nhsbsa.nhs.uk/member-hub/my-nhs-pension" target="blank">how to access the portal.</a> 
+          If you cannot access the portal, contact us and we can create a manual ABS for you.</p>
+
+       
+      
+        <div class="nhsuk-button-group">
+          <a href="../membership-number" button class="nhsuk-button" data-module="nhsuk-button" type="submit" >
+           Contact NHS Pensions
+          </a>
+          </button>
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}
