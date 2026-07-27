@@ -57,7 +57,7 @@ router.use('/v3/member', versionThree);
 router.use('/v3/employer', versionThree);
 router.use('/v3/third-party', versionThree);
 
-const versionThree =  require('./views/v4/routes')
+const versionFour =  require('./views/v4/routes')
 router.use('/v4', versionFour);
 router.use('/v4/member', versionFour);
 router.use('/v4/employer', versionFour);
