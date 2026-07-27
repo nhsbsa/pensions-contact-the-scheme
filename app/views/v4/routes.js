@@ -29,7 +29,7 @@ router.post('/select-member-employer/', (req, res) => {
         res.redirect('employer/enter-employer-code')
 
     } else {
-        res.redirect('third-party/enter-your-name')
+        res.redirect('third-party/select-query-type')
     }
 });
 

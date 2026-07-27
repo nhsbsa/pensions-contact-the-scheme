@@ -57,5 +57,11 @@ router.use('/v3/member', versionThree);
 router.use('/v3/employer', versionThree);
 router.use('/v3/third-party', versionThree);
 
+const versionThree =  require('./views/v4/routes')
+router.use('/v4', versionThree);
+router.use('/v4/member', versionThree);
+router.use('/v4/employer', versionThree);
+router.use('/v4/third-party', versionThree);
+
 module.exports = router;
 

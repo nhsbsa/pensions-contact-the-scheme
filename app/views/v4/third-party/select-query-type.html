@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What do you need help with?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
+
+        <form action="/{{folder}}/select-query-type" method="post">
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Acting for a member</span>
+          {{ radios({
+            idPrefix: "query-type",
+            name: "query-type",
+            fieldset: {
+              legend: {
+                text: pageTitle,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "I have a question about a member's pension",
+                text: "I have a question about a member's pension",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "I want to tell you that a member has died",
+                text: "I want to tell you that a member has died",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "I need help with something else",
+                text: "I need help with something else",
+                hint: {
+                  text: ""
+                }
+              }
+            ]
+          }) }}
+
+        
+
+          {{ button({
+            text: "Continue",
+            classes: "nhsuk-u-margin-top-4"
+          }) }}
+
+  
+
+
+
+        </form>
+      </div>
+    </div>  
+  </div>
+{% endblock %}
