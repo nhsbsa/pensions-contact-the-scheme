@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What is the your email address?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+      <form action="/{{folder}}/{{subfolder}}/informant/enter-informant-email" method="post">
+
+        {% call fieldset({
+          legend: {
+            "text": pageTitle,
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
+        
+          {{ input({
+            label: {
+              "html": 'Email address'
+            },
+            "id": "memberEmail",
+            "name": "memberEmail",
+            spellcheck: false,
+            "classes": "nhsuk-input--width-20"
+          }) }}
+        
+        {% endcall %}
+        {{ details({
+        summaryText: "Why do we ask for your email address",
+        html: "
+        <p>We'll use this to send you confirmation that we've received your query.</p>
+        "
+      }) }}
+
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
+    </form>
+    </div>  
+  </div>
+
+  <script>
+    function setLocation(element) {
+      document.forms[0].action = element.value
+    }
+  </script>
+{% endblock %}

@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What is your name?"%}
+{% set pageTitle = "What is the member's name?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -12,11 +12,12 @@
 {% endblock %}
 
 {% block content %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-        <span class="nhsuk-caption-l nhsuk-caption--bottom">Third-party details</span>
-        <form action="/{{folder}}/{{subfolder}}/enter-your-name" method="post">
+        <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
+        <form action="/{{folder}}/{{subfolder}}/member-query/enter-members-name" method="post">
           {% call fieldset({
             legend: {
               "text": pageTitle,
@@ -24,13 +25,49 @@
               "isPageHeading": true
             }
           }) %}
+          {% from "select/macro.njk" import select %}
+
+{{ select({
+  label: {
+    text: "Title"
+  },
+  id: "Title",
+  name: "Title",
+  value: "Title",
+  items: [
+    {
+      value: "Mr",
+      text: "Mr"
+    },
+    {
+      value: "Mrs",
+      text: "Mrs"
+    },
+    {
+      value: "Miss",
+      text: "Miss"
+    },
+    {
+      value: "Ms",
+      text: "Ms"
+    },
+    {
+      value: "Lady",
+      text: "Lady"
+    },
+    {
+      value: "Dr",
+      text: "Dr"
+    }
+  ]
+}) }}
           
             {{ input({
               label: {
                 "html": 'First name'
               },
-              "id": "firstName",
-              "name": "firstName",
+              "id": "memberFirstName",
+              "name": "memberFirstName",
               autocomplete: "given-name",
               spellcheck: false,
               "classes": "nhsuk-input--width-20"
@@ -40,8 +77,8 @@
               label: {
                 "html": 'Last name'
               },
-              "id": "lastName",
-              "name": "lastName",
+              "id": "memberLastName",
+              "name": "memberLastName",
               autocomplete: "family-name",
               spellcheck: false,
               "classes": "nhsuk-input--width-20"
@@ -55,6 +92,7 @@
         </form>
     </div>  
   </div>
+
   <script>
     function setLocation(element) {
       document.forms[0].action = element.value

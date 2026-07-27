@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Tell us an NHS Pension Scheme member has died"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+   <div class="nhsuk-grid-column-two-thirds">
+     <h1 class="nhsuk-heading-l"> {{ pageTitle }}</h1>
+      <form action="../third-party/bereavement-journey/start" method="post"></form>
+
+     <p class="nhsuk-body">Use this service to let us know a pension member has died</p>
+<h3>Before you start</h3>
+
+<p>We'll need to know your:</p>
+     <ul class="nhsuk-list nhsuk-list--bullet">
+    
+            <li>personal details</li>
+            <li>contact details</li>
+            <li>relationship to the person who died</li>
+          </ul>
+
+<p>If you have them, it will help us match our records if you provide the member's:</p>
+     <ul class="nhsuk-list nhsuk-list--bullet">
+            <li>personal details</li>
+            <li>National Insurance number</li>
+            <li>details of any dependants</li>
+            <li>main address</li>
+        </ul>
+
+        <p>We'll contact you to confirm we've received your notification. </p>
+              
+                {{ button({
+                    "text": "Start",
+                    "href": "../bereavement-journey/informant/enter-your-name"
+                    }) }} 
+                    
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

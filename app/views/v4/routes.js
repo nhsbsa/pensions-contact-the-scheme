@@ -378,6 +378,71 @@ router.post('/phone-number', (req, res) => {
 // THIRD PARTY JOURNEY
 // ****************************************
 
+//Third-party- What do you need help with?
+router.post('/third-party/select-query-type', (req, res) => {
+
+    var thirdPartyQuery = req.session.data['third-party-query']
+
+    if (thirdPartyQuery == 'I have a question about a members pension') {
+        res.redirect('../third-party/member/enter-your-name')
+
+    } else if (thirdPartyQuery == 'I want to tell you that a member has died') {
+        res.redirect('../third-party/bereavement-journey/tell-us-once')
+
+    } else {
+        res.redirect('../third-party/general-query/reason-for-contact')
+    }                           
+    });
+
+
+//Bereavement journey- Tell us once-
+router.post('/bereavement-journey/tell-us-once', (req, res) => {
+  var TellUsOnce = req.session.data['TellUsOnce']
+
+  if (TellUsOnce == 'Yes') {
+    res.redirect('../bereavement-journey/tell-us-once-yes')
+  } else {
+    res.redirect('../bereavement-journey/start')
+  }
+});
+
+//Bereavement journey- Start page
+router.post( '/bereavement-journey/start', (req, res) => {
+    req.session.destroy()
+    res.redirect('../bereavement-journey/informant/enter-your-name')
+});
+
+// Bereavement journey- Informant details - What is your name?
+
+router.post('/informant/enter-your-name', function (req, res) {
+
+    var firstName = req.session.data['InformantFirstName'];
+    var lastName = req.session.data['InformantLastName'];
+
+    if (firstName && lastName) {
+        res.redirect('../informant/relationship-to-member');
+    } else {
+        res.redirect('../informant/enter-your-name');
+    }
+
+});
+
+
+// Bereavement journey- Informant details - What is your email?
+
+router.post('../third-party/informant/enter-your-email', function (req, res) {
+
+    var emailAddress = req.session.data['InformantEmailAddress'];
+
+    if (emailAddress) {
+        res.redirect('../informant/phone-number');
+    } else {
+        res.redirect('../informant/enter-your-email');
+
+    }
+})
+
+
 // MEMBER - Do you know your membership number?
 router.post('/member-membership-number', (req, res) => {
 

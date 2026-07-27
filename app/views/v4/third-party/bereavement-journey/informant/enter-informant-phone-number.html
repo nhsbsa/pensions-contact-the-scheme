@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Are you able to provide your telephone number?"%}
+{% set pageTitle = "Do you have a phone number?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -17,7 +17,7 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{folder}}/{{subfolder}}/phone-number" method="post">
+      <form action="/third-party/informant/phone-number" method="post">
           
 
             <div class="nhsuk-form-group">

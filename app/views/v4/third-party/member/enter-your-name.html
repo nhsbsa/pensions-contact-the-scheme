@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What is the member's name?"%}
+{% set pageTitle = "What is your name?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -12,12 +12,11 @@
 {% endblock %}
 
 {% block content %}
-
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-        <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
-        <form action="/{{folder}}/{{subfolder}}/members-name" method="post">
+        <span class="nhsuk-caption-l nhsuk-caption--bottom">Third-party details</span>
+        <form action="../member/enter-your-name" method="post">
           {% call fieldset({
             legend: {
               "text": pageTitle,
@@ -30,8 +29,8 @@
               label: {
                 "html": 'First name'
               },
-              "id": "memberFirstName",
-              "name": "memberFirstName",
+              "id": "firstName",
+              "name": "firstName",
               autocomplete: "given-name",
               spellcheck: false,
               "classes": "nhsuk-input--width-20"
@@ -41,8 +40,8 @@
               label: {
                 "html": 'Last name'
               },
-              "id": "memberLastName",
-              "name": "memberLastName",
+              "id": "lastName",
+              "name": "lastName",
               autocomplete: "family-name",
               spellcheck: false,
               "classes": "nhsuk-input--width-20"
@@ -56,7 +55,6 @@
         </form>
     </div>  
   </div>
-
   <script>
     function setLocation(element) {
       document.forms[0].action = element.value

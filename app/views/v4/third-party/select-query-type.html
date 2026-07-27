@@ -17,11 +17,11 @@
     <div class="nhsuk-grid-column-two-thirds">
       <div class="nhsuk-form-group">
 
-        <form action="/{{folder}}/select-query-type" method="post">
+        <form action="../third-party/select-query-type" method="post">
           <span class="nhsuk-caption-l nhsuk-caption--bottom">Acting for a member</span>
           {{ radios({
-            idPrefix: "query-type",
-            name: "query-type",
+            idPrefix: "third-party-query",
+            name: "third-party-query",
             fieldset: {
               legend: {
                 text: pageTitle,
@@ -34,7 +34,7 @@
             },
             items: [
               {
-                value: "I have a question about a member's pension",
+                value: "I have a question about a members pension",
                 text: "I have a question about a member's pension",
                 hint: {
                   text: ""
