@@ -462,7 +462,7 @@ router.post('/member-membership-number', (req, res) => {
 
 // THIRD PARTY - What is your name?
 
-router.post('/third-party/enter-your-name', function (req, res) {
+router.post('/third-party/member/enter-your-name', function (req, res) {
 
     var firstName = req.session.data['firstName'];
     var lastName = req.session.data['lastName'];
@@ -477,7 +477,7 @@ router.post('/third-party/enter-your-name', function (req, res) {
 
 // THIRD PARTY - What is your email?
 
-router.post('/third-party/enter-your-email', function (req, res) {
+router.post('/third-party/member/enter-your-email', function (req, res) {
 
     var emailAddress = req.session.data['emailAddress'];
 
@@ -498,7 +498,7 @@ router.post('/third-party/enter-your-email', function (req, res) {
 
 
 
-router.post('/enter-your-email', (req, res) => {
+router.post('/third-party/member/enter-your-email', (req, res) => {
 
     res.redirect('enter-your-name');
 
@@ -506,7 +506,7 @@ router.post('/enter-your-email', (req, res) => {
 
 
 // THIRD PARTY- member - What is the member's membership number?
-router.post('/member-membership-number', (req, res) => {
+router.post('/third-party/member/member-membership-number', (req, res) => {
 
     var memberNumber = req.session.data['membershipNumber']
 
@@ -519,7 +519,7 @@ router.post('/member-membership-number', (req, res) => {
 
 // MEMBER - What is your national insurance number?
 
-router.post('/member-national-insurance-number', function (req, res) {
+router.post('/third-party/member/member-national-insurance-number', function (req, res) {
     
     let nino = req.session.data['natInsNum'];
  
@@ -542,7 +542,7 @@ router.post('/member-national-insurance-number', function (req, res) {
 
 // THIRD PARTY- member -  What is the member's name?
 
-router.post('/members-name', function (req, res) {
+router.post('/third-party/member/members-name', function (req, res) {
 
     var firstName = req.session.data['memberFirstName'];
     var lastName = req.session.data['memberLastName'];
@@ -557,7 +557,7 @@ router.post('/members-name', function (req, res) {
 
 // THIRD PARTY- member - What is the member's date of birth?
 
-router.post('/members-date-of-birth', function (req, res) {
+router.post('/third-party/member/members-date-of-birth', function (req, res) {
 
     var dateOfBirthDay = req.session.data['date-of-birth-member']?.day;
     var dateOfBirthMonth = req.session.data['date-of-birth-member']?.month;
@@ -584,7 +584,7 @@ router.post('/members-date-of-birth', function (req, res) {
 
 // THIRD PARTY- member - What is the member's postcode?
 
-router.post('/lookup-members-address', function (req, res) {
+router.post('/third-party/member/lookup-members-address', function (req, res) {
 
     var postcodeLookup = req.session.data['postcode']
 
@@ -615,7 +615,7 @@ router.post('/lookup-members-address', function (req, res) {
 
                     req.session.data['addresses'] = titleCaseAddresses;
 
-                    res.redirect('members-address')
+                    res.redirect('third-party/member/members-address')
                 })
                 .catch(error => {
                     console.log(error);
@@ -661,7 +661,7 @@ router.post('members-address', function (req, res) {
 })
 
 // THIRD PARTY- member  - No address found
-router.post('/no-address-found', function (req, res) {
+router.post('third-party/member/no-address-found', function (req, res) {
 
     res.redirect('lookup-members-address');
 
@@ -669,7 +669,7 @@ router.post('/no-address-found', function (req, res) {
 
 // THIRD PARTY- member - Enter members address manual
 
-router.post('/members-address-manual', function (req, res) {
+router.post('/third-party/member/members-address-manual', function (req, res) {
 
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
@@ -686,7 +686,7 @@ router.post('/members-address-manual', function (req, res) {
 
 // THIRD PARTY- member -Do you have the member's email address?
 
-router.post('/members-email', (req, res) => {
+router.post('/third-party/member/members-email', (req, res) => {
 
     res.redirect('reason-for-contact');
 
@@ -694,7 +694,7 @@ router.post('/members-email', (req, res) => {
 
 
 // THIRD PARTY- member  - Reason for contact
-router.post('/reason-for-contact', function (req, res) {
+router.post('/third-party/member/reason-for-contact', function (req, res) {
 
     var additionalInfo = req.session.data['additionalInfo'];
 
@@ -713,7 +713,7 @@ router.post('/reason-for-contact', function (req, res) {
 })
 
 // ETHIRD PARTY- member - Check your answers
-router.post('/check-your-answers', (req, res) => {
+router.post('/third-party/member/check-your-answers', (req, res) => {
 
     res.redirect('confirmation');
 
