@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What is their date of birth?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/{{folder}}/{{subfolder}}/members-date-of-death" method="post">
+        
+        <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
+       <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <form action="/{{folder}}/{{subfolder}}/members-date-of-death" method="post">
+     
+
+      {% call fieldset({
+        legend: {
+          text: pageTitle,
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+      <label class="nhsuk-label" for="example-with-hint-text">
+        Make sure this matches the date on the death certificate.  </label>
+        <div class="nhsuk-hint" id="example-with-hint-text-hint">
+          For example, 15 3 1984
+          </div>
+
+        <div class="nhsuk-date-input" id="date-of-death-member">
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="date-of-death-member-day">Day</label>
+              <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="date-of-death-member-day" name="date-of-death-member-day" type="text" inputmode="numeric">
+            </div>
+          </div>
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="date-of-death-member-month">Month</label>
+              <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="date-of-death-member-month" name="date-of-death-member-month" type="text" inputmode="numeric">
+            </div>
+          </div>
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="date-of-death-member-year">Year</label>
+              <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="date-of-death-member-year" name="date-of-death-member-year" type="text" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+
+      {% endcall %}
+
+      {{ button({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

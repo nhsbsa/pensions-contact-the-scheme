@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Before you continue"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+   <div class="nhsuk-grid-column-two-thirds">
+     <h1 class="nhsuk-heading-l"> {{ pageTitle }}</h1>
+      <form action="../third-party/bereavement-journey/member/start" method="post"></form>
+
+     <p class="nhsuk-body">We'll ask for some details about the person who died.</p>
+
+<p>If you know them, it will help to have:</p>
+     <ul class="nhsuk-list nhsuk-list--bullet">
+    
+            <li>full name</li>
+            <li>National Insurance number</li>
+            <li>date of birth</li>
+            <li>date of death</li>
+            <li>address</li>
+            <li>details of any dependants</li>
+            <li>details of the person dealing with estate</li>
+          </ul>
+
+
+
+        <p>We'll email you to confirm we've received your form.</p>
+              
+                {{ button({
+                    "text": "Start",
+                    "href": "../bereavement-journey/informant/enter-your-name"
+                    }) }} 
+                    
+
+            </form>
+        </div>
+    </div>
+{% endblock %}
