@@ -16,30 +16,29 @@
  
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Dependant details</span>
       <h1 class="nhsuk-heading-l">{{pageTitle}}</h1>
       <p>Check your answers and make sure they are correct before you continue. If you need to, you can change your answers.</p>
-      <h2 class="nhsuk-heading-m">Previous answers</h2>
 
-      <dl class="nhsuk-summary-list">
+
+      
+
+        <dl class="nhsuk-summary-list">
+
+           <dl class="nhsuk-summary-list">
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Query from
+            Dependant
           </dt>
           <dd class="nhsuk-summary-list__value">
             {{ data['member-employer']}} 
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="select-member-employer">
+            <a href="/v2/select-member-employer">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
             </a>
           </dd>
         </div>
-      </dl>
-
-      <h3 class="nhsuk-heading-s">Third-party authority details</h3>
-
-        <dl class="nhsuk-summary-list">
 
 
           <div class="nhsuk-summary-list__row">
@@ -56,6 +55,24 @@
             <dd class="nhsuk-summary-list__actions">
               <a href="../third-party/enter-your-name">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
+              </a>
+            </dd>
+          </div>
+
+             <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Relationship to the member 
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['memberFirstName']) and (data['memberLastName']) %}
+                {{ data['memberFirstName']}} {{ data['memberLastName'] }}
+              {% else %}
+                Spouse
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../third-party/members-name">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; member's name. </span>
               </a>
             </dd>
           </div>
@@ -77,68 +94,18 @@
               </a>
             </dd>
           </div>
-        </dl>
 
-        <h3 class="nhsuk-heading-s">Member details</h3>
-
-        <dl class="nhsuk-summary-list">
-
-        {% if (data['member-membership-number'] == "Yes, I know the membership number") %}
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Membership number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ data ['sdNumber']}}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="member-membership-number">
-                Change<span class="nhsuk-u-visually-hidden">&nbsp; membership-number. </span>
-              </a>
-            </dd>
-          </div>
-
-        {% elseif data['member-membership-number'] == "No, I do not know the membership number" %}
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Membership number
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                I do not know my membership number
-              </dd>
-              <dd class="nhsuk-summary-list__actions">
-              <a href="member-membership-number">
-              Change<span class="nhsuk-u-visually-hidden"> membership number</span>
-            </a>
-          </dd>
-          </div>
-
-       {% elseif data['member-membership-number'] == "I'm not sure" %}
-         <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Membership number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              I'm not sure
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="member-membership-number">
-                Change<span class="nhsuk-u-visually-hidden"> membership number</span>
-              </a>
-            </dd>
-          </div>
-
-        {% endif %}
+       
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            National Insurance Number
+            Telephone number
           </dt>
           <dd class="nhsuk-summary-list__value">
             {{ data ['natInsNum']}}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="member-national-insurance-number">
-              Change<span class="nhsuk-u-visually-hidden">&nbsp; national insurance number</span>
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; telephone number</span>
             </a>
           </dd>
         </div>
@@ -158,33 +125,17 @@
         </div>
         {% endif %}
 
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Name 
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {% if (data['memberFirstName']) and (data['memberLastName']) %}
-                {{ data['memberFirstName']}} {{ data['memberLastName'] }}
-              {% else %}
-                John Bloggs
-              {% endif %}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/members-name">
-                Change<span class="nhsuk-u-visually-hidden">&nbsp; member's name. </span>
-              </a>
-            </dd>
-          </div>
+       
   
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-            Date of birth
+            Main address in the UK
             </dt>
             <dd class="nhsuk-summary-list__value">
               {% if (data['date-of-birth-member']) %}
                 {{ data['date-of-birth-member'] }}
               {% else %}
-                15 March 1984
+                Yes
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
@@ -217,44 +168,8 @@
           </div>
 
 
- <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Email
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {% if (data['memberEmail']) %}
-              {{ data['memberEmail']}}
-            {% else %}
-              No
-            {% endif %}
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="members-email">
-              Change<span class="nhsuk-u-visually-hidden">&nbsp; member's email.</span>
-            </a>
-          </dd>
-        </div>
+ 
 
-
-
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Reason for contact
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {% if data['additionalInfo'] %}
-                {{ data['additionalInfo'] | truncate(175, false)}}
-              {% else %}
-                No additional information added
-              {% endif %}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="reason-for-contact">
-                Change<span class="nhsuk-u-visually-hidden">&nbsp; reason for contact.</span>
-              </a>
-            </dd>
-          </div>
         </dl>
 
       <form action="/{{folder}}/{{subfolder}}/check-your-answers" method="post">

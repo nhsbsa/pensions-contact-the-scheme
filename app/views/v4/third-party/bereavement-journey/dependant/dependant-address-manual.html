@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What is the member's address?"%}
+{% set pageTitle = "What was their address?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -16,7 +16,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Dependant details</span>
       <form action="/{{folder}}/{{subfolder}}/members-address-manual" method="post">
 
         {% call fieldset({

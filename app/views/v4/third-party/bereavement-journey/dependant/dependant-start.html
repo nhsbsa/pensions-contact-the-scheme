@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Did the member have any dependants?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+   <div class="nhsuk-grid-column-two-thirds">
+    <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
+     <h1 class="nhsuk-heading-l"> {{ pageTitle }}</h1>
+      <form action="../third-party/bereavement-journey/member/start" method="post"></form>
+
+     
+
+<p>A dependant is someone who could be eligible for benefits from the NHS Pension Scheme, such as:</p>
+     <ul class="nhsuk-list nhsuk-list--bullet">
+    
+            <li>a spouse, civil partner or scheme partner</li>
+            <li>a child</li>
+            <li>someone the member nominated to receive benefits</li>
+          </ul>
+
+<div class="nhsuk-radios" data-module="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-hints" name="exampleHints" type="radio" value="email">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+          Yes
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-hints-2" name="exampleHints" type="radio" value="phone">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+          No
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-hints-3" name="exampleHints" type="radio" value="text">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
+          Not sure
+        </label>
+      </div>
+    </div>
+    <br>
+
+      
+                {{ button({
+                    "text": "continue"
+                    }) }} 
+                    
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

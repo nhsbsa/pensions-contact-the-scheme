@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Are you able to provide your telephone number?"%}
+{% set pageTitle = "Do they have a phone number?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -33,7 +33,7 @@
                 }) }}
               {% endset -%}
 
-              <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+              <span class="nhsuk-caption-l nhsuk-caption--bottom">Dependant details</span>
               {{ radios({
                 idPrefix: "phone-number",
                 name: "phone-number",
