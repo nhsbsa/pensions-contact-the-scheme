@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "How are you connected to the person who died?"%}
+{% set pageTitle = "What is their connection to the member?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -18,7 +18,7 @@
       <div class="nhsuk-form-group">
 
         <form action="/{{folder}}/select-member-employer" method="post">
-          <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Person dealing with the estate</span>
           {{ radios({
             idPrefix: "relationship",
             name: "relationship",
@@ -30,7 +30,7 @@
               }
             },
             hint: {
-              text: "We ask this so we can process the member's NHS Pension benefits correctly. "
+              text: ""
             },
             items: [
               {
@@ -54,8 +54,8 @@
                   text: ""
                 }
               },{
-                value: "Person dealing with the estate",
-                text: "Person dealing with the estate",
+                value: "Legal personal representative",
+                text: "Legal personal representative",
                 hint: {
                   text: ""
                 }

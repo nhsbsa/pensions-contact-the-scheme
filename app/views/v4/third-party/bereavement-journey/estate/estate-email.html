@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What is your email address?"%}
+{% set pageTitle = "What is their email address?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -17,7 +17,7 @@
 
   <div class="nhsuk-grid-column-two-thirds">
 
-    <span class="nhsuk-caption-l nhsuk-caption--bottom">Third-party details</span>
+    <span class="nhsuk-caption-l nhsuk-caption--bottom">Person dealing with the estate</span>
     <form action="/{{folder}}/{{subfolder}}/enter-your-email" method="post">
 
       {% call fieldset({
@@ -33,7 +33,7 @@
             "html": 'Email address'
           },
           hint: {
-            text: "You must use an email address that is only used by you"
+            text: ""
           },
           "id": "emailAddress",
           "name": "emailAddress",
@@ -43,12 +43,7 @@
       
       {% endcall %}
 
-      {{ details({
-        summaryText: "Why do we ask for your email address",
-        html: "
-        <p>We'll use this to send you confirmation that we've received your query.</p>
-        "
-      }) }}
+      
 
       {{ button({
         "text": "Continue",
