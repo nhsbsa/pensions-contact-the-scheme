@@ -494,7 +494,7 @@ router.post('/third-party/member/enter-your-email', function (req, res) {
 // ************************************************
 // MEMBERS / THIRD PARTY JOURNEYS
 // ************************************************
-// THIRD PARTY - Third-party-query
+// THIRD PARTY - Third-party-query- Asking on behalf od a member
 
 
 
@@ -505,21 +505,22 @@ router.post('/third-party/member/enter-your-email', (req, res) => {
 });
 
 
-// THIRD PARTY- member - What is the member's membership number?
-router.post('/third-party/member/member-membership-number', (req, res) => {
+router.post('/member/member-membership-number', (req, res) => {
 
-    var memberNumber = req.session.data['membershipNumber']
+  var answer = req.session.data['member-membership-number'];
 
-    if (memberNumber) {
-        res.redirect('members-name')
-    }else {
-        res.redirect('member-membership-number')
-    }
+  if (answer === "Yes, I know the membership number") {
+    res.redirect('../member/members-name');
+  } else if (answer === "No, I do not know the membership number") {
+    res.redirect('../member/member-national-insurance-number'); // wherever "No" should go
+  } else {
+    res.redirect('../member/member-national-insurance-number'); // or an "I'm not sure" path
+  }
 });
 
 // MEMBER - What is your national insurance number?
 
-router.post('/third-party/member/member-national-insurance-number', function (req, res) {
+router.post('/member/member-national-insurance-number', function (req, res) {
     
     let nino = req.session.data['natInsNum'];
  
@@ -530,12 +531,12 @@ router.post('/third-party/member/member-national-insurance-number', function (re
 
     if (nino) {
         if (regex.test(nino)|| nino === 'QQ123456C') { 
-            res.redirect('../third-party/members-name');  // Valid National Insurance Number
+            res.redirect('../member/members-name');  // Valid National Insurance Number
         } else {
-            res.redirect('member-national-insurance-number');  // Invalid format
+            res.redirect('../member/member-national-insurance-number');  // Invalid format
         }
     } else {
-        res.redirect('member-national-insurance-number');  // Field is empty
+        res.redirect('../member/member-national-insurance-number');  // Field is empty
     }
 
 });
@@ -548,9 +549,9 @@ router.post('/third-party/member/members-name', function (req, res) {
     var lastName = req.session.data['memberLastName'];
 
     if (firstName && lastName) {
-        res.redirect('members-date-of-birth');
+        res.redirect('../member/members-date-of-birth');
     } else {
-        res.redirect('members-name');
+        res.redirect('../member/members-name');
     }
 
 });
@@ -594,7 +595,7 @@ router.post('/third-party/member/lookup-members-address', function (req, res) {
 
         if (regex.test(postcodeLookup) === true) {
 
-            axios.get("https://api.os.uk/search/places/v1/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
+            axios.get("https://api.os.uk/search/places/v4/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
                 .then(response => {
                     var addresses = response.data.results.map(result => result.DPA.ADDRESS);
 
@@ -615,17 +616,17 @@ router.post('/third-party/member/lookup-members-address', function (req, res) {
 
                     req.session.data['addresses'] = titleCaseAddresses;
 
-                    res.redirect('third-party/member/members-address')
+                    res.redirect('../member/members-address')
                 })
                 .catch(error => {
                     console.log(error);
-                    res.redirect('no-address-found')
+                    res.redirect('../member/no-address-found')
                 });
 
         }
 
     } else {
-        res.redirect('lookup-members-address')
+        res.redirect('../member/lookup-members-address')
     }
 
 })
@@ -878,7 +879,7 @@ router.post('/member-query/find-members-address', function (req, res) {
 
         if (regex.test(postcodeLookup) === true) {
 
-            axios.get("https://api.os.uk/search/places/v1/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
+            axios.get("https://api.os.uk/search/places/v4/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
                 .then(response => {
                     var addresses = response.data.results.map(result => result.DPA.ADDRESS);
 

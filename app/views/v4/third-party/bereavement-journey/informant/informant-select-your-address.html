@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Select the member's address"%}
+{% set pageTitle = "Select your address"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -16,8 +16,8 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
-      <form action="../member/members-address" method="post">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+      <form action="../informant/informant-select-your-address" method="post">
         <fieldset class="nhsuk-fieldset">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
             <h1 class="nhsuk-fieldset__heading">
@@ -50,7 +50,7 @@
         </form>
   
         <div class="nhsuk-form-group">
-          <p><a href="members-address-manual">Enter the member's address manually</a></p>
+          <p><a href="enter-your-address">Enter your address manually</a></p>
         </div>
     </div>
   </div>

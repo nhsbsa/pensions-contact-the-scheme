@@ -25,14 +25,14 @@
           number or name and postcode{% else %}that postcode{% endif %}. Search again or enter the member's address manually.
       </p>
 
-      <form action="/{{folder}}/{{subfolder}}/member-query/no-address-found" method="post" novalidate>
+      <form action="../member/no-address-found" method="post" novalidate>
           {{ button({
           "text": "Search again",
           "classes": "nhsuk-u-margin-top-3"
           }) }}
       </form>
 
-      <p><a href="members-address-manual">Enter the member's address manually</a>.</p>
+      <p><a href="../member/members-address-manual">Enter the member's address manually</a></p>
     </div>
   </div>
 
