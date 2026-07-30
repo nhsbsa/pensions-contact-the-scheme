@@ -390,9 +390,60 @@ router.post('/third-party/select-query-type', (req, res) => {
         res.redirect('../third-party/bereavement-journey/tell-us-once')
 
     } else {
-        res.redirect('../third-party/general-query/reason-for-contact')
+        res.redirect('../third-party/general-query/enter-your-name')
     }                           
     });
+
+// ****************************************
+// THIRD PARTY JOURNEY- general query
+// ****************************************
+
+//General query- What is your name?
+
+router.post('/third-party/general-query/enter-your-name', function (req, res) {
+
+    var firstName = req.session.data['InformantFirstName'];
+    var lastName = req.session.data['InformantLastName'];
+
+    if (firstName && lastName) {
+        res.redirect('../general-query/enter-your-email');
+    } else {
+        res.redirect('../general-query/enter-your-name');
+    }
+
+});
+
+// THIRD PARTY- general query - Reason for contact
+router.post('/third-party/general-query/reason-for-contact', function (req, res) {
+
+    var additionalInfo = req.session.data['additionalInfo'];
+
+    if (additionalInfo) {
+
+        if (additionalInfo.length > 200) {
+            res.redirect('reason-for-contact');
+        } else {
+            res.redirect('check-your-answers');
+        }
+
+    } else {
+        res.redirect('reason-for-contact');
+    }
+
+})
+
+// THIRD PARTY- general query - Check your answers
+router.post('/third-party/general-query/check-your-answers', (req, res) => {
+
+    res.redirect('confirmation');
+
+});
+
+
+
+// ****************************************
+// THIRD PARTY JOURNEY- bereavement journey
+// ****************************************
 
 
 //Bereavement journey- Tell us once-
