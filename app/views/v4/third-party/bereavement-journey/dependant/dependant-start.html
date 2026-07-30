@@ -17,7 +17,7 @@
    <div class="nhsuk-grid-column-two-thirds">
     <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
      <h1 class="nhsuk-heading-l"> {{ pageTitle }}</h1>
-      <form action="../third-party/bereavement-journey/member/start" method="post"></form>
+      <form action="/v4/third-party/bereavement-journey/dependant/dependant-start" method="post">
 
      
 
@@ -31,20 +31,20 @@
 
 <div class="nhsuk-radios" data-module="nhsuk-radios">
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="example-hints" name="exampleHints" type="radio" value="email">
-        <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+        <input class="nhsuk-radios__input" id="dependant" name="dependant" type="radio" value="email">
+        <label class="nhsuk-label nhsuk-radios__label" for="dependant">
           Yes
         </label>
       </div>
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="example-hints-2" name="exampleHints" type="radio" value="phone">
-        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+        <input class="nhsuk-radios__input" id="dependant-no" name="dependant" type="radio" value="phone">
+        <label class="nhsuk-label nhsuk-radios__label" for="dependant-no">
           No
         </label>
       </div>
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="example-hints-3" name="exampleHints" type="radio" value="text">
-        <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
+        <input class="nhsuk-radios__input" id="dependant-not-sure" name="dependant" type="radio" value="text">
+        <label class="nhsuk-label nhsuk-radios__label" for="dependant-not-sure">
           Not sure
         </label>
       </div>

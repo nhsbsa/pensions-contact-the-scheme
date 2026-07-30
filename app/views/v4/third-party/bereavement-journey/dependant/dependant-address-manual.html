@@ -17,7 +17,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Dependant details</span>
-      <form action="/{{folder}}/{{subfolder}}/members-address-manual" method="post">
+      <form action="/v4/third-party/bereavement-journey/dependant/dependant-address-manual" method="post">
 
         {% call fieldset({
           legend: {
@@ -88,7 +88,8 @@
         {% endcall %}
 
         {{ button({
-          text: "Continue"
+          text: "Continue",
+          href: "../dependant/dependant-check-your-answers"
         }) }}
 
       </form>

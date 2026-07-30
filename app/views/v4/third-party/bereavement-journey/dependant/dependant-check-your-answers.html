@@ -31,7 +31,8 @@
             Dependant
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data['member-employer']}} 
+            {{ data['dependant']}} 
+            
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="/v2/select-member-employer">
@@ -41,23 +42,7 @@
         </div>
 
 
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Name 
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {% if (data['firstName']) and (data['lastName']) %}
-                {{ data['firstName']}} {{ data['lastName'] }}
-              {% else %}
-                Joe Bloggs
-              {% endif %}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/enter-your-name">
-                Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
-              </a>
-            </dd>
-          </div>
+         
 
              <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
@@ -71,8 +56,26 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/members-name">
+              <a href="../dependant/dependant-relationship">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's name. </span>
+              </a>
+            </dd>
+          </div>
+
+           <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Name 
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['firstName']) and (data['lastName']) %}
+                {{ data['firstName']}} {{ data['lastName'] }}
+              {% else %}
+                Joe Bloggs
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../dependant/dependant-name">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
               </a>
             </dd>
           </div>
@@ -89,7 +92,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/enter-your-email">
+              <a href="../dependant/dependant-email">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
               </a>
             </dd>
@@ -101,29 +104,14 @@
             Telephone number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data ['natInsNum']}}
+            {{ data ['DependantPhoneNumber']}}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="member-national-insurance-number">
-              Change<span class="nhsuk-u-visually-hidden">&nbsp; telephone number</span>
+            <a href="../dependant/dependant-telephone">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; telephone number.</span>
             </a>
           </dd>
-        </div>
-        {% if (data['natInsNum']) %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            National Insurance Number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data ['natInsNum']}}
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="member-national-insurance-number">
-              Change<span class="nhsuk-u-visually-hidden">&nbsp; national insurance number</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+        </div>  
 
        
   
@@ -139,7 +127,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/members-date-of-birth">
+              <a href="../dependant/dependant-address-manual">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's date of birth.</span>
               </a>
             </dd>
@@ -172,7 +160,7 @@
 
         </dl>
 
-      <form action="/{{folder}}/{{subfolder}}/check-your-answers" method="post">
+      <form action="/v4/third-party/bereavement-journey/dependant/dependant-check-your-answers" method="post">
         {{ button({
             text: "Confirm and send"
         }) }}   

@@ -17,15 +17,15 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/{{folder}}/{{subfolder}}/phone-number" method="post">
+      <form action="/v4/third-party/bereavement-journey/dependant/dependant-phone-number" method="post">
           
 
             <div class="nhsuk-form-group">
 
               {% set phoneNumberHtml %}
                 {{ input({
-                  id: "phoneNumber",
-                  name: "phoneNumber",
+                  id: "DependantPhoneNumber",
+                  name: "DependantPhoneNumber",
                   classes: "nhsuk-u-width-two-thirds",
                   label: {
                     text: "Telephone number"
@@ -35,8 +35,8 @@
 
               <span class="nhsuk-caption-l nhsuk-caption--bottom">Dependant details</span>
               {{ radios({
-                idPrefix: "phone-number",
-                name: "phone-number",
+                idPrefix: "DependantPhoneNumber",
+                name: "DependantPhoneNumber",
                 classes: "nhsuk-radios",
                 fieldset: {
                   legend: {

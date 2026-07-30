@@ -760,6 +760,156 @@ router.post('/bereavement-journey/member/member-check-your-answers', function (r
     res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-start');
 });
 
+// Bereavement journey - dependant start
+router.post('/bereavement-journey/dependant/dependant-start', (req, res) => {
+    var hasDependants = req.session.data['dependant'] || req.session.data['exampleHints'];
+
+    if (hasDependants === 'Yes' || hasDependants === 'email') {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-relationship');
+    } else if (hasDependants === 'No' || hasDependants === 'phone' || hasDependants === 'Not sure' || hasDependants === 'text') {
+        res.redirect('/v4/third-party/bereavement-journey/estate/estate-start');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-start');
+    }
+});
+
+// Bereavement journey - dependant relationship
+router.post('/bereavement-journey/dependant/dependant-relationship', function (req, res) {
+    var relationship = req.session.data['relationship'];
+
+    if (relationship) {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-name');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-relationship');
+    }
+});
+
+// Bereavement journey - dependant name
+router.post('/bereavement-journey/dependant/dependant-name', function (req, res) {
+    var firstName = req.session.data['firstName'] || req.session.data['dependantFirstName'];
+    var lastName = req.session.data['lastName'] || req.session.data['dependantLastName'];
+
+    if (firstName && lastName) {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-email');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-name');
+    }
+});
+
+
+
+// Bereavement journey - dependant email
+router.post('/bereavement-journey/dependant/dependant-email', function (req, res) {
+    var emailAddress = req.session.data['emailAddress'];
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailAddress && emailRegex.test(emailAddress)) {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-phone-number');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-email');
+    }
+});
+
+// Bereavement journey - dependant phone number
+router.post('/bereavement-journey/dependant/dependant-phone-number', (req, res) => {
+    var phoneChoice = req.session.data['phone-number'];
+    var phoneNumber = req.session.data['phoneNumber'];
+
+    if (phoneChoice === 'No' || (phoneChoice === 'Yes' && phoneNumber)) {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-main-address');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-phone-number');
+    }
+});
+
+// Bereavement journey - dependant main address
+router.post('/bereavement-journey/dependant/dependant-main-address', (req, res) => {
+    var addressInUk = req.session.data['DependantMainAddress'] || req.session.data['DependantMainAddress'];
+
+    if (addressInUk === 'Yes') {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/lookup-dependant-address');
+    } else if (addressInUk === 'No') {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-address-manual');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-main-address');
+    }
+});
+
+// Bereavement journey - dependant lookup address
+router.post('/bereavement-journey/dependant/lookup-dependant-address', function (req, res) {
+    var postcodeLookup = req.session.data['postcode'];
+
+    const regex = RegExp('^(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$');
+
+    if (postcodeLookup) {
+        if (regex.test(postcodeLookup) === true) {
+            axios.get('https://api.os.uk/search/places/v4/postcode?postcode=' + postcodeLookup + '&key=' + process.env.POSTCODEAPIKEY)
+                .then(response => {
+                    var addresses = response.data.results.map(result => result.DPA.ADDRESS);
+
+                    const titleCaseAddresses = addresses.map(address => {
+                        const parts = address.split(', ');
+                        const formattedParts = parts.map((part, index) => {
+                            if (index === parts.length - 1) {
+                                return part.toUpperCase();
+                            }
+                            return part
+                                .split(' ')
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                                .join(' ');
+                        });
+                        return formattedParts.join(', ');
+                    });
+
+                    req.session.data['addresses'] = titleCaseAddresses;
+                    res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-select-your-address');
+                })
+                .catch(error => {
+                    console.log(error);
+                    res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-no-address-found');
+                });
+        } else {
+            res.redirect('/v4/third-party/bereavement-journey/dependant/lookup-dependant-address');
+        }
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/lookup-dependant-address');
+    }
+});
+
+// Bereavement journey - dependant address manual
+router.post('/bereavement-journey/dependant/dependant-address-manual', function (req, res) {
+    var addressLine1 = req.session.data['address-line-1'];
+    var townOrCity = req.session.data['address-town'];
+
+    if (addressLine1 && townOrCity) {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-check-your-answers');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-address-manual');
+    }
+});
+
+// Bereavement journey - dependant select address
+router.post('/bereavement-journey/dependant/dependant-select-your-address', function (req, res) {
+    var address = req.session.data['address'];
+
+    if (address) {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-check-your-answers');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-select-your-address');
+    }
+});
+
+// Bereavement journey - dependant no address found
+router.post('/bereavement-journey/dependant/dependant-no-address-found', function (req, res) {
+    res.redirect('/v4/third-party/bereavement-journey/dependant/lookup-dependant-address');
+});
+
+// Bereavement journey - dependant check your answers
+router.post('/bereavement-journey/dependant/dependant-check-your-answers', function (req, res) {
+    res.redirect('/v4/third-party/bereavement-journey/estate/estate-start');
+});
+
+
 // ************************************************
 // MEMBERS / THIRD PARTY JOURNEYS
 // ************************************************
