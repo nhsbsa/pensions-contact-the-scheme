@@ -679,17 +679,6 @@ router.post('/bereavement-journey/member/member-date-of-death', function (req, r
 });
 
 
-// Bereavement journey - member phone number
-router.post('/bereavement-journey/member/member-phone-number', (req, res) => {
-    var phoneChoice = req.session.data['phone-number'];
-    var phoneNumber = req.session.data['phoneNumber'];
-
-    if (phoneChoice === 'No' || (phoneChoice === 'Yes' && phoneNumber)) {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-main-address');
-    } else {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-phone-number');
-    }
-});
 
 // Bereavement journey - member main address
 router.post('/bereavement-journey/member/member-main-address', (req, res) => {
@@ -747,14 +736,7 @@ router.post('/bereavement-journey/member/lookup-member-address', function (req, 
 
 // Bereavement journey - member address manual
 router.post('/bereavement-journey/member/member-address-manual', function (req, res) {
-    var addressLine1 = req.session.data['address-line-1'];
-    var townOrCity = req.session.data['address-town'];
-
-    if (addressLine1 && townOrCity) {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-check-your-answers');
-    } else {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-address-manual');
-    }
+    res.redirect('/v4/third-party/bereavement-journey/member/member-check-your-answers');
 });
 
 // Bereavement journey - member select address
@@ -775,7 +757,7 @@ router.post('/bereavement-journey/member/member-no-address-found', function (req
 
 // Bereavement journey - member check your answers
 router.post('/bereavement-journey/member/member-check-your-answers', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/confirmation');
+    res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-start');
 });
 
 // ************************************************

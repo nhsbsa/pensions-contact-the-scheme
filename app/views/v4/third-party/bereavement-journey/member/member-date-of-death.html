@@ -39,8 +39,8 @@
         <div class="nhsuk-date-input" id="date-of-death-member">
           <div class="nhsuk-date-input__item">
             <div class="nhsuk-form-group">
-              <label class="nhsuk-label nhsuk-date-input__label" for="date-of-death-member-day">Day</label>
-              <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="date-of-death-member-day" name="date-of-death-member-day" type="text" inputmode="numeric">
+              <label class="nhsuk-label nhsuk-date-input__label" for="date-of-death">Day</label>
+              <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="date-of-death" name="date-of-death-member-day" type="text" inputmode="numeric">
             </div>
           </div>
           <div class="nhsuk-date-input__item">
@@ -60,7 +60,8 @@
       {% endcall %}
 
       {{ button({
-        text: "Continue"
+        text: "Continue",
+        href: "../member/member-main-address"
       }) }}
     </form>
   </div>
