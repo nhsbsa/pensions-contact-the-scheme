@@ -142,21 +142,7 @@
             </a>
           </dd>
         </div>
-        {% if (data['natInsNum']) %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            National Insurance Number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {{ data ['natInsNum']}}
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="member-national-insurance-number">
-              Change<span class="nhsuk-u-visually-hidden">&nbsp; national insurance number</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+      
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
@@ -257,7 +243,7 @@
           </div>
         </dl>
 
-      <form action="/{{folder}}/{{subfolder}}/check-your-answers" method="post">
+      <form action="../member/check-your-answers" method="post">
         {{ button({
             text: "Confirm and send"
         }) }}   
