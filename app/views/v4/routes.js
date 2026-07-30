@@ -526,7 +526,7 @@ router.post('/bereavement-journey/informant/informant-main-address', (req, res) 
     if (addressInUk === 'Yes') {
         res.redirect('/v4/third-party/bereavement-journey/informant/find-informant-address');
     } else if (addressInUk === 'No') {
-        res.redirect('/v4/third-party/bereavement-journey/informant/enter-informant-address');
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-address');
     } else {
         res.redirect('/v4/third-party/bereavement-journey/informant/informant-main-address');
     }
@@ -570,19 +570,6 @@ router.post('/bereavement-journey/informant/find-informant-address', function (r
         }
     } else {
         res.redirect('/v4/third-party/bereavement-journey/informant/find-informant-address');
-    }
-});
-
-// Bereavement journey - informant enter address
-router.post('/bereavement-journey/informant/enter-informant-address', function (req, res) {
-    var addressLine1 = req.session.data['address-line-1'];
-    var townOrCity = req.session.data['address-town'];
-    var postcodeManual = req.session.data['address-postcode'];
-
-    if (addressLine1 && townOrCity && postcodeManual) {
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-check-your-answers');
-    } else {
-        res.redirect('/v4/third-party/bereavement-journey/informant/enter-informant-address');
     }
 });
 

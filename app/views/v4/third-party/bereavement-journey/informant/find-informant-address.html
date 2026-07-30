@@ -16,7 +16,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
-      <form action="../informant/find-informant-address" method="post" novalidate>
+      <form action="/{{folder}}/{{subfolder}}/bereavement-journey/informant/find-informant-address" method="post" novalidate>
         
         {% call fieldset({
           legend: {
@@ -42,7 +42,7 @@
         {% endcall %}
 
         <div class="nhsuk-form-group">
-          <p>If they have an international address or their postcode cannot be found, <a href="enter-informant-address">enter the address manually</a></p>
+          <p>If they have an international address or their postcode cannot be found, <a href="informant-address">enter the address manually</a></p>
         </div>
 
         {{ button({
