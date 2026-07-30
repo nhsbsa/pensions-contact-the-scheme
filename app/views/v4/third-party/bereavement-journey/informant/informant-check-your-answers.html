@@ -16,9 +16,8 @@
  
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
       <h1 class="nhsuk-heading-l">{{pageTitle}}</h1>
-      <p>Check your answers and make sure they are correct before you continue. If you need to, you can change your answers.</p>
       <h2 class="nhsuk-heading-m">Previous answers</h2>
 
       <dl class="nhsuk-summary-list">
@@ -30,20 +29,21 @@
             {{ data['member-employer']}} 
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="/v2/select-member-employer">
-              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            <a href="/v4/select-member-employer">
+              Change<span class="nhsuk-u-visually-hidden"></span>
             </a>
           </dd>
         </div>
+
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Type of query
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data['member-employer-query']}} 
+            {{ data['third-party-query']}} 
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="../select-member-employer-query">
+            <a href="/v4/third-party/select-query-type">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
             </a>
           </dd>
@@ -52,44 +52,43 @@
       
      
 
-      <h3 class="nhsuk-heading-s">Informant details</h3>
+      <h3 class="nhsuk-heading-s">Your details</h3>
 
         <dl class="nhsuk-summary-list">
 
-         
 
-          <div class="nhsuk-summary-list__row">
+            <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Name 
+              Connection to person who died
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['firstName']) and (data['lastName']) %}
-                {{ data['firstName']}} {{ data['lastName'] }}
+              {% if (data['InformantRelationship']) %}
+                {{ data['InformantRelationship']}} 
               {% else %}
-                Joe Bloggs
+                Spouse
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../enter-your-name">
-                Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
+              <a href="../informant/informant-relationship">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
               </a>
             </dd>
           </div>
 
             <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Connection to deceased
+              Name 
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['emailAddress']) %}
-                {{ data['emailAddress']}} 
+              {% if (data['InformantfirstName']) and (data['InformantlastName']) %}
+                {{ data['InformantfirstName']}} {{ data['InformantlastName'] }}
               {% else %}
-                joe.bloggs@nhsbsa.nhs.uk
+                Joe Bloggs
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../enter-your-email">
-                Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
+              <a href="../informant/informant-name">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
               </a>
             </dd>
           </div>
@@ -99,14 +98,14 @@
               Email address
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['emailAddress']) %}
-                {{ data['emailAddress']}} 
+              {% if (data['informantEmail']) %}
+                {{ data['informantEmail']}} 
               {% else %}
                 Spouse
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../enter-your-email">
+              <a href="../informant/informant-email">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
               </a>
             </dd>
@@ -114,18 +113,18 @@
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Telephone number
+              Phone number
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['sdNumber']) %}
-                {{ data['sdNumber']}} 
+              {% if (data['InformantphoneNumber']) %}
+                {{ data['InformantphoneNumber']}} 
               {% else %}
-                QQ123456C
+                07986543210
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="membership-number">
-                Change<span class="nhsuk-u-visually-hidden">&nbsp; membership-number. </span>
+              <a href="../informant/informant-phone-number">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; phone number. </span>
               </a>
             </dd>
           </div>
@@ -133,18 +132,18 @@
   
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-            Main Address in UK
+            Main address in UK
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['date-of-birth-member']) %}
-                {{ data['date-of-birth-member'] }}
+              {% if (data['addressInUk']) %}
+                {{ data['addressInUk'] }}
               {% else %}
                 Yes
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="enter-members-date-of-birth">
-                Change<span class="nhsuk-u-visually-hidden">&nbsp; member's date of birth.</span>
+              <a href="../informant/informant-main-address">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; main address.</span>
               </a>
             </dd>
           </div>

@@ -445,76 +445,177 @@ router.post('/third-party/general-query/check-your-answers', (req, res) => {
 // THIRD PARTY JOURNEY- bereavement journey
 // ****************************************
 
-// Start page
-router.post( '/bereavement-journey/start', (req, res) => {
-    req.session.destroy()
-    res.redirect('../bereavement-journey/informant/informant-relationship');
+// Bereavement journey - start
+router.post('/bereavement-journey/start', (req, res) => {
+    req.session.destroy();
+    res.redirect('/v4/third-party/bereavement-journey/informant/informant-relationship');
 });
 
-
-//Bereavement journey- Tell us once-
+// Bereavement journey - tell us once
 router.post('/bereavement-journey/tell-us-once', (req, res) => {
   var TellUsOnce = req.session.data['TellUsOnce']
 
   if (TellUsOnce == 'Yes') {
-    res.redirect('../bereavement-journey/tell-us-once-yes')
+    res.redirect('/v4/third-party/bereavement-journey/tell-us-once-yes')
   } else {
-    res.redirect('../bereavement-journey/start')
+    res.redirect('/v4/third-party/bereavement-journey/start')
   }
 });
 
-//Bereavement journey- Start page
-router.post( '/bereavement-journey/start', (req, res) => {
-    req.session.destroy()
-    res.redirect('../informant/informant-name')
+// Bereavement journey - informant relationship
+router.post('/bereavement-journey/informant/informant-relationship', (req, res) => {
+    var relationship = req.session.data['InformantRelationship'];
+
+    if (relationship) {
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-name');
+    } else {
+        req.session.data['errors'] = { relationship: 'Select how you are connected to the person who died' };
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-relationship');
+    }
 });
 
-// Bereavement journey- Informant details - What is your name?
-
-router.post('/informant/informant-name', function (req, res) {
-
+// Bereavement journey - informant name
+router.post('/bereavement-journey/informant/informant-name', function (req, res) {
     var firstName = req.session.data['informantFirstName'];
     var lastName = req.session.data['informantLastName'];
 
     if (firstName && lastName) {
-        res.redirect('../informant/informant-email');
-    req.session.data['errors'] = {
-      informantFirstName: !firstName ? 'Enter a first name' : null,
-      informantLastName: !lastName ? 'Enter a last name' : null
-    };
-    res.redirect('../informant/informant-name');
-  }
-});
-
-
-// Bereavement journey- Informant details - What is your email?
-
-router.post('/informant/informant-email', function (req, res) {
-
-   var emailAddress = req.session.data['informantEmail'];
-var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-if (emailAddress && emailRegex.test(emailAddress)) {
-  res.redirect('../informant/phone-number');
-} else {
-  req.session.data['errors'] = { informantEmail: 'Enter an email address in the correct format' };
-  res.redirect('../informant/informant-email');
-}
-});
-
-
-// Bereavement journey- Do you have a phone number?
-router.post('/informant/phone-number', (req, res) => {
-
-    var phoneNumber = req.session.data['InformantphoneNumber'];
-
-    if (phoneNumber) {
-    res.redirect('../informant/informant-main-address');
+        req.session.data['errors'] = {};
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-email');
     } else {
-        req.session.data['errors'] = { InformantphoneNumber: 'Enter a phone number' };
-        res.redirect('../informant/phone-number');
+        req.session.data['errors'] = {
+            informantFirstName: !firstName ? 'Enter a first name' : null,
+            informantLastName: !lastName ? 'Enter a last name' : null
+        };
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-name');
     }
 });
+
+// Bereavement journey - informant email
+router.post('/bereavement-journey/informant/informant-email', function (req, res) {
+    var emailAddress = req.session.data['informantEmail'];
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailAddress && emailRegex.test(emailAddress)) {
+        req.session.data['errors'] = {};
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-phone-number');
+    } else {
+        req.session.data['errors'] = { informantEmail: 'Enter an email address in the correct format' };
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-email');
+    }
+});
+
+// Bereavement journey - informant phone number
+router.post('/bereavement-journey/informant/informant-phone-number', (req, res) => {
+    var phoneChoice = req.session.data['InformantphoneNumber'];
+    var phoneNumber = req.session.data['phoneNumber'];
+
+    if (phoneChoice === 'No' || (phoneChoice === 'Yes' && phoneNumber)) {
+        req.session.data['errors'] = {};
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-main-address');
+    } else {
+        req.session.data['errors'] = { InformantphoneNumber: 'Enter a phone number' };
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-phone-number');
+    }
+});
+
+// Bereavement journey - informant main address
+router.post('/bereavement-journey/informant/informant-main-address', (req, res) => {
+    var addressInUk = req.session.data['addressInUk'] || req.session.data['phone-number'];
+
+    if (addressInUk === 'Yes') {
+        res.redirect('/v4/third-party/bereavement-journey/informant/find-informant-address');
+    } else if (addressInUk === 'No') {
+        res.redirect('/v4/third-party/bereavement-journey/informant/enter-informant-address');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-main-address');
+    }
+});
+
+// Bereavement journey - informant find address
+router.post('/bereavement-journey/informant/find-informant-address', function (req, res) {
+    var postcodeLookup = req.session.data['postcode'];
+
+    const regex = RegExp('^(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$');
+
+    if (postcodeLookup) {
+        if (regex.test(postcodeLookup) === true) {
+            axios.get('https://api.os.uk/search/places/v4/postcode?postcode=' + postcodeLookup + '&key=' + process.env.POSTCODEAPIKEY)
+                .then(response => {
+                    var addresses = response.data.results.map(result => result.DPA.ADDRESS);
+
+                    const titleCaseAddresses = addresses.map(address => {
+                        const parts = address.split(', ');
+                        const formattedParts = parts.map((part, index) => {
+                            if (index === parts.length - 1) {
+                                return part.toUpperCase();
+                            }
+                            return part
+                                .split(' ')
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                                .join(' ');
+                        });
+                        return formattedParts.join(', ');
+                    });
+
+                    req.session.data['addresses'] = titleCaseAddresses;
+                    res.redirect('/v4/third-party/bereavement-journey/informant/select-informant-address');
+                })
+                .catch(error => {
+                    console.log(error);
+                    res.redirect('/v4/third-party/bereavement-journey/informant/no-informant-address-found');
+                });
+        } else {
+            res.redirect('/v4/third-party/bereavement-journey/informant/find-informant-address');
+        }
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/informant/find-informant-address');
+    }
+});
+
+// Bereavement journey - informant enter address
+router.post('/bereavement-journey/informant/enter-informant-address', function (req, res) {
+    var addressLine1 = req.session.data['address-line-1'];
+    var townOrCity = req.session.data['address-town'];
+    var postcodeManual = req.session.data['address-postcode'];
+
+    if (addressLine1 && townOrCity && postcodeManual) {
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-check-your-answers');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/informant/enter-informant-address');
+    }
+});
+
+// Bereavement journey - informant address
+router.post('/bereavement-journey/informant/informant-address', function (req, res) {
+    var addressLine1 = req.session.data['address-line-1'];
+    var townOrCity = req.session.data['address-town'];
+    var postcodeManual = req.session.data['address-postcode'];
+
+    if (addressLine1 && townOrCity && postcodeManual) {
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-check-your-answers');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-address');
+    }
+});
+
+// Bereavement journey - informant select address
+router.post('/bereavement-journey/informant/select-informant-address', function (req, res) {
+    var address = req.session.data['address'];
+
+    if (address) {
+        res.redirect('/v4/third-party/bereavement-journey/informant/informant-check-your-answers');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/informant/select-informant-address');
+    }
+});
+
+// Bereavement journey - informant no address found
+router.post('/bereavement-journey/informant/no-informant-address-found', function (req, res) {
+    res.redirect('/v4/third-party/bereavement-journey/informant/find-informant-address');
+});
+
+
 
 
 
