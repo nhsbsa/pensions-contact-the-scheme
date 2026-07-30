@@ -387,7 +387,7 @@ router.post('/third-party/select-query-type', (req, res) => {
         res.redirect('../third-party/member/enter-your-name')
 
     } else if (thirdPartyQuery == 'I want to tell you that a member has died') {
-        res.redirect('../third-party/bereavement-journey/tell-us-once')
+        res.redirect('../third-party/bereavement-journey/start')
 
     } else {
         res.redirect('../third-party/general-query/enter-your-name')
@@ -445,6 +445,12 @@ router.post('/third-party/general-query/check-your-answers', (req, res) => {
 // THIRD PARTY JOURNEY- bereavement journey
 // ****************************************
 
+// Start page
+router.post( '/bereavement-journey/start', (req, res) => {
+    req.session.destroy()
+    res.redirect('../bereavement-journey/informant/informant-relationship');
+});
+
 
 //Bereavement journey- Tell us once-
 router.post('/bereavement-journey/tell-us-once', (req, res) => {
@@ -460,38 +466,98 @@ router.post('/bereavement-journey/tell-us-once', (req, res) => {
 //Bereavement journey- Start page
 router.post( '/bereavement-journey/start', (req, res) => {
     req.session.destroy()
-    res.redirect('../bereavement-journey/informant/enter-your-name')
+    res.redirect('../informant/informant-name')
 });
 
 // Bereavement journey- Informant details - What is your name?
 
-router.post('/informant/enter-your-name', function (req, res) {
+router.post('/informant/informant-name', function (req, res) {
 
-    var firstName = req.session.data['InformantFirstName'];
-    var lastName = req.session.data['InformantLastName'];
+    var firstName = req.session.data['informantFirstName'];
+    var lastName = req.session.data['informantLastName'];
 
     if (firstName && lastName) {
-        res.redirect('../informant/relationship-to-member');
-    } else {
-        res.redirect('../informant/enter-your-name');
-    }
-
+        res.redirect('../informant/informant-email');
+    req.session.data['errors'] = {
+      informantFirstName: !firstName ? 'Enter a first name' : null,
+      informantLastName: !lastName ? 'Enter a last name' : null
+    };
+    res.redirect('../informant/informant-name');
+  }
 });
 
 
 // Bereavement journey- Informant details - What is your email?
 
-router.post('../third-party/informant/enter-your-email', function (req, res) {
+router.post('/informant/informant-email', function (req, res) {
 
-    var emailAddress = req.session.data['InformantEmailAddress'];
+   var emailAddress = req.session.data['informantEmail'];
+var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (emailAddress) {
-        res.redirect('../informant/phone-number');
+if (emailAddress && emailRegex.test(emailAddress)) {
+  res.redirect('../informant/phone-number');
+} else {
+  req.session.data['errors'] = { informantEmail: 'Enter an email address in the correct format' };
+  res.redirect('../informant/informant-email');
+}
+});
+
+
+// Bereavement journey- Do you have a phone number?
+router.post('/informant/phone-number', (req, res) => {
+
+    var phoneNumber = req.session.data['InformantphoneNumber'];
+
+    if (phoneNumber) {
+    res.redirect('../informant/informant-main-address');
     } else {
-        res.redirect('../informant/enter-your-email');
-
+        req.session.data['errors'] = { InformantphoneNumber: 'Enter a phone number' };
+        res.redirect('../informant/phone-number');
     }
-})
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ************************************************
+// MEMBERS / THIRD PARTY JOURNEYS
+// ************************************************
+// THIRD PARTY - Third-party-query- Asking on behalf od a member
+
+
+
+router.post('/third-party/member/enter-your-email', (req, res) => {
+
+    res.redirect('enter-your-name');
+
+});
+
+
+router.post('/member/member-membership-number', (req, res) => {
+
+  var answer = req.session.data['member-membership-number'];
+
+  if (answer === "Yes, I know the membership number") {
+    res.redirect('../member/members-name');
+  } else if (answer === "No, I do not know the membership number") {
+    res.redirect('../member/member-national-insurance-number'); // wherever "No" should go
+  } else {
+    res.redirect('../member/member-national-insurance-number'); // or an "I'm not sure" path
+  }
+});
 
 
 // MEMBER - Do you know your membership number?
@@ -538,35 +604,6 @@ router.post('/third-party/member/enter-your-email', function (req, res) {
         res.redirect('enter-your-email');
 
     }
-})
-
-
-
-// ************************************************
-// MEMBERS / THIRD PARTY JOURNEYS
-// ************************************************
-// THIRD PARTY - Third-party-query- Asking on behalf od a member
-
-
-
-router.post('/third-party/member/enter-your-email', (req, res) => {
-
-    res.redirect('enter-your-name');
-
-});
-
-
-router.post('/member/member-membership-number', (req, res) => {
-
-  var answer = req.session.data['member-membership-number'];
-
-  if (answer === "Yes, I know the membership number") {
-    res.redirect('../member/members-name');
-  } else if (answer === "No, I do not know the membership number") {
-    res.redirect('../member/member-national-insurance-number'); // wherever "No" should go
-  } else {
-    res.redirect('../member/member-national-insurance-number'); // or an "I'm not sure" path
-  }
 });
 
 // MEMBER - What is your national insurance number?

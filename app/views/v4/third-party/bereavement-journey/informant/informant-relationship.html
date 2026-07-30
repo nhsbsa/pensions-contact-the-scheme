@@ -17,7 +17,7 @@
     <div class="nhsuk-grid-column-two-thirds">
       <div class="nhsuk-form-group">
 
-        <form action="/{{folder}}/select-member-employer" method="post">
+        <form action="../informant/informant-relationship" method="post">
           <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
           {{ radios({
             idPrefix: "relationship",
@@ -81,7 +81,8 @@
 
           {{ button({
             text: "Continue",
-            classes: "nhsuk-u-margin-top-4"
+            classes: "nhsuk-u-margin-top-4",
+            href: "../informant/informant-name"
           }) }}
 
  
