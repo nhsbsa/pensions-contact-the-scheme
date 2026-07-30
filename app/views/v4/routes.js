@@ -603,7 +603,7 @@ router.post('/bereavement-journey/informant/no-informant-address-found', functio
 
 // Bereavement journey - informant check your answers
 router.post('/bereavement-journey/informant/check-your-answers', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/informant/confirmation');
+    res.redirect('/v4/third-party/bereavement-journey/member/member-start');
 });
 
 
@@ -623,6 +623,160 @@ router.post('/bereavement-journey/informant/check-your-answers', function (req, 
 
 
 
+
+// Bereavement journey - member start
+router.post('/bereavement-journey/member/start', (req, res) => {
+    res.redirect('/v4/third-party/bereavement-journey/member/member-name');
+});
+
+// Bereavement journey - member name
+router.post('/bereavement-journey/member/member-name', function (req, res) {
+    var firstName = req.session.data['memberFirstName'];
+    var lastName = req.session.data['memberLastName'];
+
+    if (firstName && lastName) {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-national-insurance-number');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-name');
+    }
+});
+
+// Bereavement journey - member national insurance number
+router.post('/bereavement-journey/member/member-national-insurance-number', function (req, res) {
+    var nino = req.session.data['natInsNum'];
+
+    if (nino) {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-date-of-birth');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-national-insurance-number');
+    }
+});
+
+// Bereavement journey - member date of birth
+router.post('/bereavement-journey/member/member-date-of-birth', function (req, res) {
+    var dateOfBirthDay = req.session.data['date-of-birth-member']?.day;
+    var dateOfBirthMonth = req.session.data['date-of-birth-member']?.month;
+    var dateOfBirthYear = req.session.data['date-of-birth-member']?.year;
+
+    if (/^\d+$/.test(dateOfBirthDay) && /^\d+$/.test(dateOfBirthMonth) && /^\d+$/.test(dateOfBirthYear)) {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-date-of-death');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-date-of-birth');
+    }
+});
+
+// Bereavement journey - member date of death
+router.post('/bereavement-journey/member/member-date-of-death', function (req, res) {
+    var dateOfDeathDay = req.session.data['date-of-death-member']?.day;
+    var dateOfDeathMonth = req.session.data['date-of-death-member']?.month;
+    var dateOfDeathYear = req.session.data['date-of-death-member']?.year;
+
+    if (/^\d+$/.test(dateOfDeathDay) && /^\d+$/.test(dateOfDeathMonth) && /^\d+$/.test(dateOfDeathYear)) {
+        res.redirect('/bereavement-journey/member/member-main-address');
+    } else {
+        res.redirect('/bereavement-journey/member/member-date-of-death');
+    }
+});
+
+
+// Bereavement journey - member phone number
+router.post('/bereavement-journey/member/member-phone-number', (req, res) => {
+    var phoneChoice = req.session.data['phone-number'];
+    var phoneNumber = req.session.data['phoneNumber'];
+
+    if (phoneChoice === 'No' || (phoneChoice === 'Yes' && phoneNumber)) {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-main-address');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-phone-number');
+    }
+});
+
+// Bereavement journey - member main address
+router.post('/bereavement-journey/member/member-main-address', (req, res) => {
+    var addressInUk = req.session.data['addressInUk'];
+
+    if (addressInUk === 'Yes') {
+        res.redirect('/v4/third-party/bereavement-journey/member/lookup-member-address');
+    } else if (addressInUk === 'No') {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-address-manual');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-main-address');
+    }
+});
+
+// Bereavement journey - member lookup address
+router.post('/bereavement-journey/member/lookup-member-address', function (req, res) {
+    var postcodeLookup = req.session.data['postcode'];
+
+    const regex = RegExp('^(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$');
+
+    if (postcodeLookup) {
+        if (regex.test(postcodeLookup) === true) {
+            axios.get('https://api.os.uk/search/places/v4/postcode?postcode=' + postcodeLookup + '&key=' + process.env.POSTCODEAPIKEY)
+                .then(response => {
+                    var addresses = response.data.results.map(result => result.DPA.ADDRESS);
+
+                    const titleCaseAddresses = addresses.map(address => {
+                        const parts = address.split(', ');
+                        const formattedParts = parts.map((part, index) => {
+                            if (index === parts.length - 1) {
+                                return part.toUpperCase();
+                            }
+                            return part
+                                .split(' ')
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                                .join(' ');
+                        });
+                        return formattedParts.join(', ');
+                    });
+
+                    req.session.data['addresses'] = titleCaseAddresses;
+                    res.redirect('/v4/third-party/bereavement-journey/member/member-select-your-address');
+                })
+                .catch(error => {
+                    console.log(error);
+                    res.redirect('/v4/third-party/bereavement-journey/member/member-no-address-found');
+                });
+        } else {
+            res.redirect('/v4/third-party/bereavement-journey/member/lookup-member-address');
+        }
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/member/lookup-member-address');
+    }
+});
+
+// Bereavement journey - member address manual
+router.post('/bereavement-journey/member/member-address-manual', function (req, res) {
+    var addressLine1 = req.session.data['address-line-1'];
+    var townOrCity = req.session.data['address-town'];
+
+    if (addressLine1 && townOrCity) {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-check-your-answers');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-address-manual');
+    }
+});
+
+// Bereavement journey - member select address
+router.post('/bereavement-journey/member/member-select-your-address', function (req, res) {
+    var address = req.session.data['address'];
+
+    if (address) {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-check-your-answers');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/member/member-select-your-address');
+    }
+});
+
+// Bereavement journey - member no address found
+router.post('/bereavement-journey/member/member-no-address-found', function (req, res) {
+    res.redirect('/v4/third-party/bereavement-journey/member/lookup-member-address');
+});
+
+// Bereavement journey - member check your answers
+router.post('/bereavement-journey/member/member-check-your-answers', function (req, res) {
+    res.redirect('/v4/third-party/bereavement-journey/confirmation');
+});
 
 // ************************************************
 // MEMBERS / THIRD PARTY JOURNEYS

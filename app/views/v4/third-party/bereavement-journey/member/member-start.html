@@ -16,7 +16,7 @@
   <div class="nhsuk-grid-row">
    <div class="nhsuk-grid-column-two-thirds">
      <h1 class="nhsuk-heading-l"> {{ pageTitle }}</h1>
-      <form action="../third-party/bereavement-journey/member/start" method="post"></form>
+      <form action="/{{folder}}/{{subfolder}}/bereavement-journey/member/start" method="post">
 
      <p class="nhsuk-body">We'll ask for some details about the person who died.</p>
 
@@ -37,8 +37,7 @@
         <p>We'll email you to confirm we've received your form.</p>
               
                 {{ button({
-                    "text": "continue",
-                    "href": "../bereavement-journey/member/member-name"
+                    "text": "Continue"
                     }) }} 
                     
 
