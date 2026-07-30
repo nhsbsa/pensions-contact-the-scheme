@@ -16,7 +16,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Person dealing with the estate</span>
-      <form action="/{{folder}}/{{subfolder}}/lookup-members-address" method="post" novalidate>
+      <form action="/v4/third-party/bereavement-journey/estate/lookup-estate-address" method="post" novalidate>
         
         {% call fieldset({
           legend: {
@@ -42,7 +42,7 @@
         {% endcall %}
 
         <div class="nhsuk-form-group">
-            <p>If they have an international address or their postcode cannot be found, <a href="dependant-address-manual">enter the dependant's address manually</a></p>
+            <p>If they have an international address or their postcode cannot be found, <a href="estate-address-manual">enter the dependant's address manually</a></p>
         </div>
 
         {{ button({
