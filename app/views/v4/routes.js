@@ -577,9 +577,8 @@ router.post('/bereavement-journey/informant/find-informant-address', function (r
 router.post('/bereavement-journey/informant/informant-address', function (req, res) {
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
-    var postcodeManual = req.session.data['address-postcode'];
 
-    if (addressLine1 && townOrCity && postcodeManual) {
+    if (addressLine1 && townOrCity) {
         res.redirect('/v4/third-party/bereavement-journey/informant/informant-check-your-answers');
     } else {
         res.redirect('/v4/third-party/bereavement-journey/informant/informant-address');
@@ -600,6 +599,11 @@ router.post('/bereavement-journey/informant/select-informant-address', function 
 // Bereavement journey - informant no address found
 router.post('/bereavement-journey/informant/no-informant-address-found', function (req, res) {
     res.redirect('/v4/third-party/bereavement-journey/informant/find-informant-address');
+});
+
+// Bereavement journey - informant check your answers
+router.post('/bereavement-journey/informant/check-your-answers', function (req, res) {
+    res.redirect('/v4/third-party/bereavement-journey/informant/confirmation');
 });
 
 
