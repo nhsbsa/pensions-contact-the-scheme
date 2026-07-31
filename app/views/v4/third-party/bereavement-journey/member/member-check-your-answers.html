@@ -20,8 +20,8 @@
       <h1 class="nhsuk-heading-l">{{pageTitle}}</h1>
       <h2 class="nhsuk-heading-m">Previous answers</h2>
 
-    
-      
+  
+
 
         <dl class="nhsuk-summary-list">
 
@@ -38,7 +38,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/enter-your-name">
+              <a href="../member/member-name">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
               </a>
             </dd>
@@ -55,7 +55,7 @@
             {{ data ['natInsNum']}}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="member-national-insurance-number">
+            <a href="../member/member-national-insurance-number">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; national insurance number</span>
             </a>
           </dd>
@@ -74,7 +74,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/members-date-of-birth">
+              <a href="../member/member-date-of-birth">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's date of birth.</span>
               </a>
             </dd>
@@ -92,8 +92,26 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/members-date-of-death">
+              <a href="../member/member-date-of-death">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's date of death.</span>
+              </a>
+            </dd>
+          </div>
+
+              <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+            Main address in UK
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['MemberaddressInUk']) %}
+                {{ data['MemberaddressInUk'] }}
+              {% else %}
+                Yes
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../member/member-main-address">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; main address.</span>
               </a>
             </dd>
           </div>
@@ -114,7 +132,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/lookup-members-address">
+              <a href="../member/lookup-member-address">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's address.</span>
               </a>
             </dd>
@@ -123,7 +141,7 @@
 
 </dl>
 
-      <form action="../member/member-check-your-answers" method="post">
+      <form action="/member/member-check-your-answers" method="post">
         {{ button({
             text: "Confirm and send"
         }) }}   

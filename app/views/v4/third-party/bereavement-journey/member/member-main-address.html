@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Was their main address in the UK?"%}
+{% set pageTitle = "Was their Main address in UK?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -24,8 +24,8 @@
 
               <span class="nhsuk-caption-l nhsuk-caption--bottom"> Member details</span>
               {{ radios({
-                idPrefix: "addressInUk",
-                name: "addressInUk",
+                idPrefix: "MemberaddressInUk",
+                name: "MemberaddressInUk",
                 classes: "nhsuk-radios",
                 fieldset: {
                   legend: {
