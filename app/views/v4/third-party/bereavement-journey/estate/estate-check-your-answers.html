@@ -20,7 +20,7 @@
       <h1 class="nhsuk-heading-l">{{pageTitle}}</h1>
   
 
-        <dl class="nhsuk-summary-list">
+      
 
            <dl class="nhsuk-summary-list">
         <div class="nhsuk-summary-list__row">
@@ -28,14 +28,14 @@
             Person dealing with the estate
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {% if data['member-employer'] %}
-              {{ data['member-employer'] }}
+            {% if data['estate-person'] %}
+              {{ data['estate-person'] }}
             {% else %}
                 Yes
               {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="/v2/select-member-employer">
+            <a href="../estate/estate-start">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
             </a>
           </dd>
@@ -47,15 +47,15 @@
               Connection to the member 
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['memberFirstName']) and (data['memberLastName']) %}
-                {{ data['memberFirstName']}} {{ data['memberLastName'] }}
+              {% if (data['EstateRelationship']) %}
+                {{ data['EstateRelationship']}} 
               {% else %}
                 Spouse
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/members-name">
-                Change<span class="nhsuk-u-visually-hidden">&nbsp; member's name. </span>
+              <a href="../estate/estate-relationship">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; relationship of person dealing with the estate </span>
               </a>
             </dd>
           </div>
@@ -90,7 +90,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/enter-your-email">
+              <a href="../estate/estate-phone-number">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
               </a>
             </dd>
@@ -102,10 +102,10 @@
             Phone number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data ['natInsNum']}}
+            {{ data ['phoneNumber']}}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="member-national-insurance-number">
+            <a href="../estate/estate-phone-number">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; Phone number</span>
             </a>
           </dd>
@@ -119,14 +119,14 @@
             Main address in UK
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['date-of-birth-member']) %}
-                {{ data['date-of-birth-member'] }}
+              {% if (data['estate-main-address']) %}
+                {{ data['estate-main-address'] }}
               {% else %}
                 Yes
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../estate/lookup-estate-address">
+              <a href="../estate/estate-main-address">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's date of birth.</span>
               </a>
             </dd>
@@ -148,7 +148,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/bereavement-journey/estate/lookup-estate-address">
+              <a href="../estate/lookup-estate-address">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's address.</span>
               </a>
             </dd>

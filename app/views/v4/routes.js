@@ -762,11 +762,12 @@ router.post('/bereavement-journey/member/member-check-your-answers', function (r
 
 // Bereavement journey - dependant start
 router.post('/bereavement-journey/dependant/dependant-start', (req, res) => {
-    var hasDependants = req.session.data['dependant'] || req.session.data['exampleHints'];
+    var hasDependants = req.body.dependant || req.session.data['dependant'] || req.session.data['exampleHints'];
+    req.session.data['dependant'] = hasDependants;
 
-    if (hasDependants === 'Yes' || hasDependants === 'email') {
+    if (hasDependants === 'Yes') {
         res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-relationship');
-    } else if (hasDependants === 'No' || hasDependants === 'phone' || hasDependants === 'Not sure' || hasDependants === 'text') {
+    } else if (hasDependants === 'No' || hasDependants === 'Not sure') {
         res.redirect('/v4/third-party/bereavement-journey/estate/estate-start');
     } else {
         res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-start');
@@ -812,8 +813,10 @@ router.post('/bereavement-journey/dependant/dependant-email', function (req, res
 
 // Bereavement journey - dependant phone number
 router.post('/bereavement-journey/dependant/dependant-phone-number', (req, res) => {
-    var phoneChoice = req.session.data['phone-number'];
-    var phoneNumber = req.session.data['phoneNumber'];
+    var phoneChoice = req.body['phone-number'] || req.session.data['phone-number'];
+    var phoneNumber = req.body.phoneNumber || req.session.data['phoneNumber'];
+    req.session.data['phone-number'] = phoneChoice;
+    req.session.data['phoneNumber'] = phoneNumber;
 
     if (phoneChoice === 'No' || (phoneChoice === 'Yes' && phoneNumber)) {
         res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-main-address');
