@@ -914,11 +914,11 @@ router.post('/bereavement-journey/dependant/dependant-check-your-answers', funct
 
 // Bereavement journey - estate start
 router.post('/bereavement-journey/estate/estate-start', (req, res) => {
-    var hasEstateRepresentative = req.session.data['dependant'] || req.session.data['exampleHints'];
+    var hasEstateRepresentative = req.session.data['estate-person'] || req.session.data['estate-person'];
 
-    if (hasEstateRepresentative === 'Yes' || hasEstateRepresentative === 'email') {
+    if (hasEstateRepresentative === 'Yes' ) {
         res.redirect('/v4/third-party/bereavement-journey/estate/estate-name');
-    } else if (hasEstateRepresentative === 'No' || hasEstateRepresentative === 'phone' || hasEstateRepresentative === 'Not sure' || hasEstateRepresentative === 'text') {
+    } else if (hasEstateRepresentative === 'No' || hasEstateRepresentative === 'Not sure') {
         res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
     } else {
         res.redirect('/v4/third-party/bereavement-journey/check-your-answers');

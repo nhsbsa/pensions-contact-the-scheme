@@ -139,6 +139,10 @@
           </div>
         </dl>
 
+
+
+
+
         <h3 class="nhsuk-heading-m">Member details</h3>
          <dl class="nhsuk-summary-list">
 
@@ -160,9 +164,6 @@
               </a>
             </dd>
           </div>
-
-
-     
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -256,61 +257,34 @@
           </div>
         </dl>
 
+
+
+
+
+
         <h3 class="nhsuk-heading-m">Dependant details</h3>
         <dl class="nhsuk-summary-list">
 
-
-             {% if (data['dependant'] == "Yes") %}
+          <dl class="nhsuk-summary-list">
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Dependant
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data ['dependant']}}
+            {% if data['dependant'] %}
+              {{ data['dependant'] }}
+            {% else %}
+                Yes
+              {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="../bereavement-journey/dependant/dependant-start">
-              Change<span class="nhsuk-u-visually-hidden">&nbsp; dependant. </span>
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
             </a>
           </dd>
         </div>
 
-        {% elseif data['dependant'] == "No" %}
-           <div class="nhsuk-summary-list__row">
-             <dt class="nhsuk-summary-list__key">
-              Dependant
-             </dt>
-            <dd class="nhsuk-summary-list__value">
-              No
-            </dd>
-             <dd class="nhsuk-summary-list__actions">
-             <a href="../bereavement-journey/dependant/dependant-start">
-             Change<span class="nhsuk-u-visually-hidden"> dependant</span>
-           </a>
-         </dd>
-       </div>
-
-       {% elseif data['dependant'] == "Not sure" %}
-         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-             Dependant
-           </dt>
-          <dd class="nhsuk-summary-list__value">
-             Not sure
-           </dd>
-           <dd class="nhsuk-summary-list__actions">
-          <a href="../bereavement-journey/dependant/dependant-start">
-        Change<span class="nhsuk-u-visually-hidden"> dependant</span>
-      </a>
-    </dd>
-  </div>
-
-        {% endif %}
-        
-
-
-         
-
+        {% if data['dependant'] == 'Yes' %}
              <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Relationship to the member 
@@ -323,7 +297,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../dependant/dependant-relationship">
+              <a href="../bereavement-journey/dependant/dependant-relationship">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's name. </span>
               </a>
             </dd>
@@ -341,7 +315,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../dependant/dependant-name">
+              <a href="../bereavement-journey/dependant/dependant-name">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
               </a>
             </dd>
@@ -359,7 +333,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../dependant/dependant-email">
+              <a href="../bereavement-journey/dependant/dependant-email">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
               </a>
             </dd>
@@ -374,15 +348,13 @@
             {{ data ['DependantPhoneNumber']}}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="../dependant/dependant-telephone">
+            <a href="../bereavement-journey/dependant/dependant-telephone">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; Phone number.</span>
             </a>
           </dd>
         </div>  
 
-       
-  
-          <div class="nhsuk-summary-list__row">
+         <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
             Main address in UK
             </dt>
@@ -394,7 +366,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../dependant/dependant-address-manual">
+              <a href="../bereavement-journey/dependant/dependant-address-manual">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's date of birth.</span>
               </a>
             </dd>
@@ -416,16 +388,26 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../dependant/lookup-dependant-address">
+              <a href="../bereavement-journey/dependant/lookup-dependant-address">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's address.</span>
               </a>
             </dd>
           </div>
+          {% endif %}
         </dl>
+ 
+
+
+
+
+
+
 
          <h3 class="nhsuk-heading-m">Person dealing with estate details</h3>
+         
+     
     
-<dl class="nhsuk-summary-list">
+        <dl class="nhsuk-summary-list">
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Person dealing with the estate
@@ -438,13 +420,13 @@
               {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="../estate/estate-start">
+            <a href="../bereavement-journey/estate/estate-start">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
             </a>
           </dd>
         </div>
 
-
+    {% if data['estate-person'] == 'Yes' %}
              <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Connection to the member 
@@ -457,7 +439,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../estate/estate-relationship">
+              <a href="../bereavement-journey/estate/estate-relationship">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; relationship of person dealing with the estate </span>
               </a>
             </dd>
@@ -475,7 +457,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../third-party/enter-your-name">
+              <a href="../bereavement-journey/third-party/enter-your-name">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
               </a>
             </dd>
@@ -493,13 +475,12 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../estate/estate-phone-number">
+              <a href="../bereavement-journey/estate/estate-phone-number">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
               </a>
             </dd>
           </div>
-
-       
+     
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Phone number
@@ -508,15 +489,12 @@
             {{ data ['phoneNumber']}}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="../estate/estate-phone-number">
+            <a href="../bereavement-journey/estate/estate-phone-number">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; Phone number</span>
             </a>
           </dd>
         </div>
       
-
-       
-  
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
             Main address in UK
@@ -529,7 +507,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../estate/estate-main-address">
+              <a href="../bereavement-journey/estate/estate-main-address">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's date of birth.</span>
               </a>
             </dd>
@@ -551,13 +529,16 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../estate/lookup-estate-address">
+              <a href="../bereavement-journey/estate/lookup-estate-address">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's address.</span>
               </a>
             </dd>
           </div>
-
+{% endif %}
         </dl>
+
+
+        
 
       <form action="../bereavement-journey/check-your-answers" method="post">
         {{ button({
