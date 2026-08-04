@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What is your name?"%}
+{% set pageTitle = "What is their name?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -12,12 +12,11 @@
 {% endblock %}
 
 {% block content %}
-
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-        <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
-        <form action="/{{folder}}/{{subfolder}}/bereavement-journey/informant/informant-name" method="post">
+        <span class="nhsuk-caption-l nhsuk-caption--bottom">Dependant details</span>
+        <form action="/v4/third-party/bereavement-journey/dependant/dependant-name" method="post">
           {% call fieldset({
             legend: {
               "text": pageTitle,
@@ -25,7 +24,8 @@
               "isPageHeading": true
             }
           }) %}
-          {% from "select/macro.njk" import select %}
+
+           {% from "select/macro.njk" import select %}
 
 {{ select({
   label: {
@@ -35,7 +35,7 @@
   name: "Title",
   value: "Title",
   items: [
-      { value: "Mr", text: "Mr" },
+{ value: "Mr", text: "Mr" },
     { value: "Mrs", text: "Mrs" },
     { value: "Miss", text: "Miss" },
     { value: "Ms", text: "Ms" },
@@ -83,8 +83,8 @@
               label: {
                 "html": 'First name'
               },
-              "id": "informantFirstName",
-              "name": "informantFirstName",
+              "id": "firstName",
+              "name": "firstName",
               autocomplete: "given-name",
               spellcheck: false,
               "classes": "nhsuk-input--width-20"
@@ -94,8 +94,8 @@
               label: {
                 "html": 'Last name'
               },
-              "id": "informantLastName",
-              "name": "informantLastName",
+              "id": "lastName",
+              "name": "lastName",
               autocomplete: "family-name",
               spellcheck: false,
               "classes": "nhsuk-input--width-20"
@@ -109,7 +109,6 @@
         </form>
     </div>  
   </div>
-
   <script>
     function setLocation(element) {
       document.forms[0].action = element.value
