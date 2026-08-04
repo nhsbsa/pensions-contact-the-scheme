@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What is the your postcode?"%}
+{% set pageTitle = "What is your postcode?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -16,7 +16,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
-      <form action="/{{folder}}/{{subfolder}}/bereavement-journey/informant/find-informant-address" method="post" novalidate>
+      <form action="../informant/find-informant-address" method="post" novalidate>
         
         {% call fieldset({
           legend: {
@@ -42,7 +42,7 @@
         {% endcall %}
 
         <div class="nhsuk-form-group">
-          <p>If they have an international address or their postcode cannot be found, <a href="informant-address">enter the address manually</a></p>
+          <p>If you have an international address or your postcode cannot be found, <a href="informant-address">enter your address manually</a></p>
         </div>
 
         {{ button({

@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What is the your email address?"%}
+{% set pageTitle = "What is your email address?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -40,9 +40,9 @@
         
         {% endcall %}
         {{ details({
-        summaryText: "Why do we ask for your email address",
+        summaryText: "Why we ask for your email address",
         html: "
-        <p>We'll use this to send you confirmation that we've received your query.</p>
+        <p>We'll use your email address to let you know we've received your notification.</p>
         "
       }) }}
 

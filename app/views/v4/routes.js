@@ -540,7 +540,7 @@ router.post('/bereavement-journey/informant/find-informant-address', function (r
 
     if (postcodeLookup) {
         if (regex.test(postcodeLookup) === true) {
-            axios.get('https://api.os.uk/search/places/v4/postcode?postcode=' + postcodeLookup + '&key=' + process.env.POSTCODEAPIKEY)
+            axios.get("https://api.os.uk/search/places/v1/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
                 .then(response => {
                     var addresses = response.data.results.map(result => result.DPA.ADDRESS);
 
@@ -701,7 +701,7 @@ router.post('/bereavement-journey/member/lookup-member-address', function (req, 
 
     if (postcodeLookup) {
         if (regex.test(postcodeLookup) === true) {
-            axios.get('https://api.os.uk/search/places/v4/postcode?postcode=' + postcodeLookup + '&key=' + process.env.POSTCODEAPIKEY)
+            axios.get("https://api.os.uk/search/places/v1/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
                 .then(response => {
                     var addresses = response.data.results.map(result => result.DPA.ADDRESS);
 
@@ -846,7 +846,7 @@ router.post('/bereavement-journey/dependant/lookup-dependant-address', function 
 
     if (postcodeLookup) {
         if (regex.test(postcodeLookup) === true) {
-            axios.get('https://api.os.uk/search/places/v4/postcode?postcode=' + postcodeLookup + '&key=' + process.env.POSTCODEAPIKEY)
+            axios.get("https://api.os.uk/search/places/v1/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
                 .then(response => {
                     var addresses = response.data.results.map(result => result.DPA.ADDRESS);
 
@@ -993,7 +993,7 @@ router.post('/bereavement-journey/estate/lookup-estate-address', function (req, 
 
     if (postcodeLookup) {
         if (regex.test(postcodeLookup) === true) {
-            axios.get('https://api.os.uk/search/places/v4/postcode?postcode=' + postcodeLookup + '&key=' + process.env.POSTCODEAPIKEY)
+            axios.get("https://api.os.uk/search/places/v1/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
                 .then(response => {
                     var addresses = response.data.results.map(result => result.DPA.ADDRESS);
 
@@ -1220,7 +1220,7 @@ router.post('/third-party/member/lookup-members-address', function (req, res) {
 
         if (regex.test(postcodeLookup) === true) {
 
-            axios.get("https://api.os.uk/search/places/v4/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
+            axios.get("https://api.os.uk/search/places/v1/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
                 .then(response => {
                     var addresses = response.data.results.map(result => result.DPA.ADDRESS);
 
@@ -1510,7 +1510,7 @@ router.post('/member-query/find-members-address', function (req, res) {
 
         if (regex.test(postcodeLookup) === true) {
 
-            axios.get("https://api.os.uk/search/places/v4/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
+            axios.get("https://api.os.uk/search/places/v1/postcode?postcode=" + postcodeLookup + "&key=" + process.env.POSTCODEAPIKEY)
                 .then(response => {
                     var addresses = response.data.results.map(result => result.DPA.ADDRESS);
 
