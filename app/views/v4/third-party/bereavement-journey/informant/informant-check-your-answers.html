@@ -18,7 +18,7 @@
     <div class="nhsuk-grid-column-two-thirds">
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
       <h1 class="nhsuk-heading-l">{{pageTitle}}</h1>
-      <h2 class="nhsuk-heading-m">Previous answers</h2>
+      
 
     
 
@@ -100,7 +100,7 @@
   
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-            Main address in UK
+            Main UK address
             </dt>
             <dd class="nhsuk-summary-list__value">
               {% if (data['addressInUk']) %}
@@ -128,11 +128,11 @@
               {% elif (data['address-line-1']) and (data['address']) %}
                 {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
               {% else %}
-                NHS BSA, Stella House, Goldcrest Way, Newcastle Upon Tyne, NE15 8NY
+                NHS BSA,<br> Stella House,<br> Goldcrest Way,<br> Newcastle Upon Tyne,<br> NE15 8NY
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="find-members-address">
+              <a href="../informant/find-informant-address">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's address.</span>
               </a>
             </dd>
