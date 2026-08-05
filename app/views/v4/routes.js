@@ -917,23 +917,11 @@ router.post('/bereavement-journey/estate/estate-start', (req, res) => {
     var hasEstateRepresentative = req.session.data['estate-person'] || req.session.data['estate-person'];
 
     if (hasEstateRepresentative === 'Yes' ) {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-name');
-    } else if (hasEstateRepresentative === 'No' || hasEstateRepresentative === 'Not sure') {
-        res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
-    } else {
-        res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
-    }
-});
-
-// Bereavement journey - estate name
-router.post('/bereavement-journey/estate/estate-name', function (req, res) {
-    var firstName = req.session.data['firstName'] || req.session.data['estateFirstName'];
-    var lastName = req.session.data['lastName'] || req.session.data['estateLastName'];
-
-    if (firstName && lastName) {
         res.redirect('/v4/third-party/bereavement-journey/estate/estate-relationship');
+    } else if (hasEstateRepresentative === 'No' || hasEstateRepresentative === 'Im not sure') {
+        res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-name');
+        res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
     }
 });
 
@@ -942,11 +930,25 @@ router.post('/bereavement-journey/estate/estate-relationship', function (req, re
     var relationship = req.session.data['relationship'];
 
     if (relationship) {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-email');
+        res.redirect('/v4/third-party/bereavement-journey/estate/estate-name');
     } else {
         res.redirect('/v4/third-party/bereavement-journey/estate/estate-relationship');
     }
 });
+
+
+// Bereavement journey - estate name
+router.post('/bereavement-journey/estate/estate-name', function (req, res) {
+    var firstName = req.session.data['firstName'] || req.session.data['estateFirstName'];
+    var lastName = req.session.data['lastName'] || req.session.data['estateLastName'];
+
+    if (firstName && lastName) {
+        res.redirect('/v4/third-party/bereavement-journey/estate/estate-email');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/estate/estate-name');
+    }
+});
+
 
 // Bereavement journey - estate email
 router.post('/bereavement-journey/estate/estate-email', function (req, res) {

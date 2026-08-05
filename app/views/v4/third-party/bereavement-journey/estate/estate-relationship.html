@@ -17,7 +17,7 @@
     <div class="nhsuk-grid-column-two-thirds">
       <div class="nhsuk-form-group">
 
-        <form action="/v4/third-party/bereavement-journey/estate/estate-relationship" method="post">
+        <form action="../estate/estate-relationship" method="post">
           <span class="nhsuk-caption-l nhsuk-caption--bottom">Person dealing with the estate</span>
           {{ radios({
             idPrefix: "EstateRelationship",
@@ -35,34 +35,34 @@
             items: [
               {
                 value: "Spouse",
-                text: "Spousee",
+                text: "Their spouse",
                 hint: {
                   text: ""
                 }
               },
               {
                 value: "Civil partner",
-                text: "Civil partner",
+                text: "Their civil partner",
                 hint: {
                   text: ""
                 }
               },
               {
                 value: "Child",
-                text: "Child",
+                text: "Their child",
                 hint: {
                   text: ""
                 }
               },{
-                value: "Legal personal representative",
-                text: "Legal personal representative",
+                value: "The person dealing with the estate",
+                text: "The person dealing with the estate",
                 hint: {
                   text: ""
                 }
               },
               {
-                value: "Scheme partner",
-                text: "Scheme partner",
+                value: "Their scheme partner",
+                text: "Their scheme partner",
                 hint: {
                   text: ""
                 }
@@ -81,6 +81,7 @@
 
           {{ button({
             text: "Continue",
+            href: "estate-name",
             classes: "nhsuk-u-margin-top-4"
           }) }}
 
