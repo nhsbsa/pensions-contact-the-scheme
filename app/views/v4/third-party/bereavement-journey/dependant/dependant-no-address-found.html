@@ -21,8 +21,8 @@
           {{pageTitle}}
       </h1>
 
-      <p>We could not find an address that matches {% if (data['housenumber']) and (data['postcode']) %}building
-          number or name and postcode{% else %}the postcode{% endif %}. Search again or enter the address manually.
+      <p> We could not find an address that matches {% if (data['housenumber']) and (data['postcode']) %}building
+          number or name and postcode{% else %}that postcode{% endif %}. Search again or enter the address manually..
       </p>
 
       <form action="../dependant/dependant-no-address-found" method="post" novalidate>
@@ -32,7 +32,7 @@
           }) }}
       </form>
 
-      <p><a href="../dependant/dependant-address-manual">Enter your address manually</a></p>
+      <p><a href="../dependant/dependant-address-manual">Enter the address manually</a></p>
     </div>
   </div>
 

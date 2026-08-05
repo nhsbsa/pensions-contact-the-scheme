@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What was their postcode?"%}
+{% set pageTitle = "What is their postcode?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -42,7 +42,7 @@
         {% endcall %}
 
         <div class="nhsuk-form-group">
-            <p>If they have an international address or their postcode cannot be found, <a href="dependant-address-manual">enter the dependant's address manually</a>.</p>
+            <p>If the dependant has an international address, or their postcode cannot be found, <a href="../dependant/dependant-address-manual">enter their address manually</a>.</p>
         </div>
 
         {{ button({
