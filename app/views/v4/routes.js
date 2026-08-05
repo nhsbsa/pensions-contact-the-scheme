@@ -682,7 +682,7 @@ router.post('/bereavement-journey/member/member-date-of-death', function (req, r
 
 // Bereavement journey - member main address
 router.post('/bereavement-journey/member/member-main-address', (req, res) => {
-    var addressInUk = req.session.data['addressInUk'];
+    var addressInUk = req.session.data['MemberaddressInUk'];
 
     if (addressInUk === 'Yes') {
         res.redirect('/v4/third-party/bereavement-journey/member/lookup-member-address');
