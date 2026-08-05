@@ -140,11 +140,11 @@
               {% if (data['address']) and not (data['address-line-1']) %}
                 {{ data['address'] }}
               {% elif (data['address-line-1']) and not (data['address']) %}
-                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
+                {{data['address-line-1']}}<br> {{data['address-line-2']}}<br> {{data['address-town']}} {{data['address-county']}}<br>{{data['address-country']}}<br> {{data['address-postcode']}}
               {% elif (data['address-line-1']) and (data['address']) %}
-                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
+                {{data['address-line-1']}}<br> {{data['address-line-2']}}<br> {{data['address-town']}}<br> {{data['address-county']}}<br> {{data['address-country']}}<br> {{data['address-postcode']}}
               {% else %}
-                NHS BSA, Stella House, Goldcrest Way, Newcastle Upon Tyne, NE15 8NY
+                NHS BSA,<br> Stella House,<br> Goldcrest Way,<br> Newcastle Upon Tyne,<br> NE15 8NY
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
