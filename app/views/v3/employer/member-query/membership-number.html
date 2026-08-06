@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What is the member's NHS Pensions membership number?"%}
+{% set pageTitle = "What is the member's membership number?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -38,10 +38,7 @@
               "isPageHeading": true
             }
           }) %}
-          <div class="nhsuk-hint">
-  This is an 8 digit number, which may start with 'SD'. 
-  You can find it on payslips, Annual Benefit Statements, Total Reward Statements, or any letters from us
-</div>
+          
 
           
             {{ input({
@@ -54,6 +51,31 @@
             }) }}
           
           {% endcall %}
+          </div>
+
+          
+
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                How to find your member's membership number
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <p>Sometimes known as the Superannuation Division (SD) number. For example, SD12340000. This will help us find the member's record and support you quicker.</p>
+              <p>This number is 'SD' followed by 8 digits.</p>
+              <p>Find this on:</p>
+              <ul>
+                <li>some payslips</li>
+                <li>an online Total Reward Statement or Annual Benefits Statement</li>
+                <li>some communications we have sent</li>
+              </ul>
+              
+          
+            </div>
+          </details>
+        </div>
+          
           
        
    </div>
