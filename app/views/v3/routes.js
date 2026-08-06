@@ -381,14 +381,10 @@ router.post('/phone-number', (req, res) => {
 // MEMBER - Do you know your membership number?
 router.post('/member-membership-number', (req, res) => {
 
-    var memberNumber = req.session.data['member-membership-number']
+    var memberNumber = req.session.data['membershipNumber']
 
-    if (memberNumber == 'Yes, I know the membership number') {
+    if (memberNumber) {
         res.redirect('members-name')
-    } else if (memberNumber == "No, I do not know the membership number") {
-        res.redirect('member-national-insurance-number');
-    } else if (memberNumber == "I'm not sure") {
-        res.redirect('member-national-insurance-number');
     }else {
         res.redirect('member-membership-number')
     }
@@ -621,11 +617,17 @@ router.post('/members-address-manual', function (req, res) {
 
 // THIRD PARTY- member -Do you have the member's email address?
 
-router.post('/members-email', (req, res) => {
+router.post('/enter-members-email', function (req, res) {
 
-    res.redirect('reason-for-contact');
+    var emailAddress = req.session.data['memberEmail'];
 
-});
+    if (emailAddress) {
+        res.redirect('reason-for-contact');
+    } else {
+        res.redirect('members-email');
+
+    }
+})
 
 
 // THIRD PARTY- member  - Reason for contact
