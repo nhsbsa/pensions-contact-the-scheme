@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Do you have the member's email address?"%}
+{% set pageTitle = "What is the member's email address?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -18,56 +18,31 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
-      <form action="/{{folder}}/{{subfolder}}/members-email" method="post">
+      <form action="/{{folder}}/{{subfolder}}/enter-members-email" method="post">
 
-         <div class="nhsuk-form-group">
-
-              {% set phoneNumberHtml %}
-                {{ input({
-                  id: "memberEmail",
-                  name: "memberEmail",
-                  classes: "nhsuk-u-width-two-thirds",
-                  label: {
-                    text: "Email address"
-                  }
-                }) }}
-              {% endset -%}
-
-            
-              {{ radios({
-                idPrefix: "phone-number",
-                name: "phone-number",
-                classes: "nhsuk-radios-conditional",
-                fieldset: {
-                  legend: {
-                    text: pageTitle,
-                    classes: "nhsuk-fieldset__legend--l",
-                    isPageHeading: true
-                  }
-                },
-                hint: {
-                  text: ""
-                },
-                items: [ 
-                  {
-                    value: "Yes",
-                    text: "Yes",
-                    conditional: {
-                      html: phoneNumberHtml
-                    }
-                  },
-                  {
-                    value: "No",
-                    text: "No"
-                  }
-                ]
-              }) }}
-              
-              </div>
-
-              {{ button({
-                text: "Continue"
-              }) }} 
+        {% call fieldset({
+          legend: {
+            "text": pageTitle,
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        }) %}
+        
+          {{ input({
+            label: {
+              "html": 'Email Address'
+            },
+            "id": "memberEmail",
+            "name": "memberEmail",
+            spellcheck: false,
+            "classes": "nhsuk-input--width-20"
+          }) }}
+        
+        {% endcall %}
+  
+        {{ button({
+          "text": "Continue"
+        }) }}
     </form>
     </div>  
   </div>

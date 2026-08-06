@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Do you know the member's NHS Pensions membership number?"%}
+{% set pageTitle = "What is the member's membership number?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -19,7 +19,7 @@
 
         <form action="/{{folder}}/{{subfolder}}/member-membership-number" method="post">
 
-            {% set sdNumberHtml %}
+          {% set sdNumberHtml %}
             {{ input({
               id: "sdNumber",
               name: "sdNumber",
@@ -31,48 +31,48 @@
           {% endset -%} 
 
           <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
-          {{ radios({
-            idPrefix: "member-membership-number",
-            name: "member-membership-number",
-            classes: "nhsuk-radios--inline",
-            fieldset: {
-              legend: {
-                text: pageTitle,
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            },
-            hint: {
-              text: "This is an 8 digit number, which may start with 'SD'. 
-              You can find it on payslips, Annual Benefit Statements, Total Reward Statements, or any letters from us"
-            },
-            items: [ 
-              {
-                value: "Yes, I know the membership number",
-                text: "Yes, I know the membership number",
-                conditional: {
-                  html: sdNumberHtml
-                }
-              },
-              {
-                value: "No, I do not know the membership number",
-                text: "No, I do not know the membership number"
-              },
-              {
-                value: "I'm not sure",
-                text: "I'm not sure"
-              }
-            ]
-          }) }}
+          {% call fieldset({
+            legend: {
+              "text": pageTitle,
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          }) %}
           
-         
-   </div>
+            {{ input({
+              label: {
+                "html": 'Membership number'
+              },
+              "id": "membershipNumber",
+              "name": "membershipNumber",
+              "classes": "nhsuk-input--width-20"
+            }) }}
+          
+          {% endcall %}
+          
+          {% call details({
+            summaryText: "How to find the member's membership number",
+            classes: "nhsuk-u-padding-top-5"
+          }) %}
+            <p>
+              Sometimes known as the Superannuation Division (SD) number. For example, SD12340000. 
+              This will help us find the member's record and support you quicker. 
+            </p>
+            <p>This number is 'SD' followed by 8 digits.</p>
+            <p>Find this on:</p>
+            <ul>
+              <li>some payslips</li>
+              <li>an online Total Reward Statement or Annual Benefits Statement</li>
+              <li>some communications we have sent</li>
+            </ul>
+          {% endcall %}
+  
           {{ button({
           "text": "Continue"
           }) }}
         </form>
 
-     
+      </div>
     </div>  
   </div>
 {% endblock %}
