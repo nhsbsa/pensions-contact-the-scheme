@@ -1,0 +1,110 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Child dependant" %}
+{% set hideBack ="true" %}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+ 
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+   
+        <form action="../dependant/dependant-child-check-your-answers" method="post">
+           <span class="nhsuk-caption-l nhsuk-caption--bottom">Dependant details</span>
+      <h1 class="nhsuk-heading-l">{{pageTitle}}</h1>
+
+       
+  
+
+           <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Dependant
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['dependant']}} 
+            
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../dependant/dependant-start">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            </a>
+          </dd>
+        </div>
+
+
+           <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Name 
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['firstName']) and (data['lastName']) %}
+                {{ data['firstName']}} {{ data['lastName'] }}
+              {% else %}
+                Joe Bloggs
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../dependant/dependant-name">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
+              </a>
+            </dd>
+          </div>
+
+        
+
+
+ 
+
+        </dl>
+
+
+
+           {{ radios({
+            idPrefix: "relationship",
+            name: "relationship",
+            fieldset: {
+              legend: {
+                text: "Do you want to add another child dependant?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+             
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                hint: {
+                  text: ""
+                }
+              }
+            ]
+          }) }}
+
+      <form action="../dependant/dependant-check-your-answers" method="post">
+        {{ button({
+            text: "Continue"
+        }) }}   
+      </form>
+  </div>
+</div>
+{% endblock %}

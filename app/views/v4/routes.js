@@ -912,6 +912,11 @@ router.post('/bereavement-journey/dependant/dependant-check-your-answers', funct
     res.redirect('/v4/third-party/bereavement-journey/estate/estate-start');
 });
 
+// Bereavement journey - child dependant 
+router.post('/bereavement-journey/dependant/dependant-check-your-answers', function (req, res) {
+    res.redirect('/v4/third-party/bereavement-journey/estate/dependant-child');
+});
+
 // Bereavement journey - estate start
 router.post('/bereavement-journey/estate/estate-start', (req, res) => {
     var hasEstateRepresentative = req.session.data['estate-person'] || req.session.data['estate-person'];
