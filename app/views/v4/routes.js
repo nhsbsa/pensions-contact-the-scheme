@@ -372,6 +372,20 @@ router.post('/phone-number', (req, res) => {
 
 });
 
+// MEMBER - What is your reason for contact?
+router.post('/reason-for-contact', (req, res) => {
+
+    res.redirect('check-your-answers');
+
+});
+
+// MEMBER - Check your answers
+router.post('/check-your-answers', (req, res) => {
+
+    res.redirect('confirmation');
+
+});
+
 
 
 // ****************************************
