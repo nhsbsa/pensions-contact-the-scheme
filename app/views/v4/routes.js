@@ -788,6 +788,19 @@ router.post('/bereavement-journey/dependant/dependant-start', (req, res) => {
     }
 });
 
+
+// Bereavement journey - dependant- same as Informant
+router.post('/bereavement-journey/dependant/dependant-same-person', (req, res) => {
+    var hasAdultdependant = req.session.data['Adultdependant'] || req.session.data['Adultdependant'];
+
+    if (hasAdultdependant === 'You' ) {
+        res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-relationship');
+    }
+});
+
+
 // Bereavement journey - dependant relationship
 router.post('/bereavement-journey/dependant/dependant-relationship', function (req, res) {
     var relationship = req.session.data['relationship'];
@@ -961,6 +974,20 @@ router.post('/bereavement-journey/dependant/dependant-child-check-your-answers',
 
     }
 });
+
+// Bereavement journey - estate- person dealing with estate
+router.post('/bereavement-journey/estate/estate-same-person', (req, res) => {
+    var hasEstateDealing = req.session.data['EstateDealing'] || req.session.data['EstateDealing'];
+
+    if (hasEstateDealing === 'Other' ) {
+        res.redirect('/v4/third-party/bereavement-journey/estate/estate-relationship');
+    } else if (hasEstateDealing === 'The adult dependant' || hasEstateDealing === 'You') {
+        res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
+    }
+});
+
 
 
 // Bereavement journey - estate start

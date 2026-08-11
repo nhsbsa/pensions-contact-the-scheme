@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Who is dealing with the estate?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
+
+        <form action="../estate/estate-same-person" method="post">
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Person dealing with the estate</span>
+          {{ radios({
+            idPrefix: "EstateDealing",
+            name: "EstateDealing",
+            fieldset: {
+              legend: {
+                text: pageTitle,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "You",
+                text: "You",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "The adult dependant",
+                text: "The adult dependant",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "Other",
+                text: "Other",
+                hint: {
+                  text: ""
+                }
+              }
+            ]
+          }) }}
+
+        
+
+          {{ button({
+            text: "Continue",
+            classes: "nhsuk-u-margin-top-4"
+          }) }}
+
+ 
+
+
+        </form>
+      </div>
+    </div>  
+  </div>
+{% endblock %}
