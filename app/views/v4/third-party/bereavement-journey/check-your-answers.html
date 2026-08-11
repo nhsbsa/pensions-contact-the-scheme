@@ -18,7 +18,6 @@
     <div class="nhsuk-grid-column-two-thirds">
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
       <h1 class="nhsuk-heading-l">{{pageTitle}}</h1>
-      <p>Check your answers and make sure they are correct before you continue. If you need to, you can change your answers.</p>
       <h2 class="nhsuk-heading-m">Previous answers</h2>
 
      <h3 class="nhsuk-heading-m">Your details</h3>
@@ -124,11 +123,11 @@
               {% if (data['address']) and not (data['address-line-1']) %}
                 {{ data['address'] }}
               {% elif (data['address-line-1']) and not (data['address']) %}
-                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
+                {{data['address-line-1']}}<br> {{data['address-line-2']}}<br> {{data['address-town']}}<br> {{data['address-county']}}<br> {{data['address-country']}}<br> {{data['address-postcode']}}
               {% elif (data['address-line-1']) and (data['address']) %}
-                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
+                {{data['address-line-1']}}<br> {{data['address-line-2']}}<br> {{data['address-town']}}<br> {{data['address-county']}}<br> {{data['address-country']}}<br> {{data['address-postcode']}}
               {% else %}
-                NHS BSA, Stella House, Goldcrest Way, Newcastle Upon Tyne, NE15 8NY
+                NHS BSA <br> Stella House<br> Goldcrest Way<br> Newcastle Upon Tyne<br> NE15 8NY
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
@@ -167,7 +166,7 @@
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            National Insurance Number
+            National Insurance number
           </dt>
           <dd class="nhsuk-summary-list__value">
             {{ data ['natInsNum']}}
@@ -242,11 +241,11 @@
               {% if (data['address']) and not (data['address-line-1']) %}
                 {{ data['address'] }}
               {% elif (data['address-line-1']) and not (data['address']) %}
-                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
+                {{data['address-line-1']}}<br> {{data['address-line-2']}}<br> {{data['address-town']}}<br> {{data['address-county']}}<br> {{data['address-country']}}<br> {{data['address-postcode']}}
               {% elif (data['address-line-1']) and (data['address']) %}
-                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
+                {{data['address-line-1']}}<br> {{data['address-line-2']}}<br> {{data['address-town']}}<br> {{data['address-county']}}<br> {{data['address-country']}}<br> {{data['address-postcode']}}
               {% else %}
-                NHS BSA, Stella House, Goldcrest Way, Newcastle Upon Tyne, NE15 8NY
+                NHS BSA<br> Stella House<br> Goldcrest Way<br> Newcastle Upon Tyne<br> NE15 8NY
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
@@ -284,10 +283,10 @@
           </dd>
         </div>
 
-        {% if data['dependant'] == 'Yes' %}
+       
              <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Relationship to the member 
+              Connection to the member 
             </dt>
             <dd class="nhsuk-summary-list__value">
               {% if (data['memberFirstName']) and (data['memberLastName']) %}
@@ -380,11 +379,11 @@
               {% if (data['address']) and not (data['address-line-1']) %}
                 {{ data['address'] }}
               {% elif (data['address-line-1']) and not (data['address']) %}
-                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
+                {{data['address-line-1']}}<br> {{data['address-line-2']}}<br> {{data['address-town']}}<br> {{data['address-county']}}<br> {{data['address-country']}}<br> {{data['address-postcode']}}
               {% elif (data['address-line-1']) and (data['address']) %}
-                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
+                {{data['address-line-1']}}<br> {{data['address-line-2']}}<br> {{data['address-town']}}<br> {{data['address-county']}}<br> {{data['address-country']}}<br> {{data['address-postcode']}}
               {% else %}
-                NHS BSA, Stella House, Goldcrest Way, Newcastle Upon Tyne, NE15 8NY
+                NHS BSA<br> Stella House<br> Goldcrest Way<br> Newcastle Upon Tyne<br> NE15 8NY
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
@@ -393,10 +392,54 @@
               </a>
             </dd>
           </div>
-          {% endif %}
+        
         </dl>
  
 
+
+
+
+
+         <h3 class="nhsuk-heading-m">Child dependant details</h3>
+        <dl class="nhsuk-summary-list">
+
+          <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Child dependant
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['child-dependantt'] %}
+              {{ data['child-dependant'] }}
+            {% else %}
+                Yes
+              {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../bereavement-journey/dependant/dependant-child">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Name 
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['child-firstName']) and (data['child-lastName']) %}
+                {{ data['child-firstName']}} {{ data['child-lastName'] }}
+              {% else %}
+                Joe Bloggs
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../bereavement-journey/dependant/dependant-child-name">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
+              </a>
+            </dd>
+          </div>
+</dl>
 
 
 
@@ -426,7 +469,7 @@
           </dd>
         </div>
 
-    {% if data['estate-person'] == 'Yes' %}
+   
              <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Connection to the member 
@@ -521,11 +564,11 @@
               {% if (data['address']) and not (data['address-line-1']) %}
                 {{ data['address'] }}
               {% elif (data['address-line-1']) and not (data['address']) %}
-                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
+                {{data['address-line-1']}}<br> {{data['address-line-2']}}<br> {{data['address-town']}}<br> {{data['address-county']}}<br> {{data['address-country']}}<br> {{data['address-postcode']}}
               {% elif (data['address-line-1']) and (data['address']) %}
-                {{data['address-line-1']}} {{data['address-line-2']}} {{data['address-town']}} {{data['address-county']}} {{data['address-country']}} {{data['address-postcode']}}
+                {{data['address-line-1']}}<br> {{data['address-line-2']}}<br> {{data['address-town']}}<br> {{data['address-county']}}<br> {{data['address-country']}}<br> {{data['address-postcode']}}
               {% else %}
-                NHS BSA, Stella House, Goldcrest Way, Newcastle Upon Tyne, NE15 8NY
+                NHS BSA<br> Stella House<br> Goldcrest Way<br> Newcastle Upon Tyne<br> NE15 8NY
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
@@ -534,7 +577,7 @@
               </a>
             </dd>
           </div>
-{% endif %}
+
         </dl>
 
 
