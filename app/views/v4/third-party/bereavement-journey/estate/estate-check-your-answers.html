@@ -102,7 +102,11 @@
             Phone number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data ['phoneNumber']}}
+            {% if (data['EstatePhoneNumber']) %}
+                {{ data['EstatePhoneNumber']}} 
+              {% else %}
+                Not provided
+              {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="../estate/estate-phone-number">

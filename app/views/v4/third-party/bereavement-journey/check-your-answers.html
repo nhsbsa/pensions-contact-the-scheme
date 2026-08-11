@@ -86,7 +86,7 @@
               {% if (data['InformantphoneNumber']) %}
                 {{ data['InformantphoneNumber']}} 
               {% else %}
-                07986543210
+                Not provided
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
@@ -344,7 +344,12 @@
             Phone number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data ['DependantPhoneNumber']}}
+              {% if (data['DependantPhoneNumber']) %}
+                {{ data['DependantPhoneNumber']}} 
+              {% else %}
+                Not provided
+              {% endif %}
+            
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="../bereavement-journey/dependant/dependant-telephone">
@@ -424,7 +429,7 @@
 
         <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Name 
+              Child dependant 1
             </dt>
             <dd class="nhsuk-summary-list__value">
               {% if (data['child-firstName']) and (data['child-lastName']) %}
@@ -439,6 +444,25 @@
               </a>
             </dd>
           </div>
+
+           <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Child dependant 2
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['child-firstName']) and (data['child-lastName']) %}
+                {{ data['child-firstName']}} {{ data['child-lastName'] }}
+              {% else %}
+                Steve Bloggs
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../dependant/dependant-child-name">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
+              </a>
+            </dd>
+          </div>
+        
 </dl>
 
 
@@ -529,7 +553,12 @@
             Phone number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data ['phoneNumber']}}
+            {% if (data['EstatePhoneNumber']) %}
+                {{ data['EstatePhoneNumber']}} 
+              {% else %}
+                Not provided
+              {% endif %}
+            
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="../bereavement-journey/estate/estate-phone-number">
