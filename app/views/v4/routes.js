@@ -923,13 +923,45 @@ router.post('/bereavement-journey/dependant/dependant-no-address-found', functio
 
 // Bereavement journey - dependant check your answers
 router.post('/bereavement-journey/dependant/dependant-check-your-answers', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/estate/estate-start');
+    res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child');
 });
 
 // Bereavement journey - child dependant 
-router.post('/bereavement-journey/dependant/dependant-check-your-answers', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/estate/dependant-child');
+router.post('/bereavement-journey/dependant/dependant-child', (req, res) => {
+    var hasEstateRepresentative = req.session.data['child-dependant'] || req.session.data['child-dependant'];
+
+    if (hasEstateRepresentative === 'Yes' ) {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child-name');
+    } else if (hasEstateRepresentative === 'No') {
+        res.redirect('/v4/third-party/bereavement-journey/estate/estate-start');
+
+    }
 });
+
+// Bereavement journey - child dependant-name
+router.post('/bereavement-journey/dependant/dependant-child-name', function (req, res) {
+    var firstName = req.session.data['child-firstName'];
+    var lastName = req.session.data['child-lastName'];
+
+    if (firstName && lastName) {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child-check-your-answers');
+    } else {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child-name');
+    }
+});
+
+// Bereavement journey - child dependant-check-your-answers
+router.post('/bereavement-journey/dependant/dependant-child-check-your-answers', (req, res) => {
+    var hasEstateRepresentative = req.session.data['child-dependant-2'] || req.session.data['child-dependant-2'];
+
+    if (hasEstateRepresentative === 'Yes' ) {
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child-name');
+    } else if (hasEstateRepresentative === 'No') {
+        res.redirect('/v4/third-party/bereavement-journey/estate/estate-start');
+
+    }
+});
+
 
 // Bereavement journey - estate start
 router.post('/bereavement-journey/estate/estate-start', (req, res) => {

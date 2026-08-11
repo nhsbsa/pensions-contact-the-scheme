@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Child dependant" %}
+{% set pageTitle = "Check your answers" %}
 {% set hideBack ="true" %}
 
 {% block pageTitle %}
@@ -18,7 +18,7 @@
     <div class="nhsuk-grid-column-two-thirds">
    
         <form action="../dependant/dependant-child-check-your-answers" method="post">
-           <span class="nhsuk-caption-l nhsuk-caption--bottom">Dependant details</span>
+           <span class="nhsuk-caption-l nhsuk-caption--bottom">Child dependant details</span>
       <h1 class="nhsuk-heading-l">{{pageTitle}}</h1>
 
        
@@ -27,10 +27,10 @@
            <dl class="nhsuk-summary-list">
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Dependant
+            Child dependant
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data['dependant']}} 
+            {{ data['child-dependant']}} 
             
           </dd>
           <dd class="nhsuk-summary-list__actions">
@@ -46,8 +46,8 @@
               Name 
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['firstName']) and (data['lastName']) %}
-                {{ data['firstName']}} {{ data['lastName'] }}
+              {% if (data['child-firstName']) and (data['child-lastName']) %}
+                {{ data['child-firstName']}} {{ data['child-lastName'] }}
               {% else %}
                 Joe Bloggs
               {% endif %}
@@ -69,8 +69,8 @@
 
 
            {{ radios({
-            idPrefix: "relationship",
-            name: "relationship",
+            idPrefix: "child-dependant-2",
+            name: "child-dependant-2",
             fieldset: {
               legend: {
                 text: "Do you want to add another child dependant?",
@@ -100,7 +100,7 @@
             ]
           }) }}
 
-      <form action="../dependant/dependant-check-your-answers" method="post">
+      <form action="../dependant/dependant-child-check-your-answers" method="post">
         {{ button({
             text: "Continue"
         }) }}   
