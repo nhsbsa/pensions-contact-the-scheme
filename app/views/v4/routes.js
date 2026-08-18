@@ -401,7 +401,7 @@ router.post('/third-party/select-query-type', (req, res) => {
         res.redirect('../third-party/member/enter-your-name')
 
     } else if (thirdPartyQuery == 'I want to tell you that a member has died') {
-        res.redirect('../third-party/bereavement-journey/start')
+        res.redirect('../third-party/bereavement-journey/tell-us-once')
 
     } else {
         res.redirect('../third-party/general-query/enter-your-name')
@@ -1141,12 +1141,12 @@ router.post('/bereavement-journey/estate/estate-check-your-answers', function (r
 
 //bereavement journey - declaration
 router.post('/bereavement-journey/declaration', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
+    res.redirect('/v4/third-party/bereavement-journey/confirmation');
 });
 
 //bereavement journey - check your answers
 router.post('/bereavement-journey/check-your-answers', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/confirmation');
+    res.redirect('/v4/third-party/bereavement-journey/declaration');
 });
 
 // ************************************************
