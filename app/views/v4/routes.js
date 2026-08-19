@@ -780,7 +780,7 @@ router.post('/bereavement-journey/dependant/dependant-start', (req, res) => {
     req.session.data['dependant'] = hasDependants;
 
     if (hasDependants === 'Yes') {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-relationship');
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-same-person');
     } else if (hasDependants === 'No' || hasDependants === 'Not sure') {
         res.redirect('/v4/third-party/bereavement-journey/estate/estate-start');
     } else {
@@ -794,7 +794,7 @@ router.post('/bereavement-journey/dependant/dependant-same-person', (req, res) =
     var hasAdultdependant = req.session.data['Adultdependant'] || req.session.data['Adultdependant'];
 
     if (hasAdultdependant === 'You' ) {
-        res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child');
     } else {
         res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-relationship');
     }
@@ -995,7 +995,7 @@ router.post('/bereavement-journey/estate/estate-start', (req, res) => {
     var hasEstateRepresentative = req.session.data['estate-person'] || req.session.data['estate-person'];
 
     if (hasEstateRepresentative === 'Yes' ) {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-relationship');
+        res.redirect('/v4/third-party/bereavement-journey/estate/estate-same-person');
     } else if (hasEstateRepresentative === 'No' || hasEstateRepresentative === 'Im not sure') {
         res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
     } else {
@@ -1048,7 +1048,7 @@ router.post('/bereavement-journey/estate/estate-phone-number', (req, res) => {
     if (phoneChoice === 'No' || (phoneChoice === 'Yes' && phoneNumber)) {
         res.redirect('/v4/third-party/bereavement-journey/estate/estate-main-address');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-phone-number');
+        res.redirect('/v4/third-party/bereavement-journey/estate/estate-main-address');
     }
 });
 
@@ -1136,7 +1136,7 @@ router.post('/bereavement-journey/estate/estate-no-address-found', function (req
 
 // Bereavement journey - estate check your answers
 router.post('/bereavement-journey/estate/estate-check-your-answers', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/declaration');
+    res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
 });
 
 //bereavement journey - declaration
