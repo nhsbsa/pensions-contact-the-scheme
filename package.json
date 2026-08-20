@@ -1,6 +1,6 @@
 {
   "name": "nhsuk-prototype-kit",
-  "version": "8.2.0",
+  "version": "8.4.0",
   "description": "Rapidly create HTML prototypes of NHS websites and services.",
   "main": "app.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "axios": "^1.18.1",
     "luxon": "^3.7.2",
     "nhsuk-frontend": "^10.4.2",
-    "nhsuk-prototype-kit": "^8.2.0"
+    "nhsuk-prototype-kit": "^8.4.0"
   },
   "engines": {
     "node": "^20.9.0 || ^22.11.0"
