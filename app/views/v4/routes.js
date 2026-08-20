@@ -782,7 +782,7 @@ router.post('/bereavement-journey/dependant/dependant-start', (req, res) => {
     if (hasDependants === 'Yes') {
         res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-same-person');
     } else if (hasDependants === 'No' || hasDependants === 'Not sure') {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-start');
+        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child');
     } else {
         res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-start');
     }
@@ -803,14 +803,12 @@ router.post('/bereavement-journey/dependant/dependant-same-person', (req, res) =
 
 // Bereavement journey - dependant relationship
 router.post('/bereavement-journey/dependant/dependant-relationship', function (req, res) {
-    var relationship = req.session.data['relationship'];
 
-    if (relationship) {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-name');
-    } else {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-relationship');
-    }
-});
+    req.session.data['Dependantrelationship'] = req.body.Dependantrelationship;
+  
+    res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-name');
+  
+  });
 
 // Bereavement journey - dependant name
 router.post('/bereavement-journey/dependant/dependant-name', function (req, res) {

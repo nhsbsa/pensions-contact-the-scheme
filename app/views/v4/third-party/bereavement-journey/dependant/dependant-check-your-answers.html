@@ -28,7 +28,7 @@
             Dependant
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data['dependant']}} 
+            Yes
             
           </dd>
           <dd class="nhsuk-summary-list__actions">
@@ -46,8 +46,8 @@
               Connection to member
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['memberFirstName']) and (data['memberLastName']) %}
-                {{ data['memberFirstName']}} {{ data['memberLastName'] }}
+              {% if (data['Dependantrelationship']) %}
+                {{ data['Dependantrelationship']}} 
               {% else %}
                 Spouse
               {% endif %}
@@ -101,7 +101,11 @@
             Phone number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data['phoneNumber'] or data['DependantPhoneNumber'] }}
+            {% if data['phone-number'] == 'Yes' %}
+  {{ data['DependantPhoneNumber'] }}
+              {% else %}
+                Not provided
+              {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="../dependant/dependant-phone-number">
@@ -117,8 +121,8 @@
             Main UK address
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['date-of-birth-member']) %}
-                {{ data['date-of-birth-member'] }}
+              {% if (data['DependantMainAddress']) %}
+                {{ data['DependantMainAddress'] }}
               {% else %}
                 Yes
               {% endif %}

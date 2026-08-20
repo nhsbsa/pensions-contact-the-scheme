@@ -48,8 +48,8 @@
               Name 
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['InformantfirstName']) and (data['InformantlastName']) %}
-                {{ data['InformantfirstName']}} {{ data['InformantlastName'] }}
+              {% if (data['informantFirstName']) and (data['informantLastName']) %}
+                {{ data['informantFirstName']}} {{ data['informantLastName'] }}
               {% else %}
                 Joe Bloggs
               {% endif %}
@@ -84,8 +84,8 @@
               Phone number
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['InformantphoneNumber']) %}
-                {{ data['InformantphoneNumber']}} 
+              {% if data['InformantphoneNumber'] == 'Yes' %}
+                {{ data['phoneNumber']}} 
               {% else %}
                 Not provided
               {% endif %}
