@@ -19,36 +19,30 @@
 
         <form action="../dependant/dependant-child" method="post">
           <span class="nhsuk-caption-l nhsuk-caption--bottom">Child dependant details</span>
-          {{ radios({
-            idPrefix: "child-dependant",
-            name: "child-dependant",
-            fieldset: {
-              legend: {
-                text: pageTitle,
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            },
-            hint: {
-              text: ""
-            },
-            items: [
-              {
-                value: "Yes",
-                text: "Yes",
-                hint: {
-                  text: ""
-                }
-              },
-              {
-                value: "No",
-                text: "No",
-                hint: {
-                  text: ""
-                }
-              }
-            ]
-          }) }}
+
+<h1 class="nhsuk-fieldset__legend--l">
+  {{ pageTitle }}
+</h1>
+
+<p>
+  A child dependant is a child who was financially dependent on a member.
+</p>
+<p>They do not have to be the member's own child. They can include other children who depended on the member financially.</p>
+
+{{ radios({
+  idPrefix: "child-dependant",
+  name: "child-dependant",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  ]
+}) }}
 
         
 

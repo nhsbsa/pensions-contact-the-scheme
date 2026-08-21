@@ -826,7 +826,7 @@ router.post('/bereavement-journey/dependant/dependant-name', function (req, res)
 
 // Bereavement journey - dependant email
 router.post('/bereavement-journey/dependant/dependant-email', function (req, res) {
-    var emailAddress = req.session.data['emailAddress'];
+    var emailAddress = req.session.data['dependantemailAddress'];
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (emailAddress && emailRegex.test(emailAddress)) {
@@ -1003,20 +1003,22 @@ router.post('/bereavement-journey/estate/estate-start', (req, res) => {
 
 // Bereavement journey - estate relationship
 router.post('/bereavement-journey/estate/estate-relationship', function (req, res) {
-    var relationship = req.session.data['relationship'];
 
-    if (relationship) {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-name');
+    req.session.data['EstateRelationship'] = req.body.EstateRelationship;
+  
+    if (req.body.EstateRelationship) {
+      res.redirect('/v4/third-party/bereavement-journey/estate/estate-name');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-relationship');
+      res.redirect('/v4/third-party/bereavement-journey/estate/estate-relationship');
     }
-});
+  
+  });
 
 
 // Bereavement journey - estate name
 router.post('/bereavement-journey/estate/estate-name', function (req, res) {
-    var firstName = req.session.data['firstName'] || req.session.data['estateFirstName'];
-    var lastName = req.session.data['lastName'] || req.session.data['estateLastName'];
+    var firstName = req.session.data['estatefirstName'] || req.session.data['estateFirstName'];
+    var lastName = req.session.data['estatelastName'] || req.session.data['estateLastName'];
 
     if (firstName && lastName) {
         res.redirect('/v4/third-party/bereavement-journey/estate/estate-email');

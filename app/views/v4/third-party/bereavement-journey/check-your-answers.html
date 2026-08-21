@@ -288,8 +288,8 @@
               Connection to the member 
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['memberFirstName']) and (data['memberLastName']) %}
-                {{ data['memberFirstName']}} {{ data['memberLastName'] }}
+              {% if (data['Dependantrelationship']) %}
+                {{ data['Dependantrelationship']}} 
               {% else %}
                 Spouse
               {% endif %}
@@ -324,8 +324,8 @@
               Email
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['emailAddress']) %}
-                {{ data['emailAddress']}} 
+              {% if (data['dependantemailAddress']) %}
+                {{ data['dependantemailAddress']}} 
               {% else %}
                 joe.bloggs@nhsbsa.nhs.uk
               {% endif %}
@@ -516,8 +516,8 @@
               Name 
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['firstName']) and (data['lastName']) %}
-                {{ data['firstName']}} {{ data['lastName'] }}
+              {% if (data['estatefirstName']) and (data['estatelastName']) %}
+                {{ data['estatefirstName']}} {{ data['estatelastName'] }}
               {% else %}
                 Joe Bloggs
               {% endif %}
@@ -547,24 +547,25 @@
             </dd>
           </div>
      
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Phone number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {% if (data['EstatePhoneNumber']) %}
-                {{ data['EstatePhoneNumber']}} 
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Phone number
+            </dt>
+          
+            <dd class="nhsuk-summary-list__value">
+              {% if data['EstatePhoneNumber'] == 'Yes' %}
+                {{ data['estatephoneNumber'] }}
               {% else %}
                 Not provided
               {% endif %}
-            
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="../bereavement-journey/estate/estate-phone-number">
-              Change<span class="nhsuk-u-visually-hidden">&nbsp; Phone number</span>
-            </a>
-          </dd>
-        </div>
+            </dd>
+          
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../estate/estate-phone-number">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; phone number</span>
+              </a>
+            </dd>
+          </div>
       
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">

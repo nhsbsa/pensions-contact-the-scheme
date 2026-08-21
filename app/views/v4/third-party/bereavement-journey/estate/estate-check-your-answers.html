@@ -65,8 +65,8 @@
               Name 
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if (data['firstName']) and (data['lastName']) %}
-                {{ data['firstName']}} {{ data['lastName'] }}
+              {% if (data['estatefirstName']) and (data['estatelastName']) %}
+                {{ data['estatefirstName']}} {{ data['estatelastName'] }}
               {% else %}
                 Joe Bloggs
               {% endif %}
@@ -97,23 +97,25 @@
           </div>
 
        
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Phone number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            {% if (data['EstatePhoneNumber']) %}
-                {{ data['EstatePhoneNumber']}} 
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Phone number
+            </dt>
+          
+            <dd class="nhsuk-summary-list__value">
+              {% if data['EstatePhoneNumber'] == 'Yes' %}
+                {{ data['estatephoneNumber'] }}
               {% else %}
                 Not provided
               {% endif %}
-          </dd>
-          <dd class="nhsuk-summary-list__actions">
-            <a href="../estate/estate-phone-number">
-              Change<span class="nhsuk-u-visually-hidden">&nbsp; Phone number</span>
-            </a>
-          </dd>
-        </div>
+            </dd>
+          
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../estate/estate-phone-number">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; phone number</span>
+              </a>
+            </dd>
+          </div>
       
 
        
