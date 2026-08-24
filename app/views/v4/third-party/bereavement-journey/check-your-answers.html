@@ -19,6 +19,38 @@
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
       <h1 class="nhsuk-heading-l">{{pageTitle}}</h1>
       <h2 class="nhsuk-heading-m">Previous answers</h2>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Query from
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            I am acting for a member
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/v4/select-member-employer">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            </a>
+          </dd>
+        </div>
+
+        
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Type of query
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Bereavement
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../select-query-type">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+      
 
      <h3 class="nhsuk-heading-m">Your details</h3>
         <dl class="nhsuk-summary-list">
@@ -36,7 +68,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../informant/informant-relationship">
+              <a href="../bereavement-journey/informant/informant-relationship">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
               </a>
             </dd>
@@ -54,7 +86,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../informant/informant-name">
+              <a href="../bereavement-journey/informant/informant-name">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
               </a>
             </dd>
@@ -72,7 +104,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../informant/informant-email">
+              <a href="../bereavement-journey/informant/informant-email">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
               </a>
             </dd>
@@ -90,7 +122,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../informant/informant-phone-number">
+              <a href="../bereavement-journey/informant/informant-phone-number">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; phone number. </span>
               </a>
             </dd>
@@ -109,7 +141,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../informant/informant-main-address">
+              <a href="../bereavement-journey/informant/informant-main-address">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; main address.</span>
               </a>
             </dd>
@@ -158,7 +190,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../member/member-name">
+              <a href="../bereavement-journey/member/member-name">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
               </a>
             </dd>
@@ -172,7 +204,7 @@
             {{ data ['natInsNum']}}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="../member/member-national-insurance-number">
+            <a href="../bereavement-journey/member/member-national-insurance-number">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; national insurance number</span>
             </a>
           </dd>
@@ -191,7 +223,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../member/member-date-of-birth">
+              <a href="../bereavement-journey/member/member-date-of-birth">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's date of birth.</span>
               </a>
             </dd>
@@ -209,7 +241,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../member/member-date-of-death">
+              <a href="../bereavement-journey/member/member-date-of-death">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's date of death.</span>
               </a>
             </dd>
@@ -227,7 +259,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../member/member-main-address">
+              <a href="../bereavement-journey/member/member-main-address">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; main address.</span>
               </a>
             </dd>
@@ -249,7 +281,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../member/lookup-member-address">
+              <a href="../bereavement-journey/member/lookup-member-address">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's address.</span>
               </a>
             </dd>
@@ -277,6 +309,21 @@
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="../bereavement-journey/dependant/dependant-start">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Who is the adult dependant
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Someone else
+            
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../bereavement-journey/dependant/dependant-same-person">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
             </a>
           </dd>
@@ -351,7 +398,7 @@
             
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="../bereavement-journey/dependant/dependant-telephone">
+            <a href="../bereavement-journey/dependant/dependant-phone-number">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; Phone number.</span>
             </a>
           </dd>
@@ -369,7 +416,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../bereavement-journey/dependant/dependant-address-manual">
+              <a href="../bereavement-journey/dependant/dependant-main-address">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; member's date of birth.</span>
               </a>
             </dd>
@@ -456,7 +503,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../dependant/dependant-child-name">
+              <a href="../bereavement-journey/dependant/dependant-child-name">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
               </a>
             </dd>
@@ -487,6 +534,21 @@
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="../bereavement-journey/estate/estate-start">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Who is the person dealing with the estate
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Someone else
+            
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../bereavement-journey/estate/estate-same-person">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
             </a>
           </dd>
@@ -523,7 +585,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../bereavement-journey/third-party/enter-your-name">
+              <a href="../bereavement-journey/estate/estate-name">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
               </a>
             </dd>
@@ -541,7 +603,7 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="../bereavement-journey/estate/estate-phone-number">
+              <a href="../bereavement-journey/estate/estate-email">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
               </a>
             </dd>
@@ -561,7 +623,7 @@
             </dd>
           
             <dd class="nhsuk-summary-list__actions">
-              <a href="../estate/estate-phone-number">
+              <a href="../bereavement-journey/estate/estate-phone-number">
                 Change<span class="nhsuk-u-visually-hidden">&nbsp; phone number</span>
               </a>
             </dd>
