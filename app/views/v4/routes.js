@@ -29,7 +29,7 @@ router.post('/select-member-employer/', (req, res) => {
         res.redirect('employer/enter-employer-code')
 
     } else {
-        res.redirect('third-party/select-query-type')
+        res.redirect('acting-for-member/select-query-type')
     }
 });
 
@@ -389,32 +389,32 @@ router.post('/check-your-answers', (req, res) => {
 
 
 // ****************************************
-// THIRD PARTY JOURNEY
+// ACTING-FOR-MEMBER JOURNEY
 // ****************************************
 
-//Third-party- What do you need help with?
-router.post('/third-party/select-query-type', (req, res) => {
+//acting-for-member- What do you need help with?
+router.post('/acting-for-member/select-query-type', (req, res) => {
 
     var thirdPartyQuery = req.session.data['third-party-query']
 
     if (thirdPartyQuery == 'I have a question about a members pension') {
-        res.redirect('../third-party/member/enter-your-name')
+        res.redirect('../acting-for-member/member/enter-your-name')
 
     } else if (thirdPartyQuery == 'I want to tell you that a member has died') {
-        res.redirect('../third-party/bereavement-journey/tell-us-once')
+        res.redirect('../acting-for-member/bereavement-journey/tell-us-once')
 
     } else {
-        res.redirect('../third-party/general-query/enter-your-name')
+        res.redirect('../acting-for-member/general-query/enter-your-name')
     }                           
     });
 
 // ****************************************
-// THIRD PARTY JOURNEY- general query
+// ACTING-FOR-MEMBER JOURNEY- general query
 // ****************************************
 
 //General query- What is your name?
 
-router.post('/third-party/general-query/enter-your-name', function (req, res) {
+router.post('/acting-for-member/general-query/enter-your-name', function (req, res) {
 
     var firstName = req.session.data['InformantFirstName'];
     var lastName = req.session.data['InformantLastName'];
@@ -427,8 +427,8 @@ router.post('/third-party/general-query/enter-your-name', function (req, res) {
 
 });
 
-// THIRD PARTY- general query - Reason for contact
-router.post('/third-party/general-query/reason-for-contact', function (req, res) {
+// ACTING-FOR-MEMBER- general query - Reason for contact
+router.post('/acting-for-member/general-query/reason-for-contact', function (req, res) {
 
     var additionalInfo = req.session.data['additionalInfo'];
 
@@ -446,8 +446,8 @@ router.post('/third-party/general-query/reason-for-contact', function (req, res)
 
 })
 
-// THIRD PARTY- general query - Check your answers
-router.post('/third-party/general-query/check-your-answers', (req, res) => {
+// ACTING-FOR-MEMBER- general query - Check your answers
+router.post('/acting-for-member/general-query/check-your-answers', (req, res) => {
 
     res.redirect('confirmation');
 
@@ -456,13 +456,13 @@ router.post('/third-party/general-query/check-your-answers', (req, res) => {
 
 
 // ****************************************
-// THIRD PARTY JOURNEY- bereavement journey
+// ACTING-FOR-MEMBER JOURNEY- bereavement journey
 // ****************************************
 
 // Bereavement journey - start
 router.post('/bereavement-journey/start', (req, res) => {
     req.session.destroy();
-    res.redirect('/v4/third-party/bereavement-journey/informant/informant-relationship');
+    res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-relationship');
 });
 
 // Bereavement journey - tell us once
@@ -470,9 +470,9 @@ router.post('/bereavement-journey/tell-us-once', (req, res) => {
   var TellUsOnce = req.session.data['TellUsOnce']
 
   if (TellUsOnce == 'Yes') {
-    res.redirect('/v4/third-party/bereavement-journey/tell-us-once-yes')
+    res.redirect('/v4/acting-for-member/bereavement-journey/tell-us-once-yes')
   } else {
-    res.redirect('/v4/third-party/bereavement-journey/start')
+    res.redirect('/v4/acting-for-member/bereavement-journey/start')
   }
 });
 
@@ -481,10 +481,10 @@ router.post('/bereavement-journey/informant/informant-relationship', (req, res) 
     var relationship = req.session.data['InformantRelationship'];
 
     if (relationship) {
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-name');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-name');
     } else {
         req.session.data['errors'] = { relationship: 'Select how you are connected to the person who died' };
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-relationship');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-relationship');
     }
 });
 
@@ -495,13 +495,13 @@ router.post('/bereavement-journey/informant/informant-name', function (req, res)
 
     if (firstName && lastName) {
         req.session.data['errors'] = {};
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-email');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-email');
     } else {
         req.session.data['errors'] = {
             informantFirstName: !firstName ? 'Enter a first name' : null,
             informantLastName: !lastName ? 'Enter a last name' : null
         };
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-name');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-name');
     }
 });
 
@@ -512,10 +512,10 @@ router.post('/bereavement-journey/informant/informant-email', function (req, res
 
     if (emailAddress && emailRegex.test(emailAddress)) {
         req.session.data['errors'] = {};
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-phone-number');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-phone-number');
     } else {
         req.session.data['errors'] = { informantEmail: 'Enter an email address in the correct format' };
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-email');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-email');
     }
 });
 
@@ -526,10 +526,10 @@ router.post('/bereavement-journey/informant/informant-phone-number', (req, res) 
 
     if (phoneChoice === 'No' || (phoneChoice === 'Yes' && phoneNumber)) {
         req.session.data['errors'] = {};
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-main-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-main-address');
     } else {
         req.session.data['errors'] = { InformantphoneNumber: 'Enter a phone number' };
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-phone-number');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-phone-number');
     }
 });
 
@@ -538,11 +538,11 @@ router.post('/bereavement-journey/informant/informant-main-address', (req, res) 
     var addressInUk = req.session.data['addressInUk'] || req.session.data['phone-number'];
 
     if (addressInUk === 'Yes') {
-        res.redirect('/v4/third-party/bereavement-journey/informant/find-informant-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/find-informant-address');
     } else if (addressInUk === 'No') {
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-address');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-main-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-main-address');
     }
 });
 
@@ -573,17 +573,17 @@ router.post('/bereavement-journey/informant/find-informant-address', function (r
                     });
 
                     req.session.data['addresses'] = titleCaseAddresses;
-                    res.redirect('/v4/third-party/bereavement-journey/informant/select-informant-address');
+                    res.redirect('/v4/acting-for-member/bereavement-journey/informant/select-informant-address');
                 })
                 .catch(error => {
                     console.log(error);
-                    res.redirect('/v4/third-party/bereavement-journey/informant/no-informant-address-found');
+                    res.redirect('/v4/acting-for-member/bereavement-journey/informant/no-informant-address-found');
                 });
         } else {
-            res.redirect('/v4/third-party/bereavement-journey/informant/find-informant-address');
+            res.redirect('/v4/acting-for-member/bereavement-journey/informant/find-informant-address');
         }
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/informant/find-informant-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/find-informant-address');
     }
 });
 
@@ -593,9 +593,9 @@ router.post('/bereavement-journey/informant/informant-address', function (req, r
     var townOrCity = req.session.data['address-town'];
 
     if (addressLine1 && townOrCity) {
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-check-your-answers');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-check-your-answers');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-address');
     }
 });
 
@@ -604,20 +604,20 @@ router.post('/bereavement-journey/informant/select-informant-address', function 
     var address = req.session.data['address'];
 
     if (address) {
-        res.redirect('/v4/third-party/bereavement-journey/informant/informant-check-your-answers');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-check-your-answers');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/informant/select-informant-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/select-informant-address');
     }
 });
 
 // Bereavement journey - informant no address found
 router.post('/bereavement-journey/informant/no-informant-address-found', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/informant/find-informant-address');
+    res.redirect('/v4/acting-for-member/bereavement-journey/informant/find-informant-address');
 });
 
 // Bereavement journey - informant check your answers
 router.post('/bereavement-journey/informant/check-your-answers', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/member/member-start');
+    res.redirect('/v4/acting-for-member/bereavement-journey/member/member-start');
 });
 
 
@@ -640,7 +640,7 @@ router.post('/bereavement-journey/informant/check-your-answers', function (req, 
 
 // Bereavement journey - member start
 router.post('/bereavement-journey/member/start', (req, res) => {
-    res.redirect('/v4/third-party/bereavement-journey/member/member-name');
+    res.redirect('/v4/acting-for-member/bereavement-journey/member/member-name');
 });
 
 // Bereavement journey - member name
@@ -649,9 +649,9 @@ router.post('/bereavement-journey/member/member-name', function (req, res) {
     var lastName = req.session.data['memberLastName'];
 
     if (firstName && lastName) {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-national-insurance-number');
+        res.redirect('/v4/acting-for-member/bereavement-journey/member/member-national-insurance-number');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-name');
+        res.redirect('/v4/acting-for-member/bereavement-journey/member/member-name');
     }
 });
 
@@ -660,9 +660,9 @@ router.post('/bereavement-journey/member/member-national-insurance-number', func
     var nino = req.session.data['natInsNum'];
 
     if (nino) {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-date-of-birth');
+        res.redirect('/v4/acting-for-member/bereavement-journey/member/member-date-of-birth');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-national-insurance-number');
+        res.redirect('/v4/acting-for-member/bereavement-journey/member/member-national-insurance-number');
     }
 });
 
@@ -673,9 +673,9 @@ router.post('/bereavement-journey/member/member-date-of-birth', function (req, r
     var dateOfBirthYear = req.session.data['date-of-birth-member']?.year;
 
     if (/^\d+$/.test(dateOfBirthDay) && /^\d+$/.test(dateOfBirthMonth) && /^\d+$/.test(dateOfBirthYear)) {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-date-of-death');
+        res.redirect('/v4/acting-for-member/bereavement-journey/member/member-date-of-death');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-date-of-birth');
+        res.redirect('/v4/acting-for-member/bereavement-journey/member/member-date-of-birth');
     }
 });
 
@@ -699,11 +699,11 @@ router.post('/bereavement-journey/member/member-main-address', (req, res) => {
     var addressInUk = req.session.data['MemberaddressInUk'];
 
     if (addressInUk === 'Yes') {
-        res.redirect('/v4/third-party/bereavement-journey/member/lookup-member-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/member/lookup-member-address');
     } else if (addressInUk === 'No') {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-address-manual');
+        res.redirect('/v4/acting-for-member/bereavement-journey/member/member-address-manual');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-main-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/member/member-main-address');
     }
 });
 
@@ -734,23 +734,23 @@ router.post('/bereavement-journey/member/lookup-member-address', function (req, 
                     });
 
                     req.session.data['addresses'] = titleCaseAddresses;
-                    res.redirect('/v4/third-party/bereavement-journey/member/member-select-your-address');
+                    res.redirect('/v4/acting-for-member/bereavement-journey/member/member-select-your-address');
                 })
                 .catch(error => {
                     console.log(error);
-                    res.redirect('/v4/third-party/bereavement-journey/member/member-no-address-found');
+                    res.redirect('/v4/acting-for-member/bereavement-journey/member/member-no-address-found');
                 });
         } else {
-            res.redirect('/v4/third-party/bereavement-journey/member/lookup-member-address');
+            res.redirect('/v4/acting-for-member/bereavement-journey/member/lookup-member-address');
         }
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/member/lookup-member-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/member/lookup-member-address');
     }
 });
 
 // Bereavement journey - member address manual
 router.post('/bereavement-journey/member/member-address-manual', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/member/member-check-your-answers');
+    res.redirect('/v4/acting-for-member/bereavement-journey/member/member-check-your-answers');
 });
 
 // Bereavement journey - member select address
@@ -758,20 +758,20 @@ router.post('/bereavement-journey/member/member-select-your-address', function (
     var address = req.session.data['address'];
 
     if (address) {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-check-your-answers');
+        res.redirect('/v4/acting-for-member/bereavement-journey/member/member-check-your-answers');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/member/member-select-your-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/member/member-select-your-address');
     }
 });
 
 // Bereavement journey - member no address found
 router.post('/bereavement-journey/member/member-no-address-found', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/member/lookup-member-address');
+    res.redirect('/v4/acting-for-member/bereavement-journey/member/lookup-member-address');
 });
 
 // Bereavement journey - member check your answers
 router.post('/bereavement-journey/member/member-check-your-answers', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-start');
+    res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-start');
 });
 
 // Bereavement journey - dependant start
@@ -780,11 +780,11 @@ router.post('/bereavement-journey/dependant/dependant-start', (req, res) => {
     req.session.data['dependant'] = hasDependants;
 
     if (hasDependants === 'Yes') {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-same-person');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-same-person');
     } else if (hasDependants === 'No' || hasDependants === 'Not sure') {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-child');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-start');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-start');
     }
 });
 
@@ -794,9 +794,9 @@ router.post('/bereavement-journey/dependant/dependant-same-person', (req, res) =
     var hasAdultdependant = req.session.data['Adultdependant'] || req.session.data['Adultdependant'];
 
     if (hasAdultdependant === 'You' ) {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-child');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-relationship');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-relationship');
     }
 });
 
@@ -806,7 +806,7 @@ router.post('/bereavement-journey/dependant/dependant-relationship', function (r
 
     req.session.data['Dependantrelationship'] = req.body.Dependantrelationship;
   
-    res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-name');
+    res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-name');
   
   });
 
@@ -816,9 +816,9 @@ router.post('/bereavement-journey/dependant/dependant-name', function (req, res)
     var lastName = req.session.data['lastName'] || req.session.data['dependantLastName'];
 
     if (firstName && lastName) {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-email');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-email');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-name');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-name');
     }
 });
 
@@ -830,9 +830,9 @@ router.post('/bereavement-journey/dependant/dependant-email', function (req, res
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (emailAddress && emailRegex.test(emailAddress)) {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-phone-number');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-phone-number');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-email');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-email');
     }
 });
 
@@ -844,9 +844,9 @@ router.post('/bereavement-journey/dependant/dependant-phone-number', (req, res) 
     req.session.data['phoneNumber'] = phoneNumber;
 
     if (phoneChoice === 'No' || (phoneChoice === 'Yes' && phoneNumber)) {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-main-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-main-address');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-phone-number');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-phone-number');
     }
 });
 
@@ -855,11 +855,11 @@ router.post('/bereavement-journey/dependant/dependant-main-address', (req, res) 
     var addressInUk = req.session.data['DependantMainAddress'] || req.session.data['DependantMainAddress'];
 
     if (addressInUk === 'Yes') {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/lookup-dependant-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/lookup-dependant-address');
     } else if (addressInUk === 'No') {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-address-manual');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-address-manual');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-main-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-main-address');
     }
 });
 
@@ -890,17 +890,17 @@ router.post('/bereavement-journey/dependant/lookup-dependant-address', function 
                     });
 
                     req.session.data['addresses'] = titleCaseAddresses;
-                    res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-select-your-address');
+                    res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-select-your-address');
                 })
                 .catch(error => {
                     console.log(error);
-                    res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-no-address-found');
+                    res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-no-address-found');
                 });
         } else {
-            res.redirect('/v4/third-party/bereavement-journey/dependant/lookup-dependant-address');
+            res.redirect('/v4/acting-for-member/bereavement-journey/dependant/lookup-dependant-address');
         }
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/lookup-dependant-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/lookup-dependant-address');
     }
 });
 
@@ -910,9 +910,9 @@ router.post('/bereavement-journey/dependant/dependant-address-manual', function 
     var townOrCity = req.session.data['address-town'];
 
     if (addressLine1 && townOrCity) {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-check-your-answers');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-check-your-answers');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-address-manual');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-address-manual');
     }
 });
 
@@ -921,20 +921,20 @@ router.post('/bereavement-journey/dependant/dependant-select-your-address', func
     var address = req.session.data['address'];
 
     if (address) {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-check-your-answers');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-check-your-answers');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-select-your-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-select-your-address');
     }
 });
 
 // Bereavement journey - dependant no address found
 router.post('/bereavement-journey/dependant/dependant-no-address-found', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/dependant/lookup-dependant-address');
+    res.redirect('/v4/acting-for-member/bereavement-journey/dependant/lookup-dependant-address');
 });
 
 // Bereavement journey - dependant check your answers
 router.post('/bereavement-journey/dependant/dependant-check-your-answers', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child');
+    res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-child');
 });
 
 // Bereavement journey - child dependant 
@@ -942,9 +942,9 @@ router.post('/bereavement-journey/dependant/dependant-child', (req, res) => {
     var hasEstateRepresentative = req.session.data['child-dependant'] || req.session.data['child-dependant'];
 
     if (hasEstateRepresentative === 'Yes' ) {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child-name');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-child-name');
     } else if (hasEstateRepresentative === 'No') {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-start');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-start');
 
     }
 });
@@ -955,9 +955,9 @@ router.post('/bereavement-journey/dependant/dependant-child-name', function (req
     var lastName = req.session.data['child-lastName'];
 
     if (firstName && lastName) {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child-check-your-answers');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-child-check-your-answers');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child-name');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-child-name');
     }
 });
 
@@ -966,9 +966,9 @@ router.post('/bereavement-journey/dependant/dependant-child-check-your-answers',
     var hasEstateRepresentative = req.session.data['child-dependant-2'] || req.session.data['child-dependant-2'];
 
     if (hasEstateRepresentative === 'Yes' ) {
-        res.redirect('/v4/third-party/bereavement-journey/dependant/dependant-child-name');
+        res.redirect('/v4/acting-for-member/bereavement-journey/dependant/dependant-child-name');
     } else if (hasEstateRepresentative === 'No') {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-start');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-start');
 
     }
 });
@@ -978,11 +978,11 @@ router.post('/bereavement-journey/estate/estate-same-person', (req, res) => {
     var hasEstateDealing = req.session.data['EstateDealing'] || req.session.data['EstateDealing'];
 
     if (hasEstateDealing === 'Other' ) {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-relationship');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-relationship');
     } else if (hasEstateDealing === 'The adult dependant' || hasEstateDealing === 'You') {
-        res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
+        res.redirect('/v4/acting-for-member/bereavement-journey/check-your-answers');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
+        res.redirect('/v4/acting-for-member/bereavement-journey/check-your-answers');
     }
 });
 
@@ -993,11 +993,11 @@ router.post('/bereavement-journey/estate/estate-start', (req, res) => {
     var hasEstateRepresentative = req.session.data['estate-person'] || req.session.data['estate-person'];
 
     if (hasEstateRepresentative === 'Yes' ) {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-same-person');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-same-person');
     } else if (hasEstateRepresentative === 'No' || hasEstateRepresentative === 'Im not sure') {
-        res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
+        res.redirect('/v4/acting-for-member/bereavement-journey/check-your-answers');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
+        res.redirect('/v4/acting-for-member/bereavement-journey/check-your-answers');
     }
 });
 
@@ -1007,9 +1007,9 @@ router.post('/bereavement-journey/estate/estate-relationship', function (req, re
     req.session.data['EstateRelationship'] = req.body.EstateRelationship;
   
     if (req.body.EstateRelationship) {
-      res.redirect('/v4/third-party/bereavement-journey/estate/estate-name');
+      res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-name');
     } else {
-      res.redirect('/v4/third-party/bereavement-journey/estate/estate-relationship');
+      res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-relationship');
     }
   
   });
@@ -1021,9 +1021,9 @@ router.post('/bereavement-journey/estate/estate-name', function (req, res) {
     var lastName = req.session.data['estatelastName'] || req.session.data['estateLastName'];
 
     if (firstName && lastName) {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-email');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-email');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-name');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-name');
     }
 });
 
@@ -1034,9 +1034,9 @@ router.post('/bereavement-journey/estate/estate-email', function (req, res) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (emailAddress && emailRegex.test(emailAddress)) {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-phone-number');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-phone-number');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-email');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-email');
     }
 });
 
@@ -1046,9 +1046,9 @@ router.post('/bereavement-journey/estate/estate-phone-number', (req, res) => {
     var phoneNumber = req.session.data['phoneNumber'];
 
     if (phoneChoice === 'No' || (phoneChoice === 'Yes' && phoneNumber)) {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-main-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-main-address');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-main-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-main-address');
     }
 });
 
@@ -1057,11 +1057,11 @@ router.post('/bereavement-journey/estate/estate-main-address', (req, res) => {
     var addressInUk = req.session.data['estateMainAddress'] || req.session.data['estate-main-address'];
 
     if (addressInUk === 'Yes') {
-        res.redirect('/v4/third-party/bereavement-journey/estate/lookup-estate-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/lookup-estate-address');
     } else if (addressInUk === 'No') {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-address-manual');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-address-manual');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-main-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-main-address');
     }
 });
 
@@ -1092,17 +1092,17 @@ router.post('/bereavement-journey/estate/lookup-estate-address', function (req, 
                     });
 
                     req.session.data['addresses'] = titleCaseAddresses;
-                    res.redirect('/v4/third-party/bereavement-journey/estate/estate-select-your-address');
+                    res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-select-your-address');
                 })
                 .catch(error => {
                     console.log(error);
-                    res.redirect('/v4/third-party/bereavement-journey/estate/estate-no-address-found');
+                    res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-no-address-found');
                 });
         } else {
-            res.redirect('/v4/third-party/bereavement-journey/estate/lookup-estate-address');
+            res.redirect('/v4/acting-for-member/bereavement-journey/estate/lookup-estate-address');
         }
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/estate/lookup-estate-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/lookup-estate-address');
     }
 });
 
@@ -1112,9 +1112,9 @@ router.post('/bereavement-journey/estate/estate-address-manual', function (req, 
     var townOrCity = req.session.data['address-town'];
 
     if (addressLine1 && townOrCity) {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-check-your-answers');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-check-your-answers');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-address-manual');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-address-manual');
     }
 });
 
@@ -1123,62 +1123,62 @@ router.post('/bereavement-journey/estate/estate-select-your-address', function (
     var address = req.session.data['address'];
 
     if (address) {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-check-your-answers');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-check-your-answers');
     } else {
-        res.redirect('/v4/third-party/bereavement-journey/estate/estate-select-your-address');
+        res.redirect('/v4/acting-for-member/bereavement-journey/estate/estate-select-your-address');
     }
 });
 
 // Bereavement journey - estate no address found
 router.post('/bereavement-journey/estate/estate-no-address-found', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/estate/lookup-estate-address');
+    res.redirect('/v4/acting-for-member/bereavement-journey/estate/lookup-estate-address');
 });
 
 // Bereavement journey - estate check your answers
 router.post('/bereavement-journey/estate/estate-check-your-answers', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/check-your-answers');
+    res.redirect('/v4/acting-for-member/bereavement-journey/check-your-answers');
 });
 
 //bereavement journey - declaration
 router.post('/bereavement-journey/declaration', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/confirmation');
+    res.redirect('/v4/acting-for-member/bereavement-journey/confirmation');
 });
 
 //bereavement journey - check your answers
 router.post('/bereavement-journey/check-your-answers', function (req, res) {
-    res.redirect('/v4/third-party/bereavement-journey/declaration');
+    res.redirect('/v4/acting-for-member/bereavement-journey/declaration');
 });
 
 // ************************************************
-// MEMBERS / THIRD PARTY JOURNEYS
+// MEMBERS / acting-for-member JOURNEYS
 // ************************************************
-// THIRD PARTY - Third-party-query- Asking on behalf od a member
+// THIRD PARTY -acting-for-member-query- Asking on behalf od a member
 
 
 
-router.post('/third-party/member/enter-your-email', (req, res) => {
+router.post('/acting-for-member/member/enter-your-email', (req, res) => {
 
     res.redirect('enter-your-name');
 
 });
 
 
-router.post('/member/member-membership-number', (req, res) => {
+router.post('/acting-for-member/member/member-membership-number', (req, res) => {
 
   var answer = req.session.data['member-membership-number'];
 
   if (answer === "Yes, I know the membership number") {
-    res.redirect('../member/members-name');
+    res.redirect('../acting-for-member/member/members-name');
   } else if (answer === "No, I do not know the membership number") {
-    res.redirect('../member/member-national-insurance-number'); // wherever "No" should go
+    res.redirect('../acting-for-member/member/member-national-insurance-number'); // wherever "No" should go
   } else {
-    res.redirect('../member/member-national-insurance-number'); // or an "I'm not sure" path
+    res.redirect('../acting-for-member/member/member-national-insurance-number'); // or an "I'm not sure" path
   }
 });
 
 
 // MEMBER - Do you know your membership number?
-router.post('/member-membership-number', (req, res) => {
+router.post('/acting-for-member/member/member-membership-number', (req, res) => {
 
     var memberNumber = req.session.data['member-membership-number']
 
@@ -1196,7 +1196,7 @@ router.post('/member-membership-number', (req, res) => {
 
 // THIRD PARTY - What is your name?
 
-router.post('/third-party/member/enter-your-name', function (req, res) {
+router.post('/acting-for-member/member/enter-your-name', function (req, res) {
 
     var firstName = req.session.data['firstName'];
     var lastName = req.session.data['lastName'];
@@ -1211,7 +1211,7 @@ router.post('/third-party/member/enter-your-name', function (req, res) {
 
 // THIRD PARTY - What is your email?
 
-router.post('/third-party/member/enter-your-email', function (req, res) {
+router.post('/acting-for-member/member/enter-your-email', function (req, res) {
 
     var emailAddress = req.session.data['emailAddress'];
 
@@ -1225,7 +1225,7 @@ router.post('/third-party/member/enter-your-email', function (req, res) {
 
 // MEMBER - What is your national insurance number?
 
-router.post('/member/member-national-insurance-number', function (req, res) {
+router.post('/acting-for-member/member/member-national-insurance-number', function (req, res) {
     
     let nino = req.session.data['natInsNum'];
  
@@ -1236,19 +1236,19 @@ router.post('/member/member-national-insurance-number', function (req, res) {
 
     if (nino) {
         if (regex.test(nino)|| nino === 'QQ123456C') { 
-            res.redirect('../member/members-name');  // Valid National Insurance Number
+            res.redirect('../acting-for-member/member/members-name');  // Valid National Insurance Number
         } else {
-            res.redirect('../member/member-national-insurance-number');  // Invalid format
+            res.redirect('../acting-for-member/member/member-national-insurance-number');  // Invalid format
         }
     } else {
-        res.redirect('../member/member-national-insurance-number');  // Field is empty
+        res.redirect('../acting-for-member/member/member-national-insurance-number');  // Field is empty
     }
 
 });
 
 // THIRD PARTY- member -  What is the member's name?
 
-router.post('/third-party/member/members-name', function (req, res) {
+router.post('/acting-for-member/member/members-name', function (req, res) {
 
     var firstName = req.session.data['memberFirstName'];
     var lastName = req.session.data['memberLastName'];
@@ -1263,7 +1263,7 @@ router.post('/third-party/member/members-name', function (req, res) {
 
 // THIRD PARTY- member - What is the member's date of birth?
 
-router.post('/third-party/member/members-date-of-birth', function (req, res) {
+router.post('/acting-for-member/member/members-date-of-birth', function (req, res) {
 
     var dateOfBirthDay = req.session.data['date-of-birth-member']?.day;
     var dateOfBirthMonth = req.session.data['date-of-birth-member']?.month;
@@ -1290,7 +1290,7 @@ router.post('/third-party/member/members-date-of-birth', function (req, res) {
 
 // THIRD PARTY- member - What is the member's postcode?
 
-router.post('/third-party/member/lookup-members-address', function (req, res) {
+router.post('/acting-for-member/member/lookup-members-address', function (req, res) {
 
     var postcodeLookup = req.session.data['postcode']
 
@@ -1367,7 +1367,7 @@ router.post('members-address', function (req, res) {
 })
 
 // THIRD PARTY- member  - No address found
-router.post('third-party/member/no-address-found', function (req, res) {
+router.post('acting-for-member/member/no-address-found', function (req, res) {
 
     res.redirect('lookup-members-address');
 
@@ -1375,7 +1375,7 @@ router.post('third-party/member/no-address-found', function (req, res) {
 
 // THIRD PARTY- member - Enter members address manual
 
-router.post('/third-party/member/members-address-manual', function (req, res) {
+router.post('/acting-for-member/member/members-address-manual', function (req, res) {
 
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
@@ -1392,7 +1392,7 @@ router.post('/third-party/member/members-address-manual', function (req, res) {
 
 // THIRD PARTY- member -Do you have the member's email address?
 
-router.post('/third-party/member/members-email', (req, res) => {
+router.post('/acting-for-member/member/members-email', (req, res) => {
 
     res.redirect('reason-for-contact');
 
@@ -1400,7 +1400,7 @@ router.post('/third-party/member/members-email', (req, res) => {
 
 
 // THIRD PARTY- member  - Reason for contact
-router.post('/third-party/member/reason-for-contact', function (req, res) {
+router.post('/acting-for-member/member/reason-for-contact', function (req, res) {
 
     var additionalInfo = req.session.data['additionalInfo'];
 
@@ -1419,14 +1419,14 @@ router.post('/third-party/member/reason-for-contact', function (req, res) {
 })
 
 // ETHIRD PARTY- member - Check your answers
-router.post('/third-party/member/check-your-answers', (req, res) => {
+router.post('/acting-for-member/member/check-your-answers', (req, res) => {
 
     res.redirect('confirmation');
 
 });
 
-//bereavement journey - third-party - check-your-answers
-router.post('/bereavement-journey/third-party/check-your-answers', (req, res) => {
+//bereavement journey -acting-for-member - check-your-answers
+router.post('/bereavement-journey/acting-for-member/check-your-answers', (req, res) => {
 
     res.redirect('confirmation');
 
