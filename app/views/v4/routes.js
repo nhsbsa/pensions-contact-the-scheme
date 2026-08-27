@@ -6,9 +6,8 @@ const router = express.Router();
 // API
 const axios = require('axios');
 
-// Add your routes here - above the module.exports line
 
-module.exports = router;
+// Add your routes here - module.exports is set at the end of the file
 
 // Start page
 router.post( '/start/', (req, res) => {
@@ -1702,3 +1701,5 @@ router.post('/member-query/check-your-answers', (req, res) => {
     res.redirect('confirmation');
 
 });
+
+module.exports = router;
