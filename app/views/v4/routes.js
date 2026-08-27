@@ -467,12 +467,12 @@ router.post('/bereavement-journey/start', (req, res) => {
 // Bereavement journey - tell us once
 router.post('/bereavement-journey/tell-us-once', (req, res) => {
   var TellUsOnce = req.session.data['TellUsOnce']
-
-  if (TellUsOnce == 'Yes') {
-    res.redirect('../bereavement-journey/tell-us-once-yes')
-  } else {
-    res.redirect('../bereavement-journey/start')
-  }
+    // Use explicit absolute redirects so resolution is consistent
+    if (TellUsOnce === 'Yes') {
+        res.redirect('/v4/acting-for-member/bereavement-journey/tell-us-once-yes')
+    } else {
+        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-relationship')
+    }
 });
 
 // Bereavement journey - informant relationship

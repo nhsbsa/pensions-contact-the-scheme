@@ -61,7 +61,7 @@ const versionFour =  require('./views/v4/routes')
 router.use('/v4', versionFour);
 router.use('/v4/member', versionFour);
 router.use('/v4/employer', versionFour);
-router.use('/v4/third-party', versionFour);
+router.use('/v4/acting-for-member', versionFour);
 
 module.exports = router;
 
