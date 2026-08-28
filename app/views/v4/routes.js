@@ -1320,17 +1320,17 @@ router.post('/member/lookup-members-address', function (req, res) {
 
                     req.session.data['addresses'] = titleCaseAddresses;
 
-                    res.redirect('../member/members-address')
+                    res.redirect('members-email')
                 })
                 .catch(error => {
                     console.log(error);
-                    res.redirect('../member/no-address-found')
+                    res.redirect('no-address-found')
                 });
 
         }
 
     } else {
-        res.redirect('../member/lookup-members-address')
+        res.redirect('lookup-members-address')
     }
 
 })
