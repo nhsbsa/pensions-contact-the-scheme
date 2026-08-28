@@ -1155,29 +1155,29 @@ router.post('/bereavement-journey/check-your-answers', function (req, res) {
 
 
 
-router.post('/acting-for-member/member/enter-your-email', (req, res) => {
+router.post('/member/enter-your-email', (req, res) => {
 
     res.redirect('enter-your-name');
 
 });
 
 
-router.post('/acting-for-member/member/member-membership-number', (req, res) => {
+router.post('/member/member-membership-number', (req, res) => {
 
   var answer = req.session.data['member-membership-number'];
 
   if (answer === "Yes, I know the membership number") {
-    res.redirect('../acting-for-member/member/members-name');
+    res.redirect('members-name');
   } else if (answer === "No, I do not know the membership number") {
-    res.redirect('../acting-for-member/member/member-national-insurance-number'); // wherever "No" should go
+    res.redirect('member-national-insurance-number'); // wherever "No" should go
   } else {
-    res.redirect('../acting-for-member/member/member-national-insurance-number'); // or an "I'm not sure" path
+    res.redirect('member-national-insurance-number'); // or an "I'm not sure" path
   }
 });
 
 
 // MEMBER - Do you know your membership number?
-router.post('/acting-for-member/member/member-membership-number', (req, res) => {
+router.post('/member/member-membership-number', (req, res) => {
 
     var memberNumber = req.session.data['member-membership-number']
 
@@ -1195,7 +1195,7 @@ router.post('/acting-for-member/member/member-membership-number', (req, res) => 
 
 // THIRD PARTY - What is your name?
 
-router.post('/acting-for-member/member/enter-your-name', function (req, res) {
+router.post('/member/enter-your-name', function (req, res) {
 
     var firstName = req.session.data['firstName'];
     var lastName = req.session.data['lastName'];
@@ -1210,7 +1210,7 @@ router.post('/acting-for-member/member/enter-your-name', function (req, res) {
 
 // THIRD PARTY - What is your email?
 
-router.post('/acting-for-member/member/enter-your-email', function (req, res) {
+router.post('/member/enter-your-email', function (req, res) {
 
     var emailAddress = req.session.data['emailAddress'];
 
@@ -1224,7 +1224,7 @@ router.post('/acting-for-member/member/enter-your-email', function (req, res) {
 
 // MEMBER - What is your national insurance number?
 
-router.post('/acting-for-member/member/member-national-insurance-number', function (req, res) {
+router.post('/member/member-national-insurance-number', function (req, res) {
     
     let nino = req.session.data['natInsNum'];
  
@@ -1235,19 +1235,19 @@ router.post('/acting-for-member/member/member-national-insurance-number', functi
 
     if (nino) {
         if (regex.test(nino)|| nino === 'QQ123456C') { 
-            res.redirect('../acting-for-member/member/members-name');  // Valid National Insurance Number
+            res.redirect('members-name');  // Valid National Insurance Number
         } else {
-            res.redirect('../acting-for-member/member/member-national-insurance-number');  // Invalid format
+            res.redirect('member-national-insurance-number');  // Invalid format
         }
     } else {
-        res.redirect('../acting-for-member/member/member-national-insurance-number');  // Field is empty
+        res.redirect('member-national-insurance-number');  // Field is empty
     }
 
 });
 
 // THIRD PARTY- member -  What is the member's name?
 
-router.post('/acting-for-member/member/members-name', function (req, res) {
+router.post('/member/members-name', function (req, res) {
 
     var firstName = req.session.data['memberFirstName'];
     var lastName = req.session.data['memberLastName'];
@@ -1262,7 +1262,7 @@ router.post('/acting-for-member/member/members-name', function (req, res) {
 
 // THIRD PARTY- member - What is the member's date of birth?
 
-router.post('/acting-for-member/member/members-date-of-birth', function (req, res) {
+router.post('/member/members-date-of-birth', function (req, res) {
 
     var dateOfBirthDay = req.session.data['date-of-birth-member']?.day;
     var dateOfBirthMonth = req.session.data['date-of-birth-member']?.month;
@@ -1289,7 +1289,7 @@ router.post('/acting-for-member/member/members-date-of-birth', function (req, re
 
 // THIRD PARTY- member - What is the member's postcode?
 
-router.post('/acting-for-member/member/lookup-members-address', function (req, res) {
+router.post('/member/lookup-members-address', function (req, res) {
 
     var postcodeLookup = req.session.data['postcode']
 
@@ -1366,7 +1366,7 @@ router.post('members-address', function (req, res) {
 })
 
 // THIRD PARTY- member  - No address found
-router.post('acting-for-member/member/no-address-found', function (req, res) {
+router.post('/member/no-address-found', function (req, res) {
 
     res.redirect('lookup-members-address');
 
@@ -1374,7 +1374,7 @@ router.post('acting-for-member/member/no-address-found', function (req, res) {
 
 // THIRD PARTY- member - Enter members address manual
 
-router.post('/acting-for-member/member/members-address-manual', function (req, res) {
+router.post('/member/members-address-manual', function (req, res) {
 
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
@@ -1391,7 +1391,7 @@ router.post('/acting-for-member/member/members-address-manual', function (req, r
 
 // THIRD PARTY- member -Do you have the member's email address?
 
-router.post('/acting-for-member/member/members-email', (req, res) => {
+router.post('/member/members-email', (req, res) => {
 
     res.redirect('reason-for-contact');
 
@@ -1399,7 +1399,7 @@ router.post('/acting-for-member/member/members-email', (req, res) => {
 
 
 // THIRD PARTY- member  - Reason for contact
-router.post('/acting-for-member/member/reason-for-contact', function (req, res) {
+router.post('/member/reason-for-contact', function (req, res) {
 
     var additionalInfo = req.session.data['additionalInfo'];
 
@@ -1418,7 +1418,7 @@ router.post('/acting-for-member/member/reason-for-contact', function (req, res) 
 })
 
 // ETHIRD PARTY- member - Check your answers
-router.post('/acting-for-member/member/check-your-answers', (req, res) => {
+router.post('/member/check-your-answers', (req, res) => {
 
     res.redirect('confirmation');
 
