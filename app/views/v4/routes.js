@@ -1320,7 +1320,7 @@ router.post('/member/lookup-members-address', function (req, res) {
 
                     req.session.data['addresses'] = titleCaseAddresses;
 
-                    res.redirect('members-email')
+                    res.redirect('members-address')
                 })
                 .catch(error => {
                     console.log(error);
