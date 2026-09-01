@@ -400,7 +400,7 @@ router.post('/acting-for-member/select-query-type', (req, res) => {
         res.redirect('../acting-for-member/member/enter-your-name')
 
     } else if (thirdPartyQuery == 'I want to tell you that a member has died') {
-        res.redirect('../acting-for-member/bereavement-journey/start')
+        res.redirect('../acting-for-member/bereavement-journey/tell-us-once')
 
     } else {
         res.redirect('../acting-for-member/general-query/enter-your-name')
@@ -461,7 +461,7 @@ router.post('/acting-for-member/general-query/check-your-answers', (req, res) =>
 // Bereavement journey - start
 router.post('/bereavement-journey/start', (req, res) => {
     req.session.destroy();
-    res.redirect('/v4/acting-for-member/bereavement-journey/tell-us-once');
+    res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-relationship');
 });
 
 // Bereavement journey - tell us once
@@ -471,7 +471,7 @@ router.post('/bereavement-journey/tell-us-once', (req, res) => {
     if (TellUsOnce === 'Yes') {
         res.redirect('/v4/acting-for-member/bereavement-journey/tell-us-once-yes')
     } else {
-        res.redirect('/v4/acting-for-member/bereavement-journey/informant/informant-relationship')
+        res.redirect('/v4/acting-for-member/bereavement-journey/start')
     }
 });
 
