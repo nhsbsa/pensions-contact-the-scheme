@@ -41,6 +41,8 @@
           </dd>
         </div>
 
+         {% if (data['estate-person'] == "Yes") %}
+
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Person dealing with the estate
@@ -174,7 +176,9 @@
               </a>
             </dd>
           </div>
+{% elseif data['estate-person'] == "No" or data['estate-person'] == "I'm not sure" %}
 
+          {% endif %}
 
  
 

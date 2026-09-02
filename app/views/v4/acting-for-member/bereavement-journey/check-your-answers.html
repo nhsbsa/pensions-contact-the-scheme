@@ -539,13 +539,24 @@
           </dd>
         </div>
 
+        
+  
+   {% if (data['estate-person'] == "Yes") %}
+
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Person dealing with the estate
           </dt>
           <dd class="nhsuk-summary-list__value">
-            Someone else
-            
+             {% if (data['EstateDealing'] == "You") %}
+                You
+              {% elseif (data['EstateDealing'] == "The adult dependant") %}
+                The adult dependant
+              {% else %}
+                Someone else
+              {% endif %}
+         
+          
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a href="../bereavement-journey/estate/estate-same-person">
@@ -553,7 +564,9 @@
             </a>
           </dd>
         </div>
-
+        
+  
+ 
    
              <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
@@ -669,10 +682,13 @@
             </dd>
           </div>
 
-        </dl>
+       
+{% elseif data['estate-person'] == "No" or data['estate-person'] == "I'm not sure" %}
 
+          {% endif %}
 
-        
+          
+           </dl>
 
       <form action="../bereavement-journey/check-your-answers" method="post">
         {{ button({
