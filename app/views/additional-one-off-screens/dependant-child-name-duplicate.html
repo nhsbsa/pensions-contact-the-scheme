@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What is their name?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+ 
+        <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+
+  <main class="nhsuk-main-wrapper nhsuk-main-wrapper--s" id="maincontent">
+   
+
+        <div class="nhsuk-panel nhsuk-panel--interruption">
+          <h1 class="nhsuk-panel__heading nhsuk-panel__heading--l">
+           You've already added a child dependant with this name
+          </h1>
+          <div class="nhsuk-panel__body">
+            <p>Check the child's details before adding 
+      another child dependant. Select 'Continue' if this name is correct.</p>
+            <div class="nhsuk-button-group">
+              <a class="nhsuk-button nhsuk-button--reverse" data-module="nhsuk-button" href="../v4/acting-for-member/bereavement-journey/dependant/dependant-child-check-your-answers" role="button" draggable="false">
+                Continue
+              </a>
+
+              <a href="../v4/acting-for-member/bereavement-journey/dependant/dependant-child-name">Change name</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+  <script>
+    function setLocation(element) {
+      document.forms[0].action = element.value
+    }
+  </script>
+{% endblock %}
