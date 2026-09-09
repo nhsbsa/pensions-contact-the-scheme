@@ -63,5 +63,11 @@ router.use('/v4/member', versionFour);
 router.use('/v4/employer', versionFour);
 router.use('/v4/acting-for-member', versionFour);
 
+const versionFive =  require('./views/v5/routes')
+router.use('/v5', versionFive);
+router.use('/v5/member', versionFive);
+router.use('/v5/employer', versionFive);
+router.use('/v5/acting-for-member', versionFive);
+
 module.exports = router;
 

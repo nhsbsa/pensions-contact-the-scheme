@@ -1,0 +1,152 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Check your answers"%}
+{% set hideBack ="true" %}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+ 
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+      <h1 class="nhsuk-heading-l">{{pageTitle}}</h1>
+      
+
+    
+
+        <dl class="nhsuk-summary-list">
+
+
+            <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Connection to person who died
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['InformantRelationship']) %}
+                {{ data['InformantRelationship']}} 
+              {% else %}
+                Spouse
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../informant/informant-relationship">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
+              </a>
+            </dd>
+          </div>
+
+            <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Name 
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['informantFirstName']) and (data['informantLastName']) %}
+                {{ data['informantFirstName']}} {{ data['informantLastName'] }}
+              {% else %}
+                Joe Bloggs
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../informant/informant-name">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
+              </a>
+            </dd>
+          </div>
+
+           <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Email address
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['informantEmail']) %}
+                {{ data['informantEmail']}} 
+              {% else %}
+                Spouse
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../informant/informant-email">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; email.</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Phone number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if data['InformantphoneNumber'] == 'Yes' %}
+                {{ data['phoneNumber']}} 
+              {% else %}
+                Not provided
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../informant/informant-phone-number">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; phone number. </span>
+              </a>
+            </dd>
+          </div>
+
+  
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+            Main UK address
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['addressInUk']) %}
+                {{ data['addressInUk'] }}
+              {% else %}
+                Yes
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../informant/informant-main-address">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; main address.</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['address']) and not (data['address-line-1']) %}
+                {{ data['address'] }}
+              {% elif (data['address-line-1']) and not (data['address']) %}
+                {{data['address-line-1']}}<br> {{data['address-line-2']}}<br> {{data['address-town']}} {{data['address-county']}}<br> {{data['address-country']}}<br> {{data['address-postcode']}}
+              {% elif (data['address-line-1']) and (data['address']) %}
+                {{data['address-line-1']}}<br> {{data['address-line-2']}}<br> {{data['address-town']}}<br> {{data['address-county']}}<br> {{data['address-country']}}<br> {{data['address-postcode']}}
+              {% else %}
+                NHS BSA<br> Stella House<br> Goldcrest Way<br> Newcastle Upon Tyne<br> NE15 8NY
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../informant/find-informant-address">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; member's address.</span>
+              </a>
+            </dd>
+          </div>
+  
+
+       
+        </dl>
+
+      <form action="/{{folder}}/{{subfolder}}/bereavement-journey/informant/check-your-answers" method="post">
+        {{ button({
+            text: "Continue"
+        }) }}   
+      </form>
+  </div>
+</div>
+{% endblock %}

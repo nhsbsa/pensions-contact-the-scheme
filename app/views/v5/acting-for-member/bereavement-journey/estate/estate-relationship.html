@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What is their connection to the member?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
+
+        <form action="../estate/estate-relationship" method="post">
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Person dealing with the estate</span>
+          {{ radios({
+            idPrefix: "EstateRelationship",
+            name: "EstateRelationship",
+            fieldset: {
+              legend: {
+                text: pageTitle,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Spouse",
+                text: "Their spouse",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "Civil partner",
+                text: "Their civil partner",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "Child",
+                text: "Their child",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "Their scheme partner",
+                text: "Their Scheme partner",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "Other",
+                text: "Other",
+                hint: {
+                  text: ""
+                }
+              }
+            ]
+          }) }}
+
+        
+
+          {{ button({
+            text: "Continue",
+            
+            classes: "nhsuk-u-margin-top-4"
+          }) }}
+
+ 
+
+
+        </form>
+      </div>
+    </div>  
+  </div>
+{% endblock %}

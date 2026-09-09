@@ -1,0 +1,102 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What is your employer code?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+    
+
+      {% set eaCode %}
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Employer details</span>
+        <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+        </h1>
+        <div class="nhsuk-hint">
+          Your employer code should be 4 characters long and may look like 1234 or A123
+        </div>
+      {% endset -%}
+
+
+        {{ input({
+          label: {
+            "html": eaCode
+          },
+          "id": "employer-code",
+          "name": "employer-code",
+          "type": "text",
+          "classes": "nhsuk-input--width-10"
+        }) }}
+
+
+       
+
+
+
+        <details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      Help with your employer code
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+        <p>An employer code identifies each employer in the NHS Pension Scheme.</p>
+          <p>It can be made up of:</p>
+          <ul>
+            <li>4 numbers like 1234</li>
+            <li>any combination of 4 letters and numbers like A123</li>
+          </ul>
+  </div>
+</details>
+
+ <details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      Find your employer code
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+        
+        <p>Use our online tool to find your employer code if you do not know it.</p>
+        <p>Enter either your organisation’s:</p>
+        <ul>
+        <li>name</li>
+        <li>postcode</li>
+        </ul>
+       
+        {{ actionLink({
+          text: "Find your employer code (opens in new tab)",
+          href: "https://find-an-employer.nhsbsa.nhs.uk/",
+          openInNewWindow: true
+        }) }}
+
+        <p>If your organisation does not have an employer code it will need to <a href="https://faq.nhsbsa.nhs.uk/knowledgebase/article/KA-02670/en-us" class="nhsuk-link" target="blank">register for one (opens in new tab)</a>.</p>
+
+         
+    
+  </div>
+</details>
+
+    
+       
+
+        {{ button({
+          "text": "Continue",
+          "href": "enter-your-name"
+        }) }}
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}
+

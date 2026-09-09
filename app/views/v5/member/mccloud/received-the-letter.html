@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "As you have received the letter what do you need help with?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row"> 
+    <div class="nhsuk-grid-column-two-thirds"> 
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span> 
+      <h1 class="nhsuk-heading-l"> {{ pageTitle }} </h1> 
+
+      <form action="../member/mccloud/received-the-letter" method="post" novalidate> 
+        <div class="nhsuk-form-group"> <fieldset class="nhsuk-fieldset"> 
+          <div class="nhsuk-radios" data-module="nhsuk-radios"> 
+            <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-1" name="exampleHints" type="radio" value="understanding-letter"> 
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-1"> Understanding my RSS letter </label>
+            </div> <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-2" name="exampleHints" type="radio" value="why-received"> 
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2"> Why did I receive this letter </label> 
+            </div> 
+            <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-3" name="exampleHints" type="radio" value="letting-pensions-know"> 
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3"> Letting NHS Pensions know my choice </label> 
+            </div> 
+            <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-4" name="exampleHints" type="radio" value="no-contact"> 
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-4"> I've not had any contact from NHS Pensions since making my choice </label> 
+            </div> 
+            <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-5" name="exampleHints" type="radio" value="incorrect-information"> 
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-5"> Information on the letter is not correct </label>
+             </div> 
+             <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-6" name="exampleHints" type="radio" value="payment-figures"> 
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-6"> There is an issue with payment figures </label>
+             </div> <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-7" name="exampleHints" type="radio" value="further-help">
+               <label class="nhsuk-label nhsuk-radios__label" for="example-hints-7"> I want further help about the choice I made </label> 
+              </div> <div class="nhsuk-radios__divider">or</div> <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-8" name="exampleHints" type="radio" value="something-else"> 
+                <label class="nhsuk-label nhsuk-radios__label" for="example-hints-8"> Something else </label> 
+              </div> 
+            </div> 
+          </fieldset> 
+        </div> 
+        {{ button({ "text": "Continue", "classes": "nhsuk-u-margin-top-3" }) }} 
+      </form> 
+    </div> 
+  </div>
+
+{% endblock %}

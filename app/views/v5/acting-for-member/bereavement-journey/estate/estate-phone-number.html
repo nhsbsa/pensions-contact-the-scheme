@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Do they have a phone number?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/v4/acting-for-member/bereavement-journey/estate/estate-phone-number" method="post">
+          
+
+            <div class="nhsuk-form-group">
+
+              {% set phoneNumberHtml %}
+                {{ input({
+                  id: "estatephoneNumber",
+                  name: "estatephoneNumber",
+                  classes: "nhsuk-u-width-two-thirds",
+                  label: {
+                    text: "Phone number"
+                  }
+                }) }}
+              {% endset -%}
+
+              <span class="nhsuk-caption-l nhsuk-caption--bottom">Person dealing with the estate</span>
+              {{ radios({
+                idPrefix: "EstatePhoneNumber",
+                name: "EstatePhoneNumber",
+                classes: "nhsuk-radios",
+                fieldset: {
+                  legend: {
+                    text: pageTitle,
+                    classes: "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                },
+                hint: {
+                  text: "For international numbers include the country code, for example +34 for Spain."
+                },
+                items: [ 
+                  {
+                    value: "Yes",
+                    text: "Yes",
+                    conditional: {
+                      html: phoneNumberHtml
+                    }
+                  },
+                  {
+                    value: "No",
+                    text: "No"
+                  }
+                ]
+              }) }}
+              
+              </div>
+
+              {{ button({
+                text: "Continue"
+              }) }} 
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

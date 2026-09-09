@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What is the member's NHS Pensions membership number?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
+
+        <form action="/{{folder}}/{{subfolder}}/member-query/membership-number" method="post">
+
+          {% set sdNumberHtml %}
+            {{ input({
+              id: "sdNumber",
+              name: "sdNumber",
+              classes: "nhsuk-u-width-two-thirds",
+              label: {
+                text: "Membership number"
+              }
+            }) }}
+          {% endset -%} 
+
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
+          {% call fieldset({
+            legend: {
+              "text": pageTitle,
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          }) %}
+          <div class="nhsuk-hint">
+  This is an 8 digit number, which may start with 'SD'. 
+  You can find it on payslips, Annual Benefit Statements, Total Reward Statements, or any letters from us
+</div>
+
+          
+            {{ input({
+              label: {
+                "html": 'Membership number'
+              },
+              "id": "membershipNumber",
+              "name": "membershipNumber",
+              "classes": "nhsuk-input--width-20"
+            }) }}
+          
+          {% endcall %}
+          
+       
+   </div>
+          {{ button({
+          "text": "Continue"
+          }) }}
+        </form>
+
+     
+    </div>  
+  </div>
+{% endblock %}

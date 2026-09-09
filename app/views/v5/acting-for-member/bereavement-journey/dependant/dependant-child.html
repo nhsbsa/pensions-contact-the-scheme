@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Are there any child dependants?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
+
+        <form action="../dependant/dependant-child" method="post">
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Child dependant details</span>
+
+<h1 class="nhsuk-fieldset__legend--l">
+  {{ pageTitle }}
+</h1>
+
+<p>
+  A child dependant is a child who was financially dependent on a member.
+</p>
+<p>They do not have to be the member's own child. They can include other children who depended on the member financially.</p>
+
+{{ radios({
+  idPrefix: "child-dependant",
+  name: "child-dependant",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  ]
+}) }}
+
+        
+
+          {{ button({
+            text: "Continue",
+            classes: "nhsuk-u-margin-top-4"
+          }) }}
+
+ 
+
+
+        </form>
+      </div>
+    </div>  
+  </div>
+{% endblock %}

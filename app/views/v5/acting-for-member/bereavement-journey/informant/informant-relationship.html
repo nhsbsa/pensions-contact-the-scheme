@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "How are you connected to the person who died?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
+
+        <form action="/{{folder}}/{{subfolder}}/bereavement-journey/informant/informant-relationship" method="post">
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+          {{ radios({
+            idPrefix: "InformantRelationship",
+            name: "InformantRelationship",
+            fieldset: {
+              legend: {
+                text: pageTitle,
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Spouse",
+                text: "I'm their spouse",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "Civil partner",
+                text: "I'm their civil partner",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "Child",
+                text: "I'm their child",
+                hint: {
+                  text: ""
+                }
+              },{
+                value: "Person dealing with the estate",
+                text: "I'm the person dealing with the estate",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "Scheme partner",
+                text: "I'm a Scheme partner",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "Other",
+                text: "Other",
+                hint: {
+                  text: ""
+                }
+              }
+            ]
+          }) }}
+
+        
+
+          {{ button({
+            text: "Continue",
+            classes: "nhsuk-u-margin-top-4"
+          }) }}
+
+ 
+
+
+        </form>
+      </div>
+    </div>  
+  </div>
+{% endblock %}

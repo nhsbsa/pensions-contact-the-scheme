@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Are you paying into the NHS Pension Scheme, or have you paid-in in the past?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">NHS Pension statement</span>
+     <form action="../trs/are-you-active-member" method="post">
+
+        {{ radios({
+          idPrefix: "trsActiveMember",
+          name: "trsActiveMember",
+          fieldset: {
+            legend: {
+              text: pageTitle,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "Whether you are currently paying in or paid in for at least 2 years in the past determines what type of statement you may get"
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              hint: {
+                text: ""
+              }
+            },
+              {
+                value: "No",
+                text: "No",
+                hint: {
+                  text: ""
+                }
+            }
+          ]
+        }) }}
+
+        {{ button({
+          text: "Continue",
+          classes: "nhsuk-u-margin-top-4"
+        }) }}
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}

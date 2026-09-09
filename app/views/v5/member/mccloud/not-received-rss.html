@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "If you've not received an Remediable Service Statement (RSS)"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+
+      <p>You'll only receive an RSS letter if....
+      </p>
+
+      <p>We're currently sending RSS letters to NHS Pension Scheme members who:
+      </p>
+
+      <ul>
+        <li>have claimed pension benefits from any section of the Scheme</li>
+        <li>are affected by the Public service Pensions Remedy (PSP Remedy) (opens in new tab) sometimes known as the McCloud remedy</li>
+      </ul>
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h2 class="nhsuk-fieldset__heading">
+              Do you still need help with your NHS Pensions query?
+            </h2>
+          </legend>
+          <div class="nhsuk-radios" data-module="nhsuk-radios">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-hints" name="exampleHints" type="radio" value="email">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                Yes, I still need help
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-hints-2" name="exampleHints" type="radio" value="phone">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                No, I no longer need help with this query
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      
+      
+
+      <form action="../member/trs/received-rss" method="post" novalidate>
+          {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-u-margin-top-3"
+          }) }}
+      </form>
+
+      
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Check the child dependant details"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+   
+        <form action="../dependant/dependant-child-check-your-answers" method="post">
+           <span class="nhsuk-caption-l nhsuk-caption--bottom">Child dependant details</span>
+      <h1 class="nhsuk-heading-xl">{{pageTitle}}</h1>
+
+       
+  
+
+           <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Child dependant
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['child-dependant']}} 
+            
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../dependant/dependant-child">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            </a>
+          </dd>
+        </div>
+
+
+           <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Child dependant 1 
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['child-firstName']) and (data['child-lastName']) %}
+                {{ data['child-firstName']}} {{ data['child-lastName'] }}
+              {% else %}
+                Joe Bloggs
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../dependant/dependant-child-name">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Child dependant 2
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if (data['child-firstName']) and (data['child-lastName']) %}
+                {{ data['child-firstName']}} {{ data['child-lastName'] }}
+              {% else %}
+                Steve Bloggs
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="../dependant/dependant-child-name">
+                Change<span class="nhsuk-u-visually-hidden">&nbsp; name. </span>
+              </a>
+            </dd>
+          </div>
+        
+
+
+ 
+
+        </dl>
+
+
+
+           {{ radios({
+            idPrefix: "child-dependant-2",
+            name: "child-dependant-2",
+            fieldset: {
+              legend: {
+                text: "Do you want to add another child dependant?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+             
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                hint: {
+                  text: ""
+                }
+              }
+            ]
+          }) }}
+
+      <form action="../dependant/dependant-child-check-your-answers" method="post">
+        {{ button({
+            text: "Continue"
+        }) }}   
+      </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Understanding my Remediable Service Statement (RSS) letter"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+
+      <p>You'll be given two choices on your letter on which benefits you would like to take when retiring.
+      </p>
+
+      <p>You have 12 months from the date on the RSS letter to make your choice and inform us.
+      </p>
+
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>On the letter you should see a code that starts with 'RSS'. This code corresponds with further guidance videos on our website. Select the relevant link to your letter and you can watch the video for more information.</p>
+      </div>
+
+      <p>You can learn more about your RSS letter on the understanding your remedy choice letter (opens in new tab) page.
+      </p>
+      
+
+     
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h2 class="nhsuk-fieldset__heading">
+              Do you still need help with your NHS Pensions query?
+            </h2>
+          </legend>
+          <div class="nhsuk-radios" data-module="nhsuk-radios">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-hints" name="exampleHints" type="radio" value="email">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                Yes, I still need help
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-hints-2" name="exampleHints" type="radio" value="phone">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                No, I no longer need help with this query
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      
+      
+
+      <form action="../member/trs/received-rss" method="post" novalidate>
+          {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-u-margin-top-3"
+          }) }}
+      </form>
+
+      
+    </div>
+  </div>
+
+{% endblock %}
