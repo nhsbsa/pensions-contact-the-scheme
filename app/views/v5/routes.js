@@ -168,7 +168,8 @@ router.post('/member/mccloud/received-the-letter', (req, res) => {
     } else if (receivedLetter == "why-received") {
         res.redirect('/v5/member/mccloud/why-the-letter-was-sent')
     } else if (receivedLetter == "letting-pensions-know") {
-        res.redirect('/v5/member/mccloud/letting-nhs-pensions-know')
+    } else if (receivedLetter == "no-contact") {
+        res.redirect('/v5/member/mccloud/days-since-last-contact')
     } else if (receivedLetter == "something-else") {
         res.redirect('/v5/member/membership-number')
     } else {
@@ -221,6 +222,18 @@ router.post('/member/mccloud/letting-nhs-pensions-know', (req, res) => {
       res.redirect('/v5/member/membership-number')
     } else {
         res.redirect('/v5/member/mccloud/query-solved')
+    }
+  });
+
+  // MEMBER - How long has it been since last contact with NHS Pensions page
+
+router.post('/member/mccloud/days-since-last-contact', (req, res) => {
+    var lastNotified = req.session.data['lastContact'];
+
+    if (lastNotified == "over60") {
+      res.redirect('/v5/member/membership-number')
+    } else {
+        res.redirect('/v5/member/mccloud/less-than-60-days')
     }
   });
 
