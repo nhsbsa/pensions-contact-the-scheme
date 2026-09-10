@@ -169,6 +169,8 @@ router.post('/member/mccloud/received-the-letter', (req, res) => {
         res.redirect('/v5/member/mccloud/why-the-letter-was-sent')
     } else if (receivedLetter == "letting-pensions-know") {
         res.redirect('/v5/member/mccloud/letting-nhs-pensions-know')
+    } else if (receivedLetter == "something-else") {
+        res.redirect('/v5/member/membership-number')
     } else {
         res.redirect('/v5/member/mccloud/not-received-rss')
     }
