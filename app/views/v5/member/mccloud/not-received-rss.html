@@ -32,6 +32,7 @@
         <li>are affected by the Public service Pensions Remedy (PSP Remedy) (opens in new tab) sometimes known as the McCloud remedy</li>
       </ul>
 
+      <form action="../member/mccloud/not-received-rss" method="post" novalidate>
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
@@ -41,13 +42,13 @@
           </legend>
           <div class="nhsuk-radios" data-module="nhsuk-radios">
             <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="example-hints" name="exampleHints" type="radio" value="email">
+              <input class="nhsuk-radios__input" id="example-hints" name="notreceivedLetter" type="radio" value="yes">
               <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
                 Yes, I still need help
               </label>
             </div>
             <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="example-hints-2" name="exampleHints" type="radio" value="phone">
+              <input class="nhsuk-radios__input" id="example-hints-2" name="notreceivedLetter" type="radio" value="no">
               <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
                 No, I no longer need help with this query
               </label>
@@ -56,10 +57,6 @@
         </fieldset>
       </div>
 
-      
-      
-
-      <form action="../member/trs/received-rss" method="post" novalidate>
           {{ button({
           "text": "Continue",
           "classes": "nhsuk-u-margin-top-3"

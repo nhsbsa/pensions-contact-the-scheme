@@ -45,7 +45,7 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
     if (mnpGeneral == 'The My NHS Pension portal') {
         res.redirect('nhs-pension-portal-options')
 
-    } else if (mnpGeneral == 'NHS Pension statement') {
+    } else if (mnpGeneral == 'Total Reward Statement (TRS)') {
         res.redirect('../member/trs/trs-start')
 
       } else if (mnpGeneral == 'Annual benefit statement (ABS)') {
@@ -67,7 +67,7 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
         res.redirect('membership-number')
 
     } else if (mnpGeneral == 'McCloud') {
-        res.redirect('membership-number')
+        res.redirect('../member/mccloud/received-rss')
 
     } else if (mnpGeneral == 'Something else') {
         res.redirect('membership-number')
@@ -82,7 +82,7 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
 // ****************************************
 
 
-// Are you a member or employer?
+// View/access statement or report an issue?
  
 router.post('/member/trs/trs-start', (req, res) => {
     var viewStatement = req.session.data['view-statement'];
@@ -141,6 +141,88 @@ router.post('/member/trs/access-esr/', (req, res) => {
   var destination = routes[`${q1}-${q2}-${q3}`] ?? '../membership-number'
   res.redirect(destination)
 });
+
+// ****************************************
+// MEMBER JOURNEY- McCloud deflection
+// ****************************************
+
+// MEMBER - Have you received the RSS letter?
+
+router.post('/member/mccloud/received-rss', (req, res) => {
+    var receivedRss = req.session.data['received-rss'];
+
+    if (receivedRss == "yes") {
+      res.redirect('/v5/member/mccloud/received-the-letter')
+    } else {
+        res.redirect('/v5/member/mccloud/not-received-rss')
+    }
+  });
+
+  // MEMBER - As member has received RSS, what do you need help with?
+
+router.post('/member/mccloud/received-the-letter', (req, res) => {
+    var receivedLetter = req.session.data['received-the-letter'];
+
+    if (receivedLetter == "understanding-letter") {
+      res.redirect('/v5/member/mccloud/understanding-my-choice')
+    } else if (receivedLetter == "why-received") {
+        res.redirect('/v5/member/mccloud/why-the-letter-was-sent')
+    } else if (receivedLetter == "letting-pensions-know") {
+        res.redirect('/v5/member/mccloud/letting-nhs-pensions-know')
+    } else {
+        res.redirect('/v5/member/mccloud/not-received-rss')
+    }
+  });
+
+  // MEMBER - Not received their RSS letter
+
+router.post('/member/mccloud/not-received-rss', (req, res) => {
+    var notReceived = req.session.data['notreceivedLetter'];
+
+    if (notReceived == "yes") {
+      res.redirect('/v5/member/membership-number')
+    } else {
+        res.redirect('/v5/member/mccloud/query-solved')
+    }
+  });
+
+  // MEMBER - Understanding the RSS letter page
+
+router.post('/member/mccloud/understanding-my-choice', (req, res) => {
+    var understandingChoice = req.session.data['understandingRSS'];
+
+    if (understandingChoice == "yes") {
+      res.redirect('/v5/member/membership-number')
+    } else {
+        res.redirect('/v5/member/mccloud/query-solved')
+    }
+  });
+
+  // MEMBER - Why I received the RSS page
+
+router.post('/member/mccloud/why-the-letter-was-sent', (req, res) => {
+    var letterSent = req.session.data['why-letter-sent'];
+
+    if (letterSent == "yes") {
+      res.redirect('/v5/member/membership-number')
+    } else {
+        res.redirect('/v5/member/mccloud/query-solved')
+    }
+  });
+
+   // MEMBER - Letting NHS Pensions know page
+
+router.post('/member/mccloud/letting-nhs-pensions-know', (req, res) => {
+    var lettingKnow = req.session.data['let-nhs-pensions-know'];
+
+    if (lettingKnow == "yes") {
+      res.redirect('/v5/member/membership-number')
+    } else {
+        res.redirect('/v5/member/mccloud/query-solved')
+    }
+  });
+
+
 
 // --------
 // MEMBER - What can we help you with?

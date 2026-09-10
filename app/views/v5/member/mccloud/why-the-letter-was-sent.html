@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Understanding my Remediable Service Statement (RSS) letter"%}
+{% set pageTitle = "Why did I receive the Remediable Service Statement (RSS) letter"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -21,39 +21,38 @@
           {{pageTitle}}
       </h1>
 
-      <p>You'll be given two choices on your letter on which benefits you would like to take when retiring.
+      <p>You received the RSS letter as it means you joined the public service pension scheme on or before 31 March 2012 and:
       </p>
 
-      <p>You have 12 months from the date on the RSS letter to make your choice and inform us.
-      </p>
+      <ul>
+        <li>you had continuous pensionable service between 1 April 2015 and the 31 March 2022 (or your retirement date if earlier), or you left service after 31 March 2012 but returned within 5 years</li>
+        <li>your pensionable service was in the legacy scheme (1995 / 2008 Scheme), or your pensionable service was in the 2015 Scheme but you would have been</li>
+      </ul>
 
-      <div class="nhsuk-inset-text">
-        <span class="nhsuk-u-visually-hidden">Information: </span>
-        <p>On the letter you should see a code that starts with 'RSS'. This code corresponds with further guidance videos on our website. Select the relevant link to your letter and you can watch the video for more information.</p>
-      </div>
+      <h2>Making your choice</h2>
 
-      <p>You can learn more about your RSS letter on the understanding your remedy choice letter (opens in new tab) page.
+      <p>Further information to help you make your choice can be found on Making your remedy choice (opens in new tab)
       </p>
       
 
      
-      <form action="../member/mccloud/understanding-my-choice" method="post" novalidate>
+      <form action="../member/mccloud/why-the-letter-was-sent" method="post" novalidate>
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-            <h2 class="nhsuk-fieldset__heading">
+            <h3 class="nhsuk-fieldset__heading">
               Do you still need help with your NHS Pensions query?
-            </h2>
+            </h3>
           </legend>
           <div class="nhsuk-radios" data-module="nhsuk-radios">
             <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="example-hints" name="understandingRSS" type="radio" value="yes">
+              <input class="nhsuk-radios__input" id="example-hints" name="why-letter-sent" type="radio" value="yes">
               <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
                 Yes, I still need help
               </label>
             </div>
             <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="example-hints-2" name="understandingRSS" type="radio" value="no">
+              <input class="nhsuk-radios__input" id="example-hints-2" name="why-letter-sent" type="radio" value="no">
               <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
                 No, I no longer need help with this query
               </label>
@@ -62,7 +61,6 @@
         </fieldset>
       </div>
 
-    
           {{ button({
           "text": "Continue",
           "classes": "nhsuk-u-margin-top-3"
