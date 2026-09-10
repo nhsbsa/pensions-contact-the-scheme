@@ -45,7 +45,7 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
     if (mnpGeneral == 'The My NHS Pension portal') {
         res.redirect('nhs-pension-portal-options')
 
-    } else if (mnpGeneral == 'Total Reward Statement (TRS)') {
+    } else if (mnpGeneral == 'NHS Pension statement') {
         res.redirect('../member/trs/trs-start')
 
       } else if (mnpGeneral == 'Annual benefit statement (ABS)') {
