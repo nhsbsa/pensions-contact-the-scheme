@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "As you have received the letter what do you need help with?"%}
+{% set pageTitle = "What do you need help with?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -17,14 +17,15 @@
     <div class="nhsuk-grid-column-two-thirds"> 
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span> 
       <h1 class="nhsuk-heading-l"> {{ pageTitle }} </h1> 
+      <div class="nhsuk-hint">Select the option that best matches what you need help with</div>
 
       <form action="../member/mccloud/received-the-letter" method="post" novalidate> 
         <div class="nhsuk-form-group"> <fieldset class="nhsuk-fieldset"> 
           <div class="nhsuk-radios" data-module="nhsuk-radios"> 
             <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-1" name="received-the-letter" type="radio" value="understanding-letter"> 
-              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-1"> Understanding my RSS letter </label>
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-1"> Understanding my RSS </label>
             </div> <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-2" name="received-the-letter" type="radio" value="why-received"> 
-              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2"> Why did I receive this letter </label> 
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2"> Knowing why I received the RSS </label> 
             </div> 
             <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-3" name="received-the-letter" type="radio" value="letting-pensions-know"> 
               <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3"> Letting NHS Pensions know my choice </label> 
@@ -33,10 +34,10 @@
               <label class="nhsuk-label nhsuk-radios__label" for="example-hints-4"> I've not had any contact from NHS Pensions since making my choice </label> 
             </div> 
             <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-5" name="received-the-letter" type="radio" value="incorrect-information"> 
-              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-5"> Information on the letter is not correct </label>
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-5"> Information on the letter may be correct </label>
              </div>
-             <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-7" name="received-the-letter" type="radio" value="further-help">
-               <label class="nhsuk-label nhsuk-radios__label" for="example-hints-7"> I want further help about the choice I made </label> 
+             <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-7" name="received-the-letter" type="radio" value="when-choice">
+               <label class="nhsuk-label nhsuk-radios__label" for="example-hints-7"> When I need to make my choice by </label> 
               </div> 
               <div class="nhsuk-radios__divider">or</div> 
               <div class="nhsuk-radios__item"> <input class="nhsuk-radios__input" id="example-hints-8" name="received-the-letter" type="radio" value="something-else"> 

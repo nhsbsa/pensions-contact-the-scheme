@@ -1,5 +1,5 @@
 {% extends 'layout.html' %} 
-{% set pageTitle = "Have you received a Remediable Service Statement (RSS) letter?" %} 
+{% set pageTitle = "The Public Service Pensions Remedy (McCloud)" %} 
 {% block pageTitle %} 
 {{ pageTitle }} - {{ serviceName }} 
 {% endblock %} 
@@ -11,10 +11,17 @@
   <div class="nhsuk-grid-column-two-thirds"> 
     <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
      <h1 class="nhsuk-heading-l"> {{ pageTitle }} </h1> 
-     <p> The RSS letter is also known as the Choice on retirement letter. </p>
+     <p> The Public Service Pensions Remedy (sometimes known as McCloud) removes age discrimination that happened when public service pension schemes changed in 2015.</p>
+     <p>It affects some members of the NHS Pension Scheme.</p>
+     <p>If you're affected, we'll send you a Remediable Service Statement (RSS)</p>
       <form action="../member/mccloud/received-rss" method="post" novalidate> 
         <div class="nhsuk-form-group"> 
-          <fieldset class="nhsuk-fieldset"> 
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h2 class="nhsuk-fieldset__heading">
+                Have you received a Remediable Service Statemtent (RSS)?
+              </h2>
+            </legend>
             <div class="nhsuk-radios nhsuk-radios--inline" data-module="nhsuk-radios"> 
               <div class="nhsuk-radios__item"> 
                 <input class="nhsuk-radios__input" id="received-rss-yes" name="received-rss" type="radio" value="yes" > 
