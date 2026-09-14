@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "How long has it been since you last received contact/notification from NHS Pensions regarding your RSS letter?"%}
+{% set pageTitle = "I've not heard anything since making my choice"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -21,35 +21,18 @@
           {{pageTitle}}
       </h1>
 
-      <p>You should have received a notification email or message from NHS Pensions saying that your RSS decision form had been received and would be processed.
+      <p>We'll update your pension benefits within 60 days of receiving your Decision Form back.
       </p>
 
-      <form action="../member/mccloud/days-since-last-contact" method="post" novalidate>
-      <div class="nhsuk-form-group">
-        <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
-          <div class="nhsuk-radios" data-module="nhsuk-radios">
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="example-hints" name="lastContact" type="radio" value="over60">
-              <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
-                Over 60 days since the last contact / notification 
-              </label>
-            </div>
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="example-hints-2" name="lastContact" type="radio" value="less60">
-              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
-                Less than 60 days ago
-              </label>
-            </div>
-          </div>
-        </fieldset>
-      </div>
+      <p>Those 60 days begin once we have sent you a text or email notification to say we have received your Decision Form. </p>
+
+      <h2>Sent back your Decision Form but not had a notification</h2>
+
+      <p>If you have sent us your Decision Form but you have not received a text or email to say we have received it we may have the wrong phone number or email address for you.</p>
+
+      <p><a href="/v5/member/membership-number" class="nhsuk-link" target="_blank">Contact NHS Pensions if you think your details may be incorrect</a>.</p>
 
       
-          {{ button({
-          "text": "Continue",
-          "classes": "nhsuk-u-margin-top-3"
-          }) }}
-      </form>
 
       
     </div>

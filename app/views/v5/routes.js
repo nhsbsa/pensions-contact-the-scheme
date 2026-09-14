@@ -171,6 +171,10 @@ router.post('/member/mccloud/received-the-letter', (req, res) => {
         res.redirect('/v5/member/mccloud/letting-nhs-pensions-know')
     } else if (receivedLetter == "no-contact") {
         res.redirect('/v5/member/mccloud/days-since-last-contact')
+    } else if (receivedLetter == "incorrect-information") {
+        res.redirect('/v5/member/mccloud/info-on-letter-incorrect')
+    } else if (receivedLetter == "when-choice") {
+        res.redirect('/v5/member/mccloud/when-to-make-my-choice')
     } else if (receivedLetter == "something-else") {
         res.redirect('/v5/member/membership-number')
     } else {
@@ -285,7 +289,7 @@ router.post('/membership-number', (req, res) => {
 
 // MEMBER - What is your name?
 
-router.post('/enter-your-name', function (req, res) {
+router.post('/member/enter-your-name', function (req, res) {
 
     var firstName = req.session.data['firstName'];
     var lastName = req.session.data['lastName'];

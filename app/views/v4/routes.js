@@ -187,17 +187,23 @@ router.post('/membership-number', (req, res) => {
 
 // MEMBER - What is your name?
 
-router.post('/enter-your-name', function (req, res) {
+router.post('/member/enter-your-name', function (req, res) {
 
-    var firstName = req.session.data['firstName'];
-    var lastName = req.session.data['lastName'];
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
 
     if (firstName && lastName) {
-        res.redirect('enter-date-of-birth');
-    } else {
-        res.redirect('enter-your-name');
-    }
 
+        req.session.data.firstName = firstName;
+        req.session.data.lastName = lastName;
+
+        res.redirect('enter-date-of-birth');
+
+    } else {
+
+        res.redirect('enter-your-name');
+
+    }
 });
 
 // MEMBER - What is your national insurance number?

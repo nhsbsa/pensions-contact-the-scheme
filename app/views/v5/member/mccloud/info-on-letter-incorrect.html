@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Information on the letter may be incorrect"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+      <p>Your RSS is based on information we hold from your employer.</p>
+
+      <p>If you think your statement is incorrect, ask your employer, or former employer, if they sent the correct information to NHS Pensions.
+      </p>
+      
+
+     
+      <form action="../member/mccloud/why-the-letter-was-sent" method="post" novalidate>
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h3 class="nhsuk-fieldset__heading">
+              Do you still need help with your NHS Pensions query?
+            </h3>
+          </legend>
+          <div class="nhsuk-radios" data-module="nhsuk-radios">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-hints" name="why-letter-sent" type="radio" value="yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                Yes, I still need help
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-hints-2" name="why-letter-sent" type="radio" value="no">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                No, I no longer need help with this query
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+          {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-u-margin-top-3"
+          }) }}
+      </form>
+
+      
+    </div>
+  </div>
+
+{% endblock %}
