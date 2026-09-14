@@ -453,7 +453,7 @@ router.post('/enter-your-address', function (req, res) {
 
 // MEMBER - What is your email?
 
-router.post('/enter-your-email', function (req, res) {
+router.post('/member/enter-your-email', function (req, res) {
 
     var emailAddress = req.session.data['emailAddress'];
 
