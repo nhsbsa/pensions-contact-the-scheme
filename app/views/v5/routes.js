@@ -185,7 +185,31 @@ router.post('/member/mccloud/received-the-letter', (req, res) => {
   // MEMBER - Not received their RSS letter
 
 router.post('/member/mccloud/not-received-rss', (req, res) => {
-    var notReceived = req.session.data['notreceivedLetter'];
+    var helpNeeded = req.session.data['needingHelp'];
+
+    if (helpNeeded == "yes") {
+      res.redirect('/v5/member/membership-number')
+    } else {
+        res.redirect('/v5/member/mccloud/query-solved')
+    }
+  });
+
+  // MEMBER - affected by Mccloud
+
+router.post('/member/mccloud/affected-by-mccloud', (req, res) => {
+    var notReceived = req.session.data['needHelp'];
+
+    if (notReceived == "yes") {
+      res.redirect('/v5/member/membership-number')
+    } else {
+        res.redirect('/v5/member/mccloud/query-solved')
+    }
+  });
+
+  // MEMBER - Not affected by Mccloud
+
+router.post('/member/mccloud/not-affected-by-mccloud', (req, res) => {
+    var notReceived = req.session.data['needsHelp'];
 
     if (notReceived == "yes") {
       res.redirect('/v5/member/membership-number')
@@ -197,7 +221,7 @@ router.post('/member/mccloud/not-received-rss', (req, res) => {
   // MEMBER - Understanding the RSS letter page
 
 router.post('/member/mccloud/understanding-my-choice', (req, res) => {
-    var understandingChoice = req.session.data['understandingRSS'];
+    var understandingChoice = req.session.data['stillHelp'];
 
     if (understandingChoice == "yes") {
       res.redirect('/v5/member/membership-number')

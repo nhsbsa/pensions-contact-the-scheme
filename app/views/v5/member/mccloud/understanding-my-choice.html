@@ -34,7 +34,7 @@
       <p>Your RSS will show your personalised calculations to help you choose the best option for you.</p>
       <p>Find out more about <a href="https://www.nhsbsa.nhs.uk/public-service-pensions-remedy-mccloud/making-your-remedy-choice" class="nhsuk-link" target="_blank">making your remedy choice (opens in new tab)</a>. </p>
 
-      <p><b>Watch our RSS video guides</b></p>
+     <h2 class="nhsuk-heading-m">Watch our RSS video guides</h2>
       <p>Our YouTube videos can help you understand your RSS.</p>
       <div class="nhsuk-inset-text">
         <span class="nhsuk-u-visually-hidden">Information: </span>
@@ -43,11 +43,37 @@
 
       <p><a href="https://www.nhsbsa.nhs.uk/public-service-pensions-remedy-mccloud/making-your-remedy-choice/understanding-your-remedy-choice" class="nhsuk-link" target="_blank">Find your RSS YouTube guide (opens in new tab)</a>. </p>
 
-      
+      <form action="../member/mccloud/understanding-my-choice" method="post" novalidate>
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+              <h2 class="nhsuk-fieldset__heading">
+                Do you still need help from NHS Pensions?
+              </h2>
+            </legend>
+            <div class="nhsuk-radios" data-module="nhsuk-radios">
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-hints" name="stillHelp" type="radio" value="yes">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                  Yes, I still need help
+                </label>
+              </div>
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-hints-2" name="stillHelp" type="radio" value="no">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                  No, my query has been solved
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+  
+            {{ button({
+            "text": "Continue",
+            "classes": "nhsuk-u-margin-top-3"
+            }) }}
+        </form>
 
-      <h2 class="nhsuk-heading-l">
-        Understanding your benefits</h2>
-      <p>Use the <a href="https://www.nhsbsa.nhs.uk/public-service-pensions-remedy-mccloud/making-your-remedy-choice" class="nhsuk-link" target="_blank">Pensions Remedy Illustrator (opens in new tab)</a> to understand how your remedy choice is likely to affect your pension overall.</p>
       
 
      

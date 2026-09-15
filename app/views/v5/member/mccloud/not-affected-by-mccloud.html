@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "If you've not received an RSS"%}
+{% set pageTitle = "You will not get an RSS"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -21,22 +21,10 @@
           {{pageTitle}}
       </h1>
 
-      <p>You will only get an RSS if you're an NHS Pension Scheme member affected by McCloud. 
+      <p>If you're not affected by McCloud, you will not get an RSS.
       </p>
 
-      <p>We're currently sending them to members who:
-      </p>
-
-      <ul>
-        <li>have claimed pension benefits from any section of the Scheme</li>
-        <li>are affected by McCloud</li>
-      </ul>
-
-      <h2 class="nhsuk-heading-m">If you think you are impacted by McCloud</h2>
-      <p>You do not need to do anything now.</p>
-      <p>After you retire, we'll contact you when it's time to make your decision.</p>
-
-      <form action="../member/mccloud/not-received-rss" method="post" novalidate>
+      <form action="../member/mccloud/not-affected-by-mccloud" method="post" novalidate>
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
@@ -46,13 +34,13 @@
           </legend>
           <div class="nhsuk-radios" data-module="nhsuk-radios">
             <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="example-hints" name="needingHelp" type="radio" value="yes">
+              <input class="nhsuk-radios__input" id="example-hints" name="needsHelp" type="radio" value="yes">
               <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
                 Yes, I still need help
               </label>
             </div>
             <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="example-hints-2" name="needingHelp" type="radio" value="no">
+              <input class="nhsuk-radios__input" id="example-hints-2" name="needsHelp" type="radio" value="no">
               <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
                 No, my query has been solved
               </label>
