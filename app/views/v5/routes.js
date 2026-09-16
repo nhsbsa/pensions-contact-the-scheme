@@ -1321,15 +1321,15 @@ router.post('/member/member-membership-number', (req, res) => {
 
 // THIRD PARTY - What is your name?
 
-router.post('/member/enter-your-name', function (req, res) {
+router.post('/acting-for-member/member/enter-your-name', function (req, res) {
 
     var firstName = req.session.data['firstName'];
     var lastName = req.session.data['lastName'];
 
     if (firstName && lastName) {
-        res.redirect('enter-your-email');
+        res.redirect('/member/enter-your-email');
     } else {
-        res.redirect('enter-your-name');
+        res.redirect('/member/enter-your-name');
     }
 
 });
