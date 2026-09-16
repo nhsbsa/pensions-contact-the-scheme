@@ -1327,9 +1327,9 @@ router.post('/acting-for-member/member/enter-your-name', function (req, res) {
     var lastName = req.session.data['lastName'];
 
     if (firstName && lastName) {
-        res.redirect('/member/enter-your-email');
+        res.redirect('enter-your-email');
     } else {
-        res.redirect('/member/enter-your-name');
+        res.redirect('enter-your-name');
     }
 
 });
