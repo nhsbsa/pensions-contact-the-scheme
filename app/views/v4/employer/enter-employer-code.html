@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What is your employer code?"%}
+{% set pageTitle = "What is your employing authority (EA) code?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -23,7 +23,7 @@
           {{pageTitle}}
         </h1>
         <div class="nhsuk-hint">
-          Your employer code should be 4 characters long and may look like 1234 or A123
+          Your EA code should be 4 characters long and may look like 1234 or A123
         </div>
       {% endset -%}
 
@@ -46,11 +46,11 @@
         <details class="nhsuk-details">
   <summary class="nhsuk-details__summary">
     <span class="nhsuk-details__summary-text">
-      Help with your employer code
+      Help with your employing authority (EA) code
     </span>
   </summary>
   <div class="nhsuk-details__text">
-        <p>An employer code identifies each employer in the NHS Pension Scheme.</p>
+        <p>An EA code identifies each employer in the NHS Pension Scheme.</p>
           <p>It can be made up of:</p>
           <ul>
             <li>4 numbers like 1234</li>
@@ -62,12 +62,12 @@
  <details class="nhsuk-details">
   <summary class="nhsuk-details__summary">
     <span class="nhsuk-details__summary-text">
-      Find your employer code
+      Find your employing authority (EA) code
     </span>
   </summary>
   <div class="nhsuk-details__text">
         
-        <p>Use our online tool to find your employer code if you do not know it.</p>
+        <p>Use our online tool to find your EA code if you do not know it.</p>
         <p>Enter either your organisation’s:</p>
         <ul>
         <li>name</li>
@@ -75,12 +75,12 @@
         </ul>
        
         {{ actionLink({
-          text: "Find your employer code (opens in new tab)",
+          text: "Find your EA code (opens in new tab)",
           href: "https://find-an-employer.nhsbsa.nhs.uk/",
           openInNewWindow: true
         }) }}
 
-        <p>If your organisation does not have an employer code it will need to <a href="https://faq.nhsbsa.nhs.uk/knowledgebase/article/KA-02670/en-us" class="nhsuk-link" target="blank">register for one (opens in new tab)</a>.</p>
+        <p>If your organisation does not have an EA code it will need to <a href="https://faq.nhsbsa.nhs.uk/knowledgebase/article/KA-02670/en-us" class="nhsuk-link" target="blank">register for one (opens in new tab)</a>.</p>
 
          
     
