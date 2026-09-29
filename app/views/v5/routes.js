@@ -1348,25 +1348,34 @@ router.post('/member/enter-your-email', function (req, res) {
     }
 });
 
-// MEMBER - What is your national insurance number?
+// MEMBER - What is the member's national insurance number?
 
 router.post('/member/member-national-insurance-number', function (req, res) {
-    
+
     let nino = req.session.data['natInsNum'];
- 
+
     // Remove all spaces and normalize to uppercase
     nino = (nino || '').replace(/\s+/g, '').toUpperCase();
 
-    const regex = new RegExp('^(?!BG|GB|KN|NK|NT|TN|ZZ)[A-CEGHJ-PR-TW-Z]{2}\\d{6}[A-D]$');
+    const regex = new RegExp(
+        '^(?!BG|GB|KN|NK|NT|TN|ZZ)[A-CEGHJ-PR-TW-Z]{2}\\d{6}[A-D]$'
+    );
+
+    // Test National Insurance numbers
+    const testNinos = [
+        'QQ123456C',
+        'AA123456D',
+        'BB234567E'
+    ];
 
     if (nino) {
-        if (regex.test(nino)|| nino === 'QQ123456C') { 
-            res.redirect('members-name');  // Valid National Insurance Number
+        if (regex.test(nino) || testNinos.includes(nino)) {
+            res.redirect('members-name');
         } else {
-            res.redirect('member-national-insurance-number');  // Invalid format
+            res.redirect('member-national-insurance-number');
         }
     } else {
-        res.redirect('member-national-insurance-number');  // Field is empty
+        res.redirect('member-national-insurance-number');
     }
 
 });
