@@ -874,7 +874,7 @@ router.post('/bereavement-journey/member/lookup-member-address', function (req, 
     }
 });
 
-// Bereavement journey - member address manual
+// Bereavement journey - member address manual-uk
 router.post('/bereavement-journey/member/enter-your-address-uk', function (req, res) {
     res.redirect('/v5/acting-for-member/bereavement-journey/member/member-check-your-answers');
 });
