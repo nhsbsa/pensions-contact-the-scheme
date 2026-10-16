@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What was their address?"%}
+{% set pageTitle = "What is your address?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -16,8 +16,8 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
-      <form action="../member/member-address-manual" method="post">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+      <form action="/{{folder}}/{{subfolder}}/enter-your-address" method="post">
 
         {% call fieldset({
           legend: {
@@ -74,16 +74,18 @@
             "id": "address-country",
             "name": "address-country"
           }) }}
-        
+
           {{ input({
             label: {
-              "text": "Postal or zip code (optional)"
+              "text": "Postcode"
             },
             "classes": "nhsuk-input--width-10",
             "id": "address-postcode",
             "name": "address-postcode",
             "autocomplete": "postal-code"
           }) }}
+
+        
         
         {% endcall %}
 
