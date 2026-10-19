@@ -658,18 +658,7 @@ router.post('/bereavement-journey/informant/informant-phone-number', (req, res) 
     }
 });
 
-// Bereavement journey - informant main address
-router.post('/bereavement-journey/informant/find-informant-address', (req, res) => {
-    var addressInUk = req.session.data['addressInUk'] || req.session.data['phone-number'];
 
-    if (addressInUk === 'Yes') {
-        res.redirect('/v5/acting-for-member/bereavement-journey/informant/find-informant-address');
-    } else if (addressInUk === 'No') {
-        res.redirect('/v5/acting-for-member/bereavement-journey/informant/informant-address');
-    } else {
-        res.redirect('/v5/acting-for-member/bereavement-journey/informant/find-informant-address');
-    }
-});
 
 // Bereavement journey - informant find address
 router.post('/bereavement-journey/informant/find-informant-address', function (req, res) {
