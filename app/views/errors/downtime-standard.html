@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Sorry, the service is unavailable"%}
+{% set hideBack = "true" %}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-u-reading-width">
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{pageTitle}}</h1>
+
+      <p>
+        The Contact NHS Pensions form is currently unavailable. This is due to maintenance.
+      </p>
+
+      <p>
+Try again later.
+      </p>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
