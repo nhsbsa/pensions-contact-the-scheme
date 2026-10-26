@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What are their names?"%}
+{% set pageTitle = "What is their full name?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -32,11 +32,8 @@
             {{ input({
           
               label: {
-                "text": 'Child dependant 1'
+                "text": 'Full name'
               },
-               hint: {
-               text: "Full name"
-               },
               "id": "child-firstName",
               "name": "child-firstName",
               autocomplete: "given-name",
@@ -44,21 +41,7 @@
               "classes": "nhsuk-input--width-20"
             }) }}
 
-               {{ input({
-          
-              label: {
-                "text": 'Child dependant 2'
-              },
-               hint: {
-               text: "Full name"
-               },
-              "id": "child-firstName",
-              "name": "child-firstName",
-              autocomplete: "given-name",
-              spellcheck: false,
-              "classes": "nhsuk-input--width-20"
-            }) }}
-          
+              
           
           
           {% endcall %}
