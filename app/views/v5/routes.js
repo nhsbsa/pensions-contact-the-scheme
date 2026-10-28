@@ -1073,10 +1073,12 @@ router.post('/bereavement-journey/dependant/dependant-child', (req, res) => {
 
 // bereavement journey - child dependant-number
 router.post('/bereavement-journey/dependant/dependant-child-number', (req, res) => {
-    var childNumber = req.session.data['child-dependant-number'] || req.session.data['child-dependant-number'];
+    const childNumber = Number(req.body['child-number'] ?? req.session.data['child-dependant-number'] ?? 0);
 
-    if (childNumber) {
+    if (childNumber === 1) {
         res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-name');
+    } else if (childNumber === 2) {
+        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-children-name');
     } else {
         res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-number');
     }
@@ -1091,6 +1093,18 @@ router.post('/bereavement-journey/dependant/dependant-child-name', function (req
         res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-check-your-answers');
     } else {
         res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-name');
+    }
+});
+
+// Bereavement journey - multiple child dependants names
+router.post('/bereavement-journey/dependant/dependant-children-name', function (req, res) {
+    var childOneName = req.body['child-one-name'] || req.session.data['child-one-name'];
+    var childTwoName = req.body['child-two-name'] || req.session.data['child-two-name'];
+
+    if (childOneName && childTwoName) {
+        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-check-your-answers');
+    } else {
+        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-children-name');
     }
 });
 

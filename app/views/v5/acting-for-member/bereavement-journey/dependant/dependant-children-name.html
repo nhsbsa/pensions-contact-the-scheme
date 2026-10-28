@@ -16,7 +16,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
         <span class="nhsuk-caption-l nhsuk-caption--bottom">Child dependant details</span>
-        <form action="../dependant/dependant-child-name" method="post">
+        <form action="../dependant/dependant-children-name" method="post">
           {% call fieldset({
             legend: {
               "text": pageTitle,
@@ -27,40 +27,34 @@
 
            {% from "select/macro.njk" import select %}
 
-
-          
             {{ input({
-          
               label: {
                 "text": 'Child dependant 1'
               },
-               hint: {
-               text: "Full name"
-               },
-              "id": "child-firstName",
-              "name": "child-firstName",
-              autocomplete: "given-name",
+              hint: {
+                text: "Full name"
+              },
+              "id": "child-one-name",
+              "name": "child-one-name",
+              autocomplete: "name",
               spellcheck: false,
               "classes": "nhsuk-input--width-20"
             }) }}
 
-               {{ input({
-          
+            {{ input({
               label: {
                 "text": 'Child dependant 2'
               },
-               hint: {
-               text: "Full name"
-               },
-              "id": "child-firstName",
-              "name": "child-firstName",
-              autocomplete: "given-name",
+              hint: {
+                text: "Full name"
+              },
+              "id": "child-two-name",
+              "name": "child-two-name",
+              autocomplete: "name",
               spellcheck: false,
               "classes": "nhsuk-input--width-20"
             }) }}
-          
-          
-          
+
           {% endcall %}
 
           {{ button({
