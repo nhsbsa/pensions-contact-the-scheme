@@ -1064,10 +1064,21 @@ router.post('/bereavement-journey/dependant/dependant-child', (req, res) => {
     var hasEstateRepresentative = req.session.data['child-dependant'] || req.session.data['child-dependant'];
 
     if (hasEstateRepresentative === 'Yes' ) {
-        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-name');
+        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-number');
     } else if (hasEstateRepresentative === 'No') {
         res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-start');
 
+    }
+});
+
+// bereavement journey - child dependant-number
+router.post('/bereavement-journey/dependant/dependant-child-number', (req, res) => {
+    var childNumber = req.session.data['child-dependant-number'] || req.session.data['child-dependant-number'];
+
+    if (childNumber) {
+        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-name');
+    } else {
+        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-number');
     }
 });
 
