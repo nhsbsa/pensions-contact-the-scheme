@@ -62,12 +62,43 @@
             {{ data['mnpEnquiry']}} 
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="enter-your-name">
+            <a href="nhs-pension-portal-options">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
             </a>
           </dd>
         </div>
-        {% endif %}
+
+        {% elseif (data['mnpGeneral'] == "McCloud") %}
+<div class="nhsuk-summary-list__row">
+  <dt class="nhsuk-summary-list__key">
+    Type of request
+  </dt>
+  <dd class="nhsuk-summary-list__value">
+    {% if data['received-the-letter'] == "understanding-letter" %}
+      Understanding my RSS
+    {% elseif data['received-the-letter'] == "why-received" %}
+      Knowing why I received the RSS
+    {% elseif data['received-the-letter'] == "letting-pensions-know" %}
+      Letting NHS Pensions know my choice
+    {% elseif data['received-the-letter'] == "no-contact" %}
+      I've not heard anything since making my choice
+    {% elseif data['received-the-letter'] == "incorrect-information" %}
+      My details on the RSS may be incorrect
+    {% elseif data['received-the-letter'] == "when-choice" %}
+      When I need to make my choice by
+    {% elseif data['received-the-letter'] == "something-else" %}
+      Something else
+    {% else %}
+      Not provided
+    {% endif %}
+  </dd>
+  <dd class="nhsuk-summary-list__actions">
+    <a href="../member/mccloud/get-help-with-RSS">
+      Change<span class="nhsuk-u-visually-hidden">&nbsp; type of request.</span>
+    </a>
+  </dd>
+</div>
+{% endif %}
 
 
         {% if (data['membership-number'] == "Yes, I know the membership number") %}

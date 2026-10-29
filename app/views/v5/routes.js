@@ -426,7 +426,23 @@ router.post('/find-your-address', function (req, res) {
 
 // MEMBER - Enter your address
 
-router.post('/enter-your-address', function (req, res) {
+router.post('/enter-your-address-uk', function (req, res) {
+
+    var addressLine1 = req.session.data['address-line-1'];
+    var townOrCity = req.session.data['address-town'];
+    var postcodeManual = req.session.data['address-postcode'];
+
+    if (addressLine1 && townOrCity && postcodeManual) {
+        res.redirect('enter-your-email');
+    } else {
+        res.redirect('enter-your-address');
+    }
+
+})
+
+// MEMBER - Enter your address international
+
+router.post('/enter-your-address-international', function (req, res) {
 
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
@@ -1533,7 +1549,23 @@ router.post('/member/no-address-found', function (req, res) {
 
 // THIRD PARTY- member - Enter members address manual
 
-router.post('/member/members-address-manual', function (req, res) {
+router.post('/member/members-address-manual-uk', function (req, res) {
+
+    var addressLine1 = req.session.data['address-line-1'];
+    var townOrCity = req.session.data['address-town'];
+    var postcodeManual = req.session.data['address-postcode'];
+
+    if (addressLine1 && townOrCity && postcodeManual) {
+        res.redirect('members-email');
+    } else {
+        res.redirect('members-email');
+    }
+
+})
+
+// THIRD PARTY- member - Enter members address manual international
+
+router.post('/member/members-address-manual-international', function (req, res) {
 
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
