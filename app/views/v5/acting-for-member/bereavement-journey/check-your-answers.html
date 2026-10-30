@@ -492,7 +492,7 @@
 
         
   
-   {% if (data['estate-person'] == "Yes") %}
+   
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -616,14 +616,11 @@
               </a>
             </dd>
           </div>
-
-       
-{% elseif data['estate-person'] == "No" or data['estate-person'] == "I'm not sure" %}
-
-          {% endif %}
-
           
            </dl>
+
+           <p>You can <a href="../bereavement-journey/estate/estate-check-your-answers">add one more person dealing with the estate</a></p>
+
 
       <form action="../bereavement-journey/check-your-answers" method="post">
         {{ button({

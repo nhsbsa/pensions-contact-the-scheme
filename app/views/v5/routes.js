@@ -1164,6 +1164,18 @@ router.post('/bereavement-journey/estate/estate-start', (req, res) => {
     }
 });
 
+
+// Bereavement journey - estate additional person dealing with estate (added to adult dependant/Informant)
+router.post('/bereavement-journey/estate/estate-same-person-add-person', (req, res) => {
+    const hasEstateRepresentative = req.body.EstateDealing ?? req.session.data['EstateDealing'];
+
+    if (hasEstateRepresentative === 'Yes') {
+        return res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-relationship');
+    }
+
+    return res.redirect('/v5/acting-for-member/bereavement-journey/check-your-answers');
+});
+
 // Bereavement journey - estate relationship
 router.post('/bereavement-journey/estate/estate-relationship', function (req, res) {
 
@@ -1325,20 +1337,6 @@ router.post('/member/enter-your-email', (req, res) => {
 
     res.redirect('enter-your-name');
 
-});
-
-
-router.post('/member/member-membership-number', (req, res) => {
-
-  var answer = req.session.data['member-membership-number'];
-
-  if (answer === "Yes, I know the membership number") {
-    res.redirect('members-name');
-  } else if (answer === "No, I do not know the membership number") {
-    res.redirect('member-national-insurance-number'); // wherever "No" should go
-  } else {
-    res.redirect('member-national-insurance-number'); // or an "I'm not sure" path
-  }
 });
 
 

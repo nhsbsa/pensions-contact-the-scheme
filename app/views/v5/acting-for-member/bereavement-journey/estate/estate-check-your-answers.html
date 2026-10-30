@@ -41,7 +41,7 @@
           </dd>
         </div>
 
-         {% if (data['estate-person'] == "Yes") %}
+        
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -156,13 +156,39 @@
               </a>
             </dd>
           </div>
-{% elseif data['estate-person'] == "No" or data['estate-person'] == "I'm not sure" %}
-
-          {% endif %}
-
- 
-
         </dl>
+
+         {% from "radios/macro.njk" import radios %} 
+          {{ radios({
+            idPrefix: "EstateDealing",
+            name: "EstateDealing",
+            fieldset: {
+              legend: {
+                text: "Do you want to add another person dealing with the estate?",
+                classes: "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                hint: {
+                  text: ""
+                }
+              }
+            ]
+          }) }}
 
       <form action="../estate/estate-check-your-answers" method="post">
         {{ button({
