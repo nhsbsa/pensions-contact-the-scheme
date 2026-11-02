@@ -1136,18 +1136,9 @@ router.post('/bereavement-journey/dependant/dependant-child-check-your-answers',
     }
 });
 
-// Bereavement journey - estate- person dealing with estate
-router.post('/bereavement-journey/estate/estate-same-person', (req, res) => {
-    var hasEstateDealing = req.session.data['EstateDealing'] || req.session.data['EstateDealing'];
 
-    if (hasEstateDealing === 'Other' ) {
-        res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-relationship');
-    } else if (hasEstateDealing === 'The adult dependant' || hasEstateDealing === 'You') {
-        res.redirect('/v5/acting-for-member/bereavement-journey/check-your-answers');
-    } else {
-        res.redirect('/v5/acting-for-member/bereavement-journey/check-your-answers');
-    }
-});
+
+
 
 
 
@@ -1163,6 +1154,33 @@ router.post('/bereavement-journey/estate/estate-start', (req, res) => {
         res.redirect('/v5/acting-for-member/bereavement-journey/check-your-answers');
     }
 });
+
+// Bereavement journey - estate- person dealing with estate
+router.post('/bereavement-journey/estate/estate-same-person', (req, res) => {
+    var hasEstateDealing = req.session.data['EstateDealing'] || req.session.data['EstateDealing'];
+
+    if (hasEstateDealing === 'Other' ) {
+        res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-relationship');
+    } else if (hasEstateDealing === 'The adult dependant' || hasEstateDealing === 'You') {
+        res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-same-person-add-person');
+    } else {
+        res.redirect('/v5/acting-for-member/bereavement-journey/check-your-answers');
+    }
+});
+
+// Bereavement journey - estate-same-person-add-person
+router.post('/bereavement-journey/estate/estate-same-person-add-person', (req, res) => {
+    var hasEstateRepresentative = req.session.data['EstateDealing'] || req.session.data['EstateDealing'];
+
+    if (hasEstateRepresentative === 'Yes' ) {
+        res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-relationship');
+    } else if (hasEstateRepresentative === 'No') {
+        res.redirect('/v5/acting-for-member/bereavement-journey/check-your-answers');
+    } else {
+        res.redirect('/v5/acting-for-member/bereavement-journey/check-your-answers');
+    }
+});
+
 
 
 // Bereavement journey - estate additional person dealing with estate (added to adult dependant/Informant)
