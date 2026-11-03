@@ -17,7 +17,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
-      <form action="/{{folder}}/{{subfolder}}/enter-your-address-international" method="post">
+      <form action="../informant/informant-uk-address" method="post">
 
         {% call fieldset({
           legend: {
@@ -77,7 +77,7 @@
 
           {{ input({
             label: {
-              "text": "Postal or zip code (optional)"
+              "text": "Postcode"
             },
             "classes": "nhsuk-input--width-10",
             "id": "address-postcode",
@@ -92,7 +92,6 @@
         {{ button({
           text: "Continue"
         }) }}
-
 
       </form>
     </div>

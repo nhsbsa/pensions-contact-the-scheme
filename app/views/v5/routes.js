@@ -718,26 +718,26 @@ router.post('/bereavement-journey/informant/find-informant-address', function (r
 });
 
 // Bereavement journey - informant address
-router.post('/bereavement-journey/informant/enter-your-address-uk', function (req, res) {
+router.post('/bereavement-journey/informant/informant-uk-address', function (req, res) {
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
 
     if (addressLine1 && townOrCity) {
         res.redirect('/v5/acting-for-member/bereavement-journey/informant/informant-check-your-answers');
     } else {
-        res.redirect('/v5/acting-for-member/bereavement-journey/informant/enter-your-address-uk');
+        res.redirect('/v5/acting-for-member/bereavement-journey/informant/informant-uk-address');
     }
 });
 
 // Bereavement journey - informant address international
-router.post('/bereavement-journey/informant/enter-your-address-international', function (req, res) {
+router.post('/bereavement-journey/informant/informant-international-address', function (req, res) {
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
 
     if (addressLine1 && townOrCity) {
         res.redirect('/v5/acting-for-member/bereavement-journey/informant/informant-check-your-answers');
     } else {
-        res.redirect('/v5/acting-for-member/bereavement-journey/informant/enter-your-address-international');
+        res.redirect('/v5/acting-for-member/bereavement-journey/informant/informant-international-address');
     }
 });
 
@@ -869,7 +869,7 @@ router.post('/bereavement-journey/member/lookup-member-address', function (req, 
                 })
                 .catch(error => {
                     console.log(error);
-                    res.redirect('/v5/acting-for-member/bereavement-journey/member/member-no-address-found');
+                    res.redirect('/v5/acting-for-member/bereavement-journey/member/no-member-address-found');
                 });
         } else {
             res.redirect('/v5/acting-for-member/bereavement-journey/member/lookup-member-address');
@@ -880,12 +880,12 @@ router.post('/bereavement-journey/member/lookup-member-address', function (req, 
 });
 
 // Bereavement journey - member address manual-uk
-router.post('/bereavement-journey/member/enter-your-address-uk', function (req, res) {
+router.post('/bereavement-journey/member/member-uk-address', function (req, res) {
     res.redirect('/v5/acting-for-member/bereavement-journey/member/member-check-your-answers');
 });
 
 // Bereavement journey - member address manual-international
-router.post('/bereavement-journey/member/enter-your-address-international', function (req, res) {
+router.post('/bereavement-journey/member/member-international-address', function (req, res) {
     res.redirect('/v5/acting-for-member/bereavement-journey/member/member-check-your-answers');
 });
 
@@ -901,7 +901,7 @@ router.post('/bereavement-journey/member/member-select-your-address', function (
 });
 
 // Bereavement journey - member no address found
-router.post('/bereavement-journey/member/member-no-address-found', function (req, res) {
+router.post('/bereavement-journey/member/no-member-address-found', function (req, res) {
     res.redirect('/v5/acting-for-member/bereavement-journey/member/lookup-member-address');
 });
 
@@ -1030,7 +1030,7 @@ router.post('/bereavement-journey/dependant/lookup-dependant-address', function 
 });
 
 // Bereavement journey - dependant address manual
-router.post('/bereavement-journey/dependant/enter-your-address-uk', function (req, res) {
+router.post('/bereavement-journey/dependant/dependant-uk-address', function (req, res) {
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
 
@@ -1042,7 +1042,7 @@ router.post('/bereavement-journey/dependant/enter-your-address-uk', function (re
 });
 
 // Bereavement journey - dependant address manual international
-router.post('/bereavement-journey/dependant/enter-your-address-international', function (req, res) {
+router.post('/bereavement-journey/dependant/dependant-international-address', function (req, res) {
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
 

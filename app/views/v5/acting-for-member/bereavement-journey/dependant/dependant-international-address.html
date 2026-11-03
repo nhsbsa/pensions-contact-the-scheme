@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "What was their address?"%}
+{% set pageTitle = "What is their address?"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -16,8 +16,8 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
-      <form action="../member/enter-your-address-uk" method="post">
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Dependant details</span>
+      <form action="../dependant/dependant-international-address" method="post">
 
         {% call fieldset({
           legend: {
@@ -77,7 +77,7 @@
 
           {{ input({
             label: {
-              "text": "Postcode"
+              "text": "Postal or zip code (optional)"
             },
             "classes": "nhsuk-input--width-10",
             "id": "address-postcode",
@@ -91,8 +91,9 @@
 
         {{ button({
           text: "Continue",
-          href: "member-check-your-answers"
+           href: "dependant-check-your-answers"
         }) }}
+
 
       </form>
     </div>
