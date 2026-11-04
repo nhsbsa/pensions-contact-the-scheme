@@ -1081,7 +1081,7 @@ router.post('/bereavement-journey/dependant/dependant-child', (req, res) => {
 
     if (hasEstateRepresentative === 'Yes' ) {
         res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-number');
-    } else if (hasEstateRepresentative === 'No'|| hasEstateRepresentative === 'Not sure') {
+    } else if (hasEstateRepresentative === 'No'|| hasEstateRepresentative === 'I\'m not sure') {
         res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-start');
 
     }
