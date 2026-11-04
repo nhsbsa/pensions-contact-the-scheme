@@ -19,6 +19,18 @@
 
         <form action="../estate/estate-relationship" method="post">
           <span class="nhsuk-caption-l nhsuk-caption--bottom">Person dealing with the estate</span>
+
+           {% set RelationshipHtml %}
+  {{ input({
+    label: {
+      text: "Connection to the person who died",
+      classes: "nhsuk-body"},
+    id: "Relationship",
+    name: "Relationship",
+    classes: "nhsuk-u-width-two-thirds"
+  }) }}
+{% endset -%}
+
           {{ radios({
             idPrefix: "EstateRelationship",
             name: "EstateRelationship",
@@ -61,12 +73,12 @@
                   text: ""
                 }
               },
-              {
-                value: "Other",
-                text: "Other",
-                hint: {
-                  text: ""
-                }
+               {
+              value: "Other",
+              text: "Other",
+              conditional: {
+              html: RelationshipHtml
+              }
               }
             ]
           }) }}

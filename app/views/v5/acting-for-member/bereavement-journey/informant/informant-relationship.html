@@ -19,6 +19,18 @@
 
         <form action="/{{folder}}/{{subfolder}}/bereavement-journey/informant/informant-relationship" method="post">
           <span class="nhsuk-caption-l nhsuk-caption--bottom">Your details</span>
+
+          {% set RelationshipHtml %}
+  {{ input({
+    label: {
+      text: "Connection to the person who died",
+      classes: "nhsuk-body"},
+    id: "Relationship",
+    name: "Relationship",
+    classes: "nhsuk-u-width-two-thirds"
+  }) }}
+{% endset -%}
+
           {{ radios({
             idPrefix: "InformantRelationship",
             name: "InformantRelationship",
@@ -68,12 +80,12 @@
                 }
               },
               {
-                value: "Other",
-                text: "Other",
-                hint: {
-                  text: ""
-                }
+              value: "Other",
+              text: "Other",
+              conditional: {
+              html: RelationshipHtml
               }
+            }
             ]
           }) }}
 
