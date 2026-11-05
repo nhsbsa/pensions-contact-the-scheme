@@ -25,7 +25,7 @@
           number or name and postcode{% else %}that postcode{% endif %}. Search again or enter the address manually.
       </p>
 
-      <form action="../estate/estate-no-address-found" method="post" novalidate>
+      <form action="../estate/no-estate-address-found" method="post" novalidate>
           {{ button({
           "text": "Search again",
           "classes": "nhsuk-u-margin-top-3"
@@ -34,9 +34,9 @@
 
     
       <div class="nhsuk-form-group">
-          <p>If their postcode cannot be found, <a href="../estate/enter-your-address-uk">enter your address manually.</a>
+          <p>If their postcode cannot be found, <a href="../estate/estate-uk-address">enter your address manually.</a>
         
-          If their address is outside the UK, <a href="../estate/enter-your-address-international">enter an international address.</a></p>
+          If their address is outside the UK, <a href="../estate/estate-international-address">enter an international address.</a></p>
         </div>
     </div>
   </div>

@@ -1066,7 +1066,7 @@ router.post('/bereavement-journey/dependant/dependant-select-your-address', func
 });
 
 // Bereavement journey - dependant no address found
-router.post('/bereavement-journey/dependant/dependant-no-address-found', function (req, res) {
+router.post('/bereavement-journey/dependant/no-dependant-address-found', function (req, res) {
     res.redirect('/v5/acting-for-member/bereavement-journey/dependant/lookup-dependant-address');
 });
 
@@ -1289,8 +1289,8 @@ router.post('/bereavement-journey/estate/lookup-estate-address', function (req, 
 });
 
 
-// Bereavement journey - estate address manual
-router.post('/bereavement-journey/estate/enter-your-address-uk', function (req, res) {
+// Bereavement journey - estate address UK manual
+router.post('/bereavement-journey/estate/estate-uk-address', function (req, res) {
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
 
@@ -1302,14 +1302,14 @@ router.post('/bereavement-journey/estate/enter-your-address-uk', function (req, 
 });
 
 // Bereavement journey - estate address manual international
-router.post('/bereavement-journey/estate/enter-your-address-international', function (req, res) {
+router.post('/bereavement-journey/estate/estate-international-address', function (req, res) {
     var addressLine1 = req.session.data['address-line-1'];
     var townOrCity = req.session.data['address-town'];
 
     if (addressLine1 && townOrCity) {
         res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-check-your-answers');
     } else {
-        res.redirect('/v5/acting-for-member/bereavement-journey/estate/enter-your-address-international');
+        res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-international-address');
     }
 });
 
@@ -1325,7 +1325,7 @@ router.post('/bereavement-journey/estate/estate-select-your-address', function (
 });
 
 // Bereavement journey - estate no address found
-router.post('/bereavement-journey/estate/estate-no-address-found', function (req, res) {
+router.post('/bereavement-journey/estate/no-estate-address-found', function (req, res) {
     res.redirect('/v5/acting-for-member/bereavement-journey/estate/lookup-estate-address');
 });
 
