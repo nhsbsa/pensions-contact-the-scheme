@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% set pageTitle = "Do you want to add another person dealing with the estate?"%}
+{% set pageTitle = "Check your answers"%}
 
 {% block pageTitle %}
 {{pageTitle}} - {{serviceName}}
@@ -19,6 +19,9 @@
 
         <form action="../estate/estate-same-person-add-person" method="post">
           <span class="nhsuk-caption-l nhsuk-caption--bottom">Person dealing with the estate</span>
+          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">
+            {{pageTitle}}
+          </h1>
 
           <dl class="nhsuk-summary-list">
         <div class="nhsuk-summary-list__row">
@@ -62,8 +65,8 @@
             name: "EstateDealing",
             fieldset: {
               legend: {
-                text: pageTitle,
-                classes: "nhsuk-fieldset__legend--l",
+                text: "Do you want to add another person dealing with the estate?",
+                classes: "nhsuk-fieldset__legend--m",
                 isPageHeading: true
               }
             },
