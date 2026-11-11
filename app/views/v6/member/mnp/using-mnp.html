@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Using My NHS Pension"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row"> 
+    <div class="nhsuk-grid-column-two-thirds"> 
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">My NHS Pension</span> 
+      <h1 class="nhsuk-heading-l"> {{ pageTitle }} </h1> 
+      <p>Once you've registered for My NHS Pension, you can use it to:</p>
+      <ul>
+        <li>check your personal details</li>
+        <li>add or change your contact details</li>
+        <li>add, change or delete your nominations</li>
+      </ul>
+
+      <p>Access to other features of My NHS Pension depends on whether you:</p>
+      <ul>
+        <li>are currently paying into the NHS Pensions Scheme</li>
+        <li>have paid in for at least 2 years in the past</li>
+        <li>are already getting your pension payments</li>
+      </ul>
+
+      <p>Read about the <a href="https://www.nhsbsa.nhs.uk/member-hub/my-nhs-pension" target="_blank" class="nhsuk-link">My NHS Pension features you can access based on your member type (opens in new tab)</a>.</p>
+
+      <a class="nhsuk-action-link" href="https://mynhspension.nhsbsa.nhs.uk/">
+        <svg class="nhsuk-icon nhsuk-icon--arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+          <path d="M12 2a10 10 0 0 0-10 9h11.7l-4-4a1 1 0 0 1 1.5-1.4l5.6 5.7a1 1 0 0 1 0 1.4l-5.6 5.7a1 1 0 0 1-1.5 0 1 1 0 0 1 0-1.4l4-4H2A10 10 0 1 0 12 2z" />
+        </svg>
+        <span class="nhsuk-action-link__text">
+          Go to My NHS Pension
+        </span>
+      </a>
+      
+     
+
+      <form action="../mnp/using-mnp" method="post" novalidate> 
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+              <h2 class="nhsuk-fieldset__heading">
+                Do you still need help from NHS Pensions?
+              </h2>
+            </legend>
+            <div class="nhsuk-radios" data-module="nhsuk-radios">
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-hints" name="needingHelp" type="radio" value="yes">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                  Yes, I still need help
+                </label>
+              </div>
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-hints-2" name="needingHelp" type="radio" value="no">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                  No, my query has been solved
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        {{ button({ "text": "Continue", "classes": "nhsuk-u-margin-top-3" }) }} 
+      </form> 
+    </div> 
+  </div>
+
+{% endblock %}

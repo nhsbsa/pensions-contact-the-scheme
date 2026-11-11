@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "My details on the RSS may be incorrect"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Public Service Pensions Remedy</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+      <p>If the name or contact details on your RSS are wrong you can check these with NHS Pensions.</p>
+     
+      <p><a href="/v5/member/membership-number" class="nhsuk-link">Contact NHS Pensions</a></p>
+
+      <h2 class="nhsuk-heading-m">Give us your feedback</h2>
+      <p><a href="#" class="nhsuk-link">Tell us about your experience using this service (opens in new tab)</a>.</p>
+
+      
+    </div>
+  </div>
+
+{% endblock %}

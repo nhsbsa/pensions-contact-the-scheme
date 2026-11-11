@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What type of query?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+      <form action="/{{folder}}/{{subfolder}}/general-enquiry-options" method="post">
+
+        {{ radios({
+          idPrefix: "generalEnquiry",
+          name: "generalEnquiry",
+          fieldset: {
+            legend: {
+              text: pageTitle,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "Choose the relevant query type."
+          },
+          items: [
+            {
+              value: "My Total Reward Statement",
+              text: "My Total Reward Statement",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "Progress updates and progress chase",
+              text: "Progress updates and progress chase",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "Awards",
+              text: "Awards",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "Form",
+              text: "Form",
+              hint: {
+                text: ""
+              }
+            },
+            {
+              value: "General query",
+              text: "General query",
+              hint: {
+                text: ""
+              }
+            }
+          ]
+        }) }}
+
+        {{ button({
+          text: "Continue",
+          classes: "nhsuk-u-margin-top-4"
+        }) }}
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}

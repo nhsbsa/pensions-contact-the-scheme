@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What do you need help with on My NHS Pension?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">My NHS Pension</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+      <div class="nhsuk-hint">Select the relevant option</div>
+
+      <form action="../mnp/mnp-query-options" method="post" novalidate>
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+          <div class="nhsuk-radios" data-module="nhsuk-radios">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="registering" name="MNPHelp" type="radio" value="register">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                Registering for my NHS Pension
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="forgotten" name="MNPHelp" type="radio" value="forgot">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                Forgotten my sign in details
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="usingMNP" name="MNPHelp" type="radio" value="use">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                Using My NHS Pension
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="lockedout" name="MNPHelp" type="radio" value="locked">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+               Locked out of My NHS Pension
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="verifyingdetails" name="MNPHelp" type="radio" value="verify">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+               Verifying my details
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="recoverycodes" name="MNPHelp" type="radio" value="codes">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+               Issues with my recovery codes
+              </label>
+            </div>
+            <div class="nhsuk-radios__divider">or</div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="somethingelse" name="MNPHelp" type="radio" value="else">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+               Something else
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+          {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-u-margin-top-3"
+          }) }}
+      </form>
+
+      
+    </div>
+  </div>
+
+{% endblock %}

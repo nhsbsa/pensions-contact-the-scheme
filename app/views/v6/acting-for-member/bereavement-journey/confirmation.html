@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "We've received your notification"%}
+{% set hideBack ="true" %}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+ 
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <div class="nhsuk-panel">
+          <h1 class="nhsuk-panel__title">
+            {{pageTitle}}
+          </h1>
+        </div>
+        <p>We've sent a confirmation email to xyz@gmail.com.</p>
+        <h2 class="nhsuk-heading-m">What happens next</h2>
+        <p class= "nhsuk-body">We'll review the information you've provided. We aim to contact you within 2 working days.</p>         
+        <h2 class="nhsuk-heading-m">Tell us about your experience</h2>
+        <p>If you'd like to, you can <a href="https://research.nhsbsa.nhs.uk/s/ContactNHSPensionsFeedback" target="_blank" class="nhsuk-link">tell us about your experience using this service (opens in a new tab).</a> Your feedback will help us improve the service for others.</p>
+
+      </div>
+    </div>
+  </main>
+</div>
+ 
+
+
+
+     
+<script>
+  function setLocation(element) {
+    document.forms[0].action = element.value
+  }
+</script>
+{% endblock %}
+

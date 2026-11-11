@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Forgotten my sign in details"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Public Service Pensions Remedy</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+      <h2 class="nhsuk-heading-m">I've forgotten my username</h2>
+
+      <p>If you've forgotten your username, you'll be asked to enter your email address. You'll then get an email from My NHS Pension with your username.
+      </p>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Help with my email address
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>This must be the email address you used to register for My NHS Pension.</p>
+        </div>
+      </details>
+      
+      <h2 class="nhsuk-heading-m">I've forgotten my password</h2>
+
+      <p>If you've forgotten your password, you'll be asked to answer one of your security questions. You'll then be asked to create a new password.</p>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Help with my security questions
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>When you registered for My NHS Pension, you were asked to set and answer 3 security questions. These would not have included punctuation or special characters.</p>
+        </div>
+      </details>
+
+      <form action="../member/mnp/forgotten-my-details" method="post" novalidate>
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+              <h2 class="nhsuk-fieldset__heading">
+                Do you still need help from NHS Pensions?
+              </h2>
+            </legend>
+            <div class="nhsuk-radios" data-module="nhsuk-radios">
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-hints" name="needingHelp" type="radio" value="yes">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                  Yes, I still need help
+                </label>
+              </div>
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-hints-2" name="needingHelp" type="radio" value="no">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                  No, my query has been solved
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+  
+            {{ button({
+            "text": "Continue",
+            "classes": "nhsuk-u-margin-top-3"
+            }) }}
+        </form>
+
+      
+
+      
+    </div>
+  </div>
+
+{% endblock %}

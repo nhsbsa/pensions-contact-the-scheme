@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "There is nothing else you need to do"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-form-group">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+    
+      <form action="../bereavement-journey/tell-us-once-yes" method="post">
+
+        <h1 class="nhsuk-heading-l">{{ pageTitle }}</h1> 
+
+        <p class="nhsuk-body">You've told us that the member's death has been reported using the Tell Us Once service.</p>
+       
+        
+        <p>We'll contact you if we need any more information.</p>
+      
+     
+
+        
+
+        
+         <p> You can also <a href="../general-query/enter-your-name" class="nhsuk-link">contact NHS Pensions</a> for help.</p>
+        </div>
+
+        
+
+      </form>
+    </div>
+    </div>  
+  </div>
+{% endblock %}

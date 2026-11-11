@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Knowing why I received the RSS"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Public Service Pensions Remedy</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+      <p>You have received an RSS because you're an NHS Pension Scheme member affected by McCloud. </p>
+
+      <p>Find out more about <a href="https://www.nhsbsa.nhs.uk/public-service-pensions-remedy-mccloud/understanding-if-your-nhs-pension-affected-changes-public-sector-pensions" class="nhsuk-link" target="_blank">who is affected by McCloud (opens in new tab)</a>.</p>
+      
+
+     
+      <form action="../member/mccloud/why-I-received-RSS" method="post" novalidate>
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            <h3 class="nhsuk-fieldset__heading">
+              Do you still need help with your NHS Pensions query?
+            </h3>
+          </legend>
+          <div class="nhsuk-radios" data-module="nhsuk-radios">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-hints" name="why-letter-sent" type="radio" value="yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                Yes, I still need help
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-hints-2" name="why-letter-sent" type="radio" value="no">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                No, my query has been solved
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+          {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-u-margin-top-3"
+          }) }}
+      </form>
+
+      
+    </div>
+  </div>
+
+{% endblock %}

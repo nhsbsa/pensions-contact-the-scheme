@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Has anyone used the Tell us Once Service to report this death??"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      
+      <form action="../bereavement-journey/tell-us-once" method="post">
+
+     <div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset" aria-describedby="tell-us-once-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading">
+       Has anyone used the Tell us Once service to report this death?
+      </h1>
+    </legend>
+        <p class="nhsuk-body">Tell us Once is a service that lets people report a death to most government organisations at the same time.</p>
+<p class="nhsuk-body">When the death was registered, the registrar would have either:</p>
+       <ul>
+        <li>completed the Tell us Once service</li>
+        <li>given a reference number so it could be used online or by phone</li>
+      </ul>
+    <div class="nhsuk-radios" data-module="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="tell-us-once-yes" name="TellUsOnce" type="radio" value="Yes" data-aria-controls="conditional-tell-us-once">
+        <label class="nhsuk-label nhsuk-radios__label" for="tell-us-once-yes">
+          Yes
+        </label>
+  </div>
+ 
+<div class="nhsuk-radios__item">
+  <input class="nhsuk-radios__input" id="tell-us-once-no" name="TellUsOnce" type="radio" value="No">
+  <label class="nhsuk-label nhsuk-radios__label" for="tell-us-once-no">No</label>
+</div>
+
+<div class="nhsuk-radios__item">
+  <input class="nhsuk-radios__input" id="tell-us-once-not-sure" name="TellUsOnce" type="radio" value="Not sure">
+  <label class="nhsuk-label nhsuk-radios__label" for="tell-us-once-not-sure">I'm not sure</label>
+</div>
+     
+  </fieldset>
+</div>
+
+
+<button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+  Continue
+</button>
+
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}

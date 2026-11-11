@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Types of NHS Pension statement"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %} 
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        <h1>{{ pageTitle }}</h1> 
+      
+
+        <p>There are 2 types of statement you may receive as a member of the NHS Pension Scheme. </p>
+        <p>These are the:</p>
+        <ul>
+          <li>annual benefit statement (ABS)</li>
+          <li>Total Reward Statement (TRS)</li> 
+        </ul>
+        <p>Which you receive depends on your circumstances.</p>
+        
+
+
+        <h2>Annual benefit statement</h2>
+        <p>You may receive an annual benefit statement (ABS) on its own through My NHS Pension. 
+          Or as part of a Total Reward Statement through the Electronic Staff Record (ESR). </p>
+          <p>Your ABS will show what your pension is worth (its current value).</p>
+
+  
+
+         <h2>Total Reward Statement</h2>
+         <p>If you are currently working in the NHS and can access ESR you may receive a Total Reward Statement (TRS). 
+          A TRS is an overall rewards package. </p> 
+         <p>It includes an annual benefit statement for members of the NHS Pension Scheme as well as information on your employer benefits.</p>
+
+         <p><a href="https://www.nhsbsa.nhs.uk/employee-section/what-type-statement-youll-get" target="blank">Check what type of statement you'll get (opens in new tab)</a>.</p>
+
+<p><a href="https://www.nhsbsa.nhs.uk/employee-section/understanding-your-statement" target="blank">Find out how to understand your statement (opens in new tab)</a>.</p>
+    
+        <form action="/v3/member/trs/trs-start" method="post" novalidate>
+        {{ radios({
+          idPrefix: "view-statement",
+          name: "view-statement",
+          fieldset: {
+            legend: {
+              text: "What help do you need with your NHS Pension statement?",
+              classes: "nhsuk-fieldset__legend--l",
+              size: "l",
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              value: "View or access statement",
+              text: "View or access my pension statement"
+            },
+            {
+              value: "Report an issue",
+              text: "Report an issue with my statement"
+            }
+          ]
+        }) }}
+       
+        {{ button({
+          text: "Continue",
+          classes: "nhsuk-u-margin-top-4"
+        }) }}
+
+
+        </form>
+        
+
+
+    </div>  
+  </div>
+{% endblock %}

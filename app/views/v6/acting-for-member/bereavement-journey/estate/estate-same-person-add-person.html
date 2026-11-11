@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Check your answers"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-form-group">
+
+        <form action="../estate/estate-same-person-add-person" method="post">
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Person dealing with the estate</span>
+          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">
+            {{pageTitle}}
+          </h1>
+
+          <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Someone dealing with the estate
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['estate-person'] %}
+              {{ data['estate-person'] }}
+            {% else %}
+                Yes
+              {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../estate/estate-start">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            </a>
+          </dd>
+        </div>
+      
+
+   <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Person dealing with the estate
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            You/Adult dependant
+            
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="../estate/estate-same-person">
+              Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
+            </a>
+          </dd>
+        </div>
+        </dl>
+
+          {% from "radios/macro.njk" import radios %} 
+          {{ radios({
+            idPrefix: "EstateDealing",
+            name: "EstateDealing",
+            fieldset: {
+              legend: {
+                text: "Do you want to add another person dealing with the estate?",
+                classes: "nhsuk-fieldset__legend--m",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                hint: {
+                  text: ""
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                hint: {
+                  text: ""
+                }
+              }
+            ]
+          }) }}
+
+        
+
+          {{ button({
+            text: "Continue",
+            classes: "nhsuk-u-margin-top-4"
+          }) }}
+
+ 
+
+
+        </form>
+      </div>
+    </div>  
+  </div>
+{% endblock %}

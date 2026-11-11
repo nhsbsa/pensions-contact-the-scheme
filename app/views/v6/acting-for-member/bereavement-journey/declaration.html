@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Is there a person dealing with the estate?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+       
+          <form action="../bereavement-journey/declaration" method="post">
+
+     
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                What you need to know
+              </h1>
+            </legend>
+            
+             <p>We'll contact you within 2 working days of receiving your form.</p>
+
+             <p>We'll process the information you provide.</p>
+
+             <p>When we contact you, we may ask for:</p>
+             <ul class="nhsuk-list nhsuk-list--bullet">
+                    <li>more information about the person who died</li>
+                    <li>information about the person dealing with the estate</li>
+                    <li>a certified copy of the death certificate</li>
+                        
+                </ul>
+
+
+
+
+          </fieldset>
+          
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h2 class="nhsuk-fieldset__heading">
+                Declaration
+              </h2>
+            </legend>
+            <p>I confirm that, to the best of my knowledge, the information I have provided in relation to the reported death is true and complete.</p>
+            <p>I understand that:</p>
+              <ul>
+                <li>the NHSBSA may use and share information I provide, both internally and with external organisations, for the purposes of fraud prevention, detection, loss measurement, investigation, and the prosecution of fraud or any other unlawful activity affecting the NHS.</li>
+                <li>by agreeing with and signing this declaration, I accept and agree to all the conditions specified above. I understand that if I withhold information or provide false or misleading information I may be liable to prosecution and / or civil proceedings.</li>
+              </ul> 
+
+          </fieldset>
+<div class="nhsuk-checkboxes">
+
+  <div class="nhsuk-checkboxes__item">
+    <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="declaration">
+    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+      I understand and agree with the above statements
+    </label>
+  </div>
+</br>
+          <div>          
+            <button class="nhsuk-button" type="submit" href="../bereavement-journey/confirmation">
+            Submit
+          </button>
+        </div>
+
+      </div>
+
+
+    </div>
+   
+
+    </form>
+  </div>
+</div>
+
+<script>
+  function setLocation(element) {
+    document.forms[0].action = element.value
+  }
+</script>
+{% endblock %}
+

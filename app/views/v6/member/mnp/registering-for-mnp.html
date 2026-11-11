@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Registering for My NHS Pension"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">My NHS Pension</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+
+      <p>To register for My NHS Pension, you'll need to enter your:
+      </p>
+      <ul>
+        <li>National Insurance number</li>
+        <li>NHS Pensions membership number</li>
+        <li>2 unique registration codes</li>
+      </ul>
+
+      <p>You'll then need to:</p>
+      <ul>
+        <li>create a username and password</li>
+        <li>enter your email address</li>
+        <li>verify your email</li>
+      </ul>
+
+      <h2 class="nhsuk-heading-m">Use a personal email address</h2>
+      <p>You should use a personal email address rather than a work one. This is because you may need to access My NHS Pension after you've left NHS employment.</p>
+
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>We'll send a verification email to this address. If you do not verify your email address, your account may be locked.</p>
+      </div>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Help finding my membership number
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>This is an 8 digit number, which may start with 'SD'. You can find it on payslips, annual benefit statements, Total Reward Statements, or any letters from us.</p>
+        </div>
+      </details>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Help finding my registration codes
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>These are your unique registration codes. There will be 2 of them. Find them on any emails we've sent you with information about registering for My NHS Pension, or by contacting us.</p>
+        </div>
+      </details>
+
+      <p>For more information on registering you can <a href="https://www.nhsbsa.nhs.uk/member-hub/my-nhs-pension" target="_blank" class="nhsuk-link">go to My NHS Pension (opens in new tab).</a></p>
+      
+
+      <form action="../member/mnp/registering-for-mnp" method="post" novalidate>
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            <h2 class="nhsuk-fieldset__heading">
+              Do you still need help from NHS Pensions?
+            </h2>
+          </legend>
+          <div class="nhsuk-radios" data-module="nhsuk-radios">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-hints" name="needsHelp" type="radio" value="yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                Yes, I still need help
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-hints-2" name="needsHelp" type="radio" value="no">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                No, my query has been solved
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+          {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-u-margin-top-3"
+          }) }}
+      </form>
+
+      
+    </div>
+  </div>
+
+{% endblock %}

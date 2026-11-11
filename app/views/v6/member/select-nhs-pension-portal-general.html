@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "What do you need help with?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Details</span>
+      <form action="/{{folder}}/{{subfolder}}/select-nhs-pension-portal-general" method="post">
+
+        {{ radios({
+          idPrefix: "mnpGeneral",
+          name: "mnpGeneral",
+          fieldset: {
+            legend: {
+              text: pageTitle,
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "Choose one option"
+          },
+          items: [
+            {
+              value: "The My NHS Pension portal",
+              text: "My NHS Pension portal",
+              hint: {
+                text: "You need help with My NHS Pension – for example, registering to use it"
+              }
+            },
+            {
+              value: "NHS Pension statement",
+              text: "NHS Pension statement",
+              hint: {
+                text: "You're experiencing issues with your Total Reward Statement (TRS) or annual benefit statement (ABS) "
+              }
+            },
+             
+            {
+              value: "I am looking for an update",
+              text: "I am looking for an update",
+              hint: {
+                text: "You need an update from us – for example, on your pension application"
+              }
+            },
+            {
+              value: "I am retiring",
+              text: "I am retiring",
+              hint: {
+                text: "You're retiring and need help with the next steps to claim your NHS Pension"
+              }
+            },
+            {
+              value: "Requesting a form",
+              text: "Requesting a form",
+              hint: {
+                text: "You need a form – for example, the form you fill in to get your pension (AW8 or AW8P)"
+              }
+            },
+            {
+              value: "Ill health",
+              text: "Ill health",
+              hint: {
+                text: "You need to update us on your health – for example, to apply for ill health pension benefits"
+              }
+            },
+            {
+              value: "McCloud",
+              text: "Public Service Pensions Remedy (also known as 'McCloud') ",
+              hint: {
+                text: "You're affected by McCloud and need help – for example, after receiving a Remediable Service Statement (RSS) "
+              }
+            },
+            {
+              divider: "or"
+            },
+              {
+                value: "Something else",
+                text: "Something else",
+                hint: {
+                  text: "You have a question about your NHS Pension that the other options do not cover"
+                }
+            }
+          ]
+        }) }}
+
+        {{ button({
+          text: "Continue",
+          classes: "nhsuk-u-margin-top-4"
+        }) }}
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}

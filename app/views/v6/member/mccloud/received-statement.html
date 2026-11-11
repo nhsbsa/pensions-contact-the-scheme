@@ -1,0 +1,34 @@
+{% extends 'layout.html' %} 
+{% set pageTitle = "Have you received a Remediable Service Statement (RSS)?" %} 
+{% block pageTitle %} 
+{{ pageTitle }} - {{ serviceName }} 
+{% endblock %} 
+{% block beforeContent %} 
+{% endblock %}
+ {% block outerContent %} 
+ {% endblock %} {% block content %} 
+ <div class="nhsuk-grid-row"> 
+  <div class="nhsuk-grid-column-two-thirds"> 
+    <span class="nhsuk-caption-l nhsuk-caption--bottom">Public Service Pensions Remedy</span>
+     <h1 class="nhsuk-heading-l"> {{ pageTitle }} </h1> 
+     <p class="nhsuk-hint">
+      Your RSS is the letter we will send you that shows your remedy choice if you're affected by McCloud
+    </p>
+
+      <form action="../member/mccloud/received-statement" method="post" novalidate> 
+        <div class="nhsuk-form-group"> 
+          <fieldset class="nhsuk-fieldset">
+            <div class="nhsuk-radios nhsuk-radios--inline" data-module="nhsuk-radios"> 
+              <div class="nhsuk-radios__item"> 
+                <input class="nhsuk-radios__input" id="received-rss-yes" name="received-rss" type="radio" value="yes" > 
+                <label class="nhsuk-label nhsuk-radios__label" for="received-rss-yes"> Yes </label>
+               </div> <div class="nhsuk-radios__item"> 
+                <input class="nhsuk-radios__input" id="received-rss-no" name="received-rss" type="radio" value="no" > 
+                <label class="nhsuk-label nhsuk-radios__label" for="received-rss-no"> No </label> 
+              </div> 
+            </div> 
+          </fieldset> 
+        </div> {{ button({ "text": "Continue", "classes": "nhsuk-u-margin-top-3" }) }} 
+      </form> 
+    </div> 
+  </div> {% endblock %}

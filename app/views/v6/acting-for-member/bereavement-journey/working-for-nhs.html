@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Was the member working for the NHS when they died?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Member details</span>
+      <form action="../bereavement-journey/tell-us-once" method="post">
+
+     <div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset" aria-describedby="tell-us-once-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading">
+      {{pageTitle}}
+      </h1>
+    </legend>
+        
+    <div class="nhsuk-radios" data-module="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="tell-us-once-yes" name="TellUsOnce" type="radio" value="Yes" data-aria-controls="conditional-tell-us-once">
+        <label class="nhsuk-label nhsuk-radios__label" for="tell-us-once-yes">
+          Yes
+        </label>
+  </div>
+ <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-tell-us-once">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="tell-us-once-number">
+            Tell Us Once reference number
+          </label>
+          <input class="nhsuk-input nhsuk-u-width-two-thirds" id="tell-us-once-number" name="number" type="number" pattern="[0-9]*" inputmode="numeric">
+        </div>
+      </div>
+<div class="nhsuk-radios__item">
+  <input class="nhsuk-radios__input" id="tell-us-once-no" name="TellUsOnce" type="radio" value="No">
+  <label class="nhsuk-label nhsuk-radios__label" for="tell-us-once-no">No</label>
+</div>
+
+<div class="nhsuk-radios__item">
+  <input class="nhsuk-radios__input" id="tell-us-once-not-sure" name="TellUsOnce" type="radio" value="Not sure">
+  <label class="nhsuk-label nhsuk-radios__label" for="tell-us-once-not-sure">Not sure</label>
+</div>
+     
+  </fieldset>
+</div>
+
+
+<button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+  Continue
+</button>
+
+
+      </form>
+    </div>  
+  </div>
+{% endblock %}

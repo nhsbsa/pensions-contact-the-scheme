@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Have you received your registration codes for My NHS Pension?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">My NHS Pension</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+      <p>There will be 2 of these codes. You can find them on any emails we've sent you about registering for My NHS pension.</p>
+
+      <form action="../mnp/have-you-received-registration-codes" method="post" novalidate>
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+            <div class="nhsuk-radios" data-module="nhsuk-radios">
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="nocodes" name="MNPcodes" type="radio" value="no">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                  No I have not received them
+                </label>
+              </div>
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="codeshelp" name="MNPcodes" type="radio" value="yes">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                  Yes I've received them, but I don't know what to do
+                </label>
+              </div>
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="codesdontwork" name="MNPcodes" type="radio" value="dontwork">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                  Yes I've received them, but they don't work
+                </label>
+              </div>
+            
+
+
+
+              
+              
+            </div>
+          </fieldset>
+        </div>
+        {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-u-margin-top-3"
+          }) }}
+      </form>
+      
+
+      
+    </div>
+  </div>
+
+{% endblock %}
