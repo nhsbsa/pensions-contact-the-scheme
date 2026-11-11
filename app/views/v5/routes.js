@@ -1278,7 +1278,7 @@ router.post('/bereavement-journey/estate/lookup-estate-address', function (req, 
                 })
                 .catch(error => {
                     console.log(error);
-                    res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-no-address-found');
+                    res.redirect('/v5/acting-for-member/bereavement-journey/estate/no-estate-address-found');
                 });
         } else {
             res.redirect('/v5/acting-for-member/bereavement-journey/estate/lookup-estate-address');
