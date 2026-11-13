@@ -313,7 +313,7 @@ router.post('/mnp/have-you-received-registration-codes', (req, res) => {
     }
 });
 
-// MEMBER - Are you currnetly paying into the scheme?
+// MEMBER - Are you currently paying into the scheme?
 router.post('/mnp/are-you-paying-into-the-scheme', (req, res) => {
 
     var payingPension = req.session.data['activemember']
@@ -323,6 +323,84 @@ router.post('/mnp/are-you-paying-into-the-scheme', (req, res) => {
 
     } else if (payingPension == 'no') {
         res.redirect('are-you-getting-your-pension')
+    }
+});
+
+// MEMBER - Are you getting your pension benefits?
+router.post('/mnp/are-you-getting-your-pension', (req, res) => {
+
+    var payingPension = req.session.data['pensionmember']
+
+    if (payingPension == 'yes') {
+        res.redirect('/v6/member/membership-number')
+
+    } else if (payingPension == 'no') {
+        res.redirect('are-you-a-deferred-member')
+    }
+});
+
+// MEMBER - Are you a deferred member of the pension scheme?
+router.post('/mnp/are-you-a-deferred-member', (req, res) => {
+
+    var payingPension = req.session.data['deferredmember']
+
+    if (payingPension == 'yes') {
+        res.redirect('/v6/member/membership-number')
+
+    } else if (payingPension == 'no') {
+        res.redirect('do-you-get-adult-dependant-benefits')
+    }
+});
+
+// MEMBER - Do you get adult dependant benefits?
+router.post('/mnp/do-you-get-adult-dependant-benefits', (req, res) => {
+
+    var adultDependant = req.session.data['adultdependant']
+
+    if (adultDependant == 'yes') {
+        res.redirect('/v6/member/membership-number')
+
+    } else if (adultDependant == 'no') {
+        res.redirect('currently-cannot-register')
+    }
+});
+
+// MEMBER - Registering for My NHS Pension?
+router.post('/mnp/registering-for-mnp', (req, res) => {
+
+    var registeringMNP = req.session.data['needhelpRegistering']
+
+    if (registeringMNP == 'yes') {
+        res.redirect('/v6/member/membership-number')
+
+    } else if (registeringMNP == 'no') {
+        res.redirect('query-solved')
+    }
+});
+
+// MEMBER - Forgotten my sign in details?
+router.post('/mnp/forgotten-my-details', (req, res) => {
+
+    var detailsforgotten = req.session.data['helpForgotten']
+
+    if (detailsforgotten == 'yes') {
+        res.redirect('/v6/member/membership-number')
+
+    } else if (detailsforgotten == 'no') {
+        res.redirect('query-solved')
+    }
+});
+
+// MEMBER - Using My NHS Pension
+router.post('/mnp/using-mnp', (req, res) => {
+
+    var detailsforgotten = req.session.data['useMNP']
+
+    if (detailsforgotten == 'yes') {
+        res.redirect('/v6/member/membership-number')
+
+    } else if (detailsforgotten == 'no') {
+        res.redirect('query-solved')
     }
 });
 

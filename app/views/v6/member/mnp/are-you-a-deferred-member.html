@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Have you paid into the NHS Pension Scheme for at least 2 years in the past?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">My NHS Pension</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+      <div class="nhsuk-hint">To be a deferred member, you must be no longer paying into the Scheme and not yet getting your pension</div>
+
+      <form action="../mnp/are-you-a-deferred-member" method="post" novalidate>
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+          <div class="nhsuk-radios" data-module="nhsuk-radios">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="deferred" name="deferredmember" type="radio" value="yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                Yes
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="notdeferred" name="deferredmember" type="radio" value="no">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+          {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-u-margin-top-3"
+          }) }}
+      </form>
+
+      
+    </div>
+  </div>
+
+{% endblock %}

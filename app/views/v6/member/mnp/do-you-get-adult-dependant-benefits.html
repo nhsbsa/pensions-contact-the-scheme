@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Do you get an adult dependant's pension?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">My NHS Pension</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+      <div class="nhsuk-hint">This means you receive pension payments from the NHS Pension Scheme after someone who was a member died</div>
+
+      <form action="../mnp/do-you-get-adult-dependant-benefits" method="post" novalidate>
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+          <div class="nhsuk-radios" data-module="nhsuk-radios">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="dependant" name="adultdependant" type="radio" value="yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                Yes
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="notdependant" name="adultdependant" type="radio" value="no">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+          {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-u-margin-top-3"
+          }) }}
+      </form>
+
+      
+    </div>
+  </div>
+
+{% endblock %}

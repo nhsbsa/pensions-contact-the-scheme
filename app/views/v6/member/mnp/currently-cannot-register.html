@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "You cannot currently register for My NHS Pension"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">Public Service Pensions Remedy</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+     
+      <p>You cannot register for My NHS Pension if you:
+      </p>
+
+      <ul>
+        <li>are a child dependant of a member who has died</li>
+        <li>have a pension credit record from divorce or dissolution of a civil partnership</li>
+        <li>left the Scheme with less than 2 years or membership</li>
+        <li>do not have any membership left in the Scheme due to claiming a refund or transferring to another pension scheme</li>
+        <li>receive an injury benefit pension</li>
+        <li>are acting on a member's behalf, even if you have power of attorney</li>
+      </ul>
+
+      <h2 class="nhsuk-heading-m">I should be able to register</h2>
+      <p>If you've read this guidance and think you should still be able to register you can use our online form to <a href="/v6/member/membership-number" class="nhsuk-link">Contact NHS Pensions</a>.</p>
+
+      <h2 class="nhsuk-heading-m">Give us your feedback</h2>
+      <p><a href="https://research.nhsbsa.nhs.uk/s/ContactNHSPensionsFeedback" target="_blank" class="nhsuk-link">Tell us about your experience using this service (opens in new tab)</a>.</p>
+
+
+      
+
+      
+    </div>
+  </div>
+
+{% endblock %}
