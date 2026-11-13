@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% set pageTitle = "Are you already getting your NHS Pension Scheme pension?"%}
+
+{% block pageTitle %}
+{{pageTitle}} - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <span class="nhsuk-caption-l nhsuk-caption--bottom">My NHS Pension</span>
+      <h1 class="nhsuk-heading-l">
+          {{pageTitle}}
+      </h1>
+      <div class="nhsuk-hint">If you're currently getting your pension payments you're a pensioner member</div>
+
+      <form action="../mnp/are-you-paying-into-the-scheme" method="post" novalidate>
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
+          <div class="nhsuk-radios" data-module="nhsuk-radios">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="active" name="activemember" type="radio" value="yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints">
+                Yes
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="notactive" name="activemember" type="radio" value="no">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+          {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-u-margin-top-3"
+          }) }}
+      </form>
+
+      
+    </div>
+  </div>
+
+{% endblock %}

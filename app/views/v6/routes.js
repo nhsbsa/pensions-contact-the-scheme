@@ -267,6 +267,9 @@ router.post('/member/mccloud/days-since-last-contact', (req, res) => {
   });
 
 
+  // ****************************************
+// MEMBER JOURNEY- My NHS Pension deflection
+// ****************************************
 
 // --------
 // MEMBER - What do you need help with on My NHS Pension?
@@ -294,6 +297,34 @@ router.post('/mnp/mnp-query-options', (req, res) => {
     }
 });
 
+// MEMBER - Have you received you registration codes for MNP?
+router.post('/mnp/have-you-received-registration-codes', (req, res) => {
+
+    var mnpCodes = req.session.data['MNPcodes']
+
+    if (mnpCodes == 'no') {
+        res.redirect('are-you-paying-into-the-scheme')
+
+    } else if (mnpCodes == 'yes') {
+        res.redirect('registering-for-mnp')
+
+    } else if (mnpCodes == 'dontwork') {
+        res.redirect('/v6/member/membership-number')
+    }
+});
+
+// MEMBER - Are you currnetly paying into the scheme?
+router.post('/mnp/are-you-paying-into-the-scheme', (req, res) => {
+
+    var payingPension = req.session.data['activemember']
+
+    if (payingPension == 'yes') {
+        res.redirect('/v6/member/membership-number')
+
+    } else if (payingPension == 'no') {
+        res.redirect('are-you-getting-your-pension')
+    }
+});
 
 // MEMBER - Do you know your membership number?
 router.post('/membership-number', (req, res) => {
