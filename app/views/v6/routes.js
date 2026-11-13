@@ -43,7 +43,7 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
     var mnpGeneral = req.session.data['mnpGeneral']
 
     if (mnpGeneral == 'The My NHS Pension portal') {
-        res.redirect('nhs-pension-portal-options')
+        res.redirect('mnp/mnp-query-options')
 
     } else if (mnpGeneral == 'NHS Pension statement') {
         res.redirect('../member/trs/trs-start')
@@ -269,28 +269,28 @@ router.post('/member/mccloud/days-since-last-contact', (req, res) => {
 
 
 // --------
-// MEMBER - What can we help you with?
-router.post('/nhs-pension-portal-options/', (req, res) => {
+// MEMBER - What do you need help with on My NHS Pension?
+router.post('/mnp/mnp-query-options', (req, res) => {
 
-    var mnpEnquiry = req.session.data['mnpEnquiry']
+    var mnpQuery = req.session.data['MNPHelp']
 
-    if (mnpEnquiry == 'I did not get an invitation to My NHS Pension') {
-        res.redirect('membership-number')
+    if (mnpQuery == 'register') {
+        res.redirect('have-you-received-registration-codes')
 
-    } else if (mnpEnquiry == 'I cannot sign in to My NHS Pension') {
-        res.redirect('membership-number')
+    } else if (mnpQuery == 'forgot') {
+        res.redirect('forgotten-my-details')
 
-    } else if (mnpEnquiry == 'I am locked out of My NHS Pension') {
-        res.redirect('membership-number')
+    } else if (mnpQuery == 'use') {
+        res.redirect('using-mnp')
 
-    } else if (mnpEnquiry == 'I cannot access My NHS Pension') {
-        res.redirect('membership-number')
+    } else if (mnpQuery == 'locked') {
+        res.redirect('/v6/member/membership-number')
         
-    } else if (mnpEnquiry == 'Something else') {
-        res.redirect('membership-number')
+    } else if (mnpQuery == 'verify') {
+        res.redirect('/v6/member/membership-number')
 
     } else {
-        res.redirect('nhs-pension-portal-options')
+        res.redirect('/v6/member/membership-number')
     }
 });
 
