@@ -59,10 +59,26 @@
             Type of request
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data['mnpEnquiry']}} 
+            {% if data['MNPHelp'] == "register" %}
+      Registering for My NHS Pension
+      {% elseif data['MNPHelp'] == "forgot" %}
+      Forgotten my sign in details
+      {% elseif data['MNPHelp'] == "use" %}
+      Using my NHS Pension
+      {% elseif data['MNPHelp'] == "locked" %}
+      Locked out of My NHS Pension
+      {% elseif data['MNPHelp'] == "verify" %}
+      Verifying my details
+      {% elseif data['MNPHelp'] == "codes" %}
+      Issues with my recovery codes
+      {% elseif data['MNPHelp'] == "else" %}
+      Something else
+      {% else %}
+      Not provided
+    {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
-            <a href="nhs-pension-portal-options">
+            <a href="../member/mnp/mnp-query-options">
               Change<span class="nhsuk-u-visually-hidden">&nbsp; query type. </span>
             </a>
           </dd>
