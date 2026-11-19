@@ -158,37 +158,7 @@
           </div>
         </dl>
 
-         {% from "radios/macro.njk" import radios %} 
-          {{ radios({
-            idPrefix: "EstateDealing",
-            name: "EstateDealing",
-            fieldset: {
-              legend: {
-                text: "Do you want to add another person dealing with the estate?",
-                classes: "nhsuk-fieldset__legend--l",
-                isPageHeading: true
-              }
-            },
-            hint: {
-              text: ""
-            },
-            items: [
-              {
-                value: "Yes",
-                text: "Yes",
-                hint: {
-                  text: ""
-                }
-              },
-              {
-                value: "No",
-                text: "No",
-                hint: {
-                  text: ""
-                }
-              }
-            ]
-          }) }}
+   
 
       <form action="../estate/estate-check-your-answers" method="post">
         {{ button({

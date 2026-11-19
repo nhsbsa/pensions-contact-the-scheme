@@ -1146,7 +1146,7 @@ router.post('/bereavement-journey/dependant/dependant-uk-address', function (req
     if (addressLine1 && townOrCity) {
         res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-check-your-answers');
     } else {
-        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/enter-your-address-uk');
+        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-uk-address');
     }
 });
 
@@ -1158,7 +1158,7 @@ router.post('/bereavement-journey/dependant/dependant-international-address', fu
     if (addressLine1 && townOrCity) {
         res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-check-your-answers');
     } else {
-        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/enter-your-address-international');
+        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-international-address');
     }
 });
 
@@ -1406,7 +1406,7 @@ router.post('/bereavement-journey/estate/estate-uk-address', function (req, res)
     if (addressLine1 && townOrCity) {
         res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-check-your-answers');
     } else {
-        res.redirect('/v5/acting-for-member/bereavement-journey/estate/enter-your-address-uk');
+        res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-uk-address');
     }
 });
 

@@ -1037,7 +1037,7 @@ router.post('/bereavement-journey/dependant/dependant-uk-address', function (req
     if (addressLine1 && townOrCity) {
         res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-check-your-answers');
     } else {
-        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/enter-your-address-uk');
+        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-uk-address');
     }
 });
 
@@ -1080,25 +1080,14 @@ router.post('/bereavement-journey/dependant/dependant-child', (req, res) => {
     var hasEstateRepresentative = req.session.data['child-dependant'] || req.session.data['child-dependant'];
 
     if (hasEstateRepresentative === 'Yes' ) {
-        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-number');
+        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-name');
     } else if (hasEstateRepresentative === 'No'|| hasEstateRepresentative === 'I\'m not sure') {
         res.redirect('/v5/acting-for-member/bereavement-journey/estate/estate-start');
 
     }
 });
 
-// bereavement journey - child dependant-number
-router.post('/bereavement-journey/dependant/dependant-child-number', (req, res) => {
-    const childNumber = Number(req.body['child-number'] ?? req.session.data['child-dependant-number'] ?? 0);
 
-    if (childNumber === 1) {
-        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-name');
-    } else if (childNumber === 2) {
-        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-children-name');
-    } else {
-        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-number');
-    }
-});
 
 // Bereavement journey - child dependant-name
 router.post('/bereavement-journey/dependant/dependant-child-name', function (req, res) {
@@ -1112,17 +1101,7 @@ router.post('/bereavement-journey/dependant/dependant-child-name', function (req
     }
 });
 
-// Bereavement journey - multiple child dependants names
-router.post('/bereavement-journey/dependant/dependant-children-name', function (req, res) {
-    var childOneName = req.body['child-one-name'] || req.session.data['child-one-name'];
-    var childTwoName = req.body['child-two-name'] || req.session.data['child-two-name'];
 
-    if (childOneName && childTwoName) {
-        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-child-check-your-answers');
-    } else {
-        res.redirect('/v5/acting-for-member/bereavement-journey/dependant/dependant-children-name');
-    }
-});
 
 // Bereavement journey - child dependant-check-your-answers
 router.post('/bereavement-journey/dependant/dependant-child-check-your-answers', (req, res) => {
