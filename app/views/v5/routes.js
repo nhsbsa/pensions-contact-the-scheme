@@ -84,30 +84,44 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
 
 // View/access statement or report an issue?
  
-router.post('/member/trs/trs-start', (req, res) => {
+router.post('/trs/trs-start', (req, res) => {
+
     var viewStatement = req.session.data['view-statement'];
 
+    console.log('Selected option:', viewStatement);
+
     if (viewStatement == "View or access statement") {
-      res.redirect('are-you-current-employee')
+        res.redirect('/v5/member/trs/are-you-current-employee');
+
     } else if (viewStatement == "Report an issue") {
-      res.redirect('../membership-number')
+        res.redirect('/v5/member/membership-number');
+
     } else {
-        res.redirect('/v3/member/trs/trs-start')
+        res.redirect('/v5/member/trs/trs-start');
     }
-  });
+
+});
 
 
 
 // TRS - Are you a current NHS employee?
 router.post('/member/trs/are-you-current-employee/', (req, res) => {
-  var trsEmployee = req.session.data['trsEmployee']
-  req.session.data['q1'] = trsEmployee === 'Yes' ? 'yes' : 'no'
-  if (trsEmployee === 'Yes') {
-    res.redirect('are-you-active-member')
-  } else {
-    res.redirect('../membership-number')
-  }
-});
+
+    var trsEmployee = req.session.data['trsEmployee'];
+  
+    console.log('TRS Employee:', trsEmployee);
+  
+    req.session.data['q1'] = trsEmployee === 'Yes' ? 'yes' : 'no';
+  
+    if (trsEmployee === 'Yes') {
+      console.log('Redirecting to active member');
+      res.redirect('are-you-active-member');
+  
+    } else {
+      console.log('Redirecting to V5 membership number');
+      res.redirect('/v5/member/membership-number');
+    }
+  });
 
 // TRS - Are you an active member of the NHS Pension Scheme?
 router.post('/member/trs/are-you-active-member/', (req, res) => {

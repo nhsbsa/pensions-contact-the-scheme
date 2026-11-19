@@ -84,17 +84,23 @@ router.post('/select-nhs-pension-portal-general/', (req, res) => {
 
 // View/access statement or report an issue?
  
-router.post('/member/trs/trs-start', (req, res) => {
+router.post('/trs/trs-start', (req, res) => {
+
     var viewStatement = req.session.data['view-statement'];
 
+    console.log('Selected option:', viewStatement);
+
     if (viewStatement == "View or access statement") {
-      res.redirect('are-you-current-employee')
+        res.redirect('/v6/member/trs/are-you-current-employee');
+
     } else if (viewStatement == "Report an issue") {
-      res.redirect('../membership-number')
+        res.redirect('/v6/member/membership-number');
+
     } else {
-        res.redirect('/v3/member/trs/trs-start')
+        res.redirect('/v6/member/trs/trs-start');
     }
-  });
+
+});
 
 
 
